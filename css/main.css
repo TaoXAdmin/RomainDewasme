@@ -429,8 +429,7 @@ section {
     padding: 1.2rem 3.2rem;
     font-family: var(--font-secondary);
     font-size: 1.4rem;
-    font-weight: 600;
-    text-transform: uppercase;
+    font-weight: 600;   
     letter-spacing: 1px;
     border-radius: var(--radius-sm);
     transition: all var(--transition-fast);
