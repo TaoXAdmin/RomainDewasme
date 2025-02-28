@@ -335,7 +335,7 @@ function initGallery() {
     const galleryData = [
         { src: 'assets/images/gallery/image1.jpg', title: 'Soirée Corporate', category: 'close-up' },
         { src: 'assets/images/gallery/image2.jpg', title: 'Performance Scénique', category: 'scene' },
-        { src: 'assets/images/gallery/image3.png', title: 'Ovation', category: 'scene' },
+        { src: 'assets/images/gallery/image3.jpg', title: 'Ovation', category: 'scene' },
         { src: 'assets/images/gallery/image4.jpg', title: 'Close-up VIP', category: 'close-up' },
         { src: 'assets/images/gallery/image5.jpg', title: 'Spectacle Privé', category: 'scene' },
         { src: 'assets/images/gallery/image6.jpg', title: 'Street-Art', category: 'street-art' },
