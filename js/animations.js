@@ -232,7 +232,6 @@ function initHoverAnimations() {
  */
 function initMagicEffects() {
     // Création de l'effet de particules
-    createParticles();
     
     // Animation des cartes dans la galerie (effet déplacement 3D)
     const galleryItems = document.querySelectorAll('.gallery__item');
@@ -290,72 +289,6 @@ function initMagicEffects() {
                 }
             });
         });
-    });
-}
-
-/**
- * Création de particules magiques
- */
-function createParticles() {
-    const heroSection = document.querySelector('.hero');
-    
-    if (heroSection) {
-        // Créer le conteneur de particules s'il n'existe pas encore
-        let particlesContainer = document.querySelector('.particles-container');
-        if (!particlesContainer) {
-            particlesContainer = document.createElement('div');
-            particlesContainer.className = 'particles-container';
-            heroSection.appendChild(particlesContainer);
-        }
-        
-        // Créer les particules
-        for (let i = 0; i < 50; i++) {
-            createParticle(particlesContainer);
-        }
-        
-        // Créer de nouvelles particules périodiquement
-        setInterval(() => {
-            const particles = particlesContainer.querySelectorAll('.particle');
-            
-            // Limiter le nombre de particules pour les performances
-            if (particles.length < 50) {
-                createParticle(particlesContainer);
-            }
-        }, 300);
-    }
-}
-
-/**
- * Création d'une particule individuelle
- */
-function createParticle(container) {
-    const particle = document.createElement('div');
-    particle.className = 'particle';
-    
-    // Positions et tailles aléatoires
-    const size = Math.random() * 5 + 2; // 2-7px
-    const posX = Math.random() * 100; // 0-100%
-    
-    // Appliquer les styles
-    particle.style.width = `${size}px`;
-    particle.style.height = `${size}px`;
-    particle.style.left = `${posX}%`;
-    particle.style.bottom = '0';
-    particle.style.opacity = '0';
-    
-    // Ajouter au conteneur
-    container.appendChild(particle);
-    
-    // Animation avec GSAP
-    gsap.to(particle, {
-        y: -100 - Math.random() * 100, // Hauteur de déplacement
-        x: (Math.random() - 0.5) * 50, // Déplacement latéral aléatoire
-        opacity: 0.7,
-        duration: 2 + Math.random() * 3, // 2-5 secondes
-        ease: "power1.out",
-        onComplete: () => {
-            container.removeChild(particle); // Supprimer après animation
-        }
     });
 }
 
