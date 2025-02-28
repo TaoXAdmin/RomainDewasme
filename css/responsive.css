@@ -255,16 +255,19 @@
 }
 
 /* Pour les appareils en mode sombre */
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light	) {
     /* Le design étant déjà sombre, pas besoin d'ajustements majeurs */
     :root {
-
+        --color-off-white: #121212;
+        --color-light-gray: #827e7e;
+        --color-white: #1a1a1a;
+		--color-white2: #fff;
     }
     
     .form-input,
     .form-textarea,
     .form-select {
-      
+        color: #615d5d;
     }
     
     .form-input:focus ~ .form-label,
@@ -272,15 +275,16 @@
     .form-textarea:focus ~ .form-label,
     .form-textarea:not(:placeholder-shown) ~ .form-label,
     .select-label {
-       
+        background-color: #1a1a1a;
     }
     
     /* Inverser les couleurs du texte pour meilleure lisibilité */
     body {
-        
+        color: #e0e0e0;
     }
     
     h1, h2, h3, h4, h5, h6 {
+        color: #f7f7f7;
     }
 }
 
