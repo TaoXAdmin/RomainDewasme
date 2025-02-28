@@ -5,82 +5,12 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     // Initialiser les fonctionnalités
-    initServicesParticles();
     initServiceCardInteractions();
     initCardRevealAnimation(); // Ajout de l'animation de révélation des cartes
     
     // Ajouter l'animation CSS pour la révélation des cartes
     addCardRevealStyle();
 });
-
-/**
- * Création de particules élégantes en fond de section
- */
-function initServicesParticles() {
-    const particlesContainer = document.querySelector('.particles-overlay');
-    
-    if (!particlesContainer) return;
-    
-    // Configuration des particules
-    const particleCount = 30; // Nombre de particules
-    const particleColors = ['#e6c555', '#ffffff']; // Or et blanc
-    
-    // Créer les particules
-    for (let i = 0; i < particleCount; i++) {
-        createLuxuryParticle(particlesContainer, particleColors);
-    }
-    
-    // Continuer à créer des particules périodiquement
-    setInterval(() => {
-        // Vérifier combien de particules existent déjà
-        const existingParticles = particlesContainer.querySelectorAll('.luxury-particle');
-        
-        // Ne pas en créer trop pour éviter les problèmes de performance
-        if (existingParticles.length < 50) {
-            createLuxuryParticle(particlesContainer, particleColors);
-        }
-    }, 3000);
-}
-
-/**
- * Création d'une particule individuelle
- */
-function createLuxuryParticle(container, colors) {
-    // Créer l'élément particule
-    const particle = document.createElement('div');
-    particle.className = 'luxury-particle';
-    
-    // Propriétés aléatoires pour la particule
-    const size = Math.random() * 4 + 2; // 2-6px
-    const color = colors[Math.floor(Math.random() * colors.length)];
-    const posX = Math.random() * 100; // Position horizontale (%)
-    const posY = Math.random() * 100; // Position verticale (%)
-    const duration = Math.random() * 40 + 30; // 30-70 secondes
-    const delay = Math.random() * 5; // 0-5 secondes de délai
-    
-    // Appliquer les styles
-    particle.style.cssText = `
-        width: ${size}px;
-        height: ${size}px;
-        background-color: ${color};
-        top: ${posY}%;
-        left: ${posX}%;
-        box-shadow: 0 0 ${size*2}px ${color};
-        opacity: 0;
-        animation-duration: ${duration}s;
-        animation-delay: ${delay}s;
-    `;
-    
-    // Ajouter au conteneur
-    container.appendChild(particle);
-    
-    // Supprimer après un certain temps pour éviter une surcharge du DOM
-    setTimeout(() => {
-        if (particle && particle.parentNode) {
-            particle.parentNode.removeChild(particle);
-        }
-    }, (duration + delay) * 1000 + 1000); // +1s pour s'assurer que l'animation est terminée
-}
 
 /**
  * Interactions des cartes de service et de leurs boutons
@@ -107,35 +37,40 @@ function initServiceCardInteractions() {
             }
         });
     });
+
+    // 2. Gestion des faces arrière des cartes
     const backFaces = document.querySelectorAll('.service-card__face--back');
 
-backFaces.forEach(backFace => {
-    backFace.addEventListener('click', (e) => {
-        // Ne pas déclencher le retournement si on clique sur un lien ou un bouton
-        if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON' || 
-            e.target.closest('a') || e.target.closest('button')) {
-            return;
-        }
-        
-        const card = backFace.closest('.luxury-card');
-        if (!card) return;
-        
-        // Retirer la classe flipped
-        card.classList.remove('flipped');
-        
-        // Réinitialiser la rotation
-        const cardInner = card.querySelector('.service-card__inner');
-        if (cardInner) {
-            cardInner.style.transform = '';
-        }
+    backFaces.forEach(backFace => {
+        backFace.addEventListener('click', (e) => {
+            // Ne pas déclencher le retournement si on clique sur un lien ou un bouton
+            if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON' || 
+                e.target.closest('a') || e.target.closest('button')) {
+                return;
+            }
+            
+            const card = backFace.closest('.luxury-card');
+            if (!card) return;
+            
+            // Retirer la classe flipped
+            card.classList.remove('flipped');
+            
+            // Réinitialiser la rotation
+            const cardInner = card.querySelector('.service-card__inner');
+            if (cardInner) {
+                cardInner.style.transform = '';
+            }
+        });
     });
-});
     
     // 3. Effet de brillance sur les cartes au survol
     const cards = document.querySelectorAll('.luxury-card');
     
     cards.forEach(card => {
         const frontFace = card.querySelector('.service-card__face--front');
+        
+        // Ajouter une transition pour contrôler la vitesse de transformation
+        card.style.transition = 'transform 0.7s ease-out'; // Ajustez le temps pour contrôler la vitesse
         
         // Effet de brillance au mouvement de la souris
         card.addEventListener('mousemove', (e) => {
@@ -150,6 +85,9 @@ backFaces.forEach(backFace => {
             
             // Appliquer un effet de brillance qui suit la souris
             if (frontFace) {
+                // Ajouter une transition pour l'effet de brillance
+                frontFace.style.transition = 'background 0.3s ease-out';
+                
                 frontFace.style.background = `
                     radial-gradient(circle at ${x * 100}% ${y * 100}%, 
                     rgba(255, 255, 255, 0.8) 0%, 
@@ -158,9 +96,9 @@ backFaces.forEach(backFace => {
                     var(--color-off-white) 60%)
                 `;
                 
-                // Effet subtil d'inclinaison 3D
-                const rotateY = (x - 0.5) * 10; // -5 à 5 degrés
-                const rotateX = (0.5 - y) * 10; // -5 à 5 degrés
+                // Effet subtil d'inclinaison 3D avec valeurs ajustées
+                const rotateY = (x - 0.5) * 8; // Réduit de 10 à 8 pour une rotation plus douce
+                const rotateX = (0.5 - y) * 8; // Réduit de 10 à 8 pour une rotation plus douce
                 
                 // Appliquer une transformation 3D légère
                 card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
@@ -169,7 +107,7 @@ backFaces.forEach(backFace => {
         
         // Réinitialiser au départ de la souris
         card.addEventListener('mouseleave', () => {
-            // Réinitialiser l'arrière-plan
+            // Réinitialiser l'arrière-plan avec transition
             if (frontFace) {
                 frontFace.style.background = 'linear-gradient(145deg, var(--color-white) 0%, var(--color-off-white) 100%)';
             }
@@ -198,9 +136,11 @@ backFaces.forEach(backFace => {
                     // Ajouter la classe flipped
                     card.classList.add('flipped');
                     
-                    // Appliquer la rotation
+                    // Appliquer la rotation avec transition
                     const cardInner = card.querySelector('.service-card__inner');
                     if (cardInner) {
+                        // Ajouter une transition pour le retournement sur mobile
+                        cardInner.style.transition = 'transform 0.6s ease-in-out';
                         cardInner.style.transform = 'rotateY(180deg)';
                     }
                 }
@@ -228,7 +168,6 @@ backFaces.forEach(backFace => {
         observer.observe(ctaBox);
     }
 }
-
 
 /**
  * Animation spéciale pour la révélation des cartes
@@ -283,6 +222,19 @@ function addCardRevealStyle() {
                 transform: translateY(0);
             }
         }
+        
+        /* Ajout de transitions globales pour les cartes */
+        .luxury-card {
+            transition: transform 0.2s ease-out;
+        }
+        
+        .service-card__inner {
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        .service-card__face--front, .service-card__face--back {
+            transition: background 0.3s ease-out;
+        }
     `;
     
     // Ajouter au head du document
@@ -313,7 +265,6 @@ function adjustSpacing() {
         ctaWrapper.style.marginTop = "1px";
     }
 }
-
 
 // Appeler adjustSpacing après le chargement et à chaque redimensionnement
 window.addEventListener('load', adjustSpacing);
