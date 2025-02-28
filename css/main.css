@@ -6,21 +6,26 @@
 
 /* =========== VARIABLES =========== */
 :root {
+        --color-white: #1a1a1a !important;
+		--color-white2: #fff !important;
+        --color-off-white: #121212 !important;
+        --color-light-gray: #827e7e;
+	
     /* Couleurs principales */
-    --color-primary: #0a3b44; /* Teal foncé */
-    --color-secondary: #0a3b44; /* Or */
-    --color-accent: #8a5a44; /* Brun/cuivre */
+    --color-primary: #0a3b44; 
+    --color-secondary: #0a3b44;
+     --color-accent: #8a5a44; 
     
-    /* Nuances de teal */
-    --color-primary-light: rgba(22, 135, 155, 0.7);
+    /* /* Nuances de teal */ 
+     --color-primary-light: rgba(22, 135, 155, 0.7);
     --color-primary-lighter: #2a5b64;
     --color-primary-dark: #072b32;
     --color-primary-darker: #041a1f;
     
-    /* Neutres */
+    /* /* Neutres */ 
     --color-white: #ffffff;
     --color-off-white: #f7f7f7;
-    --color-light-gray: #e0e0e0;
+     --color-light-gray: #e0e0e0;
     --color-gray: #888888;
     --color-dark-gray: #333333;
     --color-black: #121212;
@@ -142,7 +147,8 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: var(--spacing-sm);
-    color: var(--color-primary-dark);
+    color: #f7f7f7;
+    }
 }
 
 h1 {
@@ -429,7 +435,7 @@ section {
     padding: 1.2rem 3.2rem;
     font-family: var(--font-secondary);
     font-size: 1.4rem;
-    font-weight: 600;   
+    font-weight: 600;
     letter-spacing: 1px;
     border-radius: var(--radius-sm);
     transition: all var(--transition-fast);
@@ -568,7 +574,7 @@ section {
 .services .section-title {
     font-size: 4.8rem;
     margin-bottom: var(--spacing-sm);
-    color: var(--color-primary-light);
+    color: var(--color-white2);
     font-weight: 300;
     letter-spacing: 1px;
     display: inline-block;
@@ -589,7 +595,7 @@ section {
 
 .services .section-subtitle {
     font-size: 1.8rem;
-    color: var(--color-gray-light);
+    color: #e0e0e0;
     max-width: 700px;
     margin: 0 auto var(--spacing-md);
     font-weight: 300;
@@ -819,7 +825,7 @@ section {
 
 .service-card__preview {
     font-size: 1.5rem;
-    color: var(--color-gray-light);
+    color: var(--color-white2);
     margin-bottom: var(--spacing-md);
     line-height: 1.6;
     flex-grow: 1;
@@ -897,7 +903,7 @@ section {
 }
 
 .feature-icon {
-    color: var(--color-secondary);
+    color: var(--color-white2);
     margin-right: 10px;
     font-weight: bold;
 }
@@ -1734,7 +1740,7 @@ section {
     background-color: transparent;
     padding: 1.2rem;
     font-size: 1.5rem;
-    color: var(--color-dark-gray);
+    color: #615d5d;
     border-radius: var(--radius-sm);
     transition: border-color var(--transition-fast);
 }
@@ -1767,7 +1773,7 @@ section {
     top: -12px;
     left: 10px;
     font-size: 1.8rem;
-    background-color: var(--color-white);
+    background-color:#1a1a1a;
     padding: 0 5px;
     color: rgba(22, 135, 155, 0.7);
 	
@@ -1775,7 +1781,7 @@ section {
 
 .select-label {
     transform: translateY(-2.5rem);
-    background-color: var(--color-white2);
+    background-color: #1a1a1a;
     padding: 0 5px;
     font-size: 1.2rem;
 }
