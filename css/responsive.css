@@ -1,0 +1,316 @@
+/* 
+* RESPONSIVE STYLESHEET
+* Site web magicien
+* Adaptations pour différentes tailles d'écrans
+*/
+
+/* =========== LARGE DESKTOP (1440px et plus) =========== */
+@media (min-width: 1440px) {
+    .container,
+    .header__container,
+    .services__container,
+    .gallery__container,
+    .testimonials__container,
+    .biography__container,
+    .contact__container,
+    .footer__container {
+        max-width: 1400px;
+    }
+    
+    .hero__title {
+        font-size: 8rem;
+    }
+}
+
+/* =========== DESKTOP STANDARD (1200px - 1439px) =========== */
+/* Styles par défaut appliqués, pas besoin de media query */
+
+/* =========== PETIT DESKTOP ET TABLETTE PAYSAGE (992px - 1199px) =========== */
+@media (max-width: 1199px) {
+    html {
+        font-size: 58%; /* ~9.3px */
+    }
+    
+    .header__container,
+    .services__container,
+    .gallery__container,
+    .testimonials__container,
+    .biography__container,
+    .contact__container,
+    .footer__container {
+        padding: 0 var(--spacing-md);
+    }
+    
+    .biography__container {
+        gap: var(--spacing-md);
+    }
+    
+    .gallery__grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+    
+    .footer__container {
+        grid-template-columns: 1fr 1.5fr 1fr;
+    }
+}
+
+/* =========== TABLETTE PORTRAIT (768px - 991px) =========== */
+@media (max-width: 991px) {
+    html {
+        font-size: 56%; /* ~9px */
+    }
+    
+    section {
+        padding: var(--spacing-lg) 0;
+    }
+    
+    .hero__title {
+        font-size: 6rem;
+    }
+    
+    .biography__container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    .biography__image-container {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .biography__content {
+        text-align: justify;
+    }
+    
+    .biography__content .section-header {
+        text-align: center;
+    }
+    
+    .biography__content .section-title::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .contact__container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    .contact__info {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .footer__container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+        text-align: center;
+    }
+    
+    .footer__nav-list {
+        justify-content: center;
+        margin-top: var(--spacing-md);
+    }
+	.service-card__description{
+		padding-left: var(--spacing-md);
+		padding-right: var(--spacing-md);
+	}
+}
+
+/* =========== MOBILE PAYSAGE (576px - 767px) =========== */
+@media (max-width: 767px) {
+    html {
+        font-size: 52%; /* ~8.3px */
+    }
+    
+    .nav__list {
+        display: none;
+    }
+    
+    .nav__toggle {
+        display: flex;
+    }
+    
+    .hero__title {
+        font-size: 5rem;
+    }
+    
+    .hero__subtitle {
+        font-size: 2rem;
+    }
+    
+    .services__container {
+        grid-template-columns: 1fr;
+        max-width: 450px;
+        margin: 0 auto;
+    }
+    
+    .gallery__filter {
+        flex-wrap: wrap;
+    }
+    
+    .gallery__filter-btn {
+        margin-bottom: var(--spacing-xs);
+    }
+    
+    .gallery__grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+    
+    .instagram-feed__container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .testimonial-card {
+        padding: var(--spacing-md);
+    }
+    
+    .testimonial-card__text {
+        font-size: 2rem;
+    }
+    
+    .contact__form {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========== MOBILE PORTRAIT (jusqu'à 575px) =========== */
+@media (max-width: 575px) {
+    html {
+        font-size: 50%; /* ~8px */
+    }
+    .loading__logo {
+		font-size: 5rem;
+	}
+    .section-header {
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .hero {
+        height: 99vh;
+    }
+	.hero__content{
+		margin-bottom: 250px;
+	}
+    
+    .hero__title {
+        font-size: 4.2rem;
+    }
+    
+    .hero__subtitle {
+        font-size: 1.8rem;
+    }
+    
+    .gallery__grid {
+        grid-template-columns: 1fr;
+        max-width: 350px;
+        margin: 0 auto;
+    }
+    
+    .testimonial-card__text {
+        font-size: 2rem;
+    }
+    
+    .testimonial-card__text::before {
+        font-size: 4rem;
+        top: -20px;
+        left: -10px;
+    }
+    
+    .contact__form-container {
+        padding: var(--spacing-md);
+    }
+}
+
+/* =========== AJUSTEMENTS SPÉCIFIQUES =========== */
+
+/* Pour les appareils très petits (Galaxy Fold, etc.) */
+@media (max-width: 350px) {
+    .hero__title {
+        font-size: 3.6rem;
+    }
+    
+    .btn {
+        padding: 1rem 2.5rem;
+    }
+}
+
+/* Pour les appareils à pixel ratio élevé (écrans Retina, etc.) */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* Optimisations supplémentaires pour écrans haute résolution si nécessaire */
+}
+
+/* Pour les appareils avec préférence de réduction de mouvement */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .parallax {
+        transform: none !important;
+    }
+}
+
+/* Pour les appareils en mode sombre */
+@media (prefers-color-scheme: dark) {
+    /* Le design étant déjà sombre, pas besoin d'ajustements majeurs */
+    :root {
+        --color-off-white: #121212;
+        --color-light-gray: #827e7e;
+        --color-white: #1a1a1a;
+		--color-white2: #fff;
+    }
+    
+    .form-input,
+    .form-textarea,
+    .form-select {
+        color: #615d5d;
+    }
+    
+    .form-input:focus ~ .form-label,
+    .form-input:not(:placeholder-shown) ~ .form-label,
+    .form-textarea:focus ~ .form-label,
+    .form-textarea:not(:placeholder-shown) ~ .form-label,
+    .select-label {
+        background-color: #1a1a1a;
+    }
+    
+    /* Inverser les couleurs du texte pour meilleure lisibilité */
+    body {
+        color: #e0e0e0;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        color: #f7f7f7;
+    }
+}
+
+/* Pour les appareils avec écran tactile */
+@media (hover: none) {
+    /* Ajuster les interactions hover pour qu'elles fonctionnent avec tap */
+    .btn:active {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+    }
+    
+    .nav__link:active::after {
+        width: 100%;
+    }
+    
+    .service-card:active {
+        transform: translateY(-5px);
+    }
+    
+    .gallery__item:active .gallery__overlay {
+        opacity: 1;
+    }
+    
+    .gallery__item:active .gallery__title,
+    .gallery__item:active .gallery__category {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
