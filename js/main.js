@@ -227,7 +227,7 @@ function initNavigation() {
 }
 
 /**
- * Création du menu mobile
+ * Création du menu mobile amélioré
  */
 function createMobileMenu() {
     const navList = document.querySelector('.nav__list');
@@ -242,26 +242,52 @@ function createMobileMenu() {
             mobileMenu = document.createElement('div');
             mobileMenu.className = 'nav__list--mobile';
             
+            // AJOUT: Créer le bouton "Romain Dewasme" en haut du menu
+            const headerButton = document.createElement('div');
+            headerButton.className = 'nav__mobile-header';
+            headerButton.innerHTML = `
+                <a href="#accueil" class="nav__mobile-brand">Romain Dewasme</a>
+            `;
+            mobileMenu.appendChild(headerButton);
+            
             // Copier les éléments du menu original
             const navItems = navList.querySelectorAll('.nav__item');
             navItems.forEach((item, index) => {
                 const mobileItem = document.createElement('div');
                 mobileItem.className = 'nav__item--mobile';
-                mobileItem.style.setProperty('--index', index);
+                mobileItem.style.setProperty('--index', index + 1); // +1 pour tenir compte du headerButton
                 mobileItem.innerHTML = item.innerHTML;
                 mobileMenu.appendChild(mobileItem);
             });
             
-            // Ajouter le menu mobile directement au body (point clé)
+            // Ajouter le menu mobile directement au body
             document.body.appendChild(mobileMenu);
             
+            // NOUVEAU: Ajouter le gestionnaire pour fermer le menu en cliquant en dehors
+            mobileMenu.addEventListener('click', (e) => {
+                // Si on clique directement sur le conteneur du menu (et non sur un élément du menu)
+                if (e.target === mobileMenu) {
+                    navToggle.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+            
             // Ajouter les gestionnaires d'événements aux liens du menu mobile
-            const mobileLinks = mobileMenu.querySelectorAll('.nav__link');
+            const mobileLinks = mobileMenu.querySelectorAll('.nav__link, .nav__mobile-brand');
             mobileLinks.forEach(link => {
                 link.addEventListener('click', () => {
                     navToggle.classList.remove('active');
                     mobileMenu.classList.remove('active');
                     document.body.style.overflow = '';
+                    
+                    // Si c'est le bouton du haut, faire défiler vers le haut
+                    if (link.classList.contains('nav__mobile-brand')) {
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    }
                 });
             });
         }
