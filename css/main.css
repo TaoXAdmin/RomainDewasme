@@ -275,69 +275,22 @@ section {
 .nav__item {
     position: relative;
 }
-
-.nav__link {
-    color: var(--color-white2);
-    font-size: 1.4rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: var(--spacing-xs) 0;
-    position: relative;
-    transition: color var(--transition-fast);
-	font-family: Roboto;
-}
-
-.nav__link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: var(--color-secondary);
-    transition: width var(--transition-medium);
-}
-
-.nav__link:hover::after {
-    width: 100%;
-}
-
-.nav__link.active {
-    color: #2A5B64 !important; /* Forcer la couleur active */
-}
-
-.nav__link.active::after {
-    width: 100%;
-}
-
-/* Styles pour l'en-tête et les améliorations du menu mobile */
-
-/* Style du bouton Romain Dewasme en haut du menu */
-.nav__mobile-header {
-    width: 100%;
-    padding: 20px 0;
-    margin-bottom: 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    text-align: center;
-}
-
-/* Styles de base pour nav__mobile-brand */
-.nav__mobile-brand {
-    font-family: var(--font-primary);
-    font-size: 4.7rem;
-    color: var(--color-white2);
-    letter-spacing: 1px;
-    text-decoration: none;
+/* Styles de base pour les liens de navigation */
+.navlink,
+.nav__link,
+.nav__mobile-brand,
+.logo__text {
     position: relative;
     display: inline-block;
-    padding: 4px 8px;
+    text-decoration: none;
     transition: color 0.3s ease;
 }
 
-/* Styles partagés pour l'effet de tracé magique blanc */
+/* Effet de tracé magique blanc pour tous les éléments de navigation */
+.navlink::after,
+.nav__link::after,
 .nav__mobile-brand::after,
-.logo__text::after{
+.logo__text::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -354,16 +307,49 @@ section {
     transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Animation de tracé au survol pour les deux éléments */
+/* Animation de tracé au survol pour tous les éléments */
+.navlink:hover::after,
+.nav__link:hover::after,
 .nav__mobile-brand:hover::after,
 .logo__text:hover::after {
     width: 100%;
 }
 
-/* Assurez-vous que .logo__text a la bonne position pour l'effet */
-.logo__text {
-    position: relative;
-    display: inline-block;
+/* Conserver les styles actifs existants */
+.navlink.active::after,
+.nav__link.active::after {
+    width: 100%;
+}
+
+/* Styles spécifiques pour .nav__link que vous aviez déjà */
+.nav__link {
+    color: var(--color-white2);
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: var(--spacing-xs) 0;
+    font-family: Roboto;
+}
+
+
+
+/* Conserver les styles spécifiques pour navmobile-brand */
+.nav__mobile-brand {
+    font-family: var(--font-primary);
+    font-size: 4.7rem;
+    color: var(--color-white2);
+    letter-spacing: 1px;
+    padding: 4px 8px;
+}
+
+/* Styles pour l'en-tête du menu mobile */
+.nav__mobile-header {
+    width: 100%;
+    padding: 20px 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
 }
 
 /* Ajustements pour l'animation des éléments du menu */
