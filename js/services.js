@@ -6,9 +6,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Initialiser les fonctionnalités
     initServiceCardInteractions();
-    initCardRevealAnimation(); // Ajout de l'animation de révélation des cartes
-    
-    // Ajouter l'animation CSS pour la révélation des cartes
+    initCardRevealAnimation();
     addCardRevealStyle();
 });
 
@@ -38,7 +36,7 @@ function initServiceCardInteractions() {
         });
     });
 
-    // 2. Gestion des faces arrière des cartes
+    // 2. Gestion des faces arrière des cartes pour les retourner au clic
     const backFaces = document.querySelectorAll('.service-card__face--back');
 
     backFaces.forEach(backFace => {
@@ -63,90 +61,63 @@ function initServiceCardInteractions() {
         });
     });
     
-    // 3. Effet de brillance sur les cartes au survol
+    // 3. Effet de brillance sur les cartes au survol (desktop uniquement)
     const cards = document.querySelectorAll('.luxury-card');
+    const isMobile = window.innerWidth <= 767;
     
-    cards.forEach(card => {
-        const frontFace = card.querySelector('.service-card__face--front');
-        
-        // Ajouter une transition pour contrôler la vitesse de transformation
-        card.style.transition = 'transform 0.7s ease-out'; // Ajustez le temps pour contrôler la vitesse
-        
-        // Effet de brillance au mouvement de la souris
-        card.addEventListener('mousemove', (e) => {
-            // Ne pas appliquer si la carte est retournée
-            if (card.classList.contains('flipped')) return;
+    if (!isMobile) {
+        // Appliquer les effets de survol uniquement sur desktop
+        cards.forEach(card => {
+            const frontFace = card.querySelector('.service-card__face--front');
             
-            const cardRect = card.getBoundingClientRect();
+            // Ajouter une transition pour contrôler la vitesse de transformation
+            card.style.transition = 'transform 0.7s ease-out';
             
-            // Calculer la position relative de la souris (0-1)
-            const x = (e.clientX - cardRect.left) / cardRect.width;
-            const y = (e.clientY - cardRect.top) / cardRect.height;
-            
-            // Appliquer un effet de brillance qui suit la souris
-            if (frontFace) {
-                // Ajouter une transition pour l'effet de brillance
-                frontFace.style.transition = 'background 0.3s ease-out';
+            // Effet de brillance au mouvement de la souris
+            card.addEventListener('mousemove', (e) => {
+                // Ne pas appliquer si la carte est retournée
+                if (card.classList.contains('flipped')) return;
                 
-                frontFace.style.background = `
-                    radial-gradient(circle at ${x * 100}% ${y * 100}%, 
-                    rgba(255, 255, 255, 0.8) 0%, 
-                    rgba(249, 249, 249, 0.6) 15%, 
-                    rgba(240, 240, 240, 0.5) 30%, 
-                    var(--color-off-white) 60%)
-                `;
+                const cardRect = card.getBoundingClientRect();
                 
-                // Effet subtil d'inclinaison 3D avec valeurs ajustées
-                const rotateY = (x - 0.5) * 8; // Réduit de 10 à 8 pour une rotation plus douce
-                const rotateX = (0.5 - y) * 8; // Réduit de 10 à 8 pour une rotation plus douce
+                // Calculer la position relative de la souris (0-1)
+                const x = (e.clientX - cardRect.left) / cardRect.width;
+                const y = (e.clientY - cardRect.top) / cardRect.height;
                 
-                // Appliquer une transformation 3D légère
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
-            }
-        });
-        
-        // Réinitialiser au départ de la souris
-        card.addEventListener('mouseleave', () => {
-            // Réinitialiser l'arrière-plan avec transition
-            if (frontFace) {
-                frontFace.style.background = 'linear-gradient(145deg, var(--color-white) 0%, var(--color-off-white) 100%)';
-            }
-            
-            // Réinitialiser la transformation
-            card.style.transform = '';
-        });
-        
-        // Support tactile pour mobile
-        card.addEventListener('touchstart', (e) => {
-            // Empêcher les événements par défaut du navigateur
-            if (!card.classList.contains('touch-started')) {
-                e.preventDefault();
-                card.classList.add('touch-started');
-                
-                // Ajouter un délai court pour permettre un double-tap
-                setTimeout(() => {
-                    card.classList.remove('touch-started');
-                }, 300);
-            } else {
-                // Double-tap détecté, retourner la carte
-                e.preventDefault();
-                card.classList.remove('touch-started');
-                
-                if (!card.classList.contains('flipped')) {
-                    // Ajouter la classe flipped
-                    card.classList.add('flipped');
+                // Appliquer un effet de brillance qui suit la souris
+                if (frontFace) {
+                    // Ajouter une transition pour l'effet de brillance
+                    frontFace.style.transition = 'background 0.3s ease-out';
                     
-                    // Appliquer la rotation avec transition
-                    const cardInner = card.querySelector('.service-card__inner');
-                    if (cardInner) {
-                        // Ajouter une transition pour le retournement sur mobile
-                        cardInner.style.transition = 'transform 0.6s ease-in-out';
-                        cardInner.style.transform = 'rotateY(180deg)';
-                    }
+                    frontFace.style.background = `
+                        radial-gradient(circle at ${x * 100}% ${y * 100}%, 
+                        rgba(255, 255, 255, 0.8) 0%, 
+                        rgba(249, 249, 249, 0.6) 15%, 
+                        rgba(240, 240, 240, 0.5) 30%, 
+                        var(--color-off-white) 60%)
+                    `;
+                    
+                    // Effet subtil d'inclinaison 3D avec valeurs ajustées
+                    const rotateY = (x - 0.5) * 8;
+                    const rotateX = (0.5 - y) * 8;
+                    
+                    // Appliquer une transformation 3D légère
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
                 }
-            }
+            });
+            
+            // Réinitialiser au départ de la souris
+            card.addEventListener('mouseleave', () => {
+                // Réinitialiser l'arrière-plan avec transition
+                if (frontFace) {
+                    frontFace.style.background = 'linear-gradient(145deg, var(--color-white) 0%, var(--color-off-white) 100%)';
+                }
+                
+                // Réinitialiser la transformation
+                card.style.transform = '';
+            });
         });
-    });
+    }
     
     // 4. Animation de la section CTA
     const ctaBox = document.querySelector('.services__cta-box');
@@ -234,6 +205,13 @@ function addCardRevealStyle() {
         
         .service-card__face--front, .service-card__face--back {
             transition: background 0.3s ease-out;
+        }
+
+        /* Améliorer le style sur mobile */
+        @media (max-width: 767px) {
+            .service-card__face--back {
+                cursor: pointer;
+            }
         }
     `;
     
