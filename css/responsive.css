@@ -14,7 +14,7 @@
     .biography__container,
     .contact__container,
     .footer__container {
-        max-width: 1400px;
+        max-width: 1700px;
     }
     
     .hero__title {
@@ -68,6 +68,10 @@
         font-size: 6rem;
     }
     
+	.biography{
+		padding: 0 !important;
+	}
+
     .biography__container {
         grid-template-columns: 1fr;
         gap: var(--spacing-lg);
@@ -79,7 +83,10 @@
     }
     
     .biography__content {
-        text-align: justify;
+		margin: 0;
+    }
+    .biography__text p{
+		font-size: 1.8rem;
     }
     
     .biography__content .section-header {
@@ -314,3 +321,4 @@
         opacity: 1;
     }
 }
+
