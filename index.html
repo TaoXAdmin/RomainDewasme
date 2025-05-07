@@ -9,28 +9,27 @@
     <meta name="description" content="Découvrez des expériences magiques d'exception avec Romain Dewasme, magicien professionnel spécialisé en close-up, mentalisme et magie de scène.">
     <meta property="og:title" content="Romain Dewasme | Prestations de Magie d'Exception">
     <meta property="og:description" content="Découvrez des expériences magiques d'exception avec Romain Dewasme, magicien professionnel spécialisé en close-up, mentalisme et magie de scène.">
-    <meta property="og:image" content="https://votresite.com/assets/images/og-image.jpg">
+    <meta property="og:image" content="https://votresite.com/assets/images/og-image.jpeg">
     <meta property="og:url" content="https://votresite.com">
     <meta property="og:type" content="website">
     
     <!-- Polices -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Tagesschrift&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     
     <!-- CSS -->
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/responsive.css">
-    
+    <script src="https://player.vimeo.com/api/player.js"></script>
     <!-- Favicon -->
     <link rel="icon" href="assets/icons/favicon.ico">
-    
-    <!-- Préchargement de la vidéo principale -->
-    <link rel="preload" href="assets/videos/teaser_dsktp.mp4" as="video">
+
 </head>
 <body>
+	
     <!-- Navigation -->
     <header class="header">
         <div class="header__container">
@@ -44,8 +43,8 @@
                     <span></span>
                 </button>
                 <ul class="nav__list">
-                    <li class="nav__item"><a href="#prestations" class="nav__link">Prestations</a></li>
                     <li class="nav__item"><a href="#galerie" class="nav__link">Galerie</a></li>
+                    <li class="nav__item"><a href="#prestations" class="nav__link">Prestations</a></li>
                     <li class="nav__item"><a href="#biographie" class="nav__link">Biographie</a></li>
                     <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
                 </ul>
@@ -54,24 +53,194 @@
     </header>
 
     <main>
+				  <!-- Bouton de contrôle du son (remplacez 🔇/🔊 par vos SVG) -->
+				  <button
+					id="soundToggle"
+					class="hero__sound-toggle"
+					aria-label="Activer le son"
+				  >🔇</button>
         <!-- Section Accueil -->
         <section id="accueil" class="hero">
             <div class="hero__video-container">
-                <video class="hero__video" autoplay muted loop playsinline poster="assets/images/hero-bg.jpg">
-                    <source src="assets/videos/teaser_dsktp.mp4" type="video/mp4">
-                </video>
-                <div class="hero__overlay"></div>
+				 <video
+					id="heroVideo"
+					class="hero__video"
+					autoplay
+					loop
+					playsinline
+					preload="auto"
+				  ></video>
+
+
+                
+				<div class="contact__social go__down">
+                        <a href="https://www.instagram.com/romaindewasme/" class="contact__social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                            <img src="assets/icons/instagram.svg" alt="Instagram">
+                        </a>
+                        <a href="https://www.facebook.com/p/Romain-Dewasme-100086124984675/" class="contact__social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                            <img src="assets/icons/facebook.svg" alt="Facebook">
+                        </a>
+                        <a href="https://www.youtube.com/@romain.d.m8326" class="contact__social-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+                            <img src="assets/icons/youtube.svg" alt="YouTube">
+                        </a>
+                    </div>
             </div>
             <div class="hero__content">
-                <h1 class="hero__title ">L'Art de l'Impossible</h1>
-                <p class="hero__subtitle ">Expériences magiques d'exception</p>
-                <a href="#contact" class="btn btn--primary reveal-element">Réserver une prestation</a>
+                <!-- <h1 class="hero__title ">L'Art de l'Impossible</h1> -->
+                <!-- <p class="hero__subtitle ">Expériences magiques d'exception</p> -->
+                <!-- <a href="#contact" class="btn btn--primary reveal-element">Réserver une prestation</a> -->
             </div>
-            <div class="hero__scroll-indicator">
-                <span class="hero__scroll-text">Découvrir</span>
-                <span class="hero__scroll-icon"></span>
-            </div>
+
         </section>
+		<hr class="lux-divider"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="js/galleryEffect.js"></script>
+<!-- index.html -->
+<section id="galerie" class="gallery" role="region" aria-label="Galerie de performances">
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const el = document.querySelector('h2.section-title.black');
+    if (!el) return;
+
+    const text = el.textContent;
+    el.textContent = '';              // on vide le <h2> pour repartir à zéro
+
+    // Création et insertion du curseur au tout début
+    const cursor = document.createElement('span');
+    cursor.className = 'cursor';
+    cursor.textContent = '|';
+    el.appendChild(cursor);
+
+    let i = 0;
+    function typeNext() {
+      if (i >= text.length) return;
+      const ch = text[i++];
+      const span = document.createElement('span');
+      span.textContent = ch;
+      // on insère juste avant le curseur => il se déplace naturellement
+      el.insertBefore(span, cursor);
+
+      // si virgule, on insère aussi un <br>
+      if (ch === ',') {
+        el.insertBefore(document.createElement('br'), cursor);
+      }
+
+      // délai aléatoire pour plus de naturel (entre 50 et 150 ms)
+      const delay = 25 + Math.random() * 25;
+      setTimeout(typeNext, delay);
+    }
+
+    // Observer pour ne déclencher qu'une seule fois au premier affichage
+    const io = new IntersectionObserver((entries, obs) => {
+      if (entries[0].isIntersecting) {
+        obs.disconnect();
+        typeNext();
+      }
+    }, { threshold: 0 });
+
+    io.observe(el);
+  });
+  </script>
+
+
+  <div class="gallery__wrapper">
+		<h2 class="section-title black">« À toutes ces personnes qui m’ont accordé leur confiance, un grand merci. »</h2>
+    <!-- A (gauche) -->
+    <figure class="gallery__item gallery__item--left" tabindex="0">
+      <div class="gallery__image">
+        <!-- N&B en base -->
+        <img src="assets/images/selection/a.jpeg"
+             loading="lazy"
+             alt="Spectacle close-up, Paris 2024 — noir et blanc"
+             class="gallery__image--bw">
+        <!-- couleur au-dessus -->
+        <img src="assets/images/selection/a1.jpeg"
+             loading="lazy"
+             alt="Spectacle close-up, Paris 2024 — couleur"
+             class="gallery__image--color">
+      </div>
+      <figcaption class="gallery__caption right_fix">
+        <time datetime="2024-06-15">15 juin 2024</time>
+        — Paris, France
+      </figcaption>
+    </figure>
+
+    <!-- B (droite) -->
+    <figure class="gallery__item gallery__item--right" tabindex="0">
+      <div class="gallery__image">
+        <img src="assets/images/selection/b.jpg"
+             loading="lazy"
+             alt="Performance extérieure, Nice 2024 — noir et blanc"
+             class="gallery__image--bw">
+        <img src="assets/images/selection/b1.jpeg"
+             loading="lazy"
+             alt="Performance extérieure, Nice 2024 — couleur"
+             class="gallery__image--color">
+      </div>
+      <figcaption class="gallery__caption left_fix">
+        <time datetime="2024-07-20">20 juillet 2024</time>
+        — Nice, France
+      </figcaption>
+    </figure>
+
+    <!-- C (gauche) -->
+    <figure class="gallery__item gallery__item--left" tabindex="0">
+      <div class="gallery__image">
+        <img src="assets/images/selection/c.jpeg"
+             loading="lazy"
+             alt="Danse contemporaine, Lyon 2024 — noir et blanc"
+             class="gallery__image--bw">
+        <img src="assets/images/selection/c1.jpeg"
+             loading="lazy"
+             alt="Danse contemporaine, Lyon 2024 — couleur"
+             class="gallery__image--color">
+      </div>
+      <figcaption class="gallery__caption right_fix">
+        <time datetime="2024-08-05">5 août 2024</time>
+        — Lyon, France
+      </figcaption>
+    </figure>
+
+    <!-- D (droite) -->
+    <figure class="gallery__item gallery__item--right" tabindex="0">
+      <div class="gallery__image">
+        <img src="assets/images/selection/d.jpeg"
+             loading="lazy"
+             alt="Installation immersive, Marseille 2024 — noir et blanc"
+             class="gallery__image--bw">
+        <img src="assets/images/selection/d1.jpeg"
+             loading="lazy"
+             alt="Installation immersive, Marseille 2024 — couleur"
+             class="gallery__image--color">
+      </div>
+      <figcaption class="gallery__caption left_fix">
+        <time datetime="2024-09-12">12 septembre 2024</time>
+        — Marseille, France
+      </figcaption>
+    </figure>
+
+    <!-- E (gauche) -->
+    <figure class="gallery__item gallery__item--left" tabindex="0">
+      <div class="gallery__image">
+        <img src="assets/images/selection/e.jpg"
+             loading="lazy"
+             alt="Portrait artistique, Bordeaux 2024 — noir et blanc"
+             class="gallery__image--bw">
+        <img src="assets/images/selection/e1.jpeg"
+             loading="lazy"
+             alt="Portrait artistique, Bordeaux 2024 — couleur"
+             class="gallery__image--color">
+      </div>
+      <figcaption class="gallery__caption right_fix">
+        <time datetime="2024-10-30">30 octobre 2024</time>
+        — Bordeaux, France
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+		<hr class="lux-divider"/>
 
    <!-- Section Prestations avec structure optimisée pour éviter le chevauchement -->
 <section id="prestations" class="services luxury-section">
@@ -83,8 +252,8 @@
     <div class="container">
         <!-- En-tête de la section -->
         <div class="section-header reveal-element">
-            <h2 class="section-title magic-text">Expériences Magiques</h2>
-            <p class="section-subtitle">L'art de créer l'impossible pour vos événements d'exception</p>
+            <h2 class="section-title magic-text">Mes Prestations</h2>
+            <p class="section-subtitle">L'art de créer l'impossible pour vos évènements d'exception</p>
             <div class="title-separator"><span></span></div>
         </div>
         
@@ -93,23 +262,16 @@
             <!-- Service 1: Close-up -->
             <div class="service-card luxury-card reveal-element">
                 <div class="service-card__inner">
-                    <div class="service-card__face service-card__face--front">
-                        <div class="service-card__icon">
-                            <img src="assets/icons/close-up.svg" alt="Magie de Close-up">
-                        </div>
-                        <h3 class="service-card__title">Magie de Close-up</h3>
-                        <div class="service-card__preview">
-                            L'impossible à quelques centimètres de vos invités
-                        </div>
+                    <div class="service-card__face service-card__face--front close-up">
                         <div class="service-card__cta">
-                            <span class="btn-text">Découvrir</span>
-                            <span class="btn-icon">→</span>
+                            <span class="btn-text"><h3 class="service-card__title">Close-up</h3></span>
+                            <span class="btn-icon"></span>
                         </div>
                     </div>
                     <div class="service-card__face service-card__face--back">
                         <button class="card-back-button">← Retour</button>
                         <div class="service-card__content">
-                            <h3 class="service-card__title">Magie de Close-up</h3>
+                            <h3 class="service-card__title">Mon Close-up</h3>
                             <p class="service-card__description">
                                 Une expérience intime et interactive où l'impossible se produit à quelques centimètres de vos yeux. Cartes, pièces et objets du quotidien deviennent les instruments d'un émerveillement authentique.
                             </p>
@@ -124,7 +286,7 @@
                                 </div>
                                 <div class="feature">
                                     <span class="feature-icon">✓</span>
-                                    <span class="feature-text">Événements VIP</span>
+                                    <span class="feature-text">évènements VIP</span>
                                 </div>
                             </div>
                             
@@ -136,129 +298,107 @@
             <!-- Service 2: Mentalisme -->
             <div class="service-card luxury-card reveal-element" data-delay="0.2">
                 <div class="service-card__inner">
-                    <div class="service-card__face service-card__face--front">
-                        <div class="service-card__icon">
-                            <img src="assets/icons/mentalisme.svg" alt="Mentalisme">
-                        </div>
-                        <h3 class="service-card__title">Mentalisme</h3>
-                        <div class="service-card__preview">
-                            Des expériences qui transcendent les frontières de l'esprit
-                        </div>
+                    <div class="service-card__face service-card__face--front gala">
                         <div class="service-card__cta">
-                            <span class="btn-text">Découvrir</span>
-                            <span class="btn-icon">→</span>
+                            <span class="btn-text"><h3 class="service-card__title">Galas</h3></span>
                         </div>
                     </div>
-                    <div class="service-card__face service-card__face--back">
-                        <button class="card-back-button">← Retour</button>
-                        <div class="service-card__content">
-                            <h3 class="service-card__title">Mentalisme</h3>
-                            <p class="service-card__description">
-                                Entre mystère et fascination, le mentalisme explore les frontières de l'esprit. Prédictions, influences subtiles et lectures de pensées créent une expérience intellectuellement stimulante et émotionnellement puissante.
-                            </p>
-                            <div class="service-card__features">
-                                <div class="feature">
-                                    <span class="feature-icon">✓</span>
-                                    <span class="feature-text">Conférences executives</span>
-                                </div>
-                                <div class="feature">
-                                    <span class="feature-icon">✓</span>
-                                    <span class="feature-text">Lancements de produits</span>
-                                </div>
-                                <div class="feature">
-                                    <span class="feature-icon">✓</span>
-                                    <span class="feature-text">Soirées exclusives</span>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
+                   <div class="service-card__face service-card__face--back">
+    <button class="card-back-button">← Retour</button>
+    <div class="service-card__content">
+        <h3 class="service-card__title">Mes Galas</h3>
+        <p class="service-card__description">
+            Des interventions scéniques sur mesure conçues pour sublimer vos soirées de gala. Élégance, mystère et interactions captivantes transforment votre évènement en un moment de prestige inoubliable.
+        </p>
+        <div class="service-card__features">
+            <div class="feature">
+                <span class="feature-icon">✓</span>
+                <span class="feature-text">Soirées caritatives & d'entreprise</span>
+            </div>
+            <div class="feature">
+                <span class="feature-icon">✓</span>
+                <span class="feature-text">Animations de remise de prix</span>
+            </div>
+            <div class="feature">
+                <span class="feature-icon">✓</span>
+                <span class="feature-text">Créations personnalisées selon le thème</span>
+            </div>
+        </div>
+    </div>
+</div>
+
                 </div>
             </div>
 
             <!-- Service 3: Magie de Scène -->
             <div class="service-card luxury-card reveal-element" data-delay="0.4">
                 <div class="service-card__inner">
-                    <div class="service-card__face service-card__face--front">
-                        <div class="service-card__icon">
-                            <img src="assets/icons/scene.svg" alt="Magie de scène" style="transform: scale(1.3);">
-                        </div>
-                        <h3 class="service-card__title">Magie de Scène</h3>
-                        <div class="service-card__preview">
-                            Des performances visuelles époustouflantes pour marquer les esprits
-                        </div>
+                    <div class="service-card__face service-card__face--front scene">
                         <div class="service-card__cta">
-                            <span class="btn-text">Découvrir</span>
-                            <span class="btn-icon">→</span>
+                            <h3 class="service-card__title">Scène</h3>
+                            <span class="btn-icon"></span>
                         </div>
                     </div>
                     <div class="service-card__face service-card__face--back">
-                        <button class="card-back-button">← Retour</button>
-                        <div class="service-card__content">
-                            <h3 class="service-card__title">Magie de Scène</h3>
-                            <p class="service-card__description">
-                                Un spectacle visuel et immersif où l'art de l'illusion se déploie dans toute sa splendeur. Apparitions, disparitions et transformations impossibles captivent l'audience dans une expérience collective mémorable.
-                            </p>
-                            <div class="service-card__features">
-                                <div class="feature">
-                                    <span class="feature-icon">✓</span>
-                                    <span class="feature-text">Galas et cérémonies</span>
-                                </div>
-                                <div class="feature">
-                                    <span class="feature-icon">✓</span>
-                                    <span class="feature-text">Événements corporate</span>
-                                </div>
-                                <div class="feature">
-                                    <span class="feature-icon">✓</span>
-                                    <span class="feature-text">Festivals privés</span>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
+    <button class="card-back-button">← Retour</button>
+    <div class="service-card__content">
+        <h3 class="service-card__title">Ma Scène</h3>
+        <p class="service-card__description">
+            Une performance unique et rythmée, pensée pour captiver de larges audiences. Jeux de lumière, musique et effets spectaculaires créent une immersion totale dans l’univers de l’illusion.
+        </p>
+        <div class="service-card__features">
+            <div class="feature">
+                <span class="feature-icon">✓</span>
+                <span class="feature-text">Festivals & programmations culturelles</span>
+            </div>
+            <div class="feature">
+                <span class="feature-icon">✓</span>
+                <span class="feature-text">évènements en plein air</span>
+            </div>
+            <div class="feature">
+                <span class="feature-icon">✓</span>
+                <span class="feature-text">Spectacles familiaux & jeune public</span>
+            </div>
+        </div>
+    </div>
+</div>
+
                 </div>
             </div>
 
             <!-- Service 4: Créations sur Mesure -->
             <div class="service-card luxury-card reveal-element" data-delay="0.6">
                 <div class="service-card__inner">
-                    <div class="service-card__face service-card__face--front">
-                        <div class="service-card__icon">
-                            <img src="assets/icons/custom.svg" alt="Créations sur mesure">
-                        </div>
-                        <h3 class="service-card__title">Créations sur Mesure</h3>
-                        <div class="service-card__preview">
-                            Des expériences magiques uniques à l'image de votre marque
-                        </div>
+                    <div class="service-card__face service-card__face--front tv">
                         <div class="service-card__cta">
-                            <span class="btn-text">Découvrir</span>
-                            <span class="btn-icon">→</span>
+                            <span class="btn-text"><h3 class="service-card__title">Émission TV</h3></span>
+                            <span class="btn-icon"></span>
                         </div>
                     </div>
                     <div class="service-card__face service-card__face--back">
-                        <button class="card-back-button">← Retour</button>
-                        <div class="service-card__content">
-                            <h3 class="service-card__title">Créations sur Mesure</h3>
-                            <p class="service-card__description">
-                                Des expériences magiques conçues spécifiquement pour votre événement, intégrant votre marque, votre histoire ou votre thématique dans une performance unique qui résonnera profondément avec votre audience.
-                            </p>
-                            <div class="service-card__features">
-                                <div class="feature">
-                                    <span class="feature-icon">✓</span>
-                                    <span class="feature-text">Intégration de votre marque</span>
-                                </div>
-                                <div class="feature">
-                                    <span class="feature-icon">✓</span>
-                                    <span class="feature-text">Création d'effets exclusifs</span>
-                                </div>
-                                <div class="feature">
-                                    <span class="feature-icon">✓</span>
-                                    <span class="feature-text">Consultation personnalisée</span>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
+    <button class="card-back-button">← Retour</button>
+    <div class="service-card__content">
+        <h3 class="service-card__title">Mes Passages TV</h3>
+        <p class="service-card__description">
+            Performances calibrées pour le petit écran : impact visuel immédiat, rythme maîtrisé et effets forts conçus pour captiver le public. Une expertise adaptée à tous les formats d'émissions.
+        </p>
+        <div class="service-card__features">
+            <div class="feature">
+                <span class="feature-icon">✓</span>
+                <span class="feature-text">Apparitions en direct ou enregistrées</span>
+            </div>
+            <div class="feature">
+                <span class="feature-icon">✓</span>
+                <span class="feature-text">Effets pensés pour la caméra</span>
+            </div>
+            <div class="feature">
+                <span class="feature-icon">✓</span>
+                <span class="feature-text">Accompagnement rédaction & mise en scène</span>
+            </div>
+        </div>
+    </div>
+</div>
+
                 </div>
             </div>
             
@@ -272,73 +412,22 @@
         <div class="container">
             <div class="services__cta-container reveal-element">
                 <div class="services__cta-box">
-                    <h3 class="services__cta-title">Une prestation adaptée à votre événement d'exception</h3>
-                    <p class="services__cta-text">Chaque performance est soigneusement conçue pour créer des moments d'émerveillement inoubliables pour vous et vos invités.</p>
-                    <a href="#contact" class="btn btn--primary btn--large">Discutons de votre projet !</a>
+                    <!-- <h3 class="services__cta-title">Une prestation adaptée à votre évènement d'exception</h3> -->
+                    <!-- <p class="services__cta-text">Chaque performance est soigneusement conçue pour créer des moments d'émerveillement inoubliables pour vous et vos invités.</p> -->
+                    <a href="#contact" class="btn btn--primary btn--large cta-pulse-animation">Réservez votre Magicien <span class="emphasize"> &#9755;</span></a>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-        <!-- Section Galerie -->
-        <section id="galerie" class="gallery">
-            <div class="section-header">
-                <h2 class="section-title">Galerie</h2>
-                <p class="section-subtitle">Aperçu de mes performances</p>
-            </div>
-            <div class="gallery__container">
-                <div class="gallery__filter">
-                    <button class="gallery__filter-btn active" data-filter="all">Tout</button>
-                    <button class="gallery__filter-btn" data-filter="close-up">Close-up</button>
-                    <button class="gallery__filter-btn" data-filter="street-art">Street-Art</button>
-                    <button class="gallery__filter-btn" data-filter="scene">Scène</button>
-                </div>
-                <div class="gallery__grid">
-                    <!-- Les images seront insérées dynamiquement via JavaScript -->
-                </div>
-            </div>
-            <!-- <div class="instagram-feed"> -->
-                <!-- <h3 class="instagram-feed__title">Instagram</h3> -->
-                <!-- <div class="instagram-feed__container"> -->
-                    <!-- <!-- Le flux Instagram sera inséré ici via JavaScript -->
-                <!-- </div> -->
-                <!-- <a href="https://instagram.com/votrecompte" target="_blank" rel="noopener" class="instagram-feed__link"> -->
-                    <!-- Suivre sur Instagram -->
-                <!-- </a> -->
-            <!-- </div> -->
-        </section>
+
+		<hr class="lux-divider"/>
+
 
         <!-- Section Témoignages -->
-        <section class="testimonials">
-            <div class="section-header">
-                <h2 class="section-title">Témoignages</h2>
-                <p class="section-subtitle">Ce que mes clients disent de moi</p>
-            </div>
-            <div class="testimonials__container">
-                <div class="testimonial-slider">
-                    <div class="testimonial-slide">
-                        <div class="testimonial-card">
-                            <div class="testimonial-card__content">
-                                <p class="testimonial-card__text">"Une soirée absolument mémorable. Nos invités en parlent encore des semaines après l'événement. Un véritable artiste qui transcende la simple performance."</p>
-                                <div class="testimonial-card__author">
-                                    <div class="testimonial-card__author-info">
-                                        <h4 class="testimonial-card__author-name">Sophie Dubois</h4>
-                                        <p class="testimonial-card__author-title">Directrice d'événements, Luxury Group</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- D'autres témoignages seront ajoutés dynamiquement -->
-                </div>
-                <div class="testimonial-slider__controls">
-                    <button class="testimonial-slider__prev" aria-label="Témoignage précédent"></button>
-                    <div class="testimonial-slider__pagination"></div>
-                    <button class="testimonial-slider__next" aria-label="Témoignage suivant"></button>
-                </div>
-            </div>
-	<div class="media-logos">
+        <section class="medias-section">
+			<div class="media-logos">
     <h2 class="media-logos__title">VU à la télévision</h2>
     <div class="media-logos__container">
         <div class="media-logo" data-name="les-petits-magiciens">
@@ -362,32 +451,63 @@
     </div>
 </div>
 </section>
+		<hr class="lux-divider"/>
 
+		<section class="testimonials">
+            <div class="section-header">
+                <h2 class="section-title">Témoignages</h2>
+            </div>
+            <div class="testimonials__container">
+                <div class="testimonial-slider">
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-card__content">
+                                <p class="testimonial-card__text">"Une soirée absolument mémorable. Nos invités en parlent encore des semaines après l'évènement. Un véritable artiste qui transcende la simple performance."</p>
+                                <div class="testimonial-card__author">
+                                    <div class="testimonial-card__author-info">
+                                        <h4 class="testimonial-card__author-name">Sophie Dubois</h4>
+                                        <p class="testimonial-card__author-title">Directrice d'évènements, Luxury Group</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- D'autres témoignages seront ajoutés dynamiquement -->
+                </div>
+                <div class="testimonial-slider__controls">
+                    <button class="testimonial-slider__prev" aria-label="Témoignage précédent"></button>
+                    <div class="testimonial-slider__pagination"></div>
+                    <button class="testimonial-slider__next" aria-label="Témoignage suivant"></button>
+                </div>
+            </div>
+
+</section>
         <!-- Section Biographie -->
         <section id="biographie" class="biography">
             <div class="biography__container">
-                <div class="biography__image-container parallax-element">
-                    <img src="assets/images/portrait.jpg" alt="Portrait du magicien" class="biography__image">
-                </div>
+				<div class="biography__image-container ">
+					 <div id="pixi-canvas"></div>
+				</div>
                 <div class="biography__content">
                     <div class="section-header">
                         <h2 class="section-title">Biographie</h2>
                         <p class="section-subtitle">L'histoire derrière la magie</p>
                     </div>
                     <div class="biography__text">
-                        <p class="reveal-text">Magicien depuis l’enfance, Romain Dewasme fait rêver petits et grands avec des spectacles uniques. Révélé au grand public grâce à “La France a un incroyable talent” et d’autres émissions télévisées, il est aujourd’hui une référence dans l’art de l’illusion.</p>
-                        <p class="reveal-text" data-delay="0.2">Que ce soit pour des soirées privées, des mariages ou des événements d’entreprise, Romain transforme chaque moment en une expérience magique et mémorable. Alliant talent, humour, créativité et passion, il saura captiver votre public et rendre votre événement inoubliable.</p>
-                        <p class="reveal-text" data-delay="0.4">Découvrez la magie avec Romain Dewasme, l’artiste qui sublime vos instants.</p>
+                        <p >Magicien depuis l’enfance, Romain Dewasme fait rêver petits et grands avec des spectacles uniques. Révélé au grand public grâce à “La France a un incroyable talent” et d’autres émissions télévisées, il est aujourd’hui une référence dans l’art de l’illusion.</p>
+                        <p >Que ce soit pour des soirées privées, des mariages ou des évènements d’entreprise, Romain transforme chaque moment en une expérience magique et mémorable. Alliant talent, humour, créativité et passion, il saura captiver votre public et rendre votre évènement inoubliable.</p>
+                        <p >Découvrez la magie avec Romain Dewasme, l’artiste qui sublime vos instants.</p>
                     </div>
                 </div>
             </div>
         </section>
-
+		<hr class="lux-divider"/>
+	
         <!-- Section Contact -->
         <section id="contact" class="contact">
             <div class="section-header">
                 <h2 class="section-title">Contact</h2>
-                <p class="section-subtitle">Donnez vie à votre événement</p>
+                <p class="section-subtitle">Donnez vie à votre évènement</p>
             </div>
             <div class="contact__container">
                 <div class="contact__info">
@@ -447,12 +567,13 @@
                         <div class="form-group">
                             <select id="eventType" name="eventType" class="form-select" required>
                                 <option value="" disabled selected>Sélectionnez</option>
-                                <option value="corporate">Événement d'entreprise</option>
-                                <option value="private">Événement privé</option>
+                                <option value="corporate">Évènement d'entreprise</option>
+                                <option value="private">Évènement privé</option>
                                 <option value="wedding">Mariage</option>
+                                <option value="tv">Passage télévisuel</option>
                                 <option value="other">Autre</option>
                             </select>
-                            <label for="eventType" class="form-label select-label">Type d'événement</label>
+                            <label for="eventType" class="form-label select-label">Type d'évènement</label>
                         </div>
                         <div class="form-group">
                             <textarea id="message" name="message" class="form-textarea" required></textarea>
@@ -481,8 +602,8 @@
             </div>
             <div class="footer__nav">
                 <ul class="footer__nav-list">
-                    <li class="footer__nav-item"><a href="#prestations" class="footer__nav-link">Prestations</a></li>
                     <li class="footer__nav-item"><a href="#galerie" class="footer__nav-link">Galerie</a></li>
+                    <li class="footer__nav-item"><a href="#prestations" class="footer__nav-link">Prestations</a></li>
                     <li class="footer__nav-item"><a href="#biographie" class="footer__nav-link">Biographie</a></li>
                     <li class="footer__nav-item"><a href="#contact" class="footer__nav-link">Contact</a></li>
                 </ul>
@@ -492,9 +613,13 @@
 
     <!-- Scripts -->
     <!-- GSAP pour les animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
-    
+<!-- Charge le bundle complet de filtres pour PIXI -->
+<script src="https://cdn.jsdelivr.net/npm/pixi.js@7.x/dist/pixi.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pixi-filters@5.1.1/dist/browser/pixi-filters.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
     <!-- EmailJS pour le formulaire de contact -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     
@@ -502,7 +627,44 @@
 	<script >
 	/**
  * SCRIPT DE CORRECTION POUR LA SECTION PRESTATIONS
- */
+ */ // 2) Enregistrer le plugin
+  gsap.registerPlugin(ScrollTrigger);
+
+  // 3) Initialisation des animations de scroll
+  function initScrollAnimations() {
+    // BIOGRAPHIE
+    gsap.utils.toArray('#biography .animate-on-scroll').forEach(elem => {
+      gsap.from(elem, {
+        scrollTrigger: {
+          trigger: elem,
+          start: 'top 80%',      // quand le haut de l’élément atteint 80% du viewport
+          toggleActions: 'play none none none',
+        },
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        ease: 'power2.out'
+      });
+    });
+
+    // CONTACT
+    gsap.utils.toArray('#contact .animate-on-scroll').forEach(elem => {
+      gsap.from(elem, {
+        scrollTrigger: {
+          trigger: elem,
+          start: 'top 80%',
+          toggleActions: 'play none none none',
+        },
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        ease: 'power2.out'
+      });
+    });
+  }
+
+  // 4) Lancer après DOM ready
+  document.addEventListener('DOMContentLoaded', initScrollAnimations);
 
 document.addEventListener('DOMContentLoaded', function(){
     // S'assurer que la section prestations est visible
@@ -587,7 +749,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 },
                 {
                     title: 'Créations sur Mesure',
-                    description: 'Des expériences magiques conçues spécifiquement pour votre événement, intégrant votre marque, votre histoire ou votre thématique dans une performance unique qui résonnera profondément avec votre audience.',
+                    description: 'Des expériences magiques conçues spécifiquement pour votre évènement, intégrant votre marque, votre histoire ou votre thématique dans une performance unique qui résonnera profondément avec votre audience.',
                     icon: 'custom.svg',
                     alt: 'Expériences sur mesure'
                 }
@@ -630,7 +792,134 @@ document.addEventListener('DOMContentLoaded', function(){
 setTimeout(injectSVGIcons, 500);
 }
 }
-)</script>
+)
+//PIXI
+ // ┏━━━┃  SHADER « maison » de dissolution  ┃━━━┓
+const dissolveFrag = `
+precision mediump float;
+varying vec2 vTextureCoord;
+uniform sampler2D uSampler;   // la texture “next”
+uniform sampler2D uPrev;      // la texture “current”
+uniform sampler2D uNoise;     // noise map
+uniform float progress;       // 0→1
+
+void main() {
+  vec2 uv = vTextureCoord;
+  float n = texture2D(uNoise, uv).r;
+  float threshold = 1.0 - progress;
+  float t = smoothstep(threshold - 0.1, threshold + 0.1, n);
+  vec4 cPrev = texture2D(uPrev, uv);
+  vec4 cNext = texture2D(uSampler, uv);
+  gl_FragColor = mix(cPrev, cNext, t);
+}
+`;
+// ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+document.addEventListener("DOMContentLoaded", () => {
+  PIXI.settings.RESOLUTION = window.devicePixelRatio;
+
+  // 1) Création de l’app Pixi
+  const container = document.getElementById('pixi-canvas');
+  const app = new PIXI.Application({
+    resizeTo: container,
+    transparent: true,
+    autoDensity: true
+  });
+  container.appendChild(app.view);
+
+  // 2) Génération d’une noise map 256×256
+  function createNoiseTexture() {
+    const size = 64;
+    const cnv  = document.createElement('canvas');
+    cnv.width = cnv.height = size;
+    const ctx = cnv.getContext('2d');
+    const img = ctx.createImageData(size, size);
+    for (let i = 0; i < img.data.length; i += 4) {
+      const v = Math.random() * 255;
+      img.data[i] = img.data[i+1] = img.data[i+2] = v;
+      img.data[i+3] = 255;
+    }
+    ctx.putImageData(img, 0, 0);
+    return PIXI.Texture.from(cnv);
+  }
+  const noiseTex = createNoiseTexture();
+
+  // 3) Chargement des portraits avec Assets
+  PIXI.Assets.addBundle('shots', {
+    imgA: 'assets/images/portrait1.jpeg',
+    imgB: 'assets/images/portrait2.jpeg'
+  });
+
+  (async () => {
+    const res = await PIXI.Assets.loadBundle('shots');
+    let texA = res.imgA, texB = res.imgB;
+    let currentTex = texA;
+
+    // 4) Sprite courant plein écran
+    let currentSprite = new PIXI.Sprite(currentTex);
+    currentSprite.width  = app.screen.width;
+    currentSprite.height = app.screen.height;
+    app.stage.addChild(currentSprite);
+
+    // 5) Fonction de transition par dissolution shader
+    async function dissolveTo(nextTex) {
+      const nextSprite = new PIXI.Sprite(nextTex);
+      nextSprite.width  = app.screen.width;
+      nextSprite.height = app.screen.height;
+
+      const dissolveFilter = new PIXI.Filter(
+        // vertex shader : null pour garder l’original,
+        null,
+        dissolveFrag,
+        {
+          uPrev:     currentTex,
+          uNoise:    noiseTex,
+          progress:  0.0
+        }
+      );
+
+      nextSprite.filters = [dissolveFilter];
+      app.stage.addChild(nextSprite);
+
+      await gsap.to(dissolveFilter.uniforms, {
+        duration: 4,
+        progress: 1.0,
+        ease:    "power2.inOut"
+      });
+
+      // cleanup et swap
+      app.stage.removeChild(currentSprite);
+      currentSprite.destroy();
+      nextSprite.filters = null;
+      currentSprite = nextSprite;
+      currentTex    = nextTex;
+    }
+
+    // 6) Loop A ↔ B toutes les 10s
+    setInterval(() => {
+      const other = (currentTex === texA) ? texB : texA;
+      dissolveTo(other);
+    }, 8000);
+
+    // 7) Adapter au resize
+    window.addEventListener("resize", () => {
+      currentSprite.width  = app.screen.width;
+      currentSprite.height = app.screen.height;
+    });
+  })();
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+</script>
     <script src="js/main.js" defer></script>
     <script src="js/animations.js"></script>
     <script src="js/parallax.js"></script>
