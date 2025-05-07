@@ -847,19 +847,19 @@ section {
 
 
 .close-up {
-	background: center / cover no-repeat    url("../assets/images/bouche.png");
+	background: center / cover no-repeat    url("../assets/images/bouche.png") !important;
 }
 
 .gala {
-	background: center / cover no-repeat    url("../assets/images/gala.jpeg");
+	background: center / cover no-repeat    url("../assets/images/gala.jpeg") !important;
 }
 
 .scene {
-	background: center / cover no-repeat    url("../assets/images/scene2.jpeg");
+	background: center / cover no-repeat    url("../assets/images/scene2.jpeg") !important;
 }
 
 .tv {
-	background: center / cover no-repeat    url("../assets/images/tv.jpg");
+	background: center / cover no-repeat    url("../assets/images/tv.jpg") !important;
 }
 
 /* Face avant de la carte - aperçu */
