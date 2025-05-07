@@ -259,7 +259,19 @@ function createMobileMenu() {
                 mobileItem.innerHTML = item.innerHTML;
                 mobileMenu.appendChild(mobileItem);
             });
-            
+             const socialHTML = `
+                      <div class="contact__social mobile" style="margin-top:5%;">
+                           <a href="https://www.instagram.com/romaindewasme/" class="contact__social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                               <img src="assets/icons/instagram.svg" alt="Instagram">
+                           </a>
+                           <a href="https://www.facebook.com/p/Romain-Dewasme-100086124984675/" class="contact__social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                               <img src="assets/icons/facebook.svg" alt="Facebook">
+                           </a>
+                           <a href="https://www.youtube.com/@romain.d.m8326" class="contact__social-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+                               <img src="assets/icons/youtube.svg" alt="YouTube">
+                           </a>
+                      </div>`;
+                      mobileMenu.insertAdjacentHTML('beforeend', socialHTML);
             // Ajouter le menu mobile directement au body
             document.body.appendChild(mobileMenu);
             
@@ -541,3 +553,90 @@ function initYearUpdate() {
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const video       = document.getElementById('heroVideo');
+  const btn         = document.getElementById('soundToggle');
+  const section     = document.getElementById('accueil');
+  const desktopSrc  = '../assets/videos/teaser_dsktp.mp4';
+  const mobileSrc   = '../assets/videos/teaser_mobile_2.mp4';
+  const mql         = window.matchMedia('(max-width: 767px)');
+  let loopCount     = 0;
+  let isPastSection = false;
+  let hoverTimer;
+
+  function initHero() {
+    const isMobile = mql.matches;
+    video.src       = isMobile ? mobileSrc : desktopSrc;
+    video.muted     = isMobile;
+    updateButton();
+    video.load();
+  }
+
+  function toggleSound() {
+    video.muted = !video.muted;
+    updateButton();
+  }
+
+  function updateButton() {
+    if (video.muted) {
+      btn.textContent = '🔇';
+      btn.setAttribute('aria-label', 'Activer le son');
+    } else {
+      btn.textContent = '🔊';
+      btn.setAttribute('aria-label', 'Désactiver le son');
+    }
+  }
+
+  // boucle et remet en muet après 1ère fin si le son était on
+  video.addEventListener('ended', () => {
+    loopCount++;
+    if (loopCount >= 1 && !video.muted) {
+      video.muted = true;
+      updateButton();
+    }
+  });
+
+  // Gère scroll pour opacité btn
+  function onScroll() {
+    if (!section) return;
+    const rect = section.getBoundingClientRect();
+    // bottom < 0 ⇒ on a passé entièrement la section
+    if (rect.bottom < 0) {
+      if (!isPastSection) {
+        isPastSection = true;
+        btn.style.opacity = '0.25';
+      }
+    } else {
+      if (isPastSection) {
+        isPastSection = false;
+        btn.style.opacity = '1';
+      }
+    }
+  }
+
+  // Hover pour forcer opacité à 1 pendant 3 s
+  btn.addEventListener('mouseenter', () => {
+    clearTimeout(hoverTimer);
+    btn.style.opacity = '1';
+  });
+  btn.addEventListener('mouseleave', () => {
+    if (isPastSection) {
+      hoverTimer = setTimeout(() => {
+        btn.style.opacity = '0.6667';
+      }, 3000);
+    }
+  });
+
+  // listeners
+  window.addEventListener('scroll', onScroll, { passive: true });
+  mql.addEventListener('change', initHero);
+  btn.addEventListener('click', toggleSound);
+
+  // init
+  initHero();
+  onScroll();
+});
+
