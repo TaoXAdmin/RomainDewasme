@@ -42,8 +42,8 @@
                     <span></span>
                 </button>
                 <ul class="nav__list">
+		    <li class="nav__item"><a href="#prestations" class="nav__link">Prestations</a></li>
                     <li class="nav__item"><a href="#galerie" class="nav__link">Galerie</a></li>
-                    <li class="nav__item"><a href="#prestations" class="nav__link">Prestations</a></li>
                     <li class="nav__item"><a href="#biographie" class="nav__link">Biographie</a></li>
                     <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
                 </ul>
@@ -79,165 +79,13 @@
                         <a href="https://www.facebook.com/p/Romain-Dewasme-100086124984675/" class="contact__social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
                             <img src="assets/icons/facebook.svg" alt="Facebook">
                         </a>
-                        <a href="https://www.youtube.com/@romain.d.m8326" class="contact__social-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
-                            <img src="assets/icons/youtube.svg" alt="YouTube">
-                        </a>
                     </div>
             </div>
             <div class="hero__content">
-                <!-- <h1 class="hero__title ">L'Art de l'Impossible</h1> -->
-                <!-- <p class="hero__subtitle ">Expériences magiques d'exception</p> -->
-                <!-- <a href="#contact" class="btn btn--primary reveal-element">Réserver une prestation</a> -->
+
             </div>
 
         </section>
-		<hr class="lux-divider"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-<script src="js/galleryEffect.js"></script>
-<!-- index.html -->
-<section id="galerie" class="gallery" role="region" aria-label="Galerie de performances">
-  <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const el = document.querySelector('h2.section-title.black');
-    if (!el) return;
-
-    const text = el.textContent;
-    el.textContent = '';              // on vide le <h2> pour repartir à zéro
-
-    // Création et insertion du curseur au tout début
-    const cursor = document.createElement('span');
-    cursor.className = 'cursor';
-    cursor.textContent = '|';
-    el.appendChild(cursor);
-
-    let i = 0;
-    function typeNext() {
-      if (i >= text.length) return;
-      const ch = text[i++];
-      const span = document.createElement('span');
-      span.textContent = ch;
-      // on insère juste avant le curseur => il se déplace naturellement
-      el.insertBefore(span, cursor);
-
-      // si virgule, on insère aussi un <br>
-      if (ch === ',') {
-        el.insertBefore(document.createElement('br'), cursor);
-      }
-
-      // délai aléatoire pour plus de naturel (entre 50 et 150 ms)
-      const delay = 25 + Math.random() * 25;
-      setTimeout(typeNext, delay);
-    }
-
-    // Observer pour ne déclencher qu'une seule fois au premier affichage
-    const io = new IntersectionObserver((entries, obs) => {
-      if (entries[0].isIntersecting) {
-        obs.disconnect();
-        typeNext();
-      }
-    }, { threshold: 0 });
-
-    io.observe(el);
-  });
-  </script>
-
-
-  <div class="gallery__wrapper">
-		<h2 class="section-title black">« À toutes ces personnes qui m’ont accordé leur confiance, un grand merci. »</h2>
-    <!-- A (gauche) -->
-    <figure class="gallery__item gallery__item--left" tabindex="0">
-      <div class="gallery__image">
-        <!-- N&B en base -->
-        <img src="assets/images/selection/a.jpeg"
-             loading="lazy"
-             alt="Spectacle close-up, Paris 2024 — noir et blanc"
-             class="gallery__image--bw">
-        <!-- couleur au-dessus -->
-        <img src="assets/images/selection/a1.jpeg"
-             loading="lazy"
-             alt="Spectacle close-up, Paris 2024 — couleur"
-             class="gallery__image--color">
-      </div>
-      <figcaption class="gallery__caption right_fix">
-        <time datetime="2024-06-15">15 juin 2024</time>
-        — Paris, France
-      </figcaption>
-    </figure>
-
-    <!-- B (droite) -->
-    <figure class="gallery__item gallery__item--right" tabindex="0">
-      <div class="gallery__image">
-        <img src="assets/images/selection/b.jpg"
-             loading="lazy"
-             alt="Performance extérieure, Nice 2024 — noir et blanc"
-             class="gallery__image--bw">
-        <img src="assets/images/selection/b1.jpeg"
-             loading="lazy"
-             alt="Performance extérieure, Nice 2024 — couleur"
-             class="gallery__image--color">
-      </div>
-      <figcaption class="gallery__caption left_fix">
-        <time datetime="2024-07-20">20 juillet 2024</time>
-        — Nice, France
-      </figcaption>
-    </figure>
-
-    <!-- C (gauche) -->
-    <figure class="gallery__item gallery__item--left" tabindex="0">
-      <div class="gallery__image">
-        <img src="assets/images/selection/c.jpeg"
-             loading="lazy"
-             alt="Danse contemporaine, Lyon 2024 — noir et blanc"
-             class="gallery__image--bw">
-        <img src="assets/images/selection/c1.jpeg"
-             loading="lazy"
-             alt="Danse contemporaine, Lyon 2024 — couleur"
-             class="gallery__image--color">
-      </div>
-      <figcaption class="gallery__caption right_fix">
-        <time datetime="2024-08-05">5 août 2024</time>
-        — Lyon, France
-      </figcaption>
-    </figure>
-
-    <!-- D (droite) -->
-    <figure class="gallery__item gallery__item--right" tabindex="0">
-      <div class="gallery__image">
-        <img src="assets/images/selection/d.jpeg"
-             loading="lazy"
-             alt="Installation immersive, Marseille 2024 — noir et blanc"
-             class="gallery__image--bw">
-        <img src="assets/images/selection/d1.jpeg"
-             loading="lazy"
-             alt="Installation immersive, Marseille 2024 — couleur"
-             class="gallery__image--color">
-      </div>
-      <figcaption class="gallery__caption left_fix">
-        <time datetime="2024-09-12">12 septembre 2024</time>
-        — Marseille, France
-      </figcaption>
-    </figure>
-
-    <!-- E (gauche) -->
-    <figure class="gallery__item gallery__item--left" tabindex="0">
-      <div class="gallery__image">
-        <img src="assets/images/selection/e.jpg"
-             loading="lazy"
-             alt="Portrait artistique, Bordeaux 2024 — noir et blanc"
-             class="gallery__image--bw">
-        <img src="assets/images/selection/e1.jpeg"
-             loading="lazy"
-             alt="Portrait artistique, Bordeaux 2024 — couleur"
-             class="gallery__image--color">
-      </div>
-      <figcaption class="gallery__caption right_fix">
-        <time datetime="2024-10-30">30 octobre 2024</time>
-        — Bordeaux, France
-      </figcaption>
-    </figure>
-  </div>
-</section>
 
 		<hr class="lux-divider"/>
 
@@ -420,7 +268,153 @@
     </div>
 </section>
 
+		<hr class="lux-divider"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="js/galleryEffect.js"></script>
+<!-- index.html -->
+<section id="galerie" class="gallery" role="region" aria-label="Galerie de performances">
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const el = document.querySelector('h2.section-title.black');
+    if (!el) return;
 
+    const text = el.textContent;
+    el.textContent = '';              // on vide le <h2> pour repartir à zéro
+
+    // Création et insertion du curseur au tout début
+    const cursor = document.createElement('span');
+    cursor.className = 'cursor';
+    cursor.textContent = '|';
+    el.appendChild(cursor);
+
+    let i = 0;
+    function typeNext() {
+      if (i >= text.length) return;
+      const ch = text[i++];
+      const span = document.createElement('span');
+      span.textContent = ch;
+      // on insère juste avant le curseur => il se déplace naturellement
+      el.insertBefore(span, cursor);
+
+      // si virgule, on insère aussi un <br>
+      if (ch === ',') {
+        el.insertBefore(document.createElement('br'), cursor);
+      }
+
+      // délai aléatoire pour plus de naturel (entre 50 et 150 ms)
+      const delay = 25 + Math.random() * 25;
+      setTimeout(typeNext, delay);
+    }
+
+    // Observer pour ne déclencher qu'une seule fois au premier affichage
+    const io = new IntersectionObserver((entries, obs) => {
+      if (entries[0].isIntersecting) {
+        obs.disconnect();
+        typeNext();
+      }
+    }, { threshold: 0 });
+
+    io.observe(el);
+  });
+  </script>
+
+
+  <div class="gallery__wrapper">
+		<h2 class="section-title black">« À toutes ces personnes qui m’ont accordé leur confiance, un grand merci. »</h2>
+    <!-- A (gauche) -->
+    <figure class="gallery__item gallery__item--left" tabindex="0">
+      <div class="gallery__image">
+        <!-- N&B en base -->
+        <img src="assets/images/selection/a.jpeg"
+             loading="lazy"
+             alt="Spectacle close-up, Paris 2024 — noir et blanc"
+             class="gallery__image--bw">
+        <!-- couleur au-dessus -->
+        <img src="assets/images/selection/a1.jpeg"
+             loading="lazy"
+             alt="Spectacle close-up, Paris 2024 — couleur"
+             class="gallery__image--color">
+      </div>
+      <figcaption class="gallery__caption right_fix">
+        <time datetime="2024-06-15">15 juin 2024</time>
+        — Paris, France
+      </figcaption>
+    </figure>
+
+    <!-- B (droite) -->
+    <figure class="gallery__item gallery__item--right" tabindex="0">
+      <div class="gallery__image">
+        <img src="assets/images/selection/b.jpg"
+             loading="lazy"
+             alt="Performance extérieure, Nice 2024 — noir et blanc"
+             class="gallery__image--bw">
+        <img src="assets/images/selection/b1.jpeg"
+             loading="lazy"
+             alt="Performance extérieure, Nice 2024 — couleur"
+             class="gallery__image--color">
+      </div>
+      <figcaption class="gallery__caption left_fix">
+        <time datetime="2024-07-20">20 juillet 2024</time>
+        — Nice, France
+      </figcaption>
+    </figure>
+
+    <!-- C (gauche) -->
+    <figure class="gallery__item gallery__item--left" tabindex="0">
+      <div class="gallery__image">
+        <img src="assets/images/selection/c.jpeg"
+             loading="lazy"
+             alt="Danse contemporaine, Lyon 2024 — noir et blanc"
+             class="gallery__image--bw">
+        <img src="assets/images/selection/c1.jpeg"
+             loading="lazy"
+             alt="Danse contemporaine, Lyon 2024 — couleur"
+             class="gallery__image--color">
+      </div>
+      <figcaption class="gallery__caption right_fix">
+        <time datetime="2024-08-05">5 août 2024</time>
+        — Lyon, France
+      </figcaption>
+    </figure>
+
+    <!-- D (droite) -->
+    <figure class="gallery__item gallery__item--right" tabindex="0">
+      <div class="gallery__image">
+        <img src="assets/images/selection/d.jpeg"
+             loading="lazy"
+             alt="Installation immersive, Marseille 2024 — noir et blanc"
+             class="gallery__image--bw">
+        <img src="assets/images/selection/d1.jpeg"
+             loading="lazy"
+             alt="Installation immersive, Marseille 2024 — couleur"
+             class="gallery__image--color">
+      </div>
+      <figcaption class="gallery__caption left_fix">
+        <time datetime="2024-09-12">12 septembre 2024</time>
+        — Marseille, France
+      </figcaption>
+    </figure>
+
+    <!-- E (gauche) -->
+    <figure class="gallery__item gallery__item--left" tabindex="0">
+      <div class="gallery__image">
+        <img src="assets/images/selection/e.jpg"
+             loading="lazy"
+             alt="Portrait artistique, Bordeaux 2024 — noir et blanc"
+             class="gallery__image--bw">
+        <img src="assets/images/selection/e1.jpeg"
+             loading="lazy"
+             alt="Portrait artistique, Bordeaux 2024 — couleur"
+             class="gallery__image--color">
+      </div>
+      <figcaption class="gallery__caption right_fix">
+        <time datetime="2024-10-30">30 octobre 2024</time>
+        — Bordeaux, France
+      </figcaption>
+    </figure>
+  </div>
+</section>
 		<hr class="lux-divider"/>
 
 
