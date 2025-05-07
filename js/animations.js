@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         initHeroAnimations();
         initScrollAnimations();
         initHoverAnimations();
-        initMagicEffects();
+		initRevealTextEffect();
     } else {
         console.warn('GSAP n\'est pas chargé. Les animations avancées ne fonctionneront pas.');
     }
@@ -209,7 +209,7 @@ function initHoverAnimations() {
     navLinks.forEach(link => {
         link.addEventListener('mouseenter', () => {
             gsap.to(link, {
-                color: '#2A5B64', // Couleur secondaire (or)
+                
                 duration: 0.3,
                 ease: "power1.out"
             });
@@ -230,67 +230,7 @@ function initHoverAnimations() {
 /**
  * Effets spéciaux liés à la thématique de la magie
  */
-function initMagicEffects() {
-    // Création de l'effet de particules
-    
-    // Animation des cartes dans la galerie (effet déplacement 3D)
-    const galleryItems = document.querySelectorAll('.gallery__item');
-    galleryItems.forEach(item => {
-        item.addEventListener('mousemove', (e) => {
-            const rect = item.getBoundingClientRect();
-            const x = e.clientX - rect.left; // Position X de la souris dans l'élément
-            const y = e.clientY - rect.top;  // Position Y de la souris dans l'élément
-            
-            const xPercent = x / rect.width;
-            const yPercent = y / rect.height;
-            
-            // Calculer l'inclinaison en fonction de la position de la souris
-            const tiltX = (0.5 - yPercent) * 10; // -5 à 5 degrés
-            const tiltY = (xPercent - 0.5) * 10; // -5 à 5 degrés
-            
-            gsap.to(item, {
-                rotationX: tiltX,
-                rotationY: tiltY,
-                transformPerspective: 1000,
-                ease: "power1.out",
-                duration: 0.4
-            });
-        });
-        
-        item.addEventListener('mouseleave', () => {
-            gsap.to(item, {
-                rotationX: 0,
-                rotationY: 0,
-                ease: "power3.out",
-                duration: 0.7
-            });
-        });
-    });
-    
-    // Effet de disparition/apparition sur les images au clic (démo de magie)
-    const serviceIcons = document.querySelectorAll('.service-card__icon');
-    serviceIcons.forEach(icon => {
-        icon.addEventListener('click', () => {
-            // Effet de disparition
-            gsap.to(icon, {
-                scale: 0.5,
-                opacity: 0,
-                duration: 0.4,
-                ease: "power2.in",
-                onComplete: () => {
-                    // Effet d'apparition après disparition
-                    gsap.to(icon, {
-                        scale: 1,
-                        opacity: 1,
-                        duration: 0.6,
-                        ease: "elastic.out(1, 0.3)",
-                        delay: 0.1
-                    });
-                }
-            });
-        });
-    });
-}
+
 
 function initRevealTextEffect() {
     const revealTextElements = document.querySelectorAll('.reveal-text');
