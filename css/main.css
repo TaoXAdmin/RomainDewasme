@@ -1967,10 +1967,13 @@ h2.section-title.black .cursor {
     font-size: 1.8rem;
     margin-bottom: var(--spacing-xs);
     color: var(--color-primary);
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 1.5px;
 }
 
 .contact__info-text {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     color: var(--color-white2);
     margin-bottom: 0;
     text-transform: uppercase;
