@@ -143,6 +143,9 @@
     font-size: 10rem;
     color: var(--color-white2);
 	z-index: 4;
+    text-shadow: 4px 4px 6px var(--color-black);
+	font-weight: 900;
+  letter-spacing: 4px;
 }
 
 .loading__logo::after {
