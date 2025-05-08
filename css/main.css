@@ -1926,10 +1926,17 @@ h2.section-title.black .cursor {
 }
 
 .biography__text p {
-    margin-bottom: var(--spacing-md);
-    font-size: 1.6rem;
-    line-height: 1.8;
+    	margin-bottom: var(--spacing-md);
+    	font-size: 1.6rem;
+    	line-height: 1.8;
 	color: white;
+	font-weight:900;
+	text-align: justify;
+  	hyphens: auto;
+  	-webkit-hyphens: auto;
+  	-ms-hyphens: auto;
+ 	 overflow-wrap: break-word;
+  	word-wrap: break-word;
 }
 
 /* =========== CONTACT SECTION ===========  */
