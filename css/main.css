@@ -1945,7 +1945,7 @@ h2.section-title.black .cursor {
 .contact__info-icon {
     width: 50px;
     height: 50px;
-    background-color: var(--color-primary-lighter);
+    background-color: var(--color-primary);
     border-radius: var(--radius-round);
     display: flex;
     align-items: center;
@@ -1973,6 +1973,9 @@ h2.section-title.black .cursor {
     font-size: 1.75rem;
     color: var(--color-white2);
     margin-bottom: 0;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 1.5px;
 }
 
 .go__down{
@@ -2104,6 +2107,9 @@ h2.section-title.black .cursor {
     color: var(--color-primary-lighter);
     pointer-events: none;
     transition: all var(--transition-fast);
+    text-transform: uppercase;
+    font-weight: 900;
+     letter-spacing: 1.5px;
 }
 
 .form-input:focus ~ .form-label,
