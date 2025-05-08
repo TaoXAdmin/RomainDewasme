@@ -983,7 +983,7 @@ section {
     font-weight: 900;
     position: relative;
     padding-bottom: var(--spacing-sm);
-	letter-spacing: 1px;
+	letter-spacing: 3px;
 	text-shadow: 4px 4px 6px var(--color-black);
 }
 
