@@ -979,14 +979,7 @@ section {
 }
 
 .service-card__title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40px;
-    height: 2px;
-    background-color: var(--color-white2);
+   
 }
 
 .service-card__preview {
