@@ -165,6 +165,12 @@ h2 {
     letter-spacing: 3px;
 }
 
+@media (max-width: 1250px) {
+	h2 {
+   	 font-size: 6.5rem;
+	}
+}
+
 h3 {
     font-size: 3.6rem;
 }
