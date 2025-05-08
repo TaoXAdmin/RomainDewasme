@@ -266,10 +266,7 @@ function createMobileMenu() {
                            </a>
                            <a href="https://www.facebook.com/p/Romain-Dewasme-100086124984675/" class="contact__social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
                                <img src="assets/icons/facebook.svg" alt="Facebook">
-                           </a>
-                           <a href="https://www.youtube.com/@romain.d.m8326" class="contact__social-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
-                               <img src="assets/icons/youtube.svg" alt="YouTube">
-                           </a>
+                           </a>                        
                       </div>`;
                       mobileMenu.insertAdjacentHTML('beforeend', socialHTML);
             // Ajouter le menu mobile directement au body
