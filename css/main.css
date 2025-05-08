@@ -2107,7 +2107,7 @@ h2.section-title.black .cursor {
     top: 1.2rem;
     left: 1.2rem;
     font-size: 1.8rem;
-    color: var(--color-primary-lighter);
+    color: var(--color-primary);
     pointer-events: none;
     transition: all var(--transition-fast);
     text-transform: uppercase;
