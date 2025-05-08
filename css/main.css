@@ -673,6 +673,8 @@ section {
   /* 3. Sécurité pour éviter les débordements */
   overflow-wrap: break-word;
   word-wrap: break-word;
+  font-weight: 700;
+  z-index: 1000 !important;
 }
 
 .feature-text {
@@ -686,6 +688,8 @@ section {
 
 .service-card__features {
     margin-bottom: var(--spacing-sm);
+    font-weight: 700;
+    z-index: 1000 !important;
 }
 
 /* Ajuster le bouton pour s'assurer qu'il ne dépasse pas */
