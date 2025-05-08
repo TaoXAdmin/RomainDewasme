@@ -1498,19 +1498,12 @@ h2.section-title.black .cursor {
   box-shadow: 1px 1px 1px rgba(255,255,255,0.1), -1px 0 1px rgba(255,255,255,0.1);
 }
 
-.gallery__image--bw { opacity: 1; }
-.gallery__image--color { opacity: 0; }
+.gallery__image--bw { opacity: 0; }
+.gallery__image--color { opacity: 1; }
 
-.gallery__item.is-active .gallery__image--color { opacity: 1; }
-.gallery__item.is-active .gallery__image--bw   { opacity: 0; }
+.gallery__item.is-active .gallery__image--color { opacity: 0; }
+.gallery__item.is-active .gallery__image--bw   { opacity: 1; }
 
-@media (max-width: 1250px) {
-	.gallery__image--bw { opacity: 0; }
-	.gallery__image--color { opacity: 1; }
-
-	.gallery__item.is-active .gallery__image--color { opacity: 0; }
-	.gallery__item.is-active .gallery__image--bw   { opacity: 1; }
-}
 
 /* —— Styles de légende —— */
 .gallery__caption {
