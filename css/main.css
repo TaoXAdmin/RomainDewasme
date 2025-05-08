@@ -986,6 +986,7 @@ section {
     padding-bottom: var(--spacing-sm);
 	letter-spacing: 3px;
 	text-shadow: 4px 4px 6px var(--color-black);
+   text-transforrm: uppercase;
 }
 
 .service-card__title::after {
