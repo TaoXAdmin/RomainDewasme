@@ -1270,6 +1270,12 @@ section {
     animation: ctaPulse 2s infinite;
 }
 
+.cta-text{
+	font-family: var(--font-primary);
+	font-weight: 900;
+  	letter-spacing: 4px;
+}
+
 /* Animation de particules */
 @keyframes floatParticle {
     0%, 100% {
