@@ -621,7 +621,7 @@ section {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('../assets/images/bg.jpg');
+ background-image: image-set(url("../assets/images_opt/bg.avif") type("image/avif"), url("../assets/images_opt/bg.webp") type("image/webp"),url("../assets/images/bg.jpg") type("image/jpeg") );
   background-repeat: repeat;
   background-size: cover;
   background-position: center;
@@ -882,20 +882,41 @@ section {
 
 
 .close-up {
-	background: center / cover no-repeat    url("../assets/images/bouche.png") !important;
+  background: center / cover no-repeat
+    image-set(
+      url("../assets/images_opt/bouche.avif") type("image/avif"),
+      url("../assets/images_opt/bouche.webp") type("image/webp"),
+      url("../assets/images/bouche.png") type("image/png")
+    ) !important;
 }
 
 .gala {
-	background: center / cover no-repeat    url("../assets/images/gala.jpeg") !important;
+  background: center / cover no-repeat
+    image-set(
+      url("../assets/images_opt/gala.avif") type("image/avif"),
+      url("../assets/images_opt/gala.webp") type("image/webp"),
+      url("../assets/images/gala.jpeg") type("image/jpeg")
+    ) !important;
 }
 
 .scene {
-	background: center / cover no-repeat    url("../assets/images/scene2.jpeg") !important;
+  background: center / cover no-repeat
+    image-set(
+      url("../assets/images_opt/scene2.avif") type("image/avif"),
+      url("../assets/images_opt/scene2.webp") type("image/webp"),
+      url("../assets/images/scene2.jpeg") type("image/jpeg")
+    ) !important;
 }
 
 .tv {
-	background: center / cover no-repeat    url("../assets/images/tv.jpg") !important;
+  background: center / cover no-repeat
+    image-set(
+      url("../assets/images_opt/tv.avif") type("image/avif"),
+      url("../assets/images_opt/tv.webp") type("image/webp"),
+      url("../assets/images/tv.jpg") type("image/jpeg")
+    ) !important;
 }
+
 
 /* Face avant de la carte - aperçu */
 .service-card__face--front {
@@ -962,7 +983,7 @@ section {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('../assets/images/bg.jpg');
+ background-image: image-set(url("../assets/images_opt/bg.avif") type("image/avif"), url("../assets/images_opt/bg.webp") type("image/webp"),url("../assets/images/bg.jpg") type("image/jpeg") );
   background-size: cover;
   opacity: 0.15; /* Ajuste l’intensité du grain ici */
   pointer-events: none;
@@ -1213,7 +1234,7 @@ text-transform: uppercase;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('../assets/images/bg.jpg');
+ background-image: image-set(url("../assets/images_opt/bg.avif") type("image/avif"), url("../assets/images_opt/bg.webp") type("image/webp"),url("../assets/images/bg.jpg") type("image/jpeg") );
   background-size: cover;
   opacity: 0.15; /* Ajuste l’intensité du grain ici */
   pointer-events: none;
@@ -1448,7 +1469,11 @@ text-transform: uppercase;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('../assets/images/paper.jpg');
+ background-image: image-set(
+    url("../assets/images_opt/paper.avif") type("image/avif"),
+    url("../assets/images_opt/paper.webp") type("image/webp"),
+    url("../assets/images/paper.jpg") type("image/jpeg")
+  );
   background-size: cover;
   opacity: 0.05; /* Ajuste l’intensité du grain ici */
   pointer-events: none;
@@ -1597,7 +1622,11 @@ h2.section-title.black .cursor {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('../assets/images/stone.jpg');
+   background-image: image-set(
+    url("../assets/images_opt/stone.avif") type("image/avif"),
+    url("../assets/images_opt/stone.webp") type("image/webp"),
+    url("../assets/images_opt/stone.jpg") type("image/jpeg")
+  );
   background-size: cover;
   opacity: 0.15; /* Ajuste l’intensité du grain ici */
   pointer-events: none;
@@ -1621,7 +1650,11 @@ h2.section-title.black .cursor {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('../assets/images/floral.jpg');
+    background-image: image-set(
+    url("../assets/images_opt/floral.avif") type("image/avif"),
+    url("../assets/images_opt/floral.webp") type("image/webp"),
+    url("../assets/images_opt/floral.jpg") type("image/jpeg")
+  );
   background-size: cover;
   opacity: 0.15; /* Ajuste l’intensité du grain ici */
   pointer-events: none;
@@ -1924,7 +1957,7 @@ h2.section-title.black .cursor {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('../assets/images/bg.jpg');
+ background-image: image-set(url("../assets/images_opt/bg.avif") type("image/avif"), url("../assets/images_opt/bg.webp") type("image/webp"),url("../assets/images/bg.jpg") type("image/jpeg") );
   background-size: cover;
   opacity: 0.075; /* Ajuste l’intensité du grain ici */
   pointer-events: none;
@@ -1987,7 +2020,11 @@ h2.section-title.black .cursor {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('../assets/images/stone.jpg');
+    background-image: image-set(
+    url("../assets/images_opt/stone.avif") type("image/avif"),
+    url("../assets/images_opt/stone.webp") type("image/webp"),
+    url("../assets/images_opt/stone.jpg") type("image/jpeg")
+  );
   background-size: cover;
   opacity: 0.15; /* Ajuste l’intensité du grain ici */
   pointer-events: none;
@@ -2282,7 +2319,7 @@ h2.section-title.black .cursor {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('../assets/images/bg.jpg');
+ background-image: image-set(url("../assets/images_opt/bg.avif") type("image/avif"), url("../assets/images_opt/bg.webp") type("image/webp"),url("../assets/images/bg.jpg") type("image/jpeg") );
   background-size: cover;
   opacity: 0.15; /* Ajuste l’intensité du grain ici */
   pointer-events: none;

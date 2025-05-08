@@ -275,140 +275,245 @@
 <!-- index.html -->
 <section id="galerie" class="gallery" role="region" aria-label="Galerie de performances">
   <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const el = document.querySelector('h2.section-title.black');
-    if (!el) return;
+    document.addEventListener('DOMContentLoaded', () => {
+      const el = document.querySelector('h2.section-title.black');
+      if (!el) return;
 
-    const text = el.textContent;
-    el.textContent = '';              // on vide le <h2> pour repartir à zéro
+      const text = el.textContent;
+      el.textContent = '';
 
-    // Création et insertion du curseur au tout début
-    const cursor = document.createElement('span');
-    cursor.className = 'cursor';
-    cursor.textContent = '|';
-    el.appendChild(cursor);
+      const cursor = document.createElement('span');
+      cursor.className = 'cursor';
+      cursor.textContent = '|';
+      el.appendChild(cursor);
 
-    let i = 0;
-    function typeNext() {
-      if (i >= text.length) return;
-      const ch = text[i++];
-      const span = document.createElement('span');
-      span.textContent = ch;
-      // on insère juste avant le curseur => il se déplace naturellement
-      el.insertBefore(span, cursor);
-
-      // si virgule, on insère aussi un <br>
-      if (ch === ',') {
-        el.insertBefore(document.createElement('br'), cursor);
+      let i = 0;
+      function typeNext() {
+        if (i >= text.length) return;
+        const ch = text[i++];
+        const span = document.createElement('span');
+        span.textContent = ch;
+        el.insertBefore(span, cursor);
+        if (ch === ',') el.insertBefore(document.createElement('br'), cursor);
+        setTimeout(typeNext, 25 + Math.random() * 25);
       }
 
-      // délai aléatoire pour plus de naturel (entre 50 et 150 ms)
-      const delay = 25 + Math.random() * 25;
-      setTimeout(typeNext, delay);
-    }
-
-    // Observer pour ne déclencher qu'une seule fois au premier affichage
-    const io = new IntersectionObserver((entries, obs) => {
-      if (entries[0].isIntersecting) {
-        obs.disconnect();
-        typeNext();
-      }
-    }, { threshold: 0 });
-
-    io.observe(el);
-  });
+      const io = new IntersectionObserver((entries, obs) => {
+        if (entries[0].isIntersecting) {
+          obs.disconnect();
+          typeNext();
+        }
+      }, { threshold: 0 });
+      io.observe(el);
+    });
   </script>
 
-
   <div class="gallery__wrapper">
-		<h2 class="section-title black">« À toutes ces personnes qui m’ont accordé leur confiance, un GRAND MERCI. »</h2>
+    <h2 class="section-title black">
+      « À toutes ces personnes qui m’ont accordé leur confiance, un GRAND MERCI. »
+    </h2>
+
     <!-- A (gauche) -->
     <figure class="gallery__item gallery__item--left" tabindex="0">
       <div class="gallery__image">
-        <!-- N&B en base -->
-        <img src="assets/images/selection/a.jpeg"
-             loading="lazy"
-             alt="Spectacle close-up, Paris 2024 — noir et blanc"
-             class="gallery__image--bw">
-        <!-- couleur au-dessus -->
-        <img src="assets/images/selection/a1.jpeg"
-             loading="lazy"
-             alt="Spectacle close-up, Paris 2024 — couleur"
-             class="gallery__image--color">
+        <picture class="gallery__image--bw">
+          <source type="image/avif" srcset="assets/images_opt/selection/a.avif">
+          <source type="image/webp" srcset="assets/images_opt/selection/a.webp">
+          <img src="assets/images_opt/selection/a.jpeg"
+               loading="lazy"
+               alt="Spectacle close-up, Paris 2024 — noir et blanc"
+               class="gallery__image--bw">
+        </picture>
+        <picture class="gallery__image--color">
+          <source type="image/avif" srcset="assets/images_opt/selection/a1.avif">
+          <source type="image/webp" srcset="assets/images_opt/selection/a1.webp">
+          <img src="assets/images_opt/selection/a1.jpeg"
+               loading="lazy"
+               alt="Spectacle close-up, Paris 2024 — couleur"
+               class="gallery__image--color">
+        </picture>
       </div>
       <figcaption class="gallery__caption right_fix">
-        <time datetime="2024-06-15">15 juin 2024</time>
-        — Paris, France
+        <time datetime="2024-06-15">15 juin 2024</time> — Paris, France
       </figcaption>
     </figure>
 
     <!-- B (droite) -->
     <figure class="gallery__item gallery__item--right" tabindex="0">
       <div class="gallery__image">
-        <img src="assets/images/selection/b.jpg"
-             loading="lazy"
-             alt="Performance extérieure, Nice 2024 — noir et blanc"
-             class="gallery__image--bw">
-        <img src="assets/images/selection/b1.jpeg"
-             loading="lazy"
-             alt="Performance extérieure, Nice 2024 — couleur"
-             class="gallery__image--color">
+        <picture class="gallery__image--bw">
+          <source type="image/avif" srcset="assets/images_opt/selection/b.avif">
+          <source type="image/webp" srcset="assets/images_opt/selection/b.webp">
+          <img src="assets/images_opt/selection/b.jpg"
+               loading="lazy"
+               alt="Performance extérieure, Nice 2024 — noir et blanc"
+               class="gallery__image--bw">
+        </picture>
+        <picture class="gallery__image--color">
+          <source type="image/avif" srcset="assets/images_opt/selection/b1.avif">
+          <source type="image/webp" srcset="assets/images_opt/selection/b1.webp">
+          <img src="assets/images_opt/selection/b1.jpeg"
+               loading="lazy"
+               alt="Performance extérieure, Nice 2024 — couleur"
+               class="gallery__image--color">
+        </picture>
       </div>
       <figcaption class="gallery__caption left_fix">
-        <time datetime="2024-07-20">20 juillet 2024</time>
-        — Bruxelles, Belgique
+        <time datetime="2024-07-20">20 juillet 2024</time> — Bruxelles, Belgique
       </figcaption>
     </figure>
 
     <!-- C (gauche) -->
     <figure class="gallery__item gallery__item--left" tabindex="0">
       <div class="gallery__image">
-        <img src="assets/images/selection/c.jpeg"
-             loading="lazy"
-             alt="Danse contemporaine, Lyon 2024 — noir et blanc"
-             class="gallery__image--bw">
-        <img src="assets/images/selection/c1.jpeg"
-             loading="lazy"
-             alt="Danse contemporaine, Lyon 2024 — couleur"
-             class="gallery__image--color">
+        <picture class="gallery__image--bw">
+          <source type="image/avif" srcset="assets/images_opt/selection/c.avif">
+          <source type="image/webp" srcset="assets/images_opt/selection/c.webp">
+          <img src="assets/images_opt/selection/c.jpeg"
+               loading="lazy"
+               alt="Danse contemporaine, Lyon 2024 — noir et blanc"
+               class="gallery__image--bw">
+        </picture>
+        <picture class="gallery__image--color">
+          <source type="image/avif" srcset="assets/images_opt/selection/c1.avif">
+          <source type="image/webp" srcset="assets/images_opt/selection/c1.webp">
+          <img src="assets/images_opt/selection/c1.jpeg"
+               loading="lazy"
+               alt="Danse contemporaine, Lyon 2024 — couleur"
+               class="gallery__image--color">
+        </picture>
       </div>
       <figcaption class="gallery__caption right_fix">
-        <time datetime="2024-08-05">5 août 2024</time>
-        — Liège, Belgique
+        <time datetime="2024-08-05">5 août 2024</time> — Liège, Belgique
       </figcaption>
     </figure>
 
+    <!-- D (droite) -->
+    <figure class="gallery__item gallery__item--right" tabindex="0">
+      <div class="gallery__image">
+        <picture class="gallery__image--bw">
+          <source type="image/avif" srcset="assets/images_opt/selection/d.avif">
+          <source type="image/webp" srcset="assets/images_opt/selection/d.webp">
+          <img src="assets/images_opt/selection/d.jpeg"
+               loading="lazy"
+               alt="Installation immersive, Marseille 2024 — noir et blanc"
+               class="gallery__image--bw">
+        </picture>
+        <picture class="gallery__image--color">
+          <source type="image/avif" srcset="assets/images_opt/selection/d1.avif">
+          <source type="image/webp" srcset="assets/images_opt/selection/d1.webp">
+          <img src="assets/images_opt/selection/d1.jpeg"
+               loading="lazy"
+               alt="Installation immersive, Marseille 2024 — couleur"
+               class="gallery__image--color">
+        </picture>
+      </div>
+      <figcaption class="gallery__caption left_fix">
+        <time datetime="2024-09-12">12 septembre 2024</time> — Marseille, France
+      </figcaption>
+    </figure>
 
+    <!-- E (gauche) -->
+    <figure class="gallery__item gallery__item--left" tabindex="0">
+      <div class="gallery__image">
+        <picture class="gallery__image--bw">
+          <source type="image/avif" srcset="assets/images_opt/selection/e.avif">
+          <source type="image/webp" srcset="assets/images_opt/selection/e.webp">
+          <img src="assets/images_opt/selection/e.jpg"
+               loading="lazy"
+               alt="Portrait artistique, Bordeaux 2024 — noir et blanc"
+               class="gallery__image--bw">
+        </picture>
+        <picture class="gallery__image--color">
+          <source type="image/avif" srcset="assets/images_opt/selection/e1.avif">
+          <source type="image/webp" srcset="assets/images_opt/selection/e1.webp">
+          <img src="assets/images_opt/selection/e1.jpeg"
+               loading="lazy"
+               alt="Portrait artistique, Bordeaux 2024 — couleur"
+               class="gallery__image--color">
+        </picture>
+      </div>
+      <figcaption class="gallery__caption right_fix">
+        <time datetime="2024-10-30">30 octobre 2024</time> — Bordeaux, France
+      </figcaption>
+    </figure>
+  </div>
 </section>
+
 		<hr class="lux-divider"/>
 
 
         <!-- Section Témoignages -->
-        <section class="medias-section">
-			<div class="media-logos">
+ <!-- Section Témoignages -->
+<section class="medias-section">
+  <div class="media-logos">
     <h2 class="media-logos__title">VU à la télévision</h2>
     <div class="media-logos__container">
-        <div class="media-logo" data-name="les-petits-magiciens">
-            <img src="assets/images/media/lespetitsmagiciens.png" alt="Les Petits Magiciens" class="media-logo__img">
-        </div>
-        <div class="media-logo" data-name="france4">
-            <img src="assets/images/media/france4.png" alt="France 4" class="media-logo__img">
-        </div>
-         <div class="media-logo" data-name="m6">
-            <img src="assets/images/media/m6.png" alt="M6" class="media-logo__img">
-        </div>
-        <div class="media-logo" data-name="tf1">
-            <img src="assets/images/media/tf1.png" alt="TF1" class="media-logo__img">
-        </div>
-        <div class="media-logo" data-name="rtl">
-            <img src="assets/images/media/rtltvi.png" alt="RTL TVI" class="media-logo__img">
-        </div>
-	   <div class="media-logo" data-name="lft">
-            <img src="assets/images/media/lft.png" alt="La France a un incroyable talent" class="media-logo__img lft">
-        </div>
+
+      <div class="media-logo" data-name="les-petits-magiciens">
+        <picture class="media-logo__img">
+          <source type="image/avif" srcset="assets/images_opt/media/lespetitsmagiciens.avif">
+          <source type="image/webp" srcset="assets/images_opt/media/lespetitsmagiciens.webp">
+          <img src="assets/images_opt/media/lespetitsmagiciens.png"
+               alt="Les Petits Magiciens"
+               loading="lazy">
+        </picture>
+      </div>
+
+      <div class="media-logo" data-name="france4">
+        <picture class="media-logo__img">
+          <source type="image/avif" srcset="assets/images_opt/media/france4.avif">
+          <source type="image/webp" srcset="assets/images_opt/media/france4.webp">
+          <img src="assets/images_opt/media/france4.png"
+               alt="France 4"
+               loading="lazy">
+        </picture>
+      </div>
+
+      <div class="media-logo" data-name="m6">
+        <picture class="media-logo__img">
+          <source type="image/avif" srcset="assets/images_opt/media/m6.avif">
+          <source type="image/webp" srcset="assets/images_opt/media/m6.webp">
+          <img src="assets/images_opt/media/m6.png"
+               alt="M6"
+               loading="lazy">
+        </picture>
+      </div>
+
+      <div class="media-logo" data-name="tf1">
+        <picture class="media-logo__img">
+          <source type="image/avif" srcset="assets/images_opt/media/tf1.avif">
+          <source type="image/webp" srcset="assets/images_opt/media/tf1.webp">
+          <img src="assets/images_opt/media/tf1.png"
+               alt="TF1"
+               loading="lazy">
+        </picture>
+      </div>
+
+      <div class="media-logo" data-name="rtl">
+        <picture class="media-logo__img">
+          <source type="image/avif" srcset="assets/images_opt/media/rtltvi.avif">
+          <source type="image/webp" srcset="assets/images_opt/media/rtltvi.webp">
+          <img src="assets/images_opt/media/rtltvi.png"
+               alt="RTL TVI"
+               loading="lazy">
+        </picture>
+      </div>
+
+      <div class="media-logo" data-name="lft">
+        <picture class="media-logo__img lft">
+          <source type="image/avif" srcset="assets/images_opt/media/lft.avif">
+          <source type="image/webp" srcset="assets/images_opt/media/lft.webp">
+          <img src="assets/images_opt/media/lft.png"
+               alt="La France a un incroyable talent"
+               loading="lazy">
+        </picture>
+      </div>
+
     </div>
-</div>
+  </div>
 </section>
+
 		<hr class="lux-divider"/>
 
 		<section class="testimonials">
@@ -748,6 +853,8 @@ setTimeout(injectSVGIcons, 500);
 }
 }
 )
+</script>
+<script>
 //PIXI
  // ┏━━━┃  SHADER « maison » de dissolution  ┃━━━┓
 const dissolveFrag = `
@@ -773,6 +880,17 @@ void main() {
 document.addEventListener("DOMContentLoaded", () => {
   PIXI.settings.RESOLUTION = window.devicePixelRatio;
 
+  // 0) Détection du support AVIF
+  function canUseAvif() {
+    return new Promise(resolve => {
+      const img = new Image();
+      img.onload = () => resolve(img.width > 0 && img.height > 0);
+      img.onerror = () => resolve(false);
+      // petit AVIF codé en base64
+      img.src = "data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAG1pZjEAAACo...";
+    });
+  }
+
   // 1) Création de l’app Pixi
   const container = document.getElementById('pixi-canvas');
   const app = new PIXI.Application({
@@ -782,7 +900,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   container.appendChild(app.view);
 
-  // 2) Génération d’une noise map 256×256
+  // 2) Génération d’une noise map
   function createNoiseTexture() {
     const size = 64;
     const cnv  = document.createElement('canvas');
@@ -799,64 +917,80 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   const noiseTex = createNoiseTexture();
 
-  // 3) Chargement des portraits avec Assets
-  PIXI.Assets.addBundle('shots', {
-    imgA: 'assets/images/portrait1.jpeg',
-    imgB: 'assets/images/portrait2.jpeg'
-  });
+  // 3) Shader de dissolution
+  const dissolveFrag = `
+    precision mediump float;
+    varying vec2 vTextureCoord;
+    uniform sampler2D uSampler;
+    uniform sampler2D uPrev;
+    uniform sampler2D uNoise;
+    uniform float progress;
+    void main() {
+      vec2 uv = vTextureCoord;
+      float n = texture2D(uNoise, uv).r;
+      float threshold = 1.0 - progress;
+      float t = smoothstep(threshold - 0.1, threshold + 0.1, n);
+      vec4 cPrev = texture2D(uPrev, uv);
+      vec4 cNext = texture2D(uSampler, uv);
+      gl_FragColor = mix(cPrev, cNext, t);
+    }
+  `;
 
   (async () => {
+    // 4) Choix de l’extension optimale
+    const ext = (await canUseAvif()) ? 'avif' : 'webp';
+
+    // 5) Chargement des portraits avec la bonne extension
+    PIXI.Assets.addBundle('shots', {
+      imgA: `assets/images_opt/portrait1.${ext}`,
+      imgB: `assets/images_opt/portrait2.${ext}`
+    });
+
     const res = await PIXI.Assets.loadBundle('shots');
     let texA = res.imgA, texB = res.imgB;
     let currentTex = texA;
 
-    // 4) Sprite courant plein écran
+    // 6) Sprite courant plein écran
     let currentSprite = new PIXI.Sprite(currentTex);
     currentSprite.width  = app.screen.width;
     currentSprite.height = app.screen.height;
     app.stage.addChild(currentSprite);
 
-    // 5) Fonction de transition par dissolution shader
+    // 7) Fonction de transition par dissolution
     async function dissolveTo(nextTex) {
       const nextSprite = new PIXI.Sprite(nextTex);
       nextSprite.width  = app.screen.width;
       nextSprite.height = app.screen.height;
 
-      const dissolveFilter = new PIXI.Filter(
-        // vertex shader : null pour garder l’original,
-        null,
-        dissolveFrag,
-        {
-          uPrev:     currentTex,
-          uNoise:    noiseTex,
-          progress:  0.0
-        }
-      );
+      const dissolveFilter = new PIXI.Filter(null, dissolveFrag, {
+        uPrev:  currentTex,
+        uNoise: noiseTex,
+        progress: 0
+      });
 
       nextSprite.filters = [dissolveFilter];
       app.stage.addChild(nextSprite);
 
       await gsap.to(dissolveFilter.uniforms, {
         duration: 4,
-        progress: 1.0,
-        ease:    "power2.inOut"
+        progress: 1,
+        ease: "power2.inOut"
       });
 
-      // cleanup et swap
       app.stage.removeChild(currentSprite);
       currentSprite.destroy();
       nextSprite.filters = null;
       currentSprite = nextSprite;
-      currentTex    = nextTex;
+      currentTex = nextTex;
     }
 
-    // 6) Loop A ↔ B toutes les 10s
+    // 8) Boucle A ↔ B toutes les 8s
     setInterval(() => {
       const other = (currentTex === texA) ? texB : texA;
       dissolveTo(other);
     }, 8000);
 
-    // 7) Adapter au resize
+    // 9) Adapter au resize
     window.addEventListener("resize", () => {
       currentSprite.width  = app.screen.width;
       currentSprite.height = app.screen.height;
