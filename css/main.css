@@ -348,6 +348,9 @@ section {
     color: var(--color-white2);
     letter-spacing: 1px;
     padding: 4px 8px;
+  text-transform: uppercase;
+  z-index: 11 !important;
+  font-weight: 900;
 }
 
 /* Styles pour l'en-tête du menu mobile */
