@@ -1362,6 +1362,7 @@ text-transform: uppercase;
 	color: #fff;
 	margin-left: 22%;
 	text-transform: none !important;
+	letter-spacing: 0px !important;
 }
 
 @media (max-width: 1250px){
