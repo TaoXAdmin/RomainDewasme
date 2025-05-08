@@ -167,7 +167,8 @@ h2 {
 
 @media (max-width: 1250px) {
 	h2 {
-   	 font-size: 6.5rem;
+   		 font-size: 3.91rem !important;
+		letter-spacing: 0px !important;
 	}
 }
 
@@ -826,7 +827,7 @@ section {
     }
     
     .services .section-title {
-        font-size: 3.6rem;
+        font-size: 3.91rem;
     }
 }
 
@@ -1772,8 +1773,14 @@ h2.section-title.black .cursor {
 }
 
 .fix-testimonials{
-	font-size: 6.5rem !important;
+	font-size: 6.5rem;
 }
+
+@media (max-width: 1250px) { 
+	.fix-testimonials {
+	font-size: 5rem;
+	}
+ }
 
 
 .media-logos__title::after {
