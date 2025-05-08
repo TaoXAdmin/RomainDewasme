@@ -1012,6 +1012,9 @@ section {
 	letter-spacing: 1px;
 	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 0 1px rgba(0,0,0,0.6);
   mix-blend-mode: difference;
+	display: inline-block;
+  padding: 0.1rem 0.1rem;
+  background: rgba(0, 0, 0, 0.1);
 }
 .service-card__title-back {
     font-size: 2.65rem;
