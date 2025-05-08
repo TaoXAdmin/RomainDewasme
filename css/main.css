@@ -1025,6 +1025,7 @@ section {
 	letter-spacing: 3px;
 	text-shadow: 1px 1px 2px var(--color-black);
 text-transform: uppercase;
+	z-index: 1000 !important;
 }
 
 .service-card__title::after {
