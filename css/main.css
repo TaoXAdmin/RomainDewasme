@@ -268,7 +268,9 @@ section {
 }
 
 @media (max-width: 1250px) {
-    letter-spacing: 0px !important;
+	.logo__text {
+    		letter-spacing: 0px !important;
+	}
 }
 
 
@@ -1602,7 +1604,11 @@ h2.section-title.black .cursor {
     color: var(--color-white2);
 	letter-spacing: 3px;
 }
-
+@media (max-width: 1250px) {
+	.testimonials .section-title{
+	letter-spacing: 0px !important;
+	}
+}
 .testimonials__container {
     max-width: 1000px;
     margin: 0 auto;
