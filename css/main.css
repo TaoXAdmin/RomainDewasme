@@ -2292,7 +2292,8 @@ h2.section-title.black .cursor {
 
 .emphasize{
 	transform: scale(2.5);
-	margin-left: 5px;
+	margin-left: 16px;
+	 margin-top: -3px;
 }
 
 @media (max-width: 1250px){
