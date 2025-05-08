@@ -1967,7 +1967,7 @@ h2.section-title.black .cursor {
 }
 
 .contact__info-title {
-    font-size: 1.8rem;
+    font-size: 2.2rem;
     margin-bottom: var(--spacing-xs);
     color: var(--color-primary);
     text-transform: uppercase;
@@ -1976,7 +1976,7 @@ h2.section-title.black .cursor {
 }
 
 .contact__info-text {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: var(--color-white2);
     margin-bottom: 0;
     text-transform: uppercase;
