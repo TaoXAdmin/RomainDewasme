@@ -978,7 +978,8 @@ section {
     position: relative;
     padding-bottom: var(--spacing-sm);
 	letter-spacing: 1px;
-	text-shadow: 4px 4px 6px var(--color-black);
+	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 0 1px rgba(0,0,0,0.6);
+  mix-blend-mode: difference;
 }
 .service-card__title-back {
     font-size: 2.65rem;
