@@ -1591,7 +1591,7 @@ h2.section-title.black .cursor {
 .testimonials .section-title,
 .testimonials .section-subtitle {
     color: var(--color-white2);
-	letter-spacing: 1px;
+	letter-spacing: 3px;
 }
 
 .testimonials__container {
