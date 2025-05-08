@@ -267,6 +267,11 @@ section {
     letter-spacing: 4px;
 }
 
+@media (max-width: 1250px) {
+    letter-spacing: 0px !important;
+}
+
+
 .nav {
     display: flex;
     align-items: center;
