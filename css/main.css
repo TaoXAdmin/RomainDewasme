@@ -1279,6 +1279,9 @@ text-transform: uppercase;
     transform: translateY(-3px);
     box-shadow: 0 7px 15px rgba(255, 255, 255, 0.2);
 }
+.btn--primary:hover ~ .emphasize {
+  filter: grayscale(100%) contrast(200%);
+}
 
 .btn--primary:hover::before {
     transform: scaleX(1);
