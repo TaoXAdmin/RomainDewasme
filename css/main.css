@@ -969,13 +969,13 @@ section {
 }
 
 .service-card__title {
-    font-size: 2.25rem;
+    font-size: 4.05rem;
     color: var(--color-white2);
     font-weight: 600;
     position: relative;
     padding-bottom: var(--spacing-sm);
 	letter-spacing: 1px;
-	text-shadow: 2px 2px 3px var(--color-black);
+	text-shadow: 4px 4px 6px var(--color-black);
 }
 
 .service-card__title::after {
