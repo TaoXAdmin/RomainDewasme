@@ -1652,7 +1652,16 @@ h2.section-title.black .cursor {
     margin-bottom: var(--spacing-md);
     position: relative;
 	font-family: Roboto;
-	text-align: center;
+	text-align: justify;
+  /* 2. Coupure automatique des mots (avec tirets) */
+  hyphens: auto;
+  /* Préfixes pour compatibilité */
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+
+  /* 3. Sécurité pour éviter les débordements */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 
