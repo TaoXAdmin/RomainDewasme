@@ -1033,7 +1033,7 @@ section {
     overflow: auto; /* Permet le défilement si le contenu est trop grand */
 }
 
-.service-card__face--back .service-card__title {
+.service-card__face--back .service-card__title, .service-card__face--back .service-card__title-back {
     color: var(--color-white2);
     text-align: center;
     margin-bottom: var(--spacing-md);
