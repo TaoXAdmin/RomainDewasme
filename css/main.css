@@ -2217,13 +2217,15 @@ h2.section-title.black .cursor {
     padding: 0 var(--spacing-md);
 }
 
+
+
 .footer__content {
     text-align: center;
 }
-.footer_logo .logo__text:{
+
+.footer__logo .logo__text{
 	font-size: 3.85rem !important;
 }
-
 
 .footer__tagline {
     font-size: 1.6rem;
