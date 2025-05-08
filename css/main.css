@@ -1359,6 +1359,7 @@ section {
 .black{
 	color: #fff;
 	margin-left: 22%;
+	text-transform: lowercase !important;
 }
 
 @media (max-width: 1250px){
