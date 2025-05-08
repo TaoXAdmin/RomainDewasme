@@ -2305,9 +2305,10 @@ h2.section-title.black .cursor {
 }
 
 .emphasize{
-	transform: scale(2.5);
+	transform: scale(1.3);
 	margin-left: 16px;
 	 margin-top: -3px;
+	filter: grayscale(100%) contrast(120%);
 }
 
 @media (max-width: 1250px){
