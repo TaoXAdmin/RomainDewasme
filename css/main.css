@@ -2058,23 +2058,22 @@ h2.section-title.black .cursor {
 }
 
 .go__down{
-	margin-top: -43.6rem !important;
-	gap: var(--spacing-md) !important;
-	flex-direction: column ;
-	margin-left: 180rem;
-	z-index: 6
+	  position: absolute;    /* -> positionné par rapport au .hero */
+  bottom: 4%;            /* décale de 4% de la hauteur du hero */
+  right: 4%;             /* décale de 4% de la largeur du hero */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;           /* ou en % si tu préfères */
+  z-index: 6;
 }
 
 @media (max-width: 1250px){
-	.go__down{
-		margin-top: -12.6rem !important;
-		gap: 0 !important;
-		flex-direction: row;
-		margin-left: 25rem;
-		position: absolute;
-		z-index: 600;
-	
-	}
+	 .go__down {
+    bottom: 3%;          /* un peu moins d’écart sur petits écrans */
+    right: 3%;
+    flex-direction: row; /* si tu veux passer en ligne */
+    gap: 1rem;
+  }
 	..contact__social-link:hover{
 		background-color: transparent;
 	}
