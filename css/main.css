@@ -2245,14 +2245,14 @@ h2.section-title.black .cursor {
 }
 
 .footer__tagline {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-style: italic;
     margin-bottom: var(--spacing-sm);
     color: var(--color-white2);
 }
 
 .footer__copyright {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     color: var(--color-gray);
 }
 
@@ -2264,12 +2264,15 @@ h2.section-title.black .cursor {
 }
 
 .footer__nav-link {
-    font-size: 1.4rem;
-    color: var(--color-white2);
-    position: relative;
-    display: inline-block;
-    text-decoration: none;
-    transition: color 0.3s ease;
+	  font-size: 1.4rem;
+	  color: var(--color-white2);
+	  position: relative;
+	  display: inline-block;
+	  text-decoration: none;
+	  transition: color 0.3s ease;
+	  text-transform: uppercase;
+	  font-weight: 900;
+	  letter-spacing: 1px;
 }
 
 .footer__nav-link::after{
