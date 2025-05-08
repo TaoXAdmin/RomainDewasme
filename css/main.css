@@ -1981,6 +1981,13 @@ h2.section-title.black .cursor {
     letter-spacing: 1.5px;
 }
 
+.send-btn{
+	text-transform: uppercase;
+	font-weight:900;
+	letter-spacing: 2px;
+	font-family: var(--font-primary);
+}
+
 .go__down{
 	margin-top: -43.6rem !important;
 	gap: var(--spacing-md) !important;
