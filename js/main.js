@@ -24,7 +24,7 @@ function initLoading() {
         const loadingElement = document.createElement('div');
         loadingElement.className = 'loading';
         loadingElement.innerHTML = `
-            <div class="loading__logo">Romain Dewasme</div>
+            <div class="loading__logo">ROMAIN DEWASME</div>
         `;
         document.body.appendChild(loadingElement);
     }
