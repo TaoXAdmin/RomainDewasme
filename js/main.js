@@ -585,15 +585,25 @@ document.addEventListener('DOMContentLoaded', () => {
     updateButton();
   }
 
-  function updateButton() {
-    if (video.muted) {
-      btn.textContent = '🔇';
-      btn.setAttribute('aria-label', 'Activer le son');
-    } else {
-      btn.textContent = '🔊';
-      btn.setAttribute('aria-label', 'Désactiver le son');
-    }
-  }
+function updateButton() {
+  // Choix du chemin et du label selon l’état muet
+  const iconSrc = video.muted
+    ? 'assets/icons/off.svg'
+    : 'assets/icons/on.svg';
+  const ariaLabel = video.muted
+    ? 'Activer le son'
+    : 'Désactiver le son';
+
+  // On vide le contenu du bouton et on y ajoute un <img>
+  btn.innerHTML = '';
+  const img = document.createElement('img');
+  img.src = iconSrc;
+  img.alt = ariaLabel;            // pour l’accessibilité
+  btn.appendChild(img);
+
+  // On met à jour le label aria
+  btn.setAttribute('aria-label', ariaLabel);
+}
 
   video.addEventListener('ended', () => {
     loopCount++;
