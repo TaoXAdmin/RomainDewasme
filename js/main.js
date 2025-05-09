@@ -552,24 +552,32 @@ function capitalizeFirstLetter(string) {
 }
 
 
-
 document.addEventListener('DOMContentLoaded', () => {
   const video       = document.getElementById('heroVideo');
   const btn         = document.getElementById('soundToggle');
   const section     = document.getElementById('accueil');
   const desktopSrc  = 'assets/videos/teaser_dsktp.mp4';
   const mobileSrc   = 'assets/videos/teaser_mobile_2.mp4';
-  const mql         = window.matchMedia('(max-width: 767px)');
+  const mql         = window.matchMedia('(max-width: 1250px)');
   let loopCount     = 0;
   let isPastSection = false;
   let hoverTimer;
 
   function initHero() {
     const isMobile = mql.matches;
-    video.src       = isMobile ? mobileSrc : desktopSrc;
-    video.muted     = isMobile;
-    updateButton();
+    video.src         = isMobile ? mobileSrc : desktopSrc;
+    // On s’assure que la vidéo est bien muette et inline pour iOS/Safari
+    video.muted       = true;
+    video.playsInline = true;
+    video.setAttribute('muted', '');
+    video.setAttribute('autoplay', '');
+    video.setAttribute('playsinline', '');
+    // Recharge et lance
     video.load();
+    video.play().catch(err => {
+      console.warn('Autoplay bloqué :', err);
+    });
+    updateButton();
   }
 
   function toggleSound() {
@@ -587,7 +595,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // boucle et remet en muet après 1ère fin si le son était on
   video.addEventListener('ended', () => {
     loopCount++;
     if (loopCount >= 1 && !video.muted) {
@@ -596,11 +603,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Gère scroll pour opacité btn
+  // Gestion de l’opacité du bouton au scroll
   function onScroll() {
     if (!section) return;
     const rect = section.getBoundingClientRect();
-    // bottom < 0 ⇒ on a passé entièrement la section
     if (rect.bottom < 0) {
       if (!isPastSection) {
         isPastSection = true;
@@ -614,7 +620,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Hover pour forcer opacité à 1 pendant 3 s
   btn.addEventListener('mouseenter', () => {
     clearTimeout(hoverTimer);
     btn.style.opacity = '1';
@@ -627,13 +632,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // listeners
+  // Listeners
   window.addEventListener('scroll', onScroll, { passive: true });
   mql.addEventListener('change', initHero);
   btn.addEventListener('click', toggleSound);
 
-  // init
+  // Kick‐off
   initHero();
   onScroll();
 });
+
 
