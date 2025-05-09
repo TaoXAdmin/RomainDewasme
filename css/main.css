@@ -1050,7 +1050,14 @@ text-transform: uppercase;
 }
 
 .service-card__title::after {
-   
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background-color: var(--color-black);
 }
 
 .service-card__preview {
@@ -1876,6 +1883,13 @@ h2.section-title.black .cursor {
     border-radius: var(--radius-md);
     backdrop-filter: blur(2px);
 }
+@media (max-width: 1250px) { 
+	.media-logos__container {
+	    max-width: 1050px !important;
+		
+	}	
+}
+
 
 .media-logo {
     flex: 0 0 auto;
@@ -1922,9 +1936,9 @@ h2.section-title.black .cursor {
 }
 
 /* Responsive */
-@media (max-width: 767px) {
+@media (max-width: 1250px) {
     .media-logos__container {
-        gap: var(--spacing-sm);
+        gap: 3rem;
         padding: var(--spacing-lg);
     }    
     .media-logo__img {
