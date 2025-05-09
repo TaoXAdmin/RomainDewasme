@@ -1870,7 +1870,7 @@ h2.section-title.black .cursor {
     justify-content: center;
     align-items: center;
     gap: var(--spacing-lg);
-    max-width: 800px;
+    max-width: 1050px;
     margin: 0 auto;
     padding: var(--spacing-md);
     border-radius: var(--radius-md);
