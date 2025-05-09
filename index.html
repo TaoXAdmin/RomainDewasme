@@ -319,37 +319,66 @@
 <!-- index.html -->
 <section id="galerie" class="gallery" role="region" aria-label="Galerie de performances">
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const el = document.querySelector('h2.section-title.black');
-      if (!el) return;
+   document.addEventListener('DOMContentLoaded', () => {
+  // 1) Sélection de l'élément à typer
+  const el = document.querySelector('h2.section-title.black');
+  if (!el) return; // on arrête si rien n'est trouvé
 
-      const text = el.textContent;
-      el.textContent = '';
+  // 2) On récupère tout le texte brut, y compris
+  //    - les retours à la ligne
+  //    - les espaces en début et fin
+  //    Ces blancs superflus généreront plus tard des <span> vides.
+  const raw  = el.textContent;
 
-      const cursor = document.createElement('span');
-      cursor.className = 'cursor';
-      cursor.textContent = '|';
-      el.appendChild(cursor);
+  // 3) trim() supprime uniquement les espaces / retours de ligne
+  //    au début ET à la fin de la chaîne.
+  //    Les espaces internes (entre les mots) restent intacts.
+  const text = raw.trim();
 
-      let i = 0;
-      function typeNext() {
-        if (i >= text.length) return;
-        const ch = text[i++];
-        const span = document.createElement('span');
-        span.textContent = ch;
-        el.insertBefore(span, cursor);
-        if (ch === ',') el.insertBefore(document.createElement('br'), cursor);
-        setTimeout(typeNext, 25 + Math.random() * 25);
-      }
+  // 4) On vide le contenu du <h2> pour y réinjecter
+  //    caractère par caractère avec notre machine à écrire
+  el.textContent = '';
 
-      const io = new IntersectionObserver((entries, obs) => {
-        if (entries[0].isIntersecting) {
-          obs.disconnect();
-          typeNext();
-        }
-      }, { threshold: 0 });
-      io.observe(el);
-    });
+  // 5) On crée et positionne le curseur clignotant
+  const cursor = document.createElement('span');
+  cursor.className   = 'cursor';
+  cursor.textContent = '|';
+  el.appendChild(cursor);
+
+  // 6) Fonction récursive qui tape un caractère puis
+  //    relance un timeout aléatoire pour l'effet machine à écrire
+  let i = 0;
+  function typeNext() {
+    if (i >= text.length) {
+      // fin de la chaîne → on arrête
+      return;
+    }
+    const ch   = text[i++];
+    const span = document.createElement('span');
+    span.textContent = ch;
+    // on insère le caractère juste avant le curseur
+    el.insertBefore(span, cursor);
+
+    // si c'est une virgule, on ajoute automatiquement un <br>
+    // pour la mise en forme
+    if (ch === ',') {
+      el.insertBefore(document.createElement('br'), cursor);
+    }
+
+    // on relance avec un délai entre 25 et 50 ms
+    setTimeout(typeNext, 25 + Math.random() * 25);
+  }
+
+  // 7) Déclenchement lorsque le <h2> entre dans le viewport
+  const io = new IntersectionObserver((entries, obs) => {
+    if (entries[0].isIntersecting) {
+      obs.disconnect(); // on n'a besoin de l'observer qu'une fois
+      typeNext();       // et on lance la saisie
+    }
+  }, { threshold: 0 });
+  io.observe(el);
+});
+
   </script>
 
   <div class="gallery__wrapper">
