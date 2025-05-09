@@ -448,11 +448,11 @@ section {
 .hero__sound-toggle {
   position: fixed;
   bottom: 5%;             /* 5% au-dessus du bas de la fenêtre */
-  right: 5%;              /* 5% à gauche du bord droit */
+  left: 5%;              /* 5% à gauche du bord droit */
   
   /* Dimensions fixes en rem pour garder un bon ratio */
-  width: 3rem;
-  height: 3rem;
+  width: 5rem;
+  height: 5rem;
 
   background: rgba(255,255,255,0.1);
   border: none;
