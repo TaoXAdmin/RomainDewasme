@@ -991,9 +991,7 @@ section {
     z-index: 15; /* CORRECTION: S'assurer que la face arrière soit au-dessus */
 }
 
-.fixTv{
-	margin-bottom: -1rem !important;
-}
+
 
 .service-card__face--back::after {
   content: "";
