@@ -883,7 +883,7 @@ section {
 .luxury-card.flipped .service-card__inner {
     transform: rotateY(180deg);
 }
-}
+
 .service-card__face {
     position: absolute;
     width: 100%;
