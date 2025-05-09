@@ -883,9 +883,6 @@ section {
 .luxury-card.flipped .service-card__inner {
     transform: rotateY(180deg);
 }
-.fixTv{
-  margin-bottom: -1rem !important;
-}
 }
 .service-card__face {
     position: absolute;
@@ -992,6 +989,10 @@ section {
     right: 0;
     bottom: 0;
     z-index: 15; /* CORRECTION: S'assurer que la face arrière soit au-dessus */
+}
+
+.fixTv{
+	margin-bottom: -1rem !important;
 }
 
 .service-card__face--back::after {
