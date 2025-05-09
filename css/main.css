@@ -1052,7 +1052,7 @@ section {
     position: relative;
     padding-bottom: var(--spacing-sm);
 	letter-spacing: 1px;
-	text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 0 0 1px rgba(0,0,0,0.6);
+	text-shadow: -1px -1px 0 var(--color-primary-darker), 1px -1px 0 var(--color-primary-darker), -1px 1px 0 var(--color-primary-darker), 1px 1px 0 var(--color-primary-darker), 0 0 1px var(--color-primary-darker);
   mix-blend-mode: difference;
 	display: inline-block;
   padding: 0.1rem 0.1rem;
