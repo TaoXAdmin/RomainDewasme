@@ -1574,12 +1574,17 @@ h2.section-title.black .cursor {
   box-shadow: 1px 1px 1px rgba(255,255,255,0.1), -1px 0 1px rgba(255,255,255,0.1);
 }
 
-.gallery__image--bw { opacity: 0; }
-.gallery__image--color { opacity: 1; }
+/* on cible l’élément <img> à l’intérieur des wrappers BW / COLOR */
+.gallery__image--bw img { opacity: 0; }
+.gallery__image--color img { opacity: 1; }
 
-.gallery__item.is-active .gallery__image--color { opacity: 0; }
-.gallery__item.is-active .gallery__image--bw   { opacity: 1; }
-
+/* cross-fade sur les vrais <img> */
+.gallery__item.is-active .gallery__image--color img {
+  opacity: 0;
+}
+.gallery__item.is-active .gallery__image--bw img {
+  opacity: 1;
+}
 
 /* —— Styles de légende —— */
 .gallery__caption {
