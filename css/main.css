@@ -2123,7 +2123,7 @@ h2.section-title.black .cursor {
 
 @media (max-width: 1250px){
 	 .go__down {
-    bottom: 8%;          /* un peu moins d’écart sur petits écrans */
+    bottom: 10%;          /* un peu moins d’écart sur petits écrans */
     right: 3%;
     flex-direction: row; /* si tu veux passer en ligne */
     gap: 1rem;
