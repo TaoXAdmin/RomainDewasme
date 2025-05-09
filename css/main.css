@@ -1049,7 +1049,7 @@ text-transform: uppercase;
 	z-index: 1000 !important;
 }
 
-.service-card__title::after {
+.service-card__title-back::after {
   content: '';
   position: absolute;
   bottom: 0;
