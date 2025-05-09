@@ -268,7 +268,7 @@ section {
 
 .logo__text {
     font-family: var(--font-primary);
-    font-size: 4.4rem;
+    font-size: 4rem;
     color: var(--color-white2);
     font-weight: 900;
     letter-spacing: 4px;
