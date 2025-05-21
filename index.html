@@ -1,213 +1,137 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <!-- Métadonnées essentielles -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- SEO principal -->
-  <title>Romain Dewasme – Magicien Close-up, Mentalisme & Magie de Scène</title>
-  <meta name="description" content="Vivez une expérience magique inoubliable avec Romain Dewasme, magicien expert en close-up, mentalisme et spectacles de scène. Réservez votre prestation dès maintenant.">
-  <meta name="robots" content="index,follow">
-  <link rel="canonical" href="https://www.romaindewasme.com/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Romain Dewasme |Magicien</title>
+    
+    <!-- Meta tags SEO et Open Graph -->
+    <meta name="description" content="Découvrez des expériences magiques d'exception avec Romain Dewasme, magicien professionnel spécialisé en close-up, mentalisme et magie de scène.">
+    <meta property="og:title" content="Romain Dewasme | Prestations de Magie d'Exception">
+    <meta property="og:description" content="Découvrez des expériences magiques d'exception avec Romain Dewasme, magicien professionnel spécialisé en close-up, mentalisme et magie de scène.">
+    <meta property="og:image" content="https://votresite.com/assets/images/og-image.jpeg">
+    <meta property="og:url" content="https://votresite.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Polices -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Tagesschrift&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Romain Dewasme | Prestations de Magie d'Exception">
-  <meta property="og:description" content="Vivez une expérience magique inoubliable avec Romain Dewasme, magicien expert en close-up, mentalisme et spectacles de scène.">
-  <meta property="og:image" content="https://www.romaindewasme.com/assets/images/og-image.jpeg">
-  <meta property="og:url" content="https://www.romaindewasme.com/">
-  <meta property="og:type" content="website">
-
-  <!-- Données structurées JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Romain Dewasme",
-    "jobTitle": "Magicien",
-    "url": "https://www.romaindewasme.com/",
-    "sameAs": [
-      "https://www.instagram.com/romaindewasme/",
-      "https://www.facebook.com/p/Romain-Dewasme-100086124984675/"
-    ]
-  }
-  </script>
-
-  <!-- Polices Google (préconnect + chargement optimisé) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?
-    family=IBM+Plex+Sans:wght@300;500;700&
-    family=Roboto:wght@400;700&
-    family=Tagesschrift&display=swap"
-    rel="stylesheet"
-  >
-
-  <!-- CSS (minifié) -->
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/animations.css">
-  <link rel="stylesheet" href="css/responsive.css">
-
-  <!-- Préchargements critiques -->
-  <link rel="preload" as="style" href="css/main.css">
-  <link
+<link
     rel="preload"
     as="video"
     href="assets/videos/teaser_dsktp.mp4"
     type="video/mp4"
-    media="(min-width:1250px)"
+    media="(min-width: 1250px)"
   >
+
+  <!-- Pour écrans ≤ 767px, on précharge la version mobile -->
   <link
     rel="preload"
     as="video"
     href="assets/videos/teaser_mobile_2.mp4"
     type="video/mp4"
-    media="(max-width:1249px)"
+    media="(max-width: 1250px)"
   >
+    <!-- Préchargement de la sélection A -->
+<link rel="preload" as="image" href="assets/images_opt/selection/a.avif" type="image/avif">
+<link rel="preload" as="image" href="assets/images_opt/selection/a.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/images_opt/selection/a.jpeg" type="image/jpeg">
 
-  <!-- Préchargement images galerie : sélection A -->
-  <link rel="preload" as="image" href="assets/images_opt/selection/a.avif" type="image/avif">
-  <link rel="preload" as="image" href="assets/images_opt/selection/a.webp" type="image/webp">
-  <link rel="preload" as="image" href="assets/images_opt/selection/a.jpeg" type="image/jpeg">
-  <link rel="preload" as="image" href="assets/images_opt/selection/a1.avif" type="image/avif">
-  <link rel="preload" as="image" href="assets/images_opt/selection/a1.webp" type="image/webp">
-  <link rel="preload" as="image" href="assets/images_opt/selection/a1.jpeg" type="image/jpeg">
+<link rel="preload" as="image" href="assets/images_opt/selection/a1.avif" type="image/avif">
+<link rel="preload" as="image" href="assets/images_opt/selection/a1.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/images_opt/selection/a1.jpeg" type="image/jpeg">
 
-  <!-- Préchargement images galerie : sélection B -->
-  <link rel="preload" as="image" href="assets/images_opt/selection/b.avif" type="image/avif">
-  <link rel="preload" as="image" href="assets/images_opt/selection/b.webp" type="image/webp">
-  <link rel="preload" as="image" href="assets/images_opt/selection/b.jpg" type="image/jpeg">
-  <link rel="preload" as="image" href="assets/images_opt/selection/b1.avif" type="image/avif">
-  <link rel="preload" as="image" href="assets/images_opt/selection/b1.webp" type="image/webp">
-  <link rel="preload" as="image" href="assets/images_opt/selection/b1.jpeg" type="image/jpeg">
+<!-- Préchargement de la sélection B -->
+<link rel="preload" as="image" href="assets/images_opt/selection/b.avif" type="image/avif">
+<link rel="preload" as="image" href="assets/images_opt/selection/b.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/images_opt/selection/b.jpg"  type="image/jpeg">
 
-  <!-- Préchargement images galerie : sélection C -->
-  <link rel="preload" as="image" href="assets/images_opt/selection/c.avif" type="image/avif">
-  <link rel="preload" as="image" href="assets/images_opt/selection/c.webp" type="image/webp">
-  <link rel="preload" as="image" href="assets/images_opt/selection/c.jpeg" type="image/jpeg">
-  <link rel="preload" as="image" href="assets/images_opt/selection/c1.avif" type="image/avif">
-  <link rel="preload" as="image" href="assets/images_opt/selection/c1.webp" type="image/webp">
-  <link rel="preload" as="image" href="assets/images_opt/selection/c1.jpeg" type="image/jpeg">
+<link rel="preload" as="image" href="assets/images_opt/selection/b1.avif" type="image/avif">
+<link rel="preload" as="image" href="assets/images_opt/selection/b1.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/images_opt/selection/b1.jpeg" type="image/jpeg">
 
+<!-- Préchargement de la sélection C -->
+<link rel="preload" as="image" href="assets/images_opt/selection/c.avif" type="image/avif">
+<link rel="preload" as="image" href="assets/images_opt/selection/c.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/images_opt/selection/c.jpeg" type="image/jpeg">
 
-  <!-- Favicon -->
-  <link rel="icon" href="assets/icons/favicon.ico">
+<link rel="preload" as="image" href="assets/images_opt/selection/c1.avif" type="image/avif">
+<link rel="preload" as="image" href="assets/images_opt/selection/c1.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/images_opt/selection/c1.jpeg" type="image/jpeg">
 
-	<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Person",
-      "name": "Romain Dewasme",
-      "jobTitle": "Magicien",
-      "url": "https://www.romaindewasme.com/",
-      "sameAs": [
-        "https://www.instagram.com/romaindewasme/",
-        "https://www.facebook.com/p/Romain-Dewasme-100086124984675/"
-      ]
-    },
-    {
-      "@type": "Service",
-      "serviceType": "CLOSE-UP",
-      "description": "Une expérience intime et interactive où l'impossible se produit à quelques centimètres de vos yeux. Cartes, pièces et objets du quotidien deviennent les instruments d'un émerveillement authentique.",
-      "provider": { "@type": "Person", "name": "Romain Dewasme" },
-      "image": "https://www.romaindewasme.com/assets/images_opt/selection/a1.jpeg",
-      "url": "https://www.romaindewasme.com/#prestations"
-    },
-    {
-      "@type": "Service",
-      "serviceType": "GALAS",
-      "description": "Des interventions scéniques sur mesure conçues pour sublimer vos soirées de gala. Élégance, mystère et interactions captivantes transforment votre évènement en un moment de prestige inoubliable.",
-      "provider": { "@type": "Person", "name": "Romain Dewasme" },
-      "image": "https://www.romaindewasme.com/assets/images_opt/selection/b1.jpeg",
-      "url": "https://www.romaindewasme.com/#prestations"
-    },
-    {
-      "@type": "Service",
-      "serviceType": "SCÈNE",
-      "description": "Une performance unique et rythmée, pensée pour captiver de larges audiences. Jeux de lumière, musique et effets spectaculaires créent une immersion totale dans l’univers de l’illusion.",
-      "provider": { "@type": "Person", "name": "Romain Dewasme" },
-      "image": "https://www.romaindewasme.com/assets/images_opt/selection/c1.jpeg",
-      "url": "https://www.romaindewasme.com/#prestations"
-    },
-    {
-      "@type": "Service",
-      "serviceType": "ÉMISSION TV",
-      "description": "Performances calibrées pour le petit écran : impact visuel immédiat, rythme maîtrisé et effets forts conçus pour captiver le public. Une expertise adaptée à tous les formats d'émissions.",
-      "provider": { "@type": "Person", "name": "Romain Dewasme" },
-      "image": "https://www.romaindewasme.com/assets/images/og-image.jpeg",
-      "url": "https://www.romaindewasme.com/#prestations"
-    }
-  ]
-}
-</script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Favicon -->
+    <link rel="icon" href="assets/icons/favicon.ico">
 
 </head>
 <body>
-  <!-- Section Accueil / Vidéo -->
-  <section id="accueil" class="hero">
-    <div class="hero__video-container">
-      <video
-        id="heroVideo"
-        class="hero__video"
-        autoplay
-        loop
-        muted
-        playsinline
-        preload="metadata"
-      >
-        <!-- Source desktop (≥1250px) -->
-        <source
-          src="assets/videos/teaser_dsktp.mp4"
-          type="video/mp4"
-          media="(min-width:1250px)"
-        >
-        <!-- Source mobile/tablette (<1250px) -->
-        <source
-          src="assets/videos/teaser_mobile_2.mp4"
-          type="video/mp4"
-          media="(max-width:1249px)"
-        >
-        Votre navigateur ne supporte pas la vidéo HTML5.
-      </video>
+	
+    <!-- Navigation -->
+    <header class="header">
+        <div class="header__container">
+            <a href="#accueil" class="logo">                           
+                <span class="logo__text">ROMAIN DEWASME</span>
+            </a>
+            <nav class="nav">
+                <button class="nav__toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav__list">
+		    <li class="nav__item"><a href="#prestations" class="nav__link">Prestations</a></li>
+                    <li class="nav__item"><a href="#galerie" class="nav__link">Galerie</a></li>
+                    <li class="nav__item"><a href="#biographie" class="nav__link">Biographie</a></li>
+                    <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-      <button
-        id="soundToggle"
-        class="hero__sound-toggle"
-        aria-label="Activer le son"
-      >
-        <img src="assets/icons/off.svg" alt="son désactivé">
-      </button>
+    <main>
+				  <!-- Bouton de contrôle du son (remplacez 🔇/🔊 par vos SVG) -->
+				  <button
+					id="soundToggle"
+					class="hero__sound-toggle"
+					aria-label="Activer le son"
+				  ><img src="assets/icons/off.svg" alt="off"></button>
+        <!-- Section Accueil -->
+        <section id="accueil" class="hero">
+            <div class="hero__video-container">
+				 <video
+					id="heroVideo"
+					class="hero__video"
+					autoplay
+					loop
+					playsinline
+					muted
+					preload="auto"
+				  ></video>
 
-      <div class="contact__social go__down">
-  <a
-    href="https://www.instagram.com/romaindewasme/"
-    class="contact__social-link"
-    aria-label="Instagram"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <img src="assets/icons/instagram.svg" alt="Instagram">
-  </a>
-  <a
-    href="https://www.facebook.com/p/Romain-Dewasme-100086124984675/"
-    class="contact__social-link"
-    aria-label="Facebook"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <img src="assets/icons/facebook.svg" alt="Facebook">
-  </a>
-</div>
-    </div>
-    <div class="hero__content">
-      <!-- Contenu texte éventuel -->
-    </div>
-  </section>
+
+                
+				<div class="contact__social go__down">
+                        <a href="https://www.instagram.com/romaindewasme/" class="contact__social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                            <img src="assets/icons/instagram.svg" alt="Instagram">
+                        </a>
+                        <a href="https://www.facebook.com/p/Romain-Dewasme-100086124984675/" class="contact__social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                            <img src="assets/icons/facebook.svg" alt="Facebook">
+                        </a>
+                    </div>
+            </div>
+            <div class="hero__content">
+
+            </div>
+
+        </section>
 
 		<hr class="lux-divider"/>
-
 
    <!-- Section Prestations avec structure optimisée pour éviter le chevauchement -->
 <section id="prestations" class="services luxury-section">
