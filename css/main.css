@@ -865,7 +865,7 @@ section {
 	margin-bottom: -1rem !important;
 }
 }
-@media (max-width: 480px) {
+@media (max-width: 1250px) {
     .luxury-card {
         min-height: 380px;
     }
