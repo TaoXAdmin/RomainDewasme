@@ -861,10 +861,29 @@ section {
     }
 }
 @media (max-width: 1250px) {
-.fixTv{
-	margin-bottom: -1rem !important;
+
+	.service-card__description{
+		margin-top: var(--spacing-lg);
+	}
+	.service-card__features{
+		margin-top: var(--spacing-md);
+		margin-bottom: 0 !important;
+	}
+	.service-card__description {
+    font-size: 1.9rem !important;
+  }
+	.feature{
+		margin-bottom: var(--spacing-md) !important;
+	}
+  
+  
 }
+
+.fixS{
+	margin: 0 auto;
+	color: var(--color-white2) !important;
 }
+
 @media (max-width: 1250px) {
     .luxury-card {
         min-height: 480px;
@@ -1135,11 +1154,6 @@ text-transform: uppercase;
     color: rgba(255, 255, 255, 0.85);
 }
 
-@media (max-width: 1250px){
-	.service-card__description {
-		font-size: 1.75rem !important;
-	}
-}
 
 .service-card__features {
     margin-bottom: var(--spacing-md);
@@ -1733,7 +1747,15 @@ h2.section-title.black .cursor {
 
 .testimonial-card__content {
     position: relative;
+
 }
+@media (min-width: 1250px) {
+	.testimonial-card__text {
+	padding-left: 8%;
+	padding-right: 8%;
+	}
+}
+
 
 .testimonial-card__text {
     font-size: 1.8rem;
