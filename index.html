@@ -105,8 +105,8 @@
                 </button>
                 <ul class="nav__list">
 		    <li class="nav__item"><a href="#prestations" class="nav__link">Prestations</a></li>
-                    <li class="nav__item"><a href="#galerie" class="nav__link">Galerie</a></li>
-                    <li class="nav__item"><a href="#biographie" class="nav__link">Biographie</a></li>
+                    <li class="nav__item"><a href="gallery.html" class="nav__link">Galerie</a></li>
+                    <li class="nav__item"><a href="bio.html" class="nav__link">Biographie</a></li>
                     <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
                 </ul>
             </nav>
@@ -335,157 +335,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <script src="js/galleryEffect.js"></script>
-<!-- index.html -->
-<section id="galerie" class="gallery" role="region" aria-label="Galerie de performances">
-  <script>
-   document.addEventListener('DOMContentLoaded', () => {
-  // 1) Sélection de l'élément à typer
-  const el = document.querySelector('h2.section-title.black');
-  if (!el) return; // on arrête si rien n'est trouvé
-
-  // 2) On récupère tout le texte brut, y compris
-  //    - les retours à la ligne
-  //    - les espaces en début et fin
-  //    Ces blancs superflus généreront plus tard des <span> vides.
-  const raw  = el.textContent;
-
-  // 3) trim() supprime uniquement les espaces / retours de ligne
-  //    au début ET à la fin de la chaîne.
-  //    Les espaces internes (entre les mots) restent intacts.
-  const text = raw.trim();
-
-  // 4) On vide le contenu du <h2> pour y réinjecter
-  //    caractère par caractère avec notre machine à écrire
-  el.textContent = '';
-
-  // 5) On crée et positionne le curseur clignotant
-  const cursor = document.createElement('span');
-  cursor.className   = 'cursor';
-  cursor.textContent = '|';
-  el.appendChild(cursor);
-
-  // 6) Fonction récursive qui tape un caractère puis
-  //    relance un timeout aléatoire pour l'effet machine à écrire
-  let i = 0;
-  function typeNext() {
-    if (i >= text.length) {
-      // fin de la chaîne → on arrête
-      return;
-    }
-    const ch   = text[i++];
-    const span = document.createElement('span');
-    span.textContent = ch;
-    // on insère le caractère juste avant le curseur
-    el.insertBefore(span, cursor);
-
-    // si c'est une virgule, on ajoute automatiquement un <br>
-    // pour la mise en forme
-    if (ch === ',') {
-      el.insertBefore(document.createElement('br'), cursor);
-    }
-
-    // on relance avec un délai entre 25 et 50 ms
-    setTimeout(typeNext, 25 + Math.random() * 25);
-  }
-
-  // 7) Déclenchement lorsque le <h2> entre dans le viewport
-  const io = new IntersectionObserver((entries, obs) => {
-    if (entries[0].isIntersecting) {
-      obs.disconnect(); // on n'a besoin de l'observer qu'une fois
-      typeNext();       // et on lance la saisie
-    }
-  }, { threshold: 0 });
-  io.observe(el);
-});
-
-  </script>
-
-  <div class="gallery__wrapper">
-    <h2 class="section-title black">
-      « À toutes ces personnes qui m’ont accordé leur confiance, un GRAND MERCI. »
-    </h2>
-
-    <!-- A (gauche) -->
-    <figure class="gallery__item gallery__item--left" tabindex="0">
-      <div class="gallery__image">
-        <picture class="gallery__image--bw">
-          <source type="image/avif" srcset="assets/images_opt/selection/a.avif">
-          <source type="image/webp" srcset="assets/images_opt/selection/a.webp">
-          <img src="assets/images_opt/selection/a.jpeg"
-               loading="eager"
-               alt="Spectacle close-up, Paris 2024 — noir et blanc"
-               class="gallery__image--bw">
-        </picture>
-        <picture class="gallery__image--color">
-          <source type="image/avif" srcset="assets/images_opt/selection/a1.avif">
-          <source type="image/webp" srcset="assets/images_opt/selection/a1.webp">
-          <img src="assets/images_opt/selection/a1.jpeg"
-               loading="eager"
-               alt="Spectacle close-up, Paris 2024 — couleur"
-               class="gallery__image--color">
-        </picture>
-      </div>
-      <figcaption class="gallery__caption right_fix">
-        <time datetime="2024-06-15">15 juin 2024</time> — Paris, France
-      </figcaption>
-    </figure>
-
-    <!-- B (droite) -->
-    <figure class="gallery__item gallery__item--right" tabindex="0">
-      <div class="gallery__image">
-        <picture class="gallery__image--bw">
-          <source type="image/avif" srcset="assets/images_opt/selection/b.avif">
-          <source type="image/webp" srcset="assets/images_opt/selection/b.webp">
-          <img src="assets/images_opt/selection/b.jpg"
-               loading="eager"
-               alt="Performance extérieure, Nice 2024 — noir et blanc"
-               class="gallery__image--bw">
-        </picture>
-        <picture class="gallery__image--color">
-          <source type="image/avif" srcset="assets/images_opt/selection/b1.avif">
-          <source type="image/webp" srcset="assets/images_opt/selection/b1.webp">
-          <img src="assets/images_opt/selection/b1.jpeg"
-               loading="eager"
-               alt="Performance extérieure, Nice 2024 — couleur"
-               class="gallery__image--color">
-        </picture>
-      </div>
-      <figcaption class="gallery__caption left_fix">
-        <time datetime="2024-07-20">20 juillet 2024</time> — Bruxelles, Belgique
-      </figcaption>
-    </figure>
-
-    <!-- C (gauche) -->
-    <figure class="gallery__item gallery__item--left" tabindex="0">
-      <div class="gallery__image">
-        <picture class="gallery__image--bw">
-          <source type="image/avif" srcset="assets/images_opt/selection/c.avif">
-          <source type="image/webp" srcset="assets/images_opt/selection/c.webp">
-          <img src="assets/images_opt/selection/c.jpeg"
-               loading="lazy"
-               alt="Danse contemporaine, Lyon 2024 — noir et blanc"
-               class="gallery__image--bw">
-        </picture>
-        <picture class="gallery__image--color">
-          <source type="image/avif" srcset="assets/images_opt/selection/c1.avif">
-          <source type="image/webp" srcset="assets/images_opt/selection/c1.webp">
-          <img src="assets/images_opt/selection/c1.jpeg"
-               loading="lazy"
-               alt="Danse contemporaine, Lyon 2024 — couleur"
-               class="gallery__image--color">
-        </picture>
-      </div>
-      <figcaption class="gallery__caption right_fix">
-        <time datetime="2024-08-05">5 août 2024</time> — Liège, Belgique
-      </figcaption>
-    </figure>
-  </div>
-</section>
-
-		<hr class="lux-divider"/>
-
-
-        <!-- Section Témoignages -->
  <!-- Section Témoignages -->
 <section class="medias-section">
   <div class="media-logos">
@@ -587,25 +436,6 @@
             </div>
 
 </section>
-        <!-- Section Biographie -->
-        <section id="biographie" class="biography">
-            <div class="biography__container">
-				<div class="biography__image-container ">
-					 <div id="pixi-canvas"></div>
-				</div>
-                <div class="biography__content">
-                    <div class="section-header">
-                        <h2 class="section-title">Biographie</h2>
-                        <p class="section-subtitle">L'histoire derrière la magie</p>
-                    </div>
-                    <div class="biography__text">
-                        <p >Magicien depuis l’enfance, Romain Dewasme fait rêver petits et grands avec des spectacles uniques. Révélé au grand public grâce à “La France a un incroyable talent” et d’autres émissions télévisées, il est aujourd’hui une référence dans l’art de l’illusion.</p>
-                        <p >Que ce soit pour des soirées privées, des mariages ou des évènements d’entreprise, Romain transforme chaque moment en une expérience magique et mémorable. Alliant talent, humour, créativité et passion, il saura captiver votre public et rendre votre évènement inoubliable.</p>
-                        <p >Découvrez la magie avec Romain Dewasme, l’artiste qui sublime vos instants.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
 		<hr class="lux-divider"/>
 	
         <!-- Section Contact -->

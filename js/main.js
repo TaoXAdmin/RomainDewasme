@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initLoading();
     initNavigation();
     initScrollEffects();
-    initGallery();
     initTestimonialSlider();
     initYearUpdate();
 });
@@ -149,8 +148,13 @@ function initNavigation() {
         });
     });
     
+	const isIndex = window.location.pathname.endsWith('/index.html')
+               || window.location.pathname === '/'
+               || document.querySelector('#accueil');
+  if (!isIndex) return;
     // Fonction pour mettre à jour l'élément de navigation actif en fonction du défilement
     function updateActiveNavOnScroll() {
+		
         // Obtenir la position actuelle de défilement avec une légère offset pour déclencher plus tôt
         const scrollPosition = window.scrollY + header.offsetHeight + 100;
         
@@ -362,66 +366,6 @@ function initScrollEffects() {
     });
 }
 
-/**
- * Initialisation de la galerie
- */
-function initGallery() {
-    // Données de la galerie (à remplacer par les vraies images)
-    const galleryData = [
-        { src: 'assets/images/gallery/image1.jpg', title: 'Soirée Corporate', category: 'close-up' },
-        { src: 'assets/images/gallery/image2.jpg', title: 'Performance Scénique', category: 'scene' },
-        { src: 'assets/images/gallery/image3.jpg', title: 'Ovation', category: 'scene' },
-        { src: 'assets/images/gallery/image4.jpg', title: 'Close-up VIP', category: 'close-up' },
-        { src: 'assets/images/gallery/image5.jpg', title: 'Spectacle Privé', category: 'scene' },
-        { src: 'assets/images/gallery/image6.jpg', title: 'Street-Art', category: 'street-art' },
-        { src: 'assets/images/gallery/image7.jpg', title: 'Signature', category: 'street-art' },
-        { src: 'assets/images/gallery/image8.jpg', title: 'Passion', category: 'street-art' }
-    ];
-    
-    const galleryGrid = document.querySelector('.gallery__grid');
-    const galleryFilterBtns = document.querySelectorAll('.gallery__filter-btn');
-    
-    if (galleryGrid) {
-        // Générer les éléments de la galerie
-        galleryData.forEach(item => {
-            const galleryItem = document.createElement('div');
-            galleryItem.className = `gallery__item ${item.category}`;
-            galleryItem.innerHTML = `
-                <img src="${item.src}" alt="${item.title}" class="gallery__img" loading="lazy">
-                <div class="gallery__overlay">
-                    <h3 class="gallery__title">${item.title}</h3>
-                </div>
-            `;
-            galleryGrid.appendChild(galleryItem);
-        });
-        
-        // Initialiser la galerie lightbox (si nécessaire)
-        // initLightbox();
-    }
-    
-    // Gestion du filtrage de la galerie
-    if (galleryFilterBtns.length > 0 && galleryGrid) {
-        galleryFilterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Mettre à jour les boutons actifs
-                galleryFilterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                // Filtrer les éléments
-                const filterValue = btn.getAttribute('data-filter');
-                const galleryItems = galleryGrid.querySelectorAll('.gallery__item');
-                
-                galleryItems.forEach(item => {
-                    if (filterValue === 'all' || item.classList.contains(filterValue)) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            });
-        });
-    }
-}
 
 /**
  * Initialisation du slider de témoignages
@@ -554,6 +498,7 @@ function capitalizeFirstLetter(string) {
 
 document.addEventListener('DOMContentLoaded', () => {
   const video       = document.getElementById('heroVideo');
+   if (!video) return;
   const btn         = document.getElementById('soundToggle');
   const section     = document.getElementById('accueil');
   const desktopSrc  = 'assets/videos/teaser_dsktp.mp4';
