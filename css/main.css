@@ -1877,7 +1877,7 @@ h2.section-title.black .cursor {
 }
 
 .testimonial-slider__pagination-dot.active {
-    background-color:#1A1A1A;
+    background-color: var(--color-primary);
     width: 10px;
 }
 
