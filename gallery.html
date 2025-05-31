@@ -152,13 +152,19 @@
   }
 
   // 7) Déclenchement lorsque le <h2> entre dans le viewport
-  const io = new IntersectionObserver((entries, obs) => {
-    if (entries[0].isIntersecting) {
-      obs.disconnect(); // on n'a besoin de l'observer qu'une fois
-      typeNext();       // et on lance la saisie
-    }
-  }, { threshold: 0 });
-  io.observe(el);
+  // 7) Déclenchement lorsque le <h2> entre dans le viewport
+const io = new IntersectionObserver((entries, obs) => {
+  if (entries[0].isIntersecting) {
+    obs.disconnect(); // on n'a besoin de l'observer qu'une fois
+
+    // On attend 1500 ms avant de lancer typeNext()
+    setTimeout(() => {
+      typeNext();
+    }, 1500);
+  }
+}, { threshold: 0 });
+
+io.observe(el);
 });
 
   </script>
