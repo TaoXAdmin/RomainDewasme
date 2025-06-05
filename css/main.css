@@ -923,13 +923,7 @@ section {
 
 
 .close-up {
-  background-image: url("../assets/images/bouche.png");
-  background: center / cover no-repeat
-    image-set(
-      url("../assets/images_opt/bouche.avif") type("image/avif"),
-      url("../assets/images_opt/bouche.webp") type("image/webp"),
-      url("../assets/images/bouche.png") type("image/png")
-    ) !important;
+  background: center / cover no-repeat url("../assets/images/bouche.png") !important;
 }
 
 .gala {
