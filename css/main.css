@@ -938,7 +938,7 @@ section {
   background: url("../assets/images/bouche.png") center/cover no-repeat;
   opacity: 0.6;  /* ajustez l’opacité pour laisser deviner le gradient si besoin */
   pointer-events: none;
-  z-index: -1;   /* on place l’image “derrière” le gradient inline */
+  z-index: 3;   /* on place l’image “derrière” le gradient inline */
 }
 
 .gala {
