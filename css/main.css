@@ -1029,13 +1029,22 @@ section {
   left: 0;
   width: 100%;
   height: 100%;
- background-image: image-set(url("../assets/images_opt/bg.avif") type("image/avif"), url("../assets/images_opt/bg.webp") type("image/webp"),url("../assets/images/bg.jpg") type("image/jpeg") );
+  /* 1) Fallback « classique » pour tous les Safari ou navigateurs sans image-set */
+  background-image: url("../assets/images/bg.jpg");
   background-size: cover;
-  opacity: 0.15; /* Ajuste l’intensité du grain ici */
+  opacity: 0.15;
   pointer-events: none;
   z-index: 2;
-}
 
+  /* 2) Ensuite on surcharge avec image-set pour les navigateurs qui comprennent */
+  /* On retire le type(...) qui pose problème sur Safari < iOS 17 */
+  background-image:
+    image-set(
+      url("../assets/images_opt/bg.avif") 1x,
+      url("../assets/images_opt/bg.webp") 1x,
+      url("../assets/images/bg.jpg") 1x
+    );
+}
 .service-card__icon {
     width: 80px;
     height: 80px;
