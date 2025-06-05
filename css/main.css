@@ -636,7 +636,8 @@ section {
   left: 0;
   width: 100%;
   height: 100%;
- background-image: image-set(url("../assets/images_opt/bg.avif") type("image/avif"), url("../assets/images_opt/bg.webp") type("image/webp"),url("../assets/images/bg.jpg") type("image/jpeg") );
+  background-image:  url("../assets/images/bg.jpg");
+  background-image: image-set(url("../assets/images_opt/bg.avif") type("image/avif"), url("../assets/images_opt/bg.webp") type("image/webp"),url("../assets/images/bg.jpg") type("image/jpeg") );
   background-repeat: repeat;
   background-size: cover;
   background-position: center;
@@ -922,12 +923,13 @@ section {
 
 
 .close-up {
+  background: center / cover no-repeat url("../assets/images/bouche.png");
   background: center / cover no-repeat
     image-set(
       url("../assets/images_opt/bouche.avif") type("image/avif"),
       url("../assets/images_opt/bouche.webp") type("image/webp"),
       url("../assets/images/bouche.png") type("image/png")
-    ) !important;
+    );
 }
 
 .gala {
