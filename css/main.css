@@ -642,7 +642,6 @@ section {
   background-size: cover;
   background-position: center;
   opacity: 0.09;
-  z-index: 2;
 }
 
 
@@ -924,7 +923,7 @@ section {
 
 /* Garde le gradient inline, mais on ajoute l’image dans ::before */
 .close-up {
-  background: center / cover no-repeat url("../assets/images/bouche.png") !important;
+  background: url("../assets/images/bouche.png") center/cover no-repeat !important;
 }
 .gala {
   background: center / cover no-repeat
