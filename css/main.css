@@ -887,7 +887,7 @@ section {
 
 @media (max-width: 1250px) {
     .luxury-card {
-        height: 550px;
+        height: 500px;
     }
     
     .service-card__face {
