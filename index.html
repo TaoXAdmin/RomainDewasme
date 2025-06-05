@@ -523,52 +523,7 @@
 
 </section>
    
-    <script>
-document.addEventListener("DOMContentLoaded", function() {
-  function dumpInfo(el, name) {
-    if (!el) return name + ": (élément introuvable)\n\n";
-    const cs = window.getComputedStyle(el);
-    // Backface‐visibility peut être renvoyé sous forme de camelCase ou kebab-case
-    const backface = cs.getPropertyValue("backface-visibility") || cs.backfaceVisibility;
-    return (
-      `=== ${name} ===\n` +
-      `classes appliquées      : ${el.className}\n` +
-      `display                 : ${cs.display}\n` +
-      `visibility              : ${cs.visibility}\n` +
-      `opacity                 : ${cs.opacity}\n` +
-      `width (computed)        : ${cs.width}\n` +
-      `height (computed)       : ${cs.height}\n` +
-      `transform               : ${cs.transform}\n` +
-      `backface-visibility     : ${backface}\n` +
-      `z-index                 : ${cs.zIndex}\n` +
-      `background-image        : ${cs.backgroundImage}\n` +
-      `background-blend-mode   : ${cs.backgroundBlendMode}\n` +
-      `background-color        : ${cs.backgroundColor}\n` +
-      `background-position     : ${cs.backgroundPosition}\n` +
-      `background-size         : ${cs.backgroundSize}\n` +
-      `background-repeat       : ${cs.backgroundRepeat}\n` +
-      `inline style (attribué) : ${el.getAttribute("style") || "(aucun)"}\n\n`
-    );
-  }
 
-  const card       = document.querySelector(".luxury-card");
-  const inner      = document.querySelector(".service-card__inner");
-  const frontFace  = document.querySelector(".service-card__face--front");
-  const closeUp    = document.querySelector(".service-card__face--front.close-up");
-  const backFace   = document.querySelector(".service-card__face--back");
-
-  let msg = "";
-  msg += dumpInfo(card,      ".luxury-card");
-  msg += dumpInfo(inner,     ".service-card__inner");
-  msg += dumpInfo(frontFace, ".service-card__face--front (général)");
-  msg += dumpInfo(closeUp,   ".service-card__face--front.close-up");
-  msg += dumpInfo(backFace,  ".service-card__face--back");
-
-  console.clear();
-  console.log(msg);
-  alert(msg);
-});
-</script>
     <!-- Footer -->
     <footer class="footer">
         <div class="footer__container">
