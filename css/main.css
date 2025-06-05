@@ -923,8 +923,12 @@ section {
 
 /* Garde le gradient inline, mais on ajoute l’image dans ::before */
 .close-up {
-  background: url("../assets/images/bouche.png") center/cover no-repeat !important;
+  background-image:    url("../assets/images/bouche.png") !important;
+  background-position: center !important;
+  background-size:     cover !important;
+  background-repeat:   no-repeat !important;
 }
+
 .gala {
   background: center / cover no-repeat
     image-set(
