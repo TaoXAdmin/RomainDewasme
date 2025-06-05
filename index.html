@@ -325,49 +325,57 @@
 </div>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  // On cible la carte complète (.luxury-card) et la face avant “close-up”
+  // ------------- CONFIGURATION -------------
+  // Si vous passez FORCE_OPACITY_ONE à true, on forcera opacity:1 avant d'inspecter
+  const FORCE_OPACITY_ONE = false;
+
+  // ------------- SÉLECTEURS -------------
   const card       = document.querySelector(".luxury-card");
-  const frontClose = document.querySelector(".service-card__face--front.close-up");
   const faceFront  = document.querySelector(".service-card__face--front");
+  const closeUp    = document.querySelector(".service-card__face--front.close-up");
   const faceBack   = document.querySelector(".service-card__face--back");
 
-  // Fonctions utilitaires
-  function getInfo(el, name) {
-    if (!el) return name + ": (élément introuvable)\n";
+  function noteInfo(el, name) {
+    if (!el) return `⚠️ ${name} introuvable\n\n`;
+    // Si on force l'opacité, on applique immédiatement
+    if (FORCE_OPACITY_ONE) {
+      el.style.opacity = "1";
+      el.classList.add("revealed"); // au cas où le JS attend cette classe
+    }
     const cs = window.getComputedStyle(el);
-    const inline = el.getAttribute("style") || "(pas d’inline style)";
+    const inline = el.getAttribute("style") || "(aucun style inline)";
+    // Vérifier si la classe "revealed" est présente (pour .luxury-card)
+    let extra = "";
+    if (el.classList.contains("revealed")) {
+      extra = " (la classe “revealed” est présente)";
+    }
     return (
-      `=== Info pour ${name} ===\n` +
-      ` largeur (computed)       : ${cs.width}\n` +
-      ` hauteur (computed)       : ${cs.height}\n` +
-      ` background-image         : ${cs.backgroundImage}\n` +
-      ` background-blend-mode    : ${cs.backgroundBlendMode}\n` +
-      ` background-color         : ${cs.backgroundColor}\n` +
-      ` background-position      : ${cs.backgroundPosition}\n` +
-      ` background-size          : ${cs.backgroundSize}\n` +
-      ` background-repeat        : ${cs.backgroundRepeat}\n` +
-      ` display                  : ${cs.display}\n` +
-      ` visibility               : ${cs.visibility}\n` +
-      ` opacity                  : ${cs.opacity}\n` +
-      ` inline style (attribué)  : ${inline}\n\n`
+      `=== ${name} ===\n` +
+      `Classes appliquées      : ${el.className}\n` +
+      `opacity (computed)      : ${cs.opacity}${name === ".luxury-card" ? extra : ""}\n` +
+      `display                 : ${cs.display}\n` +
+      `visibility              : ${cs.visibility}\n` +
+      `background-image        : ${cs.backgroundImage}\n` +
+      `background-blend-mode   : ${cs.backgroundBlendMode}\n` +
+      `background-color        : ${cs.backgroundColor}\n` +
+      `width (computed)        : ${cs.width}\n` +
+      `height (computed)       : ${cs.height}\n` +
+      `inline style (attribué) : ${inline}\n\n`
     );
   }
 
-  // On construit le message complet
-  let message = "";
-  message += getInfo(card,       ".luxury-card");
-  message += getInfo(faceFront,  ".service-card__face--front");
-  message += getInfo(frontClose, ".service-card__face--front.close-up");
-  message += getInfo(faceBack,   ".service-card__face--back");
+  let report = "";
+  report += noteInfo(card,      ".luxury-card");
+  report += noteInfo(faceFront, ".service-card__face--front");
+  report += noteInfo(closeUp,   ".close-up (face avant)");
+  report += noteInfo(faceBack,  ".service-card__face--back");
 
-  // On écrit dans la console
   console.clear();
-  console.log(message);
-
-  // On affiche en alert (pour le debug sur mobile)
-  alert(message);
+  console.log(report);
+  alert(report);
 });
 </script>
+
 
 
                 </div>
