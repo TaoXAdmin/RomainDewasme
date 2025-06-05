@@ -924,9 +924,13 @@ section {
 /* Garde le gradient inline, mais on ajoute l’image dans ::before */
 .close-up {
   background-image:    url("../assets/images/bouche.png") !important;
-  background-position: center !important;
-  background-size:     cover !important;
-  background-repeat:   no-repeat !important;
+  background-position: center                         !important;
+  background-size:     cover                          !important;
+  background-repeat:   no-repeat                      !important;
+  /* On s’assure qu’il n’y a aucun background-color ou gradient inline */
+  background-color: transparent                       !important;
+  /* On augmente la spécificité en allongeant le sélecteur : */
+  border: 2px solid lime   !important; /* juste pour vérifier visuellement */
 }
 
 .gala {
