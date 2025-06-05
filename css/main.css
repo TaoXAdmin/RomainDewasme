@@ -850,12 +850,7 @@ section {
         margin-right: auto;
         margin-bottom: 650px; /* CORRECTION: Ajusté pour mobile */
     }
-    
-    .luxury-card {
-        height: auto;
-        min-height: 480px;
-    }
-    
+        
     .services .section-title {
         font-size: 3.91rem;
     }
