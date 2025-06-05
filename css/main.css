@@ -972,7 +972,7 @@ section {
     justify-content: space-between;
     text-align: center;
     position: relative;
-	background-blend-mode: lighten;
+	background-blend-mode: normal;
 	border-radius: var(--radius-md);
 	overflow: hidden;
 	image-rendering: auto;
