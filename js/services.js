@@ -105,17 +105,7 @@ function initServiceCardInteractions() {
                     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
                 }
             });
-            
-            // Réinitialiser au départ de la souris
-            card.addEventListener('mouseleave', () => {
-                // Réinitialiser l'arrière-plan avec transition
-                if (frontFace) {
-                    frontFace.style.background = 'linear-gradient(145deg, var(--color-white) 0%, var(--color-off-white) 100%)';
-                }
-                
-                // Réinitialiser la transformation
-                card.style.transform = '';
-            });
+
         });
     }
     
