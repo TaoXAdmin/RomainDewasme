@@ -124,16 +124,11 @@
   left: 0;
   width: 100%;
   height: 100%;
-   background-image: image-set(
-    url("../assets/images_opt/bg.avif") type("image/avif"),
-    url("../assets/images_opt/bg.webp") type("image/webp"),
-    url("../assets/images/bg.jpg") type("image/jpeg")
-  );
+   background-image:   url("../assets/images/bg.jpg");
   background-repeat: repeat;
   background-size: cover;
   background-position: center;
-  opacity: 0.15; Ajuste l’intensité du grain ici
-  z-index: 2;
+  opacity: 0.15; 
 }
 
 .loading.hidden {
@@ -528,11 +523,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-   background-image: image-set(
-    url("../assets/images_opt/bg.avif") type("image/avif"),
-    url("../assets/images_opt/bg.webp") type("image/webp"),
-    url("../assets/images/bg.jpg") type("image/jpeg")
-  );
+   background-image: url("../assets/images/bg.jpg");
   background-size: cover;
   background-position: center;
   opacity: 0.15; /* Ajuste l’intensité du grain ici */
