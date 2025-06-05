@@ -323,6 +323,42 @@
         </div>
     </div>
 </div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // 1) On cible la carte complète (.luxury-card)
+    const card = document.querySelector(".luxury-card");
+    if (!card) {
+      alert("BUG : .luxury-card introuvable !");
+      return;
+    }
+
+    // 2) On cible la face avant ".service-card__face--front.close-up"
+    const front = document.querySelector(".service-card__face--front.close-up");
+    if (!front) {
+      alert("BUG : .service-card__face--front.close-up introuvable !");
+      return;
+    }
+
+    // 3) Récupérer le style calculé
+    const styleCard  = window.getComputedStyle(card);
+    const styleFront = window.getComputedStyle(front);
+
+    // 4) Préparer le message d'alerte
+    const msg =
+      "=== Diagnostic iPhone ===\n\n" +
+      "-- .luxury-card --\n" +
+      "width: "  + styleCard.width  + "\n" +
+      "height: " + styleCard.height + "\n" +
+      "background-image: " + styleCard.backgroundImage + "\n\n" +
+      "-- .close-up (face avant) --\n" +
+      "width: "  + styleFront.width  + "\n" +
+      "height: " + styleFront.height + "\n" +
+      "background-image: " + styleFront.backgroundImage + "\n";
+
+    // 5) Afficher
+    alert(msg);
+  });
+</script>
 
                 </div>
             </div>
