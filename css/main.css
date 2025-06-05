@@ -667,7 +667,7 @@ section {
 
 @media (max-width: 767px) {
     .luxury-card {
-        height: 550px; /* Hauteur augmentée sur mobile pour éviter le défilement */
+        height: 500px; /* Hauteur augmentée sur mobile pour éviter le défilement */
     }
 }
 
