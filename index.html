@@ -323,61 +323,6 @@
         </div>
     </div>
 </div>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  // ------------- CONFIGURATION -------------
-  // Si vous passez FORCE_OPACITY_ONE à true, on forcera opacity:1 avant d'inspecter
-  const FORCE_OPACITY_ONE = false;
-
-  // ------------- SÉLECTEURS -------------
-  const card       = document.querySelector(".luxury-card");
-  const faceFront  = document.querySelector(".service-card__face--front");
-  const closeUp    = document.querySelector(".service-card__face--front.close-up");
-  const faceBack   = document.querySelector(".service-card__face--back");
-
-  function noteInfo(el, name) {
-    if (!el) return `⚠️ ${name} introuvable\n\n`;
-    // Si on force l'opacité, on applique immédiatement
-    if (FORCE_OPACITY_ONE) {
-      el.style.opacity = "1";
-      el.classList.add("revealed"); // au cas où le JS attend cette classe
-    }
-    const cs = window.getComputedStyle(el);
-    const inline = el.getAttribute("style") || "(aucun style inline)";
-    // Vérifier si la classe "revealed" est présente (pour .luxury-card)
-    let extra = "";
-    if (el.classList.contains("revealed")) {
-      extra = " (la classe “revealed” est présente)";
-    }
-    return (
-      `=== ${name} ===\n` +
-      `Classes appliquées      : ${el.className}\n` +
-      `opacity (computed)      : ${cs.opacity}${name === ".luxury-card" ? extra : ""}\n` +
-      `display                 : ${cs.display}\n` +
-      `visibility              : ${cs.visibility}\n` +
-      `background-image        : ${cs.backgroundImage}\n` +
-      `background-blend-mode   : ${cs.backgroundBlendMode}\n` +
-      `background-color        : ${cs.backgroundColor}\n` +
-      `width (computed)        : ${cs.width}\n` +
-      `height (computed)       : ${cs.height}\n` +
-      `inline style (attribué) : ${inline}\n\n`
-    );
-  }
-
-  let report = "";
-  report += noteInfo(card,      ".luxury-card");
-  report += noteInfo(faceFront, ".service-card__face--front");
-  report += noteInfo(closeUp,   ".close-up (face avant)");
-  report += noteInfo(faceBack,  ".service-card__face--back");
-
-  console.clear();
-  console.log(report);
-  alert(report);
-});
-</script>
-
-
-
                 </div>
             </div>
 
@@ -933,5 +878,52 @@ document.addEventListener("DOMContentLoaded", () => {
     <script src="js/instagram.js"></script>
     <script src="js/contact.js"></script>
 	<script src="js/services.js"></script>
+	    <script>
+document.addEventListener("DOMContentLoaded", function() {
+  function dumpInfo(el, name) {
+    if (!el) return name + ": (élément introuvable)\n\n";
+    const cs = window.getComputedStyle(el);
+    // Backface‐visibility peut être renvoyé sous forme de camelCase ou kebab-case
+    const backface = cs.getPropertyValue("backface-visibility") || cs.backfaceVisibility;
+    return (
+      `=== ${name} ===\n` +
+      `classes appliquées      : ${el.className}\n` +
+      `display                 : ${cs.display}\n` +
+      `visibility              : ${cs.visibility}\n` +
+      `opacity                 : ${cs.opacity}\n` +
+      `width (computed)        : ${cs.width}\n` +
+      `height (computed)       : ${cs.height}\n` +
+      `transform               : ${cs.transform}\n` +
+      `backface-visibility     : ${backface}\n` +
+      `z-index                 : ${cs.zIndex}\n` +
+      `background-image        : ${cs.backgroundImage}\n` +
+      `background-blend-mode   : ${cs.backgroundBlendMode}\n` +
+      `background-color        : ${cs.backgroundColor}\n` +
+      `background-position     : ${cs.backgroundPosition}\n` +
+      `background-size         : ${cs.backgroundSize}\n` +
+      `background-repeat       : ${cs.backgroundRepeat}\n` +
+      `inline style (attribué) : ${el.getAttribute("style") || "(aucun)"}\n\n`
+    );
+  }
+
+  const card       = document.querySelector(".luxury-card");
+  const inner      = document.querySelector(".service-card__inner");
+  const frontFace  = document.querySelector(".service-card__face--front");
+  const closeUp    = document.querySelector(".service-card__face--front.close-up");
+  const backFace   = document.querySelector(".service-card__face--back");
+
+  let msg = "";
+  msg += dumpInfo(card,      ".luxury-card");
+  msg += dumpInfo(inner,     ".service-card__inner");
+  msg += dumpInfo(frontFace, ".service-card__face--front (général)");
+  msg += dumpInfo(closeUp,   ".service-card__face--front.close-up");
+  msg += dumpInfo(backFace,  ".service-card__face--back");
+
+  console.clear();
+  console.log(msg);
+  alert(msg);
+});
+</script>
+
 </body>
 </html>
