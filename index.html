@@ -324,41 +324,51 @@
     </div>
 </div>
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    // 1) On cible la carte complète (.luxury-card)
-    const card = document.querySelector(".luxury-card");
-    if (!card) {
-      alert("BUG : .luxury-card introuvable !");
-      return;
-    }
+document.addEventListener("DOMContentLoaded", function() {
+  // On cible la carte complète (.luxury-card) et la face avant “close-up”
+  const card       = document.querySelector(".luxury-card");
+  const frontClose = document.querySelector(".service-card__face--front.close-up");
+  const faceFront  = document.querySelector(".service-card__face--front");
+  const faceBack   = document.querySelector(".service-card__face--back");
 
-    // 2) On cible la face avant ".service-card__face--front.close-up"
-    const front = document.querySelector(".service-card__face--front.close-up");
-    if (!front) {
-      alert("BUG : .service-card__face--front.close-up introuvable !");
-      return;
-    }
+  // Fonctions utilitaires
+  function getInfo(el, name) {
+    if (!el) return name + ": (élément introuvable)\n";
+    const cs = window.getComputedStyle(el);
+    const inline = el.getAttribute("style") || "(pas d’inline style)";
+    return (
+      `=== Info pour ${name} ===\n` +
+      ` largeur (computed)       : ${cs.width}\n` +
+      ` hauteur (computed)       : ${cs.height}\n` +
+      ` background-image         : ${cs.backgroundImage}\n` +
+      ` background-blend-mode    : ${cs.backgroundBlendMode}\n` +
+      ` background-color         : ${cs.backgroundColor}\n` +
+      ` background-position      : ${cs.backgroundPosition}\n` +
+      ` background-size          : ${cs.backgroundSize}\n` +
+      ` background-repeat        : ${cs.backgroundRepeat}\n` +
+      ` display                  : ${cs.display}\n` +
+      ` visibility               : ${cs.visibility}\n` +
+      ` opacity                  : ${cs.opacity}\n` +
+      ` inline style (attribué)  : ${inline}\n\n`
+    );
+  }
 
-    // 3) Récupérer le style calculé
-    const styleCard  = window.getComputedStyle(card);
-    const styleFront = window.getComputedStyle(front);
+  // On construit le message complet
+  let message = "";
+  message += getInfo(card,       ".luxury-card");
+  message += getInfo(faceFront,  ".service-card__face--front");
+  message += getInfo(frontClose, ".service-card__face--front.close-up");
+  message += getInfo(faceBack,   ".service-card__face--back");
 
-    // 4) Préparer le message d'alerte
-    const msg =
-      "=== Diagnostic iPhone ===\n\n" +
-      "-- .luxury-card --\n" +
-      "width: "  + styleCard.width  + "\n" +
-      "height: " + styleCard.height + "\n" +
-      "background-image: " + styleCard.backgroundImage + "\n\n" +
-      "-- .close-up (face avant) --\n" +
-      "width: "  + styleFront.width  + "\n" +
-      "height: " + styleFront.height + "\n" +
-      "background-image: " + styleFront.backgroundImage + "\n";
+  // On écrit dans la console
+  console.clear();
+  console.log(message);
 
-    // 5) Afficher
-    alert(msg);
-  });
+  // On affiche en alert (pour le debug sur mobile)
+  alert(message);
+});
 </script>
+
 
                 </div>
             </div>
