@@ -977,6 +977,7 @@ section {
 	overflow: hidden;
 	image-rendering: auto;
 	transform: translateZ(0);
+	z-index: 20 !important;
 }
 
 .service-card__face--front::before {
@@ -1017,7 +1018,7 @@ section {
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 15; /* CORRECTION: S'assurer que la face arrière soit au-dessus */
+    z-index: auto !important;
 }
 
 
