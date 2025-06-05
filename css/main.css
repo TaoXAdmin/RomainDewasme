@@ -827,6 +827,7 @@ section {
     background: transparent;
     border-radius: var(--radius-md);
     transition: transform 0.3s ease;
+    opacity: 1 !important;
 }
 
 /* Responsive pour les cartes */
