@@ -472,7 +472,11 @@ section {
   /* adapte l’icône à la taille du bouton */
   max-width: 80%;
   max-height: 80%;
-  object-fit: contain;
+  object-fit: contain; 
+  filter:
+    brightness(0)     /* rend l’image noire */
+    invert(1)         /* inverse le noir en blanc */
+    drop-shadow(0 0 5px rgba(255, 255, 255, 0.6));
 }
 
 
