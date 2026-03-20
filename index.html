@@ -58,6 +58,23 @@
     type="video/mp4"
     media="(max-width: 1250px)"
   >
+  
+  
+  <link
+  rel="preload"
+  as="video"
+  href="assets/videos/explosifv5Desktop.mp4"
+  type="video/mp4"
+  media="(min-width: 1250px)"
+>
+
+<link
+  rel="preload"
+  as="video"
+  href="assets/videos/explosifv5.mp4"
+  type="video/mp4"
+  media="(max-width: 1250px)"
+>
     <!-- Préchargement de la sélection A -->
 <link rel="preload" as="image" href="assets/images_opt/selection/a.avif" type="image/avif">
 <link rel="preload" as="image" href="assets/images_opt/selection/a.webp" type="image/webp">
@@ -85,10 +102,141 @@
 <link rel="preload" as="image" href="assets/images_opt/selection/c1.webp" type="image/webp">
 <link rel="preload" as="image" href="assets/images_opt/selection/c1.jpeg" type="image/jpeg">
 
+
     <!-- CSS -->
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/responsive.css">
+
+    <style>
+      .hero__glass-cta {
+        position: absolute;
+        left: 4%;
+        bottom: 5%;
+        z-index: 8;
+        display: inline-flex;
+        align-items: center;
+        gap: 1.2rem;
+        padding: 1.45rem 2.4rem;
+        min-height: 5.8rem;
+        border-radius: 999px;
+        color: var(--color-white2);
+        font-family: var(--font-primary);
+        font-size: 1.45rem;
+        font-weight: 900;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        line-height: 1;
+        background:
+          linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.07) 100%);
+        border: 1px solid rgba(255,255,255,0.22);
+        box-shadow:
+          0 10px 30px rgba(0, 0, 0, 0.30),
+          inset 0 1px 0 rgba(255,255,255,0.22),
+          inset 0 -1px 0 rgba(255,255,255,0.04);
+        backdrop-filter: blur(16px) saturate(145%);
+        -webkit-backdrop-filter: blur(16px) saturate(145%);
+        overflow: hidden;
+        isolation: isolate;
+        transition:
+          transform 0.35s ease,
+          box-shadow 0.35s ease,
+          border-color 0.35s ease,
+          background 0.35s ease;
+      }
+
+      .hero__glass-cta::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(120deg,
+            rgba(255,255,255,0) 0%,
+            rgba(255,255,255,0.16) 32%,
+            rgba(255,255,255,0.04) 55%,
+            rgba(255,255,255,0) 100%);
+        transform: translateX(-115%);
+        transition: transform 0.7s ease;
+        z-index: -1;
+      }
+
+      .hero__glass-cta::after {
+        content: "";
+        position: absolute;
+        inset: 1px;
+        border-radius: inherit;
+        border: 1px solid rgba(212,175,55,0.22);
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .hero__glass-cta:hover {
+        transform: translateY(-3px);
+        border-color: rgba(255,255,255,0.34);
+        box-shadow:
+          0 14px 34px rgba(0, 0, 0, 0.38),
+          0 0 0 1px rgba(212,175,55,0.12),
+          inset 0 1px 0 rgba(255,255,255,0.28);
+        background:
+          linear-gradient(135deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.09) 100%);
+      }
+
+      .hero__glass-cta:hover::before {
+        transform: translateX(115%);
+      }
+
+      .hero__glass-cta-text {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+        white-space: nowrap;
+      }
+
+      .hero__glass-cta-label {
+        display: inline-block;
+      }
+
+      .hero__glass-cta-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.8rem;
+        height: 2.8rem;
+        border-radius: 50%;
+        background: rgba(212,175,55,0.16);
+        border: 1px solid rgba(255,255,255,0.18);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.18);
+        font-size: 1.35rem;
+        flex-shrink: 0;
+		opacity: 0;
+      }
+
+      @media (max-width: 1250px) {
+        .hero__glass-cta {
+          left: 3%;
+          bottom: 15%;
+          padding: 1.3rem 2rem;
+          letter-spacing: 2.2px;
+        }
+      }
+
+      @media (max-width: 575px) {
+        .hero__glass-cta {
+          left: 50%;
+          bottom: 15%;
+          transform: translateX(-50%);
+          width: calc(100% - 3.2rem);
+          max-width: 34rem;
+          justify-content: center;
+          padding: 1.25rem 1.8rem;
+          letter-spacing: 1.8px;
+        }
+
+        .hero__glass-cta:hover {
+          transform: translateX(-50%) translateY(-3px);
+        }
+      }
+    </style>
 
 <script type="application/ld+json">
 {
@@ -181,6 +329,8 @@
                     <span></span>
                 </button>
                 <ul class="nav__list">
+		    <li class="nav__item"><a href="actus.html" class="nav__link">Spectacles</a></li>
+				
 		    <li class="nav__item"><a href="#prestations" class="nav__link">Prestations</a></li>
                     <li class="nav__item"><a href="gallery.html" class="nav__link">Galerie</a></li>
                     <li class="nav__item"><a href="bio.html" class="nav__link">Biographie</a></li>
@@ -191,12 +341,6 @@
     </header>
 
     <main>
-				  <!-- Bouton de contrôle du son (remplacez 🔇/🔊 par vos SVG) -->
-				  <button
-					id="soundToggle"
-					class="hero__sound-toggle"
-					aria-label="Activer le son"
-				  ><img src="assets/icons/off.svg" alt="off"></button>
         <!-- Section Accueil -->
         <section id="accueil" class="hero">
             <div class="hero__video-container">
@@ -208,7 +352,8 @@
 					playsinline
 					muted
 					preload="auto"
-				  >  <source
+				  >
+  <source
     src="https://www.romaindewasme.com/assets/videos/teaser_dsktp.mp4"
     type="video/mp4"
     media="(min-width: 1250px)"
@@ -218,10 +363,15 @@
     type="video/mp4"
     media="(max-width: 1249px)"
   >
-  Votre navigateur ne supporte pas la vidéo.</video>
+  Votre navigateur ne supporte pas la vidéo.
+</video>
 
+                <a href="contact.html" class="hero__glass-cta" aria-label="Aller à la page contact">
+                  <span class="hero__glass-cta-text">
+                    <span class="hero__glass-cta-label">Réserver</span>
+                  </span>
+                </a>
 
-                
 				<!-- <div class="contact__social go__down">
                         <a href="https://www.instagram.com/romaindewasme/" class="contact__social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
                             <img src="assets/icons/instagram.svg" alt="Instagram">
@@ -234,10 +384,9 @@
             <div class="hero__content"> -->
 
             </div>
-
         </section>
 
-		<hr class="lux-divider"/>
+		
 
    <!-- Section Prestations avec structure optimisée pour éviter le chevauchement -->
 <section id="prestations" class="services luxury-section">
@@ -417,11 +566,96 @@
     </div>
 </section>
 
-		<hr class="lux-divider"/>
+		
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 <script src="js/galleryEffect.js"></script>
- <!-- Section Témoignages -->
+<!-- SECTION SPECTACLE -->
+<section class="Spectacles">
+  <div class="container">
+    <div class="section-header Spectacles__intro">
+      <h2 class="section-title magic-text Spectacles__title">Spectacles</h2>
+      <p class="section-subtitle Spectacles__subtitle">
+        Des créations scéniques conçues pour émerveiller petits et grands !
+      </p>
+      <div class="title-separator"><span></span></div>
+    </div>
+
+    <div class="Spectacles__cta-wrap">
+      <a href="actus.html" class="spectacles-cta">
+        <span class="spectacles-cta__text">Dates & lieux des spectacles</span>
+        <span class="spectacles-cta__icon">→</span>
+      </a>
+    </div>
+
+   <div class="Spectacles__grid">
+<article
+  class="spectacles-card spectacles-card--explosif spectacles-card--interactive"
+  aria-label="Affiche du spectacle Explosif"
+  role="button"
+  tabindex="0"
+  aria-haspopup="dialog"
+  aria-controls="spectacleModal"
+  data-spectacle-trigger="explosif"
+  data-video-desktop="assets/videos/explosifv5Desktop.mp4"
+  data-video-mobile="assets/videos/explosifv5.mp4"
+>
+    <div class="spectacles-card__visual"></div>
+    <div class="spectacles-card__overlay"></div>
+
+  <div class="spectacles-card__content">
+  <span class="spectacles-card__tag">Spectacle</span>
+
+  <div class="spectacles-card__footer">
+    <h3 class="spectacles-card__title">Explosif</h3>
+    <span class="spectacles-card__audience">Tout public</span>
+  </div>
+</div>
+<div class="spectacles-card__hint" aria-hidden="true">
+  <div class="spectacles-card__hint-demo">
+<svg class="spectacles-card__ghost-cursor" viewBox="0 0 80 80" aria-hidden="true">
+  <polygon points="20,10 20,58 32,48 44,74 52,70 40,44 60,44" />
+</svg>
+  
+<svg class="spectacles-card__ghost-finger" viewBox="0 0 100 100" aria-hidden="true">
+  <path
+    class="spectacles-card__ghost-finger-line"
+    d="
+      M20,85 
+      C15,85 10,80 10,70 
+      V65 C10,55 20,50 30,60 
+      V20 C30,5 45,5 45,20 
+      V45 C45,35 55,35 55,45 
+      V50 C55,40 65,40 65,50 
+      V55 C65,45 75,45 75,55 
+      V75 C75,90 60,95 40,95 
+      L20,95"
+  />
+</svg>
+    <span class="spectacles-card__hint-ripple"></span>
+  </div>
+</div>
+  </article>
+
+  <article class="spectacles-card spectacles-card--trucdeouf" aria-label="Affiche du spectacle Truc de Ouf">
+    <div class="spectacles-card__visual"></div>
+    <div class="spectacles-card__overlay"></div>
+
+   <div class="spectacles-card__content">
+  <span class="spectacles-card__tag">Spectacle</span>
+
+  <div class="spectacles-card__footer">
+    <h3 class="spectacles-card__title">Truc de Ouf</h3>
+    <span class="spectacles-card__audience">Tout public</span>
+  </div>
+</div>
+  </article>
+</div>
+  </div>
+</section>
+
+		
+
 <section class="medias-section">
   <div class="media-logos">
     <h2 class="media-logos__title">VU à la télévision</h2>
@@ -491,7 +725,7 @@
   </div>
 </section>
 
-		<hr class="lux-divider"/>
+		
 
 		<section class="testimonials">
             <div class="section-header">
@@ -536,6 +770,7 @@
             </div>
             <div class="footer__nav">
                 <ul class="footer__nav-list">
+					<li class="footer__nav-item"><a href="actus.html" class="footer__nav-link">Spectacles</a></li>
                     <li class="footer__nav-item"><a href="#prestations" class="footer__nav-link">Prestations</a></li>
                     <li class="footer__nav-item"><a href="gallery.html" class="footer__nav-link">Galerie</a></li>
                     <li class="footer__nav-item"><a href="bio.html" class="footer__nav-link">Biographie</a></li>
@@ -871,6 +1106,292 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   })();
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (typeof gsap === "undefined") {
+    console.warn("GSAP n'est pas chargé.");
+    return;
+  }
+
+  document.querySelectorAll(".scene").forEach((scene) => {
+    // On neutralise l'ancien background CSS
+    scene.style.backgroundImage = "none";
+
+    // Création des 2 layers
+    const bg1 = document.createElement("div");
+    const bg2 = document.createElement("div");
+
+    bg1.className = "scene-bg scene-bg--1";
+    bg2.className = "scene-bg scene-bg--2";
+
+    scene.prepend(bg1);
+    scene.prepend(bg2);
+
+    const layers = [bg1, bg2];
+    let current = 0;
+
+    gsap.set(bg1, {
+      opacity: 1,
+      scale: 1,
+      filter: "blur(0px) brightness(1)"
+    });
+
+    gsap.set(bg2, {
+      opacity: 0,
+      scale: 1.12,
+      filter: "blur(8px) brightness(1.12)"
+    });
+
+    function switchScene() {
+      const currentLayer = layers[current];
+      const nextLayer = layers[current === 0 ? 1 : 0];
+
+      gsap.timeline({
+        onComplete: () => {
+          current = current === 0 ? 1 : 0;
+          gsap.delayedCall(3, switchScene); // switch toutes les 3 secondes
+        }
+      })
+      .to(currentLayer, {
+        opacity: 0,
+        scale: 1.08,
+        filter: "blur(8px) brightness(0.85)",
+        duration: 1.1,
+        ease: "power3.inOut"
+      }, 0)
+      .fromTo(nextLayer, {
+        opacity: 0,
+        scale: 1.14,
+        filter: "blur(10px) brightness(1.15)"
+      }, {
+        opacity: 1,
+        scale: 1,
+        filter: "blur(0px) brightness(1)",
+        duration: 1.1,
+        ease: "power3.inOut"
+      }, 0);
+    }
+
+    gsap.delayedCall(3, switchScene);
+  });
+});
+
+
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const trigger = document.querySelector('[data-spectacle-trigger="explosif"]');
+  const modal = document.getElementById('spectacleModal');
+  const video = document.getElementById('spectacleModalVideo');
+  const replayBtn = document.getElementById('spectacleModalReplay');
+
+  if (!trigger || !modal || !video || !replayBtn) return;
+
+  const closeBtn = modal.querySelector('.spectacle-modal__close');
+  const backdrop = modal.querySelector('.spectacle-modal__backdrop');
+  const mqMobile = window.matchMedia('(max-width: 1250px)');
+
+  let isOpen = false;
+  let isClosing = false;
+
+  function getVideoSrc() {
+    return mqMobile.matches
+      ? trigger.dataset.videoMobile
+      : trigger.dataset.videoDesktop;
+  }
+
+  function prepareVideo() {
+    const src = getVideoSrc();
+
+    if (video.dataset.currentSrc !== src) {
+      video.src = src;
+      video.dataset.currentSrc = src;
+      video.load();
+    }
+
+    video.volume = 0.65;
+    replayBtn.hidden = true;
+    modal.classList.remove('is-ended');
+  }
+
+  async function openModal() {
+    if (isOpen || isClosing) return;
+
+    prepareVideo();
+    video.currentTime = 0;
+
+modal.hidden = false;
+modal.setAttribute('aria-hidden', 'false');
+document.body.classList.add('spectacle-modal-open');
+
+/* force le navigateur à peindre l'état initial avant l'ouverture */
+void modal.offsetWidth;
+
+requestAnimationFrame(() => {
+  modal.classList.add('is-open');
+});
+
+    isOpen = true;
+
+    try {
+      await video.play();
+    } catch (err) {
+      console.warn('Lecture bloquée :', err);
+    }
+  }
+
+  function closeModal() {
+    if (!isOpen || isClosing) return;
+
+    isClosing = true;
+    modal.classList.remove('is-open', 'is-ended');
+
+    setTimeout(() => {
+      video.pause();
+      video.currentTime = 0;
+      replayBtn.hidden = true;
+      modal.hidden = true;
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('spectacle-modal-open');
+      isOpen = false;
+      isClosing = false;
+    }, 420);
+  }
+
+  async function togglePlayback() {
+    if (video.ended) return;
+
+    if (video.paused) {
+      try {
+        await video.play();
+      } catch (err) {
+        console.warn('Reprise bloquée :', err);
+      }
+    } else {
+      video.pause();
+    }
+  }
+
+  async function replayVideo() {
+    replayBtn.hidden = true;
+    modal.classList.remove('is-ended');
+    video.currentTime = 0;
+
+    try {
+      await video.play();
+    } catch (err) {
+      console.warn('Replay bloqué :', err);
+    }
+  }
+
+  trigger.addEventListener('click', openModal);
+
+  trigger.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      openModal();
+    }
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', closeModal);
+  replayBtn.addEventListener('click', replayVideo);
+  video.addEventListener('click', togglePlayback);
+
+  video.addEventListener('ended', () => {
+    modal.classList.add('is-ended');
+    replayBtn.hidden = false;
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && isOpen) {
+      closeModal();
+    }
+  });
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const explosifCard = document.querySelector('.spectacles-card--explosif');
+  if (!explosifCard) return;
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  let startTimer = null;
+  let repeatTimer = null;
+  let hintRunning = false;
+
+  function clearTimers() {
+    if (startTimer) {
+      clearTimeout(startTimer);
+      startTimer = null;
+    }
+    if (repeatTimer) {
+      clearInterval(repeatTimer);
+      repeatTimer = null;
+    }
+  }
+
+  function stopHint() {
+    explosifCard.classList.remove('is-hint-playing');
+    hintRunning = false;
+  }
+
+  function playHint() {
+    if (hintRunning) return;
+    if (document.hidden) return;
+    if (document.body.classList.contains('spectacle-modal-open')) return;
+
+    hintRunning = true;
+    explosifCard.classList.remove('is-hint-playing');
+
+    requestAnimationFrame(() => {
+      explosifCard.classList.add('is-hint-playing');
+    });
+
+    setTimeout(() => {
+      stopHint();
+    }, 1900);
+  }
+
+  function startLoop() {
+    clearTimers();
+
+    startTimer = setTimeout(() => {
+      playHint();
+
+      repeatTimer = setInterval(() => {
+        playHint();
+      }, 5000);
+    }, 2500);
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting && entry.intersectionRatio >= 0.55) {
+        if (!startTimer && !repeatTimer) {
+          startLoop();
+        }
+      } else {
+        clearTimers();
+        stopHint();
+      }
+    });
+  }, {
+    threshold: [0, 0.25, 0.55, 0.8]
+  });
+
+  observer.observe(explosifCard);
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      clearTimers();
+      stopHint();
+    }
+  });
+
+  window.addEventListener('pagehide', clearTimers);
+});
 </script>
     <script src="js/main.js" defer></script>
     <script src="js/animations.js"></script>
@@ -881,4 +1402,23 @@ document.addEventListener("DOMContentLoaded", () => {
 	
 
 </body>
+<div class="spectacle-modal" id="spectacleModal" hidden aria-hidden="true">
+  <div class="spectacle-modal__backdrop"></div>
+
+  <button class="spectacle-modal__close" type="button" aria-label="Fermer la vidéo">
+    <span></span>
+    <span></span>
+  </button>
+
+  <video
+    id="spectacleModalVideo"
+    class="spectacle-modal__video"
+    playsinline
+    preload="metadata"
+  ></video>
+
+  <button class="spectacle-modal__replay" id="spectacleModalReplay" type="button" hidden>
+    Replay
+  </button>
+</div>
 </html>

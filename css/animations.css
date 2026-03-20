@@ -430,7 +430,6 @@
         var(--color-primary) 100%
     );
     background-size: 200% auto;
-    color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
     animation: magicText 3s linear infinite;
@@ -732,5 +731,138 @@
         width: 300%;
         height: 300%;
         opacity: 0;
+    }
+}
+/* =========================================================
+   FINAL PREMIUM FOG OVERRIDE — LOADER + NAV MOBILE
+   Plus dense, plus opaque, palette 100% site
+   ========================================================= */
+
+.loading,
+.nav__list--mobile {
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.loading > *,
+.nav__list--mobile > * {
+    position: relative;
+    z-index: 4;
+}
+
+/* FOND DE BASE PLUS DENSE */
+.loading {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.97) 0%,
+            rgba(6, 6, 6, 0.985) 55%,
+            rgba(0, 0, 0, 1) 100%
+        ) !important;
+}
+
+.nav__list--mobile {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.96) 0%,
+            rgba(8, 8, 8, 0.985) 58%,
+            rgba(0, 0, 0, 1) 100%
+        ) !important;
+}
+
+/* LOADER */
+.loading::after {
+    content: "";
+    position: absolute;
+    inset: -16%;
+    pointer-events: none;
+    z-index: 1;
+    background:
+        radial-gradient(46rem 34rem at 18% 22%, rgba(166, 124, 82, 0.24) 0%, transparent 66%),
+        radial-gradient(38rem 28rem at 82% 18%, rgba(122, 92, 40, 0.18) 0%, transparent 70%),
+        radial-gradient(48rem 36rem at 54% 84%, rgba(90, 67, 29, 0.20) 0%, transparent 72%),
+        radial-gradient(28rem 22rem at 48% 12%, rgba(255,255,255,0.06) 0%, transparent 76%);
+    filter: blur(118px) saturate(104%);
+    opacity: 0.98;
+    animation: siteFogDriftPrimary 20s cubic-bezier(0.42, 0, 0.18, 1) infinite alternate;
+}
+
+/* MENU MOBILE */
+.nav__list--mobile::after {
+    content: "";
+    position: absolute;
+    inset: -18%;
+    pointer-events: none;
+    z-index: 1;
+    background:
+        radial-gradient(44rem 32rem at 16% 18%, rgba(166, 124, 82, 0.22) 0%, transparent 68%),
+        radial-gradient(34rem 26rem at 84% 22%, rgba(122, 92, 40, 0.18) 0%, transparent 70%),
+        radial-gradient(46rem 34rem at 50% 86%, rgba(62, 47, 22, 0.24) 0%, transparent 73%),
+        radial-gradient(24rem 20rem at 48% 10%, rgba(255,255,255,0.05) 0%, transparent 75%);
+    filter: blur(112px) saturate(103%);
+    opacity: 0.94;
+    animation: siteFogDriftSecondary 24s cubic-bezier(0.42, 0, 0.18, 1) infinite alternate;
+}
+
+/* voile sombre supplémentaire pour densifier */
+.loading::before,
+.nav__list--mobile::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,0.22) 0%,
+            rgba(0,0,0,0.10) 35%,
+            rgba(0,0,0,0.24) 100%
+        );
+}
+
+/* hover menu très léger */
+@media (hover: hover) {
+    .nav__list--mobile:hover::after {
+        opacity: 0.98;
+        filter: blur(104px) saturate(106%);
+    }
+}
+
+/* mobile : encore plus opaque */
+@media (max-width: 767px) {
+    .loading::after,
+    .nav__list--mobile::after {
+        inset: -22%;
+        filter: blur(96px) saturate(100%);
+    }
+
+    .loading::after {
+        opacity: 1;
+    }
+
+    .nav__list--mobile::after {
+        opacity: 0.98;
+    }
+
+    .loading::before,
+    .nav__list--mobile::before {
+        background:
+            linear-gradient(
+                180deg,
+                rgba(0,0,0,0.30) 0%,
+                rgba(0,0,0,0.16) 40%,
+                rgba(0,0,0,0.30) 100%
+            );
+    }
+}
+
+/* accessibilité */
+@media (prefers-reduced-motion: reduce) {
+    .loading::after,
+    .nav__list--mobile::after {
+        animation: none;
+        transform: none;
     }
 }

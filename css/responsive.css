@@ -267,7 +267,7 @@
     :root {
         --color-off-white: #121212;
         --color-light-gray: #827e7e;
-        --color-white: #1a1a1a;
+        --color-white: #070707;
 		--color-white2: #fff;
     }
     
@@ -282,7 +282,7 @@
     .form-textarea:focus ~ .form-label,
     .form-textarea:not(:placeholder-shown) ~ .form-label,
     .select-label {
-        background-color: #1a1a1a;
+        background-color: #070707;
     }
     
     /* Inverser les couleurs du texte pour meilleure lisibilité */
@@ -322,3 +322,310 @@
     }
 }
 
+/* =========== SPECTACLES RESPONSIVE =========== */
+@media (max-width: 991px) {
+    .spectacles-card {
+        min-height: 64rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .Spectacles__cta-wrap {
+        margin-bottom: 2.8rem;
+    }
+
+    .spectacles-cta {
+        width: 100%;
+        max-width: 42rem;
+        justify-content: center;
+        padding: 1.35rem 1.8rem;
+        letter-spacing: 1.7px;
+    }
+
+    .spectacles-cta__text {
+        white-space: normal;
+        text-align: center;
+    }
+
+    .Spectacles__grid {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+    }
+
+    .spectacles-card {
+        width: 100%;
+        max-width: 48rem;
+        flex: none;
+        min-height: 62rem;
+    }
+}
+
+@media (max-width: 575px) {
+    .Spectacles {
+        padding: var(--spacing-lg) 0;
+    }
+
+    .Spectacles__intro {
+        margin-bottom: 2.2rem;
+    }
+
+    .spectacles-cta {
+        width: 100%;
+        max-width: 100%;
+        min-height: 5.4rem;
+        padding: 1.25rem 1.5rem;
+        letter-spacing: 1.3px;
+    }
+
+    .spectacles-card {
+        width: 100%;
+        max-width: 100%;
+        min-height: 54rem;
+        border-radius: 1.8rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .spectacles-card__content {
+        padding: 2.2rem 2.2rem 2.4rem;
+    }
+
+    .spectacles-card__title {
+        font-size: clamp(2.6rem, 7vw, 3.8rem);
+        letter-spacing: 1px;
+    }
+}
+
+@media (max-width: 575px) {
+    .spectacles-card__content {
+        padding: 1.8rem 1.8rem 2rem;
+    }
+
+    .spectacles-card__tag {
+        font-size: 1rem;
+        letter-spacing: 1.6px;
+        padding: 0.75rem 1.2rem;
+        margin-bottom: 1.1rem;
+    }
+}
+
+@media (max-width: 575px) {
+    .spectacles-card__badges {
+        gap: 0.8rem;
+    }
+
+    .spectacles-card__tag--public {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .spectacles-card__content {
+        padding: 2.2rem 2.2rem 2.4rem;
+        gap: 1rem;
+    }
+
+    .spectacles-card__footer {
+        grid-template-columns: 1fr auto;
+        gap: 1rem;
+    }
+
+    .spectacles-card__title {
+        font-size: clamp(2.6rem, 7vw, 3.8rem);
+        letter-spacing: 1px;
+    }
+
+    .spectacles-card__audience {
+        font-size: 0.95rem;
+        padding: 0.8rem 1.15rem;
+        letter-spacing: 1.3px;
+    }
+}
+
+@media (max-width: 575px) {
+    .spectacles-card__content {
+        padding: 1.8rem 1.8rem 2rem;
+    }
+
+    .spectacles-card__footer {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .spectacles-card__audience {
+        justify-self: end;
+    }
+
+    .spectacles-card__tag {
+        font-size: 1rem;
+        letter-spacing: 1.6px;
+        padding: 0.75rem 1.2rem;
+    }
+}
+
+@media (max-width: 991px) {
+    .spectacle-modal__dialog {
+        padding: 1.4rem;
+    }
+
+    .spectacle-modal__inner {
+        width: 100%;
+        height: min(90vh, 820px);
+        border-radius: 1.6rem;
+    }
+
+    .spectacle-modal__close {
+        top: 1.4rem;
+        right: 1.4rem;
+        width: 4.8rem;
+        height: 4.8rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .spectacle-modal__dialog {
+        padding: 0;
+    }
+
+    .spectacle-modal__inner {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+    }
+
+    .spectacle-modal__close {
+        top: 1.2rem;
+        right: 1.2rem;
+        width: 4.6rem;
+        height: 4.6rem;
+    }
+
+    .spectacle-modal__replay {
+        bottom: 2rem;
+        padding: 1.1rem 1.7rem;
+        font-size: 1.1rem;
+        letter-spacing: 1.6px;
+    }
+}
+
+@media (max-width: 767px) {
+    .spectacle-modal__close {
+        top: 1.2rem;
+        right: 1.2rem;
+        width: 4.6rem;
+        height: 4.6rem;
+    }
+
+    .spectacle-modal__replay {
+        bottom: 2rem;
+        padding: 1.1rem 1.7rem;
+        font-size: 1.1rem;
+        letter-spacing: 1.6px;
+    }
+}
+
+@media (max-width: 1249px) {
+    .spectacles-card__ghost-cursor {
+        display: none;
+    }
+
+    .spectacles-card__ghost-finger {
+        display: block;
+    }
+
+    .spectacles-card__hint-demo {
+        left: 55%;
+        top: 57%;
+        width: 8.8rem;
+        height: 8.8rem;
+    }
+
+    .spectacles-card__hint-ripple {
+        left: 50%;
+        top: 62%;
+        border-color: rgba(12, 12, 12, 0.36);
+    }
+}
+
+/* =========================================================
+   ACTUS / SPECTACLES PAGE RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1599px) {
+    .actus-show__events {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 1249px) {
+    .actus-hero {
+        padding: 16rem 0 5rem;
+    }
+
+    .actus-show__layout {
+        grid-template-columns: 1fr;
+        gap: 2.2rem;
+    }
+
+    .actus-show__left {
+        max-width: 52rem;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .actus-show__poster {
+        min-height: 68rem;
+    }
+
+    .actus-show__right {
+        padding-top: 0;
+    }
+
+    .actus-show__events {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 767px) {
+    .actus-hero {
+        padding: 14rem 0 4rem;
+    }
+
+    .actus-show__poster {
+        min-height: 60rem;
+    }
+
+    .actus-show__events {
+        grid-template-columns: 1fr;
+        gap: 1.4rem;
+    }
+
+    .actus-show__event-link {
+        min-height: 0;
+        padding: 1.8rem 1.8rem 1.8rem 2.1rem;
+    }
+
+    .actus-show__event-date {
+        font-size: 1.42rem;
+    }
+
+    .actus-show__event-place {
+        font-size: 1.18rem;
+    }
+}
+
+@media (max-width: 575px) {
+    .actus-show__poster {
+        min-height: 54rem;
+    }
+
+    .actus-show__featuring {
+        padding: 1.8rem;
+    }
+
+    .actus-show__featuring-text {
+        font-size: 1.28rem;
+    }
+}

@@ -18,6 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
  * Animation de chargement initial
  */
 function initLoading() {
+	if (document.getElementById('actusLoader')) {
+    return;
+}
     // Créer l'élément de chargement s'il n'existe pas déjà
     if (!document.querySelector('.loading')) {
         const loadingElement = document.createElement('div');
@@ -154,7 +157,7 @@ function initNavigation() {
   if (!isIndex) return;
     // Fonction pour mettre à jour l'élément de navigation actif en fonction du défilement
     function updateActiveNavOnScroll() {
-		
+		if (!sections || !sections.length) return;
         // Obtenir la position actuelle de défilement avec une légère offset pour déclencher plus tôt
         const scrollPosition = window.scrollY + header.offsetHeight + 100;
         

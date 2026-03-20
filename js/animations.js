@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         initScrollAnimations();
         initHoverAnimations();
 		initRevealTextEffect();
+        initSpectaclesAnimations();
     } else {
         console.warn('GSAP n\'est pas chargé. Les animations avancées ne fonctionneront pas.');
     }
@@ -405,3 +406,59 @@ document.head.insertAdjacentHTML('beforeend', `
 }
 </style>
 `);
+
+function initSpectaclesAnimations() {
+    const section = document.querySelector('.Spectacles');
+    if (!section || typeof gsap === 'undefined') return;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return;
+
+    const intro = section.querySelector('.Spectacles__intro');
+    const cta = section.querySelector('.Spectacles__cta-wrap');
+    const cards = section.querySelectorAll('.spectacles-card');
+
+    if (intro) {
+        gsap.from(intro, {
+            opacity: 0,
+            y: 30,
+            duration: 0.85,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: intro,
+                start: 'top 84%',
+                toggleActions: 'play none none none'
+            }
+        });
+    }
+
+    if (cta) {
+        gsap.from(cta, {
+            opacity: 0,
+            y: 22,
+            duration: 0.75,
+            delay: 0.08,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: cta,
+                start: 'top 88%',
+                toggleActions: 'play none none none'
+            }
+        });
+    }
+
+    if (cards.length) {
+        gsap.from(cards, {
+            opacity: 0,
+            y: 46,
+            duration: 0.95,
+            stagger: 0.16,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: section,
+                start: 'top 72%',
+                toggleActions: 'play none none none'
+            }
+        });
+    }
+}
