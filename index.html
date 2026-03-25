@@ -42,22 +42,59 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Tagesschrift&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
+<!-- Teaser desktop -->
 <link
-    rel="preload"
-    as="video"
-    href="assets/videos/teaser_dsktp.mp4"
-    type="video/mp4"
-    media="(min-width: 1250px)"
-  >
+  rel="preload"
+  as="video"
+  href="assets/videos/teaser_dsktp_web_nosound.mp4"
+  type="video/mp4"
+  media="(min-width: 1250px)"
+>
 
-  <!-- Pour écrans ≤ 767px, on précharge la version mobile -->
-  <link
-    rel="preload"
-    as="video"
-    href="assets/videos/teaser_mobile_2.mp4"
-    type="video/mp4"
-    media="(max-width: 1249px)"
-  >
+<!-- Teaser mobile -->
+<link
+  rel="preload"
+  as="video"
+  href="assets/videos/teaser_mobile_2_web_nosound.mp4"
+  type="video/mp4"
+  media="(max-width: 1249px)"
+>
+
+<!-- Explosif desktop -->
+<link
+  rel="preload"
+  as="video"
+  href="assets/videos/explosifv5Desktop_web.mp4"
+  type="video/mp4"
+  media="(min-width: 1250px)"
+>
+
+<!-- Explosif mobile -->
+<link
+  rel="preload"
+  as="video"
+  href="assets/videos/explosifv5_mobile_web.mp4"
+  type="video/mp4"
+  media="(max-width: 1249px)"
+>
+
+<!-- Thumbnail teaser desktop -->
+<link
+  rel="preload"
+  as="image"
+  href="assets/images/teaser-thumbnail-desktop.webp"
+  type="image/webp"
+  media="(min-width: 1250px)"
+>
+
+<!-- Thumbnail teaser mobile -->
+<link
+  rel="preload"
+  as="image"
+  href="assets/images/teaser-thumbnail-mobile.webp"
+  type="image/webp"
+  media="(max-width: 1249px)"
+>
   
 
 
@@ -252,10 +289,10 @@
   "@type": "VideoObject",
   "name": "Teaser – Romain Dewasme",
   "description": "Découvrez la magie de Romain Dewasme, magicien belge d'execption.",
-  "thumbnailUrl": "https://www.romaindewasme.com/assets/images/teaser-thumbnail.jpeg",
+  "thumbnailUrl": "https://www.romaindewasme.com/assets/images/teaser-thumbnail-desktop.webp",
   "duration": "PT1M23S",
   "uploadDate": "2025-05-23T12:00:00Z",
-  "contentUrl": "https://www.romaindewasme.com/assets/videos/teaser_dsktp.mp4",
+  "contentUrl": "https://www.romaindewasme.com/assets/videos/teaser_dsktp_web_nosound.mp4",
   "embedUrl": "https://www.romaindewasme.com/"
 }
 </script>
@@ -303,44 +340,22 @@
         <!-- Section Accueil -->
         <section id="accueil" class="hero">
             <div class="hero__video-container">
-				 <video
-					id="heroVideo"
-					class="hero__video"
-					autoplay
-					loop
-					playsinline
-					muted
-					preload="auto"
-				  >
-  <source
-    src="https://www.romaindewasme.com/assets/videos/teaser_dsktp.mp4"
-    type="video/mp4"
-    media="(min-width: 1250px)"
-  >
-  <source
-    src="https://www.romaindewasme.com/assets/videos/teaser_mobile_2.mp4"
-    type="video/mp4"
-    media="(max-width: 1249px)"
-  >
-  Votre navigateur ne supporte pas la vidéo.
-</video>
+<video
+  id="heroVideo"
+  class="hero__video"
+  autoplay
+  loop
+  playsinline
+  muted
+  preload="auto"
+  poster="assets/images/teaser-thumbnail-desktop.webp"
+></video>
 
                 <a href="contact.html" class="hero__glass-cta" aria-label="Aller à la page contact">
                   <span class="hero__glass-cta-text">
                     <span class="hero__glass-cta-label">Réserver</span>
                   </span>
                 </a>
-
-				<!-- <div class="contact__social go__down">
-                        <a href="https://www.instagram.com/romaindewasme/" class="contact__social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-                            <img src="assets/icons/instagram.svg" alt="Instagram">
-                        </a>
-                        <a href="https://www.facebook.com/p/Romain-Dewasme-100086124984675/" class="contact__social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
-                            <img src="assets/icons/facebook.svg" alt="Facebook">
-                        </a>
-                    </div> 
-            </div>
-            <div class="hero__content"> -->
 
             </div>
         </section>
@@ -554,8 +569,8 @@
   aria-haspopup="dialog"
   aria-controls="spectacleModal"
   data-spectacle-trigger="explosif"
-  data-video-desktop="assets/videos/explosifv5Desktop.mp4"
-  data-video-mobile="assets/videos/explosifv5.mp4"
+data-video-desktop="assets/videos/explosifv5Desktop_web.mp4"
+data-video-mobile="assets/videos/explosifv5_mobile_web.mp4"
 >
     <div class="spectacles-card__visual"></div>
     <div class="spectacles-card__overlay"></div>
@@ -714,8 +729,7 @@
        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
 <!-- Charge le bundle complet de filtres pour PIXI -->
-<script src="https://cdn.jsdelivr.net/npm/pixi.js@7.x/dist/pixi.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/pixi-filters@5.1.1/dist/browser/pixi-filters.min.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
     <!-- EmailJS pour le formulaire de contact -->
@@ -892,221 +906,7 @@ setTimeout(injectSVGIcons, 500);
 }
 )
 </script>
-<script>
-//PIXI
- // ┏━━━┃  SHADER « maison » de dissolution  ┃━━━┓
-const dissolveFrag = `
-precision mediump float;
-varying vec2 vTextureCoord;
-uniform sampler2D uSampler;   // la texture “next”
-uniform sampler2D uPrev;      // la texture “current”
-uniform sampler2D uNoise;     // noise map
-uniform float progress;       // 0→1
 
-void main() {
-  vec2 uv = vTextureCoord;
-  float n = texture2D(uNoise, uv).r;
-  float threshold = 1.0 - progress;
-  float t = smoothstep(threshold - 0.1, threshold + 0.1, n);
-  vec4 cPrev = texture2D(uPrev, uv);
-  vec4 cNext = texture2D(uSampler, uv);
-  gl_FragColor = mix(cPrev, cNext, t);
-}
-`;
-// ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-
-document.addEventListener("DOMContentLoaded", () => {
-  PIXI.settings.RESOLUTION = window.devicePixelRatio;
-
-  // 0) Détection du support AVIF
-  function canUseAvif() {
-    return new Promise(resolve => {
-      const img = new Image();
-      img.onload = () => resolve(img.width > 0 && img.height > 0);
-      img.onerror = () => resolve(false);
-      // petit AVIF codé en base64
-      img.src = "data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAG1pZjEAAACo...";
-    });
-  }
-
-  // 1) Création de l’app Pixi
-  const container = document.getElementById('pixi-canvas');
-  const app = new PIXI.Application({
-    resizeTo: container,
-    transparent: true,
-    autoDensity: true
-  });
-  container.appendChild(app.view);
-
-  // 2) Génération d’une noise map
-  function createNoiseTexture() {
-    const size = 64;
-    const cnv  = document.createElement('canvas');
-    cnv.width = cnv.height = size;
-    const ctx = cnv.getContext('2d');
-    const img = ctx.createImageData(size, size);
-    for (let i = 0; i < img.data.length; i += 4) {
-      const v = Math.random() * 255;
-      img.data[i] = img.data[i+1] = img.data[i+2] = v;
-      img.data[i+3] = 255;
-    }
-    ctx.putImageData(img, 0, 0);
-    return PIXI.Texture.from(cnv);
-  }
-  const noiseTex = createNoiseTexture();
-
-  // 3) Shader de dissolution
-  const dissolveFrag = `
-    precision mediump float;
-    varying vec2 vTextureCoord;
-    uniform sampler2D uSampler;
-    uniform sampler2D uPrev;
-    uniform sampler2D uNoise;
-    uniform float progress;
-    void main() {
-      vec2 uv = vTextureCoord;
-      float n = texture2D(uNoise, uv).r;
-      float threshold = 1.0 - progress;
-      float t = smoothstep(threshold - 0.1, threshold + 0.1, n);
-      vec4 cPrev = texture2D(uPrev, uv);
-      vec4 cNext = texture2D(uSampler, uv);
-      gl_FragColor = mix(cPrev, cNext, t);
-    }
-  `;
-
-  (async () => {
-    // 4) Choix de l’extension optimale
-    const ext = (await canUseAvif()) ? 'avif' : 'webp';
-
-    // 5) Chargement des portraits avec la bonne extension
-    PIXI.Assets.addBundle('shots', {
-      imgA: `assets/images_opt/portrait1.${ext}`,
-      imgB: `assets/images_opt/portrait2.${ext}`
-    });
-
-    const res = await PIXI.Assets.loadBundle('shots');
-    let texA = res.imgA, texB = res.imgB;
-    let currentTex = texA;
-
-    // 6) Sprite courant plein écran
-    let currentSprite = new PIXI.Sprite(currentTex);
-    currentSprite.width  = app.screen.width;
-    currentSprite.height = app.screen.height;
-    app.stage.addChild(currentSprite);
-
-    // 7) Fonction de transition par dissolution
-    async function dissolveTo(nextTex) {
-      const nextSprite = new PIXI.Sprite(nextTex);
-      nextSprite.width  = app.screen.width;
-      nextSprite.height = app.screen.height;
-
-      const dissolveFilter = new PIXI.Filter(null, dissolveFrag, {
-        uPrev:  currentTex,
-        uNoise: noiseTex,
-        progress: 0
-      });
-
-      nextSprite.filters = [dissolveFilter];
-      app.stage.addChild(nextSprite);
-
-      await gsap.to(dissolveFilter.uniforms, {
-        duration: 4,
-        progress: 1,
-        ease: "power2.inOut"
-      });
-
-      app.stage.removeChild(currentSprite);
-      currentSprite.destroy();
-      nextSprite.filters = null;
-      currentSprite = nextSprite;
-      currentTex = nextTex;
-    }
-
-    // 8) Boucle A ↔ B toutes les 8s
-    setInterval(() => {
-      const other = (currentTex === texA) ? texB : texA;
-      dissolveTo(other);
-    }, 8000);
-
-    // 9) Adapter au resize
-    window.addEventListener("resize", () => {
-      currentSprite.width  = app.screen.width;
-      currentSprite.height = app.screen.height;
-    });
-  })();
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  if (typeof gsap === "undefined") {
-    console.warn("GSAP n'est pas chargé.");
-    return;
-  }
-
-  document.querySelectorAll(".scene").forEach((scene) => {
-    // On neutralise l'ancien background CSS
-    scene.style.backgroundImage = "none";
-
-    // Création des 2 layers
-    const bg1 = document.createElement("div");
-    const bg2 = document.createElement("div");
-
-    bg1.className = "scene-bg scene-bg--1";
-    bg2.className = "scene-bg scene-bg--2";
-
-    scene.prepend(bg1);
-    scene.prepend(bg2);
-
-    const layers = [bg1, bg2];
-    let current = 0;
-
-    gsap.set(bg1, {
-      opacity: 1,
-      scale: 1,
-      filter: "blur(0px) brightness(1)"
-    });
-
-    gsap.set(bg2, {
-      opacity: 0,
-      scale: 1.12,
-      filter: "blur(8px) brightness(1.12)"
-    });
-
-    function switchScene() {
-      const currentLayer = layers[current];
-      const nextLayer = layers[current === 0 ? 1 : 0];
-
-      gsap.timeline({
-        onComplete: () => {
-          current = current === 0 ? 1 : 0;
-          gsap.delayedCall(3, switchScene); // switch toutes les 3 secondes
-        }
-      })
-      .to(currentLayer, {
-        opacity: 0,
-        scale: 1.08,
-        filter: "blur(8px) brightness(0.85)",
-        duration: 1.1,
-        ease: "power3.inOut"
-      }, 0)
-      .fromTo(nextLayer, {
-        opacity: 0,
-        scale: 1.14,
-        filter: "blur(10px) brightness(1.15)"
-      }, {
-        opacity: 1,
-        scale: 1,
-        filter: "blur(0px) brightness(1)",
-        duration: 1.1,
-        ease: "power3.inOut"
-      }, 0);
-    }
-
-    gsap.delayedCall(3, switchScene);
-  });
-});
-
-
-</script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const trigger = document.querySelector('[data-spectacle-trigger="explosif"]');

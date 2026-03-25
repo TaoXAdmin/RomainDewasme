@@ -18,36 +18,65 @@ document.addEventListener('DOMContentLoaded', () => {
  * Animation de chargement initial
  */
 function initLoading() {
-	if (document.getElementById('actusLoader')) {
-    return;
-}
-    // Créer l'élément de chargement s'il n'existe pas déjà
-    if (!document.querySelector('.loading')) {
-        const loadingElement = document.createElement('div');
-        loadingElement.className = 'loading';
-        loadingElement.innerHTML = `
-            <div class="loading__logo">ROMAIN DEWASME</div>
-        `;
-        document.body.appendChild(loadingElement);
+  if (document.getElementById('actusLoader')) return;
+
+  let loadingElement = document.querySelector('.loading');
+
+  if (!loadingElement) {
+    loadingElement = document.createElement('div');
+    loadingElement.className = 'loading';
+    loadingElement.innerHTML = `
+      <div class="loading__logo">ROMAIN DEWASME</div>
+    `;
+    document.body.appendChild(loadingElement);
+  }
+
+  const heroVideo = document.getElementById('heroVideo');
+  let loaderHidden = false;
+
+  function hideLoader() {
+    if (loaderHidden) return;
+    loaderHidden = true;
+
+    const el = document.querySelector('.loading');
+    if (el) {
+      el.classList.add('hidden');
+      setTimeout(() => {
+        el.remove();
+      }, 500);
     }
 
-    // Masquer l'élément de chargement après un délai
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            const loadingElement = document.querySelector('.loading');
-            if (loadingElement) {
-                loadingElement.classList.add('hidden');
-                
-                // Supprimer l'élément après la fin de l'animation
-                setTimeout(() => {
-                    loadingElement.remove();
-                }, 500);
-            }
-            
-            // Activer l'animation d'entrée de la section hero
-            animateHeroEntrance();
-        }, 1000);
-    });
+    animateHeroEntrance();
+  }
+
+  function waitForHeroVideo() {
+    if (!heroVideo) {
+      hideLoader();
+      return;
+    }
+
+    const ready = () => {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          hideLoader();
+        });
+      });
+    };
+
+    if (heroVideo.readyState >= 2) {
+      ready();
+      return;
+    }
+
+    heroVideo.addEventListener('loadeddata', ready, { once: true });
+    heroVideo.addEventListener('canplay', ready, { once: true });
+    heroVideo.addEventListener('error', hideLoader, { once: true });
+
+    // sécurité au cas où la vidéo met trop longtemps
+    setTimeout(hideLoader, 5000);
+  }
+
+  window.addEventListener('load', waitForHeroVideo, { once: true });
 }
 
 /**
@@ -500,31 +529,61 @@ function capitalizeFirstLetter(string) {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  const video       = document.getElementById('heroVideo');
-   if (!video) return;
-  const btn         = document.getElementById('soundToggle');
-  const section     = document.getElementById('accueil');
-  const desktopSrc  = 'assets/videos/teaser_dsktp.mp4';
-  const mobileSrc   = 'assets/videos/teaser_mobile_2.mp4';
-  const mql         = window.matchMedia('(max-width: 1250px)');
-  let loopCount     = 0;
+  const video = document.getElementById('heroVideo');
+  if (!video) return;
+
+  const btn = document.getElementById('soundToggle');
+  const section = document.getElementById('accueil');
+const desktopSrc = 'assets/videos/teaser_dsktp_web_nosound.mp4';
+const mobileSrc = 'assets/videos/teaser_mobile_2_web_nosound.mp4';
+  const mql = window.matchMedia('(max-width: 1250px)');
+  let loopCount = 0;
   let isPastSection = false;
   let hoverTimer;
 
+  function updateButton() {
+    if (!btn) return;
+
+    const iconSrc = video.muted
+      ? 'assets/icons/off.svg'
+      : 'assets/icons/on.svg';
+
+    const ariaLabel = video.muted
+      ? 'Activer le son'
+      : 'Désactiver le son';
+
+    btn.innerHTML = '';
+    const img = document.createElement('img');
+    img.src = iconSrc;
+    img.alt = ariaLabel;
+    btn.appendChild(img);
+    btn.setAttribute('aria-label', ariaLabel);
+  }
+
   function initHero() {
-    const isMobile = mql.matches;
-    video.src         = isMobile ? mobileSrc : desktopSrc;
-    // On s’assure que la vidéo est bien muette et inline pour iOS/Safari
-    video.muted       = true;
+    const src = mql.matches ? mobileSrc : desktopSrc;
+
+    if (video.dataset.currentSrc === src) {
+      updateButton();
+      return;
+    }
+
+    video.dataset.currentSrc = src;
+    video.src = src;
+video.poster = mql.matches
+  ? 'assets/images/teaser-thumbnail-mobile.webp'
+  : 'assets/images/teaser-thumbnail-desktop.webp';
+    video.muted = true;
     video.playsInline = true;
     video.setAttribute('muted', '');
     video.setAttribute('autoplay', '');
     video.setAttribute('playsinline', '');
-    // Recharge et lance
     video.load();
+
     video.play().catch(err => {
       console.warn('Autoplay bloqué :', err);
     });
+
     updateButton();
   }
 
@@ -532,26 +591,6 @@ document.addEventListener('DOMContentLoaded', () => {
     video.muted = !video.muted;
     updateButton();
   }
-
-function updateButton() {
-  // Choix du chemin et du label selon l’état muet
-  const iconSrc = video.muted
-    ? 'assets/icons/off.svg'
-    : 'assets/icons/on.svg';
-  const ariaLabel = video.muted
-    ? 'Activer le son'
-    : 'Désactiver le son';
-
-  // On vide le contenu du bouton et on y ajoute un <img>
-  btn.innerHTML = '';
-  const img = document.createElement('img');
-  img.src = iconSrc;
-  img.alt = ariaLabel;            // pour l’accessibilité
-  btn.appendChild(img);
-
-  // On met à jour le label aria
-  btn.setAttribute('aria-label', ariaLabel);
-}
 
   video.addEventListener('ended', () => {
     loopCount++;
@@ -561,9 +600,9 @@ function updateButton() {
     }
   });
 
-  // Gestion de l’opacité du bouton au scroll
   function onScroll() {
-    if (!section) return;
+    if (!section || !btn) return;
+
     const rect = section.getBoundingClientRect();
     if (rect.bottom < 0) {
       if (!isPastSection) {
@@ -578,24 +617,26 @@ function updateButton() {
     }
   }
 
-  btn.addEventListener('mouseenter', () => {
-    clearTimeout(hoverTimer);
-    btn.style.opacity = '1';
-  });
-  btn.addEventListener('mouseleave', () => {
-    if (isPastSection) {
-      hoverTimer = setTimeout(() => {
-        btn.style.opacity = '0.6667';
-      }, 3000);
-    }
-  });
+  if (btn) {
+    btn.addEventListener('mouseenter', () => {
+      clearTimeout(hoverTimer);
+      btn.style.opacity = '1';
+    });
 
-  // Listeners
+    btn.addEventListener('mouseleave', () => {
+      if (isPastSection) {
+        hoverTimer = setTimeout(() => {
+          btn.style.opacity = '0.6667';
+        }, 3000);
+      }
+    });
+
+    btn.addEventListener('click', toggleSound);
+  }
+
   window.addEventListener('scroll', onScroll, { passive: true });
   mql.addEventListener('change', initHero);
-  btn.addEventListener('click', toggleSound);
 
-  // Kick‐off
   initHero();
   onScroll();
 });

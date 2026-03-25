@@ -940,29 +940,18 @@ section {
 
 .scene {
   position: relative;
-  background: #000 !important;
-  overflow: hidden !important;
-}
-
-/* Les 2 couches d'image injectées en JS */
-.scene-bg {
-  position: absolute;
-  inset: 0;
+  background-image: url("../assets/images/explosif.png") !important;
   background-position: center !important;
   background-size: cover !important;
   background-repeat: no-repeat !important;
-  will-change: transform, opacity, filter;
-  pointer-events: none;
+  overflow: hidden !important;
 }
 
-.scene-bg--1 {
-  background-image: url("../assets/images/explosif.png");
-  opacity: 1;
-}
-
+/* On neutralise l'ancien système à layers */
+.scene-bg,
+.scene-bg--1,
 .scene-bg--2 {
-  background-image: url("../assets/images/trucdeouf.png");
-  opacity: 0;
+  display: none !important;
 }
 
 /* Léger voile premium */
