@@ -3342,6 +3342,20 @@ h2.section-title.black .cursor {
     animation-duration: 33s;
 }
 
+
+.biography__image-container picture,
+.biography__image-container img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.biography__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* hover subtil desktop, plus noble */
 @media (hover: hover) {
     .luxury-section:hover::before,
