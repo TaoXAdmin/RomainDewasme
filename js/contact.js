@@ -47,13 +47,17 @@ function initContactForm() {
             
             // Vérifier si EmailJS est disponible
             if (typeof emailjs !== 'undefined') {
+                const formData = new FormData(contactForm);
+
                 // Paramètres pour l'envoi d'email
+                // Utiliser FormData évite les collisions avec les propriétés natives du formulaire,
+                // notamment contactForm.name.
                 const templateParams = {
-                    name: contactForm.name.value,
-                    email: contactForm.email.value,
-                    phone: contactForm.phone.value,
-                    eventType: contactForm.eventType.value,
-                    message: contactForm.message.value
+                    name: (formData.get('name') || '').toString().trim(),
+                    email: (formData.get('email') || '').toString().trim(),
+                    phone: (formData.get('phone') || '').toString().trim(),
+                    eventType: (formData.get('eventType') || '').toString().trim(),
+                    message: (formData.get('message') || '').toString().trim()
                 };
                 
                 // Remplacez 'your_service_id' et 'your_template_id' par vos véritables ID
