@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     initNavigation();
     initScrollEffects();
-    initTestimonialSlider();
     initYearUpdate();
 });
 
@@ -411,118 +410,6 @@ function initScrollEffects() {
     revealTexts.forEach(element => {
         observer.observe(element);
     });
-}
-
-
-/**
- * Initialisation du slider de témoignages
- */
-function initTestimonialSlider() {
-    // Données des témoignages (à personnaliser)
-    const testimonials = [
-        {
-            text: "Une soirée absolument mémorable. Nos invités en parlent encore des semaines après l'événement. Un véritable artiste qui transcende la simple performance.",
-            author: "Sophie Dubois",
-            title: "Directrice d'événements, Luxury Group"
-        },
-        {
-            text: "J'ai fait appel à ses services pour notre gala annuel et le résultat a dépassé toutes nos attentes. Un professionnalisme impeccable couplé à un talent exceptionnel.",
-            author: "Jean-Philippe Martin",
-            title: "PDG, Innovations Tech"
-        },
-        {
-            text: "Sa performance lors de notre mariage a créé une atmosphère magique que nous n'oublierons jamais. Nos invités étaient complètement captivés du début à la fin.",
-            author: "Marie et Thomas Leroy",
-            title: "Mariage privé"
-        }
-    ];
-    
-    const testimonialSlider = document.querySelector('.testimonial-slider');
-    const paginationContainer = document.querySelector('.testimonial-slider__pagination');
-    const prevButton = document.querySelector('.testimonial-slider__prev');
-    const nextButton = document.querySelector('.testimonial-slider__next');
-    
-    if (testimonialSlider && prevButton && nextButton) {
-        let currentSlide = 0;
-        
-        // Générer les slides de témoignages
-        testimonials.forEach((testimonial, index) => {
-            // Ne pas recréer le premier slide qui existe déjà dans le HTML
-            if (index === 0) return;
-            
-            const slide = document.createElement('div');
-            slide.className = 'testimonial-slide';
-            slide.style.display = 'none';
-            slide.innerHTML = `
-                <div class="testimonial-card">
-                    <div class="testimonial-card__content">
-                        <p class="testimonial-card__text">"${testimonial.text}"</p>
-                        <div class="testimonial-card__author">
-                            <div class="testimonial-card__author-info">
-                                <h4 class="testimonial-card__author-name">${testimonial.author}</h4>
-                                <p class="testimonial-card__author-title">${testimonial.title}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-            testimonialSlider.appendChild(slide);
-        });
-        
-        // Générer les points de pagination
-        if (paginationContainer) {
-            testimonials.forEach((_, index) => {
-                const dot = document.createElement('span');
-                dot.className = 'testimonial-slider__pagination-dot' + (index === 0 ? ' active' : '');
-                dot.addEventListener('click', () => goToSlide(index));
-                paginationContainer.appendChild(dot);
-            });
-        }
-        
-        // Fonctions pour naviguer dans le slider
-        const goToSlide = (index) => {
-            const slides = testimonialSlider.querySelectorAll('.testimonial-slide');
-            const dots = paginationContainer ? paginationContainer.querySelectorAll('.testimonial-slider__pagination-dot') : [];
-            
-            slides.forEach((slide, i) => {
-                slide.style.display = i === index ? 'block' : 'none';
-            });
-            
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === index);
-            });
-            
-            currentSlide = index;
-        };
-        
-        const goToPrev = () => {
-            const slides = testimonialSlider.querySelectorAll('.testimonial-slide');
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            goToSlide(currentSlide);
-        };
-        
-        const goToNext = () => {
-            const slides = testimonialSlider.querySelectorAll('.testimonial-slide');
-            currentSlide = (currentSlide + 1) % slides.length;
-            goToSlide(currentSlide);
-        };
-        
-        // Ajouter les événements de clic pour les boutons
-        prevButton.addEventListener('click', goToPrev);
-        nextButton.addEventListener('click', goToNext);
-        
-        // Rotation automatique des témoignages (optionnel)
-        let slideInterval = setInterval(goToNext, 6000);
-        
-        // Mettre en pause la rotation automatique lors du survol
-        testimonialSlider.addEventListener('mouseenter', () => {
-            clearInterval(slideInterval);
-        });
-        
-        testimonialSlider.addEventListener('mouseleave', () => {
-            slideInterval = setInterval(goToNext, 6000);
-        });
-    }
 }
 
 /**
