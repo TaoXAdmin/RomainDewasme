@@ -134,11 +134,108 @@
 
   <!-- CSS global conservé -->
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/responsive.css">
 
   <!-- Override local page biographie -->
   <style>
+    .loading {
+      display: none !important;
+    }
+
+    .nav__toggle.active span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+
+    .nav__toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav__toggle.active span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .nav__toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 21px;
+      z-index: var(--z-forward);
+    }
+
+    .nav__toggle span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: var(--color-white2);
+      transition: transform var(--transition-fast), opacity var(--transition-fast);
+    }
+
+    .nav__list--mobile {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: var(--color-black);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--spacing-md);
+      z-index: var(--z-modal);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+      isolation: isolate;
+      overflow: hidden;
+    }
+
+    .nav__list--mobile::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("assets/images/bg.jpg");
+      background-size: cover;
+      background-position: center;
+      opacity: 0.15;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .nav__list--mobile.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .nav__list--mobile > * {
+      position: relative;
+      z-index: 4;
+    }
+
+    .nav__mobile-brand {
+      position: relative;
+      color: var(--color-white2);
+      z-index: 4;
+    }
+
+    .nav__item--mobile {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      transition-delay: calc(var(--index) * 0.1s);
+    }
+
+    .nav__list--mobile.active .nav__item--mobile {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .nav__item--mobile .nav__link {
+      font-size: 2rem;
+      padding: var(--spacing-sm) var(--spacing-md);
+    }
+
     .biography {
       padding-top: 16rem !important;
       padding-bottom: 6rem !important;
@@ -253,6 +350,14 @@
     }
 
     @media (max-width: 767px) {
+      .nav__list {
+        display: none;
+      }
+
+      .nav__toggle {
+        display: flex;
+      }
+
       .biography {
         padding-top: 11rem !important;
         padding-bottom: 4rem !important;
