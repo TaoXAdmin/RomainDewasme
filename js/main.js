@@ -122,18 +122,23 @@ function initNavigation() {
     const navToggle = document.querySelector('.nav__toggle');
     const navLinks = document.querySelectorAll('.nav__link');
     const sections = document.querySelectorAll('section[id]');
+    const isIndex = isHomePage();
     
     // Gestion du scroll pour le header
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('header--scrolled');
-        } else {
-            header.classList.remove('header--scrolled');
+        if (header) {
+            if (window.scrollY > 50) {
+                header.classList.add('header--scrolled');
+            } else {
+                header.classList.remove('header--scrolled');
+            }
         }
         
-        // Mettre à jour l'élément de navigation actif en fonction de la section visible
-        updateActiveNavOnScroll();
-    });
+        // Mettre à jour l'élément actif uniquement sur l'accueil multi-sections.
+        if (isIndex) {
+            updateActiveNavOnScroll();
+        }
+    }, { passive: true });
     
     // Si le toggle menu existe (sur mobile)
     if (navToggle) {
@@ -164,7 +169,7 @@ function initNavigation() {
             const targetId = link.getAttribute('href');
             
             // Vérifier si c'est un lien d'ancrage interne
-            if (targetId.startsWith('#') && targetId.length > 1) {
+            if (targetId && targetId.startsWith('#') && targetId.length > 1) {
                 e.preventDefault();
                 
                 const targetElement = document.querySelector(targetId);
@@ -172,13 +177,13 @@ function initNavigation() {
                     // Fermer le menu mobile si ouvert
                     const mobileMenu = document.querySelector('.nav__list--mobile');
                     if (mobileMenu && mobileMenu.classList.contains('active')) {
-                        navToggle.classList.remove('active');
+                        if (navToggle) navToggle.classList.remove('active');
                         mobileMenu.classList.remove('active');
                         document.body.style.overflow = '';
                     }
                     
                     // Scroll vers la cible avec une compensation pour le header
-                    const headerHeight = header.offsetHeight;
+                    const headerHeight = header ? header.offsetHeight : 0;
                     const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
                     
                     window.scrollTo({
@@ -192,13 +197,11 @@ function initNavigation() {
         });
     });
     
-	const isIndex = window.location.pathname.endsWith('/index.html')
-               || window.location.pathname === '/'
-               || document.querySelector('#accueil');
-  if (!isIndex) return;
+    if (!isIndex) return;
+
     // Fonction pour mettre à jour l'élément de navigation actif en fonction du défilement
     function updateActiveNavOnScroll() {
-		if (!sections || !sections.length) return;
+        if (!sections || !sections.length || !header) return;
         // Obtenir la position actuelle de défilement avec une légère offset pour déclencher plus tôt
         const scrollPosition = window.scrollY + header.offsetHeight + 100;
         
@@ -262,7 +265,7 @@ function initNavigation() {
         scrollIndicator.addEventListener('click', () => {
             const nextSection = document.querySelector('#prestations');
             if (nextSection) {
-                const headerHeight = header.offsetHeight;
+                const headerHeight = header ? header.offsetHeight : 0;
                 const targetPosition = nextSection.getBoundingClientRect().top + window.scrollY - headerHeight;
                 
                 window.scrollTo({
