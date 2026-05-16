@@ -21,14 +21,104 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Romain Dewasme",
-    "jobTitle": "Magicien",
-    "url": "https://www.romaindewasme.com/",
-    "sameAs": [
-      "https://www.instagram.com/romaindewasme/",
-      "https://www.facebook.com/p/Romain-Dewasme-100086124984675/",
-      "https://www.tiktok.com/@romaindewasme"
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://www.romaindewasme.com/#website",
+        "name": "Romain Dewasme",
+        "url": "https://www.romaindewasme.com/"
+      },
+      {
+        "@type": "Person",
+        "@id": "https://www.romaindewasme.com/#person",
+        "name": "Romain Dewasme",
+        "jobTitle": "Magicien",
+        "url": "https://www.romaindewasme.com/",
+        "image": "https://www.romaindewasme.com/assets/images_opt/portrait1.jpeg",
+        "email": "romaindewasme@gmail.com",
+        "telephone": "+32 486 81 54 09",
+        "description": "Magicien spécialisé en close-up, mentalisme et prestations de magie pour soirées privées, mariages et évènements d'entreprise.",
+        "award": "1er prix de magie générale, Championnat de France de magie 2025",
+        "knowsAbout": [
+          "magie close-up",
+          "mentalisme",
+          "magie de scène",
+          "animation évènementielle",
+          "mariages",
+          "évènements d'entreprise",
+          "soirées privées"
+        ],
+        "sameAs": [
+          "https://www.instagram.com/romaindewasme/",
+          "https://www.facebook.com/p/Romain-Dewasme-100086124984675/",
+          "https://www.tiktok.com/@romaindewasme"
+        ]
+      },
+      {
+        "@type": ["LocalBusiness", "ProfessionalService"],
+        "@id": "https://www.romaindewasme.com/#business",
+        "name": "Romain Dewasme",
+        "url": "https://www.romaindewasme.com/",
+        "image": "https://www.romaindewasme.com/assets/images/og-image.jpeg",
+        "email": "romaindewasme@gmail.com",
+        "telephone": "+32 486 81 54 09",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Mouscron",
+          "addressCountry": "BE"
+        },
+        "areaServed": [
+          {
+            "@type": "City",
+            "name": "Mouscron"
+          },
+          {
+            "@type": "City",
+            "name": "Lille"
+          },
+          {
+            "@type": "City",
+            "name": "Courtrai"
+          },
+          {
+            "@type": "Country",
+            "name": "Belgique"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Nord de la France"
+          }
+        ],
+        "founder": {
+          "@id": "https://www.romaindewasme.com/#person"
+        },
+        "sameAs": [
+          "https://www.instagram.com/romaindewasme/",
+          "https://www.facebook.com/p/Romain-Dewasme-100086124984675/",
+          "https://www.tiktok.com/@romaindewasme"
+        ]
+      },
+      {
+        "@type": "AboutPage",
+        "@id": "https://www.romaindewasme.com/bio.html#webpage",
+        "url": "https://www.romaindewasme.com/bio.html",
+        "name": "Biographie – Romain Dewasme, Magicien Close-up & Mentaliste",
+        "description": "Découvrez le parcours et les inspirations de Romain Dewasme, magicien spécialisé en close-up et mentalisme.",
+        "isPartOf": {
+          "@id": "https://www.romaindewasme.com/#website"
+        },
+        "about": {
+          "@id": "https://www.romaindewasme.com/#person"
+        },
+        "mainEntity": {
+          "@id": "https://www.romaindewasme.com/#person"
+        },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://www.romaindewasme.com/assets/images_opt/portrait1.jpeg",
+          "caption": "Portrait de Romain Dewasme"
+        }
+      }
     ]
   }
   </script>
