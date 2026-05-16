@@ -422,13 +422,6 @@ function initYearUpdate() {
     }
 }
 
-/**
- * Utilitaire pour capitaliser la première lettre d'une chaîne
- */
-function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
 
 document.addEventListener('DOMContentLoaded', () => {
   const video = document.getElementById('heroVideo');
