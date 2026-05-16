@@ -7,12 +7,24 @@
 // Attendre que le DOM soit complètement chargé
 document.addEventListener('DOMContentLoaded', () => {
     // Initialiser les différentes fonctionnalités
-    initLoading();
+    if (isHomePage()) {
+        initLoading();
+    }
     initNavigation();
     initScrollEffects();
     initTestimonialSlider();
     initYearUpdate();
 });
+
+/**
+ * Détection de la page d'accueil.
+ * Le loader et l'animation d'entrée sont liés à la vidéo hero.
+ */
+function isHomePage() {
+    return window.location.pathname === '/'
+        || window.location.pathname.endsWith('/index.html')
+        || Boolean(document.getElementById('accueil'));
+}
 
 /**
  * Animation de chargement initial
