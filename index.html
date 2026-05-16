@@ -25,14 +25,105 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Romain Dewasme",
-    "jobTitle": "Magicien",
-    "url": "https://www.romaindewasme.com/",
-    "sameAs": [
-      "https://www.instagram.com/romaindewasme/",
-      "https://www.facebook.com/p/Romain-Dewasme-100086124984675/",
-      "https://www.tiktok.com/@romaindewasme"
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://www.romaindewasme.com/#website",
+        "name": "Romain Dewasme",
+        "url": "https://www.romaindewasme.com/"
+      },
+      {
+        "@type": "Person",
+        "@id": "https://www.romaindewasme.com/#person",
+        "name": "Romain Dewasme",
+        "jobTitle": "Magicien",
+        "url": "https://www.romaindewasme.com/",
+        "email": "romaindewasme@gmail.com",
+        "telephone": "+32 486 81 54 09",
+        "sameAs": [
+          "https://www.instagram.com/romaindewasme/",
+          "https://www.facebook.com/p/Romain-Dewasme-100086124984675/",
+          "https://www.tiktok.com/@romaindewasme"
+        ]
+      },
+      {
+        "@type": ["LocalBusiness", "ProfessionalService"],
+        "@id": "https://www.romaindewasme.com/#business",
+        "name": "Romain Dewasme",
+        "url": "https://www.romaindewasme.com/",
+        "image": "https://www.romaindewasme.com/assets/images/og-image.png",
+        "email": "romaindewasme@gmail.com",
+        "telephone": "+32 486 81 54 09",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Mouscron",
+          "addressCountry": "BE"
+        },
+        "areaServed": [
+          {
+            "@type": "City",
+            "name": "Mouscron"
+          },
+          {
+            "@type": "City",
+            "name": "Lille"
+          },
+          {
+            "@type": "City",
+            "name": "Courtrai"
+          },
+          {
+            "@type": "Country",
+            "name": "Belgique"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Nord de la France"
+          }
+        ],
+        "founder": {
+          "@id": "https://www.romaindewasme.com/#person"
+        },
+        "sameAs": [
+          "https://www.instagram.com/romaindewasme/",
+          "https://www.facebook.com/p/Romain-Dewasme-100086124984675/",
+          "https://www.tiktok.com/@romaindewasme"
+        ]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://www.romaindewasme.com/#webpage",
+        "url": "https://www.romaindewasme.com/",
+        "name": "Romain Dewasme – Magicien Close-up, Mentalisme & Magie de Scène",
+        "description": "Vivez une expérience magique inoubliable avec Romain Dewasme, magicien expert en close-up, mentalisme et spectacles de scène.",
+        "isPartOf": {
+          "@id": "https://www.romaindewasme.com/#website"
+        },
+        "about": {
+          "@id": "https://www.romaindewasme.com/#business"
+        },
+        "mainEntity": {
+          "@id": "https://www.romaindewasme.com/#business"
+        },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://www.romaindewasme.com/assets/images/og-image.png"
+        }
+      },
+      {
+        "@type": "VideoObject",
+        "@id": "https://www.romaindewasme.com/#teaser-video",
+        "name": "Teaser – Romain Dewasme",
+        "description": "Découvrez la magie de Romain Dewasme, magicien belge d'exception.",
+        "thumbnailUrl": "https://www.romaindewasme.com/assets/images/teaser-thumbnail-desktop.webp",
+        "duration": "PT1M23S",
+        "uploadDate": "2025-05-23T12:00:00Z",
+        "contentUrl": "https://www.romaindewasme.com/assets/videos/teaser_dsktp_web_nosound.mp4",
+        "embedUrl": "https://www.romaindewasme.com/",
+        "publisher": {
+          "@id": "https://www.romaindewasme.com/#business"
+        }
+      }
     ]
   }
   </script>
@@ -234,70 +325,6 @@
         }
       }
     </style>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Romain Dewasme",
-  "image": "https://www.romaindewasme.com/assets/images/og-image.png",
-  "telephone": "+32 486 81 54 09",
-  "email": "romaindewasme@gmail.com",
-  "address": {
-    "@type": "PostalAddress",
-    "addressCountry": "BE"
-  },
-  "areaServed": [
-    {
-      "@type": "City",
-      "name": "Mouscron"
-    },
-    {
-      "@type": "City",
-      "name": "Lille"
-    },
-    {
-      "@type": "City",
-      "name": "Courtrai"
-    },
-    {
-      "@type": "Country",
-      "name": "Belgique"
-    },
-    {
-      "@type": "AdministrativeArea",
-      "name": "Nord de la France"
-    }
-  ],
-  "url": "https://www.romaindewasme.com/",
-  "sameAs": [
-    "https://www.instagram.com/romaindewasme/",
-    "https://www.facebook.com/p/Romain-Dewasme-100086124984675/",
-    "https://www.tiktok.com/@romaindewasme"
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "VideoObject",
-  "name": "Teaser – Romain Dewasme",
-  "description": "Découvrez la magie de Romain Dewasme, magicien belge d'exception.",
-  "thumbnailUrl": "https://www.romaindewasme.com/assets/images/teaser-thumbnail-desktop.webp",
-  "duration": "PT1M23S",
-  "uploadDate": "2025-05-23T12:00:00Z",
-  "contentUrl": "https://www.romaindewasme.com/assets/videos/teaser_dsktp_web_nosound.mp4",
-  "embedUrl": "https://www.romaindewasme.com/"
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"WebSite",
-  "name":"Romain Dewasme",
-  "url":"https://www.romaindewasme.com/"
-}
-</script>
 </head>
 <body>
 	
