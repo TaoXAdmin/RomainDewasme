@@ -21,14 +21,87 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Romain Dewasme",
-    "jobTitle": "Magicien",
-    "url": "https://www.romaindewasme.com/",
-    "sameAs": [
-      "https://www.instagram.com/romaindewasme/",
-      "https://www.facebook.com/p/Romain-Dewasme-100086124984675/",
-      "https://www.tiktok.com/@romaindewasme"
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://www.romaindewasme.com/#website",
+        "name": "Romain Dewasme",
+        "url": "https://www.romaindewasme.com/"
+      },
+      {
+        "@type": "Person",
+        "@id": "https://www.romaindewasme.com/#person",
+        "name": "Romain Dewasme",
+        "jobTitle": "Magicien",
+        "url": "https://www.romaindewasme.com/",
+        "email": "romaindewasme@gmail.com",
+        "telephone": "+32 486 81 54 09",
+        "sameAs": [
+          "https://www.instagram.com/romaindewasme/",
+          "https://www.facebook.com/p/Romain-Dewasme-100086124984675/",
+          "https://www.tiktok.com/@romaindewasme"
+        ]
+      },
+      {
+        "@type": ["LocalBusiness", "ProfessionalService"],
+        "@id": "https://www.romaindewasme.com/#business",
+        "name": "Romain Dewasme",
+        "url": "https://www.romaindewasme.com/",
+        "image": "https://www.romaindewasme.com/assets/images/og-image.jpeg",
+        "email": "romaindewasme@gmail.com",
+        "telephone": "+32 486 81 54 09",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Mouscron",
+          "addressCountry": "BE"
+        },
+        "areaServed": [
+          {
+            "@type": "City",
+            "name": "Mouscron"
+          },
+          {
+            "@type": "City",
+            "name": "Lille"
+          },
+          {
+            "@type": "City",
+            "name": "Courtrai"
+          },
+          {
+            "@type": "Country",
+            "name": "Belgique"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Nord de la France"
+          }
+        ],
+        "founder": {
+          "@id": "https://www.romaindewasme.com/#person"
+        },
+        "sameAs": [
+          "https://www.instagram.com/romaindewasme/",
+          "https://www.facebook.com/p/Romain-Dewasme-100086124984675/",
+          "https://www.tiktok.com/@romaindewasme"
+        ]
+      },
+      {
+        "@type": "ContactPage",
+        "@id": "https://www.romaindewasme.com/contact.html#webpage",
+        "url": "https://www.romaindewasme.com/contact.html",
+        "name": "Contact – Romain Dewasme",
+        "description": "Demander un devis ou contacter Romain Dewasme pour une prestation de magie close-up, mariage, événement privé ou entreprise.",
+        "isPartOf": {
+          "@id": "https://www.romaindewasme.com/#website"
+        },
+        "about": {
+          "@id": "https://www.romaindewasme.com/#business"
+        },
+        "mainEntity": {
+          "@id": "https://www.romaindewasme.com/#business"
+        }
+      }
     ]
   }
   </script>
