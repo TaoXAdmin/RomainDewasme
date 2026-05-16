@@ -21,14 +21,149 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Romain Dewasme",
-    "jobTitle": "Magicien",
-    "url": "https://www.romaindewasme.com/",
-    "sameAs": [
-      "https://www.instagram.com/romaindewasme/",
-      "https://www.facebook.com/p/Romain-Dewasme-100086124984675/",
-      "https://www.tiktok.com/@romaindewasme"
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://www.romaindewasme.com/#website",
+        "name": "Romain Dewasme",
+        "url": "https://www.romaindewasme.com/"
+      },
+      {
+        "@type": "Person",
+        "@id": "https://www.romaindewasme.com/#person",
+        "name": "Romain Dewasme",
+        "jobTitle": "Magicien",
+        "url": "https://www.romaindewasme.com/",
+        "email": "romaindewasme@gmail.com",
+        "telephone": "+32 486 81 54 09",
+        "sameAs": [
+          "https://www.instagram.com/romaindewasme/",
+          "https://www.facebook.com/p/Romain-Dewasme-100086124984675/",
+          "https://www.tiktok.com/@romaindewasme"
+        ]
+      },
+      {
+        "@type": ["LocalBusiness", "ProfessionalService"],
+        "@id": "https://www.romaindewasme.com/#business",
+        "name": "Romain Dewasme",
+        "url": "https://www.romaindewasme.com/",
+        "image": "https://www.romaindewasme.com/assets/images/og-image.jpeg",
+        "email": "romaindewasme@gmail.com",
+        "telephone": "+32 486 81 54 09",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Mouscron",
+          "addressCountry": "BE"
+        },
+        "areaServed": [
+          {
+            "@type": "City",
+            "name": "Mouscron"
+          },
+          {
+            "@type": "City",
+            "name": "Lille"
+          },
+          {
+            "@type": "City",
+            "name": "Courtrai"
+          },
+          {
+            "@type": "Country",
+            "name": "Belgique"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Nord de la France"
+          }
+        ],
+        "founder": {
+          "@id": "https://www.romaindewasme.com/#person"
+        },
+        "sameAs": [
+          "https://www.instagram.com/romaindewasme/",
+          "https://www.facebook.com/p/Romain-Dewasme-100086124984675/",
+          "https://www.tiktok.com/@romaindewasme"
+        ]
+      },
+      {
+        "@type": ["CollectionPage", "ImageGallery"],
+        "@id": "https://www.romaindewasme.com/gallery.html#webpage",
+        "url": "https://www.romaindewasme.com/gallery.html",
+        "name": "Galerie – Romain Dewasme, Magie Close-up & Scène",
+        "description": "Photos de spectacles et performances de Romain Dewasme, magicien de close-up et mentalisme.",
+        "isPartOf": {
+          "@id": "https://www.romaindewasme.com/#website"
+        },
+        "about": {
+          "@id": "https://www.romaindewasme.com/#business"
+        },
+        "creator": {
+          "@id": "https://www.romaindewasme.com/#person"
+        },
+        "mainEntity": {
+          "@id": "https://www.romaindewasme.com/gallery.html#gallery"
+        }
+      },
+      {
+        "@type": "ImageGallery",
+        "@id": "https://www.romaindewasme.com/gallery.html#gallery",
+        "name": "Galerie de performances de Romain Dewasme",
+        "url": "https://www.romaindewasme.com/gallery.html#galerie",
+        "creator": {
+          "@id": "https://www.romaindewasme.com/#person"
+        },
+        "associatedMedia": [
+          {
+            "@type": "ImageObject",
+            "@id": "https://www.romaindewasme.com/gallery.html#image-championnat-france-2025",
+            "contentUrl": "https://www.romaindewasme.com/assets/images_opt/selection/championdefrance1.png",
+            "caption": "1er prix de magie générale, Championnat de France de magie 2025",
+            "creator": {
+              "@id": "https://www.romaindewasme.com/#person"
+            }
+          },
+          {
+            "@type": "ImageObject",
+            "@id": "https://www.romaindewasme.com/gallery.html#image-paris-2024",
+            "contentUrl": "https://www.romaindewasme.com/assets/images_opt/selection/a1.jpeg",
+            "caption": "Prestation de magie à Paris, France — 15 juin 2024",
+            "contentLocation": {
+              "@type": "Place",
+              "name": "Paris, France"
+            },
+            "creator": {
+              "@id": "https://www.romaindewasme.com/#person"
+            }
+          },
+          {
+            "@type": "ImageObject",
+            "@id": "https://www.romaindewasme.com/gallery.html#image-bruxelles-2024",
+            "contentUrl": "https://www.romaindewasme.com/assets/images_opt/selection/b1.jpeg",
+            "caption": "Prestation de magie à Bruxelles, Belgique — 20 juillet 2024",
+            "contentLocation": {
+              "@type": "Place",
+              "name": "Bruxelles, Belgique"
+            },
+            "creator": {
+              "@id": "https://www.romaindewasme.com/#person"
+            }
+          },
+          {
+            "@type": "ImageObject",
+            "@id": "https://www.romaindewasme.com/gallery.html#image-liege-2024",
+            "contentUrl": "https://www.romaindewasme.com/assets/images_opt/selection/c1.jpeg",
+            "caption": "Prestation de magie à Liège, Belgique — 5 août 2024",
+            "contentLocation": {
+              "@type": "Place",
+              "name": "Liège, Belgique"
+            },
+            "creator": {
+              "@id": "https://www.romaindewasme.com/#person"
+            }
+          }
+        ]
+      }
     ]
   }
   </script>
