@@ -182,8 +182,79 @@
     .hero__glass-cta-text { display: inline-flex; align-items: center; gap: 0.8rem; white-space: nowrap; }
     .hero__glass-cta-label { display: inline-block; }
 
+    .voice-answers {
+      background: var(--color-black);
+      color: var(--color-white2);
+      padding: 7rem 0 6rem;
+    }
+
+    .voice-answers__container {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 2.4rem;
+    }
+
+    .voice-answers__intro {
+      max-width: 780px;
+      margin-bottom: 2.4rem;
+    }
+
+    .voice-answers__title {
+      margin: 0 0 1rem;
+      font-family: var(--font-heading);
+      font-size: clamp(3rem, 4vw, 4.8rem);
+      line-height: 1.1;
+      color: var(--color-white2);
+    }
+
+    .voice-answers__text {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 1.58rem;
+      line-height: 1.75;
+    }
+
+    .voice-answers__grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.6rem;
+    }
+
+    .voice-answer {
+      padding: 2.2rem;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: 20px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.075), rgba(255,255,255,0.025));
+    }
+
+    .voice-answer__question {
+      margin: 0 0 1rem;
+      color: var(--color-gold);
+      font-size: 1.42rem;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .voice-answer__answer {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 1.5rem;
+      line-height: 1.72;
+    }
+
+    .voice-answer__answer a {
+      color: var(--color-gold);
+      text-decoration: underline;
+      text-underline-offset: 0.2em;
+    }
+
     @media (max-width: 1250px) {
       .hero__glass-cta { left: 3%; bottom: 15%; padding: 1.3rem 2rem; letter-spacing: 2.2px; }
+    }
+
+    @media (max-width: 900px) {
+      .voice-answers__grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 575px) {
@@ -198,6 +269,7 @@
         letter-spacing: 1.8px;
       }
       .hero__glass-cta:hover { transform: translateX(-50%) translateY(-3px); }
+      .voice-answers__container { padding: 0 1.8rem; }
     }
   </style>
 </head>
@@ -231,6 +303,29 @@
         <a href="contact.html" class="hero__glass-cta" aria-label="Aller à la page contact">
           <span class="hero__glass-cta-text"><span class="hero__glass-cta-label">Réserver</span></span>
         </a>
+      </div>
+    </section>
+
+    <section class="voice-answers" aria-labelledby="home-voice-title">
+      <div class="voice-answers__container">
+        <div class="voice-answers__intro">
+          <h2 id="home-voice-title" class="voice-answers__title">Réponses rapides pour votre événement</h2>
+          <p class="voice-answers__text">Des réponses courtes pour les recherches vocales et les demandes les plus fréquentes.</p>
+        </div>
+        <div class="voice-answers__grid">
+          <article class="voice-answer">
+            <h3 class="voice-answer__question">Qui est Romain Dewasme ?</h3>
+            <p class="voice-answer__answer">Romain Dewasme est un magicien basé à Mouscron, spécialisé en close-up, mentalisme et animations pour mariages, soirées privées et événements d’entreprise.</p>
+          </article>
+          <article class="voice-answer">
+            <h3 class="voice-answer__question">Où intervient-il ?</h3>
+            <p class="voice-answer__answer">Il intervient notamment à Mouscron, Courtrai, Lille, Villeneuve-d'Ascq, Marcq-en-Barœul, Tournai, en Belgique et dans le Nord de la France.</p>
+          </article>
+          <article class="voice-answer">
+            <h3 class="voice-answer__question">Quelle magie choisir pour un événement ?</h3>
+            <p class="voice-answer__answer">Le close-up est souvent le format le plus adapté pour un cocktail, un vin d’honneur, une réception, un repas ou une soirée privée.</p>
+          </article>
+        </div>
       </div>
     </section>
 
