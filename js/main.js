@@ -6,6 +6,9 @@
 
 // Attendre que le DOM soit complètement chargé
 document.addEventListener('DOMContentLoaded', () => {
+    // Garantir le lien FAQ dans les navigations anciennes qui ne l'ont pas encore en dur
+    ensureFaqLinks();
+
     // Initialiser les différentes fonctionnalités
     if (isHomePage()) {
         initLoading();
@@ -14,6 +17,45 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollEffects();
     initYearUpdate();
 });
+
+/**
+ * Ajoute le lien FAQ dans le header et le footer si une page ancienne ne l'a pas encore.
+ * Les pages déjà mises à jour en HTML ne sont pas doublonnées.
+ */
+function ensureFaqLinks() {
+    const faqHref = 'faq.html';
+
+    function hasFaqLink(list) {
+        return Boolean(list && list.querySelector('a[href="faq.html"]'));
+    }
+
+    function insertBeforeContact(list, item) {
+        const contactLink = list.querySelector('a[href="contact.html"], a[href="#contact"]');
+        const contactItem = contactLink ? contactLink.closest('li') : null;
+        if (contactItem) {
+            list.insertBefore(item, contactItem);
+        } else {
+            list.appendChild(item);
+        }
+    }
+
+    const headerList = document.querySelector('.header .nav__list');
+    if (headerList && !hasFaqLink(headerList)) {
+        const item = document.createElement('li');
+        item.className = 'nav__item';
+        item.innerHTML = `<a href="${faqHref}" class="nav__link">FAQ</a>`;
+        insertBeforeContact(headerList, item);
+    }
+
+    const footerLists = document.querySelectorAll('.footer__nav-list');
+    footerLists.forEach(list => {
+        if (hasFaqLink(list)) return;
+        const item = document.createElement('li');
+        item.className = 'footer__nav-item';
+        item.innerHTML = `<a href="${faqHref}" class="footer__nav-link">FAQ</a>`;
+        insertBeforeContact(list, item);
+    });
+}
 
 /**
  * Détection de la page d'accueil.
