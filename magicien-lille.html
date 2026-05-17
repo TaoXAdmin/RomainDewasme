@@ -6,13 +6,13 @@
 
   <!-- SEO principal -->
   <title>Magicien à Lille pour mariage, entreprise & close-up | Romain Dewasme</title>
-  <meta name="description" content="Romain Dewasme propose des prestations de magie close-up et mentalisme pour mariages, événements d’entreprise, cocktails, anniversaires et soirées privées à Lille, dans la métropole lilloise, en Belgique et dans le Nord de la France.">
+  <meta name="description" content="Romain Dewasme propose des prestations de magie close-up et mentalisme pour mariages, événements d’entreprise, cocktails, anniversaires et soirées privées à Lille, Villeneuve-d'Ascq, Marcq-en-Barœul, Mouscron et dans la métropole lilloise.">
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
   <link rel="canonical" href="https://www.romaindewasme.com/magicien-lille.html">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Magicien à Lille pour mariage, entreprise & close-up | Romain Dewasme">
-  <meta property="og:description" content="Magie close-up et mentalisme pour mariages, événements d’entreprise, cocktails, anniversaires et soirées privées à Lille, dans la métropole lilloise, en Belgique et dans le Nord de la France.">
+  <meta property="og:description" content="Magie close-up et mentalisme pour mariages, événements d’entreprise, cocktails, anniversaires et soirées privées à Lille, Villeneuve-d'Ascq, Marcq-en-Barœul, Mouscron et dans la métropole lilloise.">
   <meta property="og:image" content="https://www.romaindewasme.com/assets/images/og-image.jpeg">
   <meta property="og:url" content="https://www.romaindewasme.com/magicien-lille.html">
   <meta property="og:type" content="website">
@@ -57,8 +57,11 @@
         },
         "areaServed": [
           { "@type": "City", "name": "Mouscron" },
-          { "@type": "City", "name": "Lille" },
           { "@type": "City", "name": "Courtrai" },
+          { "@type": "City", "name": "Lille" },
+          { "@type": "City", "name": "Villeneuve-d'Ascq" },
+          { "@type": "City", "name": "Marcq-en-Barœul" },
+          { "@type": "City", "name": "Tournai" },
           { "@type": "Country", "name": "Belgique" },
           { "@type": "AdministrativeArea", "name": "Nord de la France" }
         ],
@@ -86,6 +89,36 @@
         "mainEntity": {
           "@id": "https://www.romaindewasme.com/#business"
         }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://www.romaindewasme.com/magicien-lille.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Quel format de magie choisir pour un événement à Lille ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Le close-up est particulièrement adapté aux événements lillois avec circulation des invités : cocktail, vin d’honneur, réception professionnelle, repas ou soirée privée. Le magicien passe de groupe en groupe sans bloquer le déroulé de l’événement."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Romain Dewasme intervient-il dans la métropole lilloise ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Oui. Les demandes sont étudiées à Lille et dans la métropole lilloise, notamment Villeneuve-d'Ascq, Marcq-en-Barœul, Mouscron et les alentours, selon la date, le lieu et le format souhaité."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Quand prévoir une prestation de magie pendant un mariage ou une soirée à Lille ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Les moments les plus adaptés sont souvent l’accueil, le cocktail, le vin d’honneur, l’attente entre deux temps forts ou le début de soirée. Ces moments permettent de créer du lien entre les invités sans interrompre l’organisation."
+            }
+          }
+        ]
       },
       {
         "@type": "BreadcrumbList",
@@ -194,6 +227,8 @@
     }
 
     .local-card,
+    .local-detail,
+    .local-faq,
     .local-note,
     .local-final {
       border: 1px solid rgba(255, 255, 255, 0.13);
@@ -207,6 +242,8 @@
     }
 
     .local-card__title,
+    .local-detail__title,
+    .local-faq__title,
     .local-note__title,
     .local-final__title {
       margin: 0 0 1.4rem;
@@ -218,6 +255,9 @@
 
     .local-card__text,
     .local-card__list,
+    .local-detail__text,
+    .local-detail__list,
+    .local-faq__text,
     .local-note__text,
     .local-final__text {
       color: rgba(255, 255, 255, 0.78);
@@ -225,13 +265,67 @@
       line-height: 1.76;
     }
 
-    .local-card__list {
+    .local-card__list,
+    .local-detail__list {
       margin: 1.8rem 0 2.2rem;
       padding-left: 1.8rem;
     }
 
-    .local-card__list li + li {
+    .local-card__list li + li,
+    .local-detail__list li + li {
       margin-top: 0.8rem;
+    }
+
+    .local-detail {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+      gap: 3rem;
+      align-items: start;
+      margin-bottom: 5.5rem;
+      padding: 3rem;
+    }
+
+    .local-detail__eyebrow {
+      display: inline-flex;
+      margin-bottom: 1.2rem;
+      color: var(--color-gold);
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .local-detail__box {
+      padding: 2.2rem;
+      border-radius: 18px;
+      background: rgba(0, 0, 0, 0.24);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .local-detail__box + .local-detail__box {
+      margin-top: 1.4rem;
+    }
+
+    .local-detail__box-title,
+    .local-faq__question {
+      margin: 0 0 0.8rem;
+      color: var(--color-gold);
+      font-family: var(--font-primary);
+      font-size: 1.45rem;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .local-faq {
+      max-width: 980px;
+      margin-bottom: 5.5rem;
+      padding: 3rem;
+    }
+
+    .local-faq__item + .local-faq__item {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .local-note {
@@ -268,6 +362,7 @@
 
     @media (max-width: 980px) {
       .local-grid,
+      .local-detail,
       .local-note {
         grid-template-columns: 1fr;
       }
@@ -285,12 +380,17 @@
       .local-hero__lead,
       .local-card__text,
       .local-card__list,
+      .local-detail__text,
+      .local-detail__list,
+      .local-faq__text,
       .local-note__text,
       .local-final__text {
         font-size: 1.5rem;
       }
 
       .local-card,
+      .local-detail,
+      .local-faq,
       .local-note,
       .local-final {
         padding: 2.2rem;
@@ -395,19 +495,65 @@
         </article>
       </section>
 
+      <section class="local-detail" aria-labelledby="lille-context-title">
+        <div>
+          <span class="local-detail__eyebrow">Contexte local</span>
+          <h2 id="lille-context-title" class="local-detail__title">Pourquoi prévoir une animation magique à Lille ?</h2>
+          <p class="local-detail__text">
+            À Lille, les événements réunissent souvent des publics variés : collaborateurs, clients, familles, amis ou invités venus de plusieurs communes de la métropole. La magie close-up fonctionne bien dans ce contexte, car elle crée rapidement un point commun entre des personnes qui ne se connaissent pas forcément.
+          </p>
+          <p class="local-detail__text">
+            Ce format s’intègre facilement dans un cocktail, une réception, une soirée d’entreprise ou un mariage : le magicien circule parmi les invités, adapte le rythme à l’ambiance et évite de bloquer l’organisation avec une installation lourde.
+          </p>
+        </div>
+        <div>
+          <div class="local-detail__box">
+            <h3 class="local-detail__box-title">Formats recommandés</h3>
+            <ul class="local-detail__list">
+              <li>Close-up pendant le cocktail ou l’accueil des invités.</li>
+              <li>Animation entre deux temps forts d’une soirée professionnelle.</li>
+              <li>Magie de table en table pendant une réception ou un repas.</li>
+            </ul>
+          </div>
+          <div class="local-detail__box">
+            <h3 class="local-detail__box-title">À préciser pour Lille</h3>
+            <p class="local-detail__text">
+              Le quartier ou le lieu exact, l’heure d’arrivée des invités, les contraintes d’accès et le nombre de personnes aident à choisir un format fluide et réaliste pour l’événement.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="local-faq" aria-labelledby="faq-lille-title">
+        <h2 id="faq-lille-title" class="local-faq__title">Questions fréquentes pour une prestation à Lille</h2>
+        <article class="local-faq__item">
+          <h3 class="local-faq__question">Quel format de magie choisir pour un événement à Lille ?</h3>
+          <p class="local-faq__text">Le close-up est particulièrement adapté aux événements avec circulation des invités : cocktail, vin d’honneur, réception professionnelle, repas ou soirée privée. Le magicien passe de groupe en groupe sans bloquer le déroulé de l’événement.</p>
+        </article>
+        <article class="local-faq__item">
+          <h3 class="local-faq__question">Romain Dewasme intervient-il dans la métropole lilloise ?</h3>
+          <p class="local-faq__text">Oui. Les demandes sont étudiées à Lille et dans la métropole lilloise, notamment Villeneuve-d'Ascq, Marcq-en-Barœul, Mouscron et les alentours, selon la date, le lieu et le format souhaité.</p>
+        </article>
+        <article class="local-faq__item">
+          <h3 class="local-faq__question">Quand prévoir une prestation de magie pendant un mariage ou une soirée ?</h3>
+          <p class="local-faq__text">Les moments les plus adaptés sont souvent l’accueil, le cocktail, le vin d’honneur, l’attente entre deux temps forts ou le début de soirée. Ces moments permettent de créer du lien entre les invités sans interrompre l’organisation.</p>
+        </article>
+      </section>
+
       <section class="local-note" aria-labelledby="zone-lille-title">
         <div>
           <h2 id="zone-lille-title" class="local-note__title">Lille, métropole lilloise et alentours</h2>
           <p class="local-note__text">
-            Les demandes pour Lille sont étudiées selon la date, le lieu, le nombre d’invités et le format souhaité. Les zones prioritaires incluent Lille, Mouscron, Courtrai, la Belgique et le Nord de la France.
+            Les demandes pour Lille sont étudiées selon la date, le lieu, le nombre d’invités et le format souhaité. Les zones prioritaires incluent Lille, Villeneuve-d'Ascq, Marcq-en-Barœul, Mouscron, Courtrai, Tournai, la Belgique et le Nord de la France.
           </p>
         </div>
         <div class="local-note__zones" aria-label="Zones desservies autour de Lille">
           <span class="local-note__zone">Lille</span>
+          <span class="local-note__zone">Villeneuve-d'Ascq</span>
+          <span class="local-note__zone">Marcq-en-Barœul</span>
           <span class="local-note__zone">Mouscron</span>
           <span class="local-note__zone">Courtrai</span>
-          <span class="local-note__zone">Belgique</span>
-          <span class="local-note__zone">Nord de la France</span>
+          <span class="local-note__zone">Tournai</span>
         </div>
       </section>
 
