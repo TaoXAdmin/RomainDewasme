@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initNavigation();
     initScrollEffects();
     initYearUpdate();
-    initLocalZoneLinks();
 });
 
 /**
@@ -24,39 +23,6 @@ function isHomePage() {
     return window.location.pathname === '/'
         || window.location.pathname.endsWith('/index.html')
         || Boolean(document.getElementById('accueil'));
-}
-
-/**
- * Ajoute les liens locaux prioritaires dans le bloc zones de prestations.html.
- * La page garde un rendu propre même si seules certaines zones sont présentes dans le HTML source.
- */
-function initLocalZoneLinks() {
-    const zonesContainer = document.querySelector('.prestations-note__zones');
-    if (!zonesContainer) return;
-
-    const zonesText = document.querySelector('.prestations-note__text');
-    if (zonesText) {
-        zonesText.textContent = "Romain Dewasme est basé à Mouscron et se déplace selon la pertinence de la prestation. Les zones prioritaires sont Mouscron, Courtrai, Lille, Villeneuve-d'Ascq, Marcq-en-Baroeul et Tournai.";
-    }
-
-    const zones = [
-        { label: 'Mouscron', href: 'magicien-mouscron.html' },
-        { label: 'Courtrai', href: 'magicien-courtrai.html' },
-        { label: 'Lille', href: 'magicien-lille.html' },
-        { label: "Villeneuve-d'Ascq", href: 'magicien-villeneuve-d-ascq.html' },
-        { label: 'Marcq-en-Baroeul', href: 'magicien-marcq-en-baroeul.html' },
-        { label: 'Tournai', href: 'magicien-tournai.html' }
-    ];
-
-    zonesContainer.innerHTML = '';
-
-    zones.forEach(zone => {
-        const link = document.createElement('a');
-        link.href = zone.href;
-        link.className = 'prestations-note__zone';
-        link.textContent = zone.label;
-        zonesContainer.appendChild(link);
-    });
 }
 
 /**
@@ -569,4 +535,3 @@ video.poster = mql.matches
   initHero();
   onScroll();
 });
-
