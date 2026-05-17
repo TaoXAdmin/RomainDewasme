@@ -1,17 +1,14 @@
 <!DOCTYPE html>
-<html lang="fr"> 
+<html lang="fr">
 <head>
-	    <!-- Favicon -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.png" type="image/png">
 
-	<link rel="icon" href="/favicon.png" type="image/png">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    
   <!-- SEO principal -->
   <title>Romain Dewasme – Magicien Close-up, Mentalisme & Magie de Scène</title>
   <meta name="description" content="Vivez une expérience magique inoubliable avec Romain Dewasme, magicien expert en close-up, mentalisme et spectacles de scène. Réservez votre prestation dès maintenant.">
-  <meta name="robots"
-      content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
   <link rel="canonical" href="https://www.romaindewasme.com/">
 
   <!-- Open Graph -->
@@ -60,30 +57,16 @@
           "addressCountry": "BE"
         },
         "areaServed": [
-          {
-            "@type": "City",
-            "name": "Mouscron"
-          },
-          {
-            "@type": "City",
-            "name": "Lille"
-          },
-          {
-            "@type": "City",
-            "name": "Courtrai"
-          },
-          {
-            "@type": "Country",
-            "name": "Belgique"
-          },
-          {
-            "@type": "AdministrativeArea",
-            "name": "Nord de la France"
-          }
+          { "@type": "City", "name": "Mouscron" },
+          { "@type": "City", "name": "Courtrai" },
+          { "@type": "City", "name": "Lille" },
+          { "@type": "City", "name": "Villeneuve-d'Ascq" },
+          { "@type": "City", "name": "Marcq-en-Barœul" },
+          { "@type": "City", "name": "Tournai" },
+          { "@type": "Country", "name": "Belgique" },
+          { "@type": "AdministrativeArea", "name": "Nord de la France" }
         ],
-        "founder": {
-          "@id": "https://www.romaindewasme.com/#person"
-        },
+        "founder": { "@id": "https://www.romaindewasme.com/#person" },
         "sameAs": [
           "https://www.instagram.com/romaindewasme/",
           "https://www.facebook.com/p/Romain-Dewasme-100086124984675/",
@@ -96,15 +79,9 @@
         "url": "https://www.romaindewasme.com/",
         "name": "Romain Dewasme – Magicien Close-up, Mentalisme & Magie de Scène",
         "description": "Vivez une expérience magique inoubliable avec Romain Dewasme, magicien expert en close-up, mentalisme et spectacles de scène.",
-        "isPartOf": {
-          "@id": "https://www.romaindewasme.com/#website"
-        },
-        "about": {
-          "@id": "https://www.romaindewasme.com/#business"
-        },
-        "mainEntity": {
-          "@id": "https://www.romaindewasme.com/#business"
-        },
+        "isPartOf": { "@id": "https://www.romaindewasme.com/#website" },
+        "about": { "@id": "https://www.romaindewasme.com/#business" },
+        "mainEntity": { "@id": "https://www.romaindewasme.com/#business" },
         "primaryImageOfPage": {
           "@type": "ImageObject",
           "url": "https://www.romaindewasme.com/assets/images/og-image.png"
@@ -120,1038 +97,398 @@
         "uploadDate": "2025-05-23T12:00:00Z",
         "contentUrl": "https://www.romaindewasme.com/assets/videos/teaser_dsktp_web_nosound.mp4",
         "embedUrl": "https://www.romaindewasme.com/",
-        "publisher": {
-          "@id": "https://www.romaindewasme.com/#business"
-        }
+        "publisher": { "@id": "https://www.romaindewasme.com/#business" }
       }
     ]
   }
   </script>
-    
-    <!-- Polices -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Tagesschrift&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-<!-- Teaser desktop -->
-<link
-  rel="preload"
-  as="video"
-  href="assets/videos/teaser_dsktp_web_nosound.mp4"
-  type="video/mp4"
-  media="(min-width: 1250px)"
->
+  <!-- Polices -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Tagesschrift&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-<!-- Teaser mobile -->
-<link
-  rel="preload"
-  as="video"
-  href="assets/videos/teaser_mobile_2_web_nosound.mp4"
-  type="video/mp4"
-  media="(max-width: 1249px)"
->
+  <!-- Preloads -->
+  <link rel="preload" as="video" href="assets/videos/teaser_dsktp_web_nosound.mp4" type="video/mp4" media="(min-width: 1250px)">
+  <link rel="preload" as="video" href="assets/videos/teaser_mobile_2_web_nosound.mp4" type="video/mp4" media="(max-width: 1249px)">
+  <link rel="preload" as="video" href="assets/videos/explosifv5Desktop_web.mp4" type="video/mp4" media="(min-width: 1250px)">
+  <link rel="preload" as="video" href="assets/videos/explosifv5_mobile_web.mp4" type="video/mp4" media="(max-width: 1249px)">
+  <link rel="preload" as="image" href="assets/images/teaser-thumbnail-desktop.webp" type="image/webp" media="(min-width: 1250px)">
+  <link rel="preload" as="image" href="assets/images/teaser-thumbnail-mobile.webp" type="image/webp" media="(max-width: 1249px)">
 
-<!-- Explosif desktop -->
-<link
-  rel="preload"
-  as="video"
-  href="assets/videos/explosifv5Desktop_web.mp4"
-  type="video/mp4"
-  media="(min-width: 1250px)"
->
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
 
-<!-- Explosif mobile -->
-<link
-  rel="preload"
-  as="video"
-  href="assets/videos/explosifv5_mobile_web.mp4"
-  type="video/mp4"
-  media="(max-width: 1249px)"
->
+  <style>
+    .hero__glass-cta {
+      position: absolute;
+      left: 4%;
+      bottom: 5%;
+      z-index: 8;
+      display: inline-flex;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 1.45rem 2.4rem;
+      min-height: 5.8rem;
+      border-radius: 999px;
+      color: var(--color-white2);
+      font-family: var(--font-primary);
+      font-size: 1.45rem;
+      font-weight: 900;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      line-height: 1;
+      background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.07) 100%);
+      border: 1px solid rgba(255,255,255,0.22);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.30), inset 0 1px 0 rgba(255,255,255,0.22), inset 0 -1px 0 rgba(255,255,255,0.04);
+      backdrop-filter: blur(16px) saturate(145%);
+      -webkit-backdrop-filter: blur(16px) saturate(145%);
+      overflow: hidden;
+      isolation: isolate;
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, background 0.35s ease;
+    }
 
-<!-- Thumbnail teaser desktop -->
-<link
-  rel="preload"
-  as="image"
-  href="assets/images/teaser-thumbnail-desktop.webp"
-  type="image/webp"
-  media="(min-width: 1250px)"
->
+    .hero__glass-cta::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.16) 32%, rgba(255,255,255,0.04) 55%, rgba(255,255,255,0) 100%);
+      transform: translateX(-115%);
+      transition: transform 0.7s ease;
+      z-index: -1;
+    }
 
-<!-- Thumbnail teaser mobile -->
-<link
-  rel="preload"
-  as="image"
-  href="assets/images/teaser-thumbnail-mobile.webp"
-  type="image/webp"
-  media="(max-width: 1249px)"
->
-  
+    .hero__glass-cta::after {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: inherit;
+      border: 1px solid rgba(212,175,55,0.22);
+      pointer-events: none;
+      z-index: -1;
+    }
 
+    .hero__glass-cta:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255,255,255,0.34);
+      box-shadow: 0 14px 34px rgba(0,0,0,0.38), 0 0 0 1px rgba(212,175,55,0.12), inset 0 1px 0 rgba(255,255,255,0.28);
+      background: linear-gradient(135deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.09) 100%);
+    }
 
+    .hero__glass-cta:hover::before { transform: translateX(115%); }
+    .hero__glass-cta-text { display: inline-flex; align-items: center; gap: 0.8rem; white-space: nowrap; }
+    .hero__glass-cta-label { display: inline-block; }
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    @media (max-width: 1250px) {
+      .hero__glass-cta { left: 3%; bottom: 15%; padding: 1.3rem 2rem; letter-spacing: 2.2px; }
+    }
 
-    <style>
+    @media (max-width: 575px) {
       .hero__glass-cta {
-        position: absolute;
-        left: 4%;
-        bottom: 5%;
-        z-index: 8;
-        display: inline-flex;
-        align-items: center;
-        gap: 1.2rem;
-        padding: 1.45rem 2.4rem;
-        min-height: 5.8rem;
-        border-radius: 999px;
-        color: var(--color-white2);
-        font-family: var(--font-primary);
-        font-size: 1.45rem;
-        font-weight: 900;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        line-height: 1;
-        background:
-          linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.07) 100%);
-        border: 1px solid rgba(255,255,255,0.22);
-        box-shadow:
-          0 10px 30px rgba(0, 0, 0, 0.30),
-          inset 0 1px 0 rgba(255,255,255,0.22),
-          inset 0 -1px 0 rgba(255,255,255,0.04);
-        backdrop-filter: blur(16px) saturate(145%);
-        -webkit-backdrop-filter: blur(16px) saturate(145%);
-        overflow: hidden;
-        isolation: isolate;
-        transition:
-          transform 0.35s ease,
-          box-shadow 0.35s ease,
-          border-color 0.35s ease,
-          background 0.35s ease;
-      }
-
-      .hero__glass-cta::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background:
-          linear-gradient(120deg,
-            rgba(255,255,255,0) 0%,
-            rgba(255,255,255,0.16) 32%,
-            rgba(255,255,255,0.04) 55%,
-            rgba(255,255,255,0) 100%);
-        transform: translateX(-115%);
-        transition: transform 0.7s ease;
-        z-index: -1;
-      }
-
-      .hero__glass-cta::after {
-        content: "";
-        position: absolute;
-        inset: 1px;
-        border-radius: inherit;
-        border: 1px solid rgba(212,175,55,0.22);
-        pointer-events: none;
-        z-index: -1;
-      }
-
-      .hero__glass-cta:hover {
-        transform: translateY(-3px);
-        border-color: rgba(255,255,255,0.34);
-        box-shadow:
-          0 14px 34px rgba(0, 0, 0, 0.38),
-          0 0 0 1px rgba(212,175,55,0.12),
-          inset 0 1px 0 rgba(255,255,255,0.28);
-        background:
-          linear-gradient(135deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.09) 100%);
-      }
-
-      .hero__glass-cta:hover::before {
-        transform: translateX(115%);
-      }
-
-      .hero__glass-cta-text {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.8rem;
-        white-space: nowrap;
-      }
-
-      .hero__glass-cta-label {
-        display: inline-block;
-      }
-
-      .hero__glass-cta-icon {
-        display: inline-flex;
-        align-items: center;
+        left: 50%;
+        bottom: 15%;
+        transform: translateX(-50%);
+        width: calc(100% - 3.2rem);
+        max-width: 34rem;
         justify-content: center;
-        width: 2.8rem;
-        height: 2.8rem;
-        border-radius: 50%;
-        background: rgba(212,175,55,0.16);
-        border: 1px solid rgba(255,255,255,0.18);
-        box-shadow: inset 0 1px 0 rgba(255,255,255,0.18);
-        font-size: 1.35rem;
-        flex-shrink: 0;
-		opacity: 0;
+        padding: 1.25rem 1.8rem;
+        letter-spacing: 1.8px;
       }
-
-      @media (max-width: 1250px) {
-        .hero__glass-cta {
-          left: 3%;
-          bottom: 15%;
-          padding: 1.3rem 2rem;
-          letter-spacing: 2.2px;
-        }
-      }
-
-      @media (max-width: 575px) {
-        .hero__glass-cta {
-          left: 50%;
-          bottom: 15%;
-          transform: translateX(-50%);
-          width: calc(100% - 3.2rem);
-          max-width: 34rem;
-          justify-content: center;
-          padding: 1.25rem 1.8rem;
-          letter-spacing: 1.8px;
-        }
-
-        .hero__glass-cta:hover {
-          transform: translateX(-50%) translateY(-3px);
-        }
-      }
-    </style>
+      .hero__glass-cta:hover { transform: translateX(-50%) translateY(-3px); }
+    }
+  </style>
 </head>
 <body>
-	
-    <!-- Navigation -->
-    <header class="header">
-        <div class="header__container">
-            <a href="#accueil" class="logo">                           
-                <h1 class="logo__text">ROMAIN DEWASME</h1>
-				<span class="sr-only">— Magicien Close-up & Mentaliste</span>
-            </a>
-            <nav class="nav">
-                <button class="nav__toggle" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <ul class="nav__list">
-		    <li class="nav__item"><a href="actus.html" class="nav__link">Spectacles</a></li>
-				
-		    <li class="nav__item"><a href="#prestations" class="nav__link">Prestations</a></li>
-                    <li class="nav__item"><a href="gallery.html" class="nav__link">Galerie</a></li>
-                    <li class="nav__item"><a href="bio.html" class="nav__link">Biographie</a></li>
-                    <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <!-- Section Accueil -->
-        <section id="accueil" class="hero">
-            <div class="hero__video-container">
-<video
-  id="heroVideo"
-  class="hero__video"
-  autoplay
-  loop
-  playsinline
-  muted
-  preload="auto"
-  poster="assets/images/teaser-thumbnail-desktop.webp"
-></video>
-
-                <a href="contact.html" class="hero__glass-cta" aria-label="Aller à la page contact">
-                  <span class="hero__glass-cta-text">
-                    <span class="hero__glass-cta-label">Réserver</span>
-                  </span>
-                </a>
-
-            </div>
-        </section>
-
-		
-
-   <!-- Section Prestations avec structure optimisée pour éviter le chevauchement -->
-<section id="prestations" class="services luxury-section">
-    <!-- Fond avec particules -->
-    <div class="services__background">
-        <div class="particles-overlay"></div>
-    </div>
-
-    <div class="container">
-        <!-- En-tête de la section -->
-        <div class="section-header reveal-element">
-            <h2 class="section-title magic-text">Mes Prestations</h2>
-            
-            <div class="title-separator"><span></span></div>
-        </div>
-        
-        <!-- Container des cartes - structure optimisée avec clearfix -->
-        <div class="services__container clearfix">
-            <!-- Service 1: Close-up -->
-            <div class="service-card luxury-card reveal-element">
-                <div class="service-card__inner">
-                    <div class="service-card__face service-card__face--front close-up">
-                        <div class="service-card__cta">
-                            <span class="btn-text"><h3 class="service-card__title">CLOSE-UP</h3></span>
-                            <span class="btn-icon"></span>
-                        </div>
-                    </div>
-                    <div class="service-card__face service-card__face--back">
-                        <button class="card-back-button">← Retour</button>
-                        <div class="service-card__content">
-                            <h3 class="service-card__title-back">Mon Close-up</h3>
-                            <p class="service-card__description">
-                                Une expérience intime et interactive où l'impossible se produit à quelques centimètres de vos yeux. Cartes, pièces et objets du quotidien deviennent les instruments d'un émerveillement authentique.
-                            </p>
-                            <div class="service-card__features">
-                                <div class="feature">
-                                    <span class="feature-icon">✓</span>
-                                    <span class="feature-text">Cocktails & réceptions</span>
-                                </div>
-                                <div class="feature">
-                                    <span class="feature-icon">✓</span>
-                                    <span class="feature-text">Dîners prestigieux</span>
-                                </div>
-                                <div class="feature">
-                                    <span class="feature-icon">✓</span>
-                                    <span class="feature-text">évènements VIP</span>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Service 2: Mentalisme -->
-            <div class="service-card luxury-card reveal-element" data-delay="0.2">
-                <div class="service-card__inner">
-                    <div class="service-card__face service-card__face--front gala">
-                        <div class="service-card__cta">
-                            <span class="btn-text"><h3 class="service-card__title">GALAS</h3></span>
-                        </div>
-                    </div>
-                   <div class="service-card__face service-card__face--back">
-    <button class="card-back-button">← Retour</button>
-    <div class="service-card__content">
-        <h3 class="service-card__title-back">Mes Galas</h3>
-        <p class="service-card__description">
-            Des interventions scéniques sur mesure conçues pour sublimer vos soirées de gala. Élégance, mystère et interactions captivantes transforment votre évènement en un moment de prestige inoubliable.
-        </p>
-        <div class="service-card__features">
-            <div class="feature">
-                <span class="feature-icon">✓</span>
-                <span class="feature-text">Soirées caritatives & d'entreprise</span>
-            </div>
-            <div class="feature">
-                <span class="feature-icon">✓</span>
-                <span class="feature-text">Animations de remise de prix</span>
-            </div>
-            <div class="feature">
-                <span class="feature-icon">✓</span>
-                <span class="feature-text">Créations personnalisées selon le thème</span>
-            </div>
-        </div>
-    </div>
-</div>
-                </div>
-            </div>
-
-            <!-- Service 3: Magie de Scène -->
-            <div class="service-card luxury-card reveal-element" data-delay="0.4">
-                <div class="service-card__inner">
-                    <div class="service-card__face service-card__face--front scene">
-                        <div class="service-card__cta">
-                            <h3 class="service-card__title">SCÈNE</h3>
-                            <span class="btn-icon"></span>
-                        </div>
-                    </div>
-                    <div class="service-card__face service-card__face--back">
-    <button class="card-back-button">← Retour</button>
-    <div class="service-card__content">
-        <h3 class="service-card__title-back">Ma Scène</h3>
-        <p class="service-card__description">
-            Une performance unique et rythmée, pensée pour captiver de larges audiences. Jeux de lumière, musique et effets spectaculaires créent une immersion totale dans l’univers de l’illusion.
-        </p>
-        <div class="service-card__features">
-            <div class="feature">
-                <span class="feature-icon">✓</span>
-                <span class="feature-text">Festivals & programmations culturelles</span>
-            </div>
-            <div class="feature">
-                <span class="feature-icon">✓</span>
-                <span class="feature-text">évènements en plein air</span>
-            </div>
-            <div class="feature">
-                <span class="feature-icon">✓</span>
-                <span class="feature-text">Spectacles familiaux & jeune public</span>
-            </div>
-        </div>
-    </div>
-</div>
-
-                </div>
-            </div>
-
-            <!-- Service 4: Créations sur Mesure -->
-            <div class="service-card luxury-card reveal-element" data-delay="0.6">
-                <div class="service-card__inner">
-                    <div class="service-card__face service-card__face--front tv">
-                        <div class="service-card__cta">
-                            <span class="btn-text"><h3 class="service-card__title">ÉMISSION TV</h3></span>
-                            <span class="btn-icon"></span>
-                        </div>
-                    </div>
-                    <div class="service-card__face service-card__face--back">
-    <button class="card-back-button">← Retour</button>
-    <div class="service-card__content">
-        <h3 class="service-card__title-back fixTv">Mes Passages TV</h3>
-        <p class="service-card__description">
-            Performances calibrées pour le petit écran : impact visuel immédiat, rythme maîtrisé et effets forts conçus pour captiver le public. Une expertise adaptée à tous les formats d'émissions.
-        </p>
-        <div class="service-card__features">
-            <div class="feature">
-                <span class="feature-icon">✓</span>
-                <span class="feature-text">Apparitions en direct ou enregistrées</span>
-            </div>
-            <div class="feature">
-                <span class="feature-icon">✓</span>
-                <span class="feature-text">Effets pensés pour la caméra</span>
-            </div>
-            <div class="feature">
-                <span class="feature-icon">✓</span>
-                <span class="feature-text">Accompagnement rédaction & mise en scène</span>
-            </div>
-        </div>
-    </div>
-</div>
-
-                </div>
-            </div>
-            
-            <!-- Clearfix pour garantir que le conteneur englobe correctement tous les éléments flottants -->
-            <div class="clearfix"></div>
-        </div>
-    </div>
-    
-    <!-- Section CTA - Séparée structurellement du conteneur des cartes -->
-    <div class="cta-wrapper">
-        <div class="container">
-            <div class="services__cta-container reveal-element">
-                <div class="services__cta-box">
-                    <!-- <h3 class="services__cta-title">Une prestation adaptée à votre évènement d'exception</h3> -->
-                    <!-- <p class="services__cta-text">Chaque performance est soigneusement conçue pour créer des moments d'émerveillement inoubliables pour vous et vos invités.</p> -->
-                    <a href="contact.html" class="btn btn--primary btn--large cta-pulse-animation cta-text">BOOKING<span class="emphasize">📅</span></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-		
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-<script src="js/galleryEffect.js"></script>
-<!-- SECTION SPECTACLE -->
-<section class="Spectacles">
-  <div class="container">
-    <div class="section-header Spectacles__intro">
-      <h2 class="section-title magic-text Spectacles__title">Spectacles</h2>
-      
-      <div class="title-separator"><span></span></div>
-    </div>
-
-    <div class="Spectacles__cta-wrap">
-      <a href="actus.html" class="spectacles-cta">
-        <span class="spectacles-cta__text">Dates & lieux des spectacles</span>
-        <span class="spectacles-cta__icon">→</span>
+  <!-- Navigation -->
+  <header class="header">
+    <div class="header__container">
+      <a href="#accueil" class="logo">
+        <h1 class="logo__text">ROMAIN DEWASME</h1>
+        <span class="sr-only">— Magicien Close-up & Mentaliste</span>
       </a>
+      <nav class="nav">
+        <button class="nav__toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+        <ul class="nav__list">
+          <li class="nav__item"><a href="actus.html" class="nav__link">Spectacles</a></li>
+          <li class="nav__item"><a href="prestations.html" class="nav__link">Prestations</a></li>
+          <li class="nav__item"><a href="gallery.html" class="nav__link">Galerie</a></li>
+          <li class="nav__item"><a href="bio.html" class="nav__link">Biographie</a></li>
+          <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-   <div class="Spectacles__grid">
-<article
-  class="spectacles-card spectacles-card--explosif spectacles-card--interactive"
-  aria-label="Affiche du spectacle Explosif"
-  role="button"
-  tabindex="0"
-  aria-haspopup="dialog"
-  aria-controls="spectacleModal"
-  data-spectacle-trigger="explosif"
-data-video-desktop="assets/videos/explosifv5Desktop_web.mp4"
-data-video-mobile="assets/videos/explosifv5_mobile_web.mp4"
->
-    <div class="spectacles-card__visual"></div>
-    <div class="spectacles-card__overlay"></div>
-
-  <div class="spectacles-card__content">
-  <span class="spectacles-card__tag">Spectacle</span>
-
-  <div class="spectacles-card__footer">
-    <h3 class="spectacles-card__title">Explosif</h3>
-    <span class="spectacles-card__audience">Tout public</span>
-  </div>
-</div>
-<div class="spectacles-card__hint" aria-hidden="true">
-  <div class="spectacles-card__hint-demo">
-<svg class="spectacles-card__ghost-cursor" viewBox="0 0 80 80" aria-hidden="true">
-  <polygon points="20,10 20,58 32,48 44,74 52,70 40,44 60,44" />
-</svg>
-  
-<svg class="spectacles-card__ghost-finger" viewBox="0 0 100 100" aria-hidden="true">
-  <path
-    class="spectacles-card__ghost-finger-line"
-    d="
-      M20,85 
-      C15,85 10,80 10,70 
-      V65 C10,55 20,50 30,60 
-      V20 C30,5 45,5 45,20 
-      V45 C45,35 55,35 55,45 
-      V50 C55,40 65,40 65,50 
-      V55 C65,45 75,45 75,55 
-      V75 C75,90 60,95 40,95 
-      L20,95"
-  />
-</svg>
-    <span class="spectacles-card__hint-ripple"></span>
-  </div>
-</div>
-  </article>
-
-  <article class="spectacles-card spectacles-card--trucdeouf" aria-label="Affiche du spectacle Truc de Ouf">
-    <div class="spectacles-card__visual"></div>
-    <div class="spectacles-card__overlay"></div>
-
-   <div class="spectacles-card__content">
-  <span class="spectacles-card__tag">Spectacle</span>
-
-  <div class="spectacles-card__footer">
-    <h3 class="spectacles-card__title">Truc de Ouf</h3>
-    <span class="spectacles-card__audience">Tout public</span>
-  </div>
-</div>
-  </article>
-</div>
-  </div>
-</section>
-
-		
-
-<section class="medias-section">
-  <div class="media-logos">
-    <h2 class="media-logos__title">VU à la télévision</h2>
-    <div class="media-logos__container">
-
-      <div class="media-logo" data-name="les-petits-magiciens">
-        <picture class="media-logo__img">
-          <source type="image/avif" srcset="assets/images_opt/media/lespetitsmagiciens.avif">
-          <source type="image/webp" srcset="assets/images_opt/media/lespetitsmagiciens.webp">
-          <img src="assets/images_opt/media/lespetitsmagiciens.png"
-               alt="Les Petits Magiciens"
-               loading="lazy">
-        </picture>
+  <main>
+    <!-- Section Accueil -->
+    <section id="accueil" class="hero">
+      <div class="hero__video-container">
+        <video id="heroVideo" class="hero__video" autoplay loop playsinline muted preload="auto" poster="assets/images/teaser-thumbnail-desktop.webp"></video>
+        <a href="contact.html" class="hero__glass-cta" aria-label="Aller à la page contact">
+          <span class="hero__glass-cta-text"><span class="hero__glass-cta-label">Réserver</span></span>
+        </a>
       </div>
+    </section>
 
-      <div class="media-logo" data-name="france4">
-        <picture class="media-logo__img">
-          <source type="image/avif" srcset="assets/images_opt/media/france4.avif">
-          <source type="image/webp" srcset="assets/images_opt/media/france4.webp">
-          <img src="assets/images_opt/media/france4.png"
-               alt="France 4"
-               loading="lazy">
-        </picture>
-      </div>
-
-      <div class="media-logo" data-name="m6">
-        <picture class="media-logo__img">
-          <source type="image/avif" srcset="assets/images_opt/media/m6.avif">
-          <source type="image/webp" srcset="assets/images_opt/media/m6.webp">
-          <img src="assets/images_opt/media/m6.png"
-               alt="M6"
-               loading="lazy">
-        </picture>
-      </div>
-
-      <div class="media-logo" data-name="tf1">
-        <picture class="media-logo__img">
-          <source type="image/avif" srcset="assets/images_opt/media/tf1.avif">
-          <source type="image/webp" srcset="assets/images_opt/media/tf1.webp">
-          <img src="assets/images_opt/media/tf1.png"
-               alt="TF1"
-               loading="lazy">
-        </picture>
-      </div>
-
-      <div class="media-logo" data-name="rtl">
-        <picture class="media-logo__img">
-          <source type="image/avif" srcset="assets/images_opt/media/rtltvi.avif">
-          <source type="image/webp" srcset="assets/images_opt/media/rtltvi.webp">
-          <img src="assets/images_opt/media/rtltvi.png"
-               alt="RTL TVI"
-               loading="lazy">
-        </picture>
-      </div>
-
-      <div class="media-logo" data-name="lft">
-        <picture class="media-logo__img lft">
-          <source type="image/avif" srcset="assets/images_opt/media/lft.avif">
-          <source type="image/webp" srcset="assets/images_opt/media/lft.webp">
-          <img src="assets/images_opt/media/lft.png"
-               alt="La France a un incroyable talent"
-               loading="lazy">
-        </picture>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-		
-
-
-   
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer__container">
-            <div class="footer__logo">
-                <span class="logo__text">ROMAIN DEWASME</span>
-            </div>
-            <div class="footer__content">
-                <p class="footer__tagline">L'art de l'impossible, l'émotion du possible</p>
-                <p class="footer__copyright">&copy; <span id="year"></span> Romain Dewasme. Tous droits réservés.</p>
-            </div>
-            <div class="footer__nav">
-                <ul class="footer__nav-list">
-					<li class="footer__nav-item"><a href="actus.html" class="footer__nav-link">Spectacles</a></li>
-                    <li class="footer__nav-item"><a href="#prestations" class="footer__nav-link">Prestations</a></li>
-                    <li class="footer__nav-item"><a href="gallery.html" class="footer__nav-link">Galerie</a></li>
-                    <li class="footer__nav-item"><a href="bio.html" class="footer__nav-link">Biographie</a></li>
-                    <li class="footer__nav-item"><a href="contact.html" class="footer__nav-link">Contact</a></li>
-                </ul>
-            </div>
+    <!-- SECTION SPECTACLE -->
+    <section class="Spectacles">
+      <div class="container">
+        <div class="section-header Spectacles__intro">
+          <h2 class="section-title magic-text Spectacles__title">Spectacles</h2>
+          <div class="title-separator"><span></span></div>
         </div>
-    </footer>
 
-    <!-- Scripts -->
-    <!-- Scripts personnalisés -->
-	<script>
-	/**
- * SCRIPT DE CORRECTION POUR LA SECTION PRESTATIONS
- */ // 2) Enregistrer le plugin
-  gsap.registerPlugin(ScrollTrigger);
+        <div class="Spectacles__cta-wrap">
+          <a href="actus.html" class="spectacles-cta">
+            <span class="spectacles-cta__text">Dates & lieux des spectacles</span>
+            <span class="spectacles-cta__icon">→</span>
+          </a>
+        </div>
 
-  // 3) Initialisation des animations de scroll
-  function initScrollAnimations() {
-    // BIOGRAPHIE
-    gsap.utils.toArray('#biography .animate-on-scroll').forEach(elem => {
-      gsap.from(elem, {
-        scrollTrigger: {
-          trigger: elem,
-          start: 'top 80%',      // quand le haut de l’élément atteint 80% du viewport
-          toggleActions: 'play none none none',
-        },
-        opacity: 0,
-        y: 50,
-        duration: 0.8,
-        ease: 'power2.out'
-      });
-    });
+        <div class="Spectacles__grid">
+          <article class="spectacles-card spectacles-card--explosif spectacles-card--interactive" aria-label="Affiche du spectacle Explosif" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="spectacleModal" data-spectacle-trigger="explosif" data-video-desktop="assets/videos/explosifv5Desktop_web.mp4" data-video-mobile="assets/videos/explosifv5_mobile_web.mp4">
+            <div class="spectacles-card__visual"></div>
+            <div class="spectacles-card__overlay"></div>
+            <div class="spectacles-card__content">
+              <span class="spectacles-card__tag">Spectacle</span>
+              <div class="spectacles-card__footer">
+                <h3 class="spectacles-card__title">Explosif</h3>
+                <span class="spectacles-card__audience">Tout public</span>
+              </div>
+            </div>
+            <div class="spectacles-card__hint" aria-hidden="true">
+              <div class="spectacles-card__hint-demo">
+                <svg class="spectacles-card__ghost-cursor" viewBox="0 0 80 80" aria-hidden="true"><polygon points="20,10 20,58 32,48 44,74 52,70 40,44 60,44" /></svg>
+                <svg class="spectacles-card__ghost-finger" viewBox="0 0 100 100" aria-hidden="true">
+                  <path class="spectacles-card__ghost-finger-line" d="M20,85 C15,85 10,80 10,70 V65 C10,55 20,50 30,60 V20 C30,5 45,5 45,20 V45 C45,35 55,35 55,45 V50 C55,40 65,40 65,50 V55 C65,45 75,45 75,55 V75 C75,90 60,95 40,95 L20,95" />
+                </svg>
+                <span class="spectacles-card__hint-ripple"></span>
+              </div>
+            </div>
+          </article>
 
-    // CONTACT
-    gsap.utils.toArray('#contact .animate-on-scroll').forEach(elem => {
-      gsap.from(elem, {
-        scrollTrigger: {
-          trigger: elem,
-          start: 'top 80%',
-          toggleActions: 'play none none none',
-        },
-        opacity: 0,
-        y: 50,
-        duration: 0.8,
-        ease: 'power2.out'
-      });
-    });
-  }
+          <article class="spectacles-card spectacles-card--trucdeouf" aria-label="Affiche du spectacle Truc de Ouf">
+            <div class="spectacles-card__visual"></div>
+            <div class="spectacles-card__overlay"></div>
+            <div class="spectacles-card__content">
+              <span class="spectacles-card__tag">Spectacle</span>
+              <div class="spectacles-card__footer">
+                <h3 class="spectacles-card__title">Truc de Ouf</h3>
+                <span class="spectacles-card__audience">Tout public</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-  // 4) Lancer après DOM ready
-  document.addEventListener('DOMContentLoaded', initScrollAnimations);
+    <section class="medias-section">
+      <div class="media-logos">
+        <h2 class="media-logos__title">VU à la télévision</h2>
+        <div class="media-logos__container">
+          <div class="media-logo" data-name="les-petits-magiciens"><picture class="media-logo__img"><source type="image/avif" srcset="assets/images_opt/media/lespetitsmagiciens.avif"><source type="image/webp" srcset="assets/images_opt/media/lespetitsmagiciens.webp"><img src="assets/images_opt/media/lespetitsmagiciens.png" alt="Les Petits Magiciens" loading="lazy"></picture></div>
+          <div class="media-logo" data-name="france4"><picture class="media-logo__img"><source type="image/avif" srcset="assets/images_opt/media/france4.avif"><source type="image/webp" srcset="assets/images_opt/media/france4.webp"><img src="assets/images_opt/media/france4.png" alt="France 4" loading="lazy"></picture></div>
+          <div class="media-logo" data-name="m6"><picture class="media-logo__img"><source type="image/avif" srcset="assets/images_opt/media/m6.avif"><source type="image/webp" srcset="assets/images_opt/media/m6.webp"><img src="assets/images_opt/media/m6.png" alt="M6" loading="lazy"></picture></div>
+          <div class="media-logo" data-name="tf1"><picture class="media-logo__img"><source type="image/avif" srcset="assets/images_opt/media/tf1.avif"><source type="image/webp" srcset="assets/images_opt/media/tf1.webp"><img src="assets/images_opt/media/tf1.png" alt="TF1" loading="lazy"></picture></div>
+          <div class="media-logo" data-name="rtl"><picture class="media-logo__img"><source type="image/avif" srcset="assets/images_opt/media/rtltvi.avif"><source type="image/webp" srcset="assets/images_opt/media/rtltvi.webp"><img src="assets/images_opt/media/rtltvi.png" alt="RTL TVI" loading="lazy"></picture></div>
+          <div class="media-logo" data-name="lft"><picture class="media-logo__img lft"><source type="image/avif" srcset="assets/images_opt/media/lft.avif"><source type="image/webp" srcset="assets/images_opt/media/lft.webp"><img src="assets/images_opt/media/lft.png" alt="La France a un incroyable talent" loading="lazy"></picture></div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-document.addEventListener('DOMContentLoaded', function(){
-    // S'assurer que la section prestations est visible
-    const prestationsSection = document.getElementById('prestations');
-    const servicesContainer = document.querySelector('.services__container');
-    const serviceCards = document.querySelectorAll('.service-card');
-    
-    if (prestationsSection) {
-        prestationsSection.style.display = 'block';
-        prestationsSection.style.visibility = 'visible';
-        prestationsSection.style.opacity = '1';
-        console.log('Section prestations trouvée et rendue visible');
-    } else {
-        console.error('Section prestations non trouvée dans le DOM');
-    }
-    
-    if (servicesContainer) {
-        servicesContainer.style.display = 'grid';
-        console.log('Container de services trouvé et configuré en grid');
-    } else {
-        console.error('Container de services non trouvé');
-    }
-    
-    if (serviceCards.length > 0) {
-        serviceCards.forEach((card, index) => {
-            card.style.display = 'block';
-            card.style.visibility = 'visible';
-            card.style.opacity = '1';
-            
-            // Créer les icônes si elles n'existent pas
-            const iconContainer = card.querySelector('.service-card__icon');
-            if (iconContainer && !iconContainer.querySelector('img')) {
-                const img = document.createElement('img');
-                
-                // Définir l'image selon l'index
-                switch(index) {
-                    case 0:
-                        img.src = 'assets/icons/close-up.svg';
-                        img.alt = 'Close-up';
-                        break;
-                    case 1:
-                        img.src = 'assets/icons/mentalisme.svg';
-                        img.alt = 'Mentalisme';
-                        break;
-                    case 2:
-                        img.src = 'assets/icons/scene.svg';
-                        img.alt = 'Magie de scène';
-                        break;
-                    case 3:
-                        img.src = 'assets/icons/custom.svg';
-                        img.alt = 'Expériences sur mesure';
-                        break;
-                }
-                
-                iconContainer.appendChild(img);
-            }
-        });
-        console.log(`${serviceCards.length} cartes de services trouvées et rendues visibles`);
-    } else {
-        console.error('Aucune carte de service trouvée');
-        
-        // Si les cartes n'existent pas, créons-les
-        if (servicesContainer) {
-            const services = [
-                {
-                    title: 'Magie de Close-up',
-                    description: 'Une expérience intime et interactive où l\'impossible se produit à quelques centimètres de vos yeux. Cartes, pièces et objets du quotidien deviennent les instruments d\'un émerveillement authentique.',
-                    icon: 'close-up.svg',
-                    alt: 'Close-up'
-                },
-                {
-                    title: 'Mentalisme',
-                    description: 'Entre mystère et fascination, le mentalisme explore les frontières de l\'esprit. Prédictions, influences subtiles et lectures de pensées créent une expérience intellectuellement stimulante et émotionnellement puissante.',
-                    icon: 'mentalisme.svg',
-                    alt: 'Mentalisme'
-                },
-                {
-                    title: 'Magie de Scène',
-                    description: 'Un spectacle visuel et immersif où l\'art de l\'illusion se déploie dans toute sa splendeur. Apparitions, disparitions et transformations impossibles captivent l\'audience dans une expérience collective mémorable.',
-                    icon: 'scene.svg',
-                    alt: 'Magie de scène'
-                },
-                {
-                    title: 'Créations sur Mesure',
-                    description: 'Des expériences magiques conçues spécifiquement pour votre évènement, intégrant votre marque, votre histoire ou votre thématique dans une performance unique qui résonnera profondément avec votre audience.',
-                    icon: 'custom.svg',
-                    alt: 'Expériences sur mesure'
-                }
-            ];
-            
-            services.forEach((service, index) => {
-                const card = document.createElement('div');
-                card.className = 'service-card reveal-element';
-                if (index > 0) {
-                    card.setAttribute('data-delay', `${index * 0.2}`);
-                }
-                
-                card.innerHTML = `
-                    <div class="service-card__icon">
-                        <img src="assets/icons/${service.icon}" alt="${service.alt}">
-                    </div>
-                    <h3 class="service-card__title">${service.title}</h3>
-                    <p class="service-card__description">${service.description}</p>
-                `;
-                
-                servicesContainer.appendChild(card);
-            });
-            
-            console.log('Cartes de services créées dynamiquement');
-        }
-      
-    iconContainers.forEach(container => {
-        const img = container.querySelector('img');
-        if (img) {
-            const alt = img.getAttribute('alt');
-            if (svgIcons[alt]) {
-                // Remplacer l'image par le SVG inline
-                img.style.display = 'none';
-                container.innerHTML += svgIcons[alt];
-            }
-        }
-    });
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__logo"><span class="logo__text">ROMAIN DEWASME</span></div>
+      <div class="footer__content">
+        <p class="footer__tagline">L'art de l'impossible, l'émotion du possible</p>
+        <p class="footer__copyright">&copy; <span id="year"></span> Romain Dewasme. Tous droits réservés.</p>
+      </div>
+      <div class="footer__nav">
+        <ul class="footer__nav-list">
+          <li class="footer__nav-item"><a href="actus.html" class="footer__nav-link">Spectacles</a></li>
+          <li class="footer__nav-item"><a href="prestations.html" class="footer__nav-link">Prestations</a></li>
+          <li class="footer__nav-item"><a href="gallery.html" class="footer__nav-link">Galerie</a></li>
+          <li class="footer__nav-item"><a href="bio.html" class="footer__nav-link">Biographie</a></li>
+          <li class="footer__nav-item"><a href="contact.html" class="footer__nav-link">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
 
-// Exécuter après un court délai pour s'assurer que le reste du DOM est chargé
-setTimeout(injectSVGIcons, 500);
-}
-}
-)
-</script>
+  <div class="spectacle-modal" id="spectacleModal" hidden aria-hidden="true">
+    <div class="spectacle-modal__backdrop"></div>
+    <button class="spectacle-modal__close" type="button" aria-label="Fermer la vidéo"><span></span><span></span></button>
+    <video id="spectacleModalVideo" class="spectacle-modal__video" playsinline preload="metadata"></video>
+    <button class="spectacle-modal__replay" id="spectacleModalReplay" type="button" hidden>Replay</button>
+  </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const trigger = document.querySelector('[data-spectacle-trigger="explosif"]');
-  const modal = document.getElementById('spectacleModal');
-  const video = document.getElementById('spectacleModalVideo');
-  const replayBtn = document.getElementById('spectacleModalReplay');
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="js/galleryEffect.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const trigger = document.querySelector('[data-spectacle-trigger="explosif"]');
+      const modal = document.getElementById('spectacleModal');
+      const video = document.getElementById('spectacleModalVideo');
+      const replayBtn = document.getElementById('spectacleModalReplay');
+      if (!trigger || !modal || !video || !replayBtn) return;
 
-  if (!trigger || !modal || !video || !replayBtn) return;
+      const closeBtn = modal.querySelector('.spectacle-modal__close');
+      const backdrop = modal.querySelector('.spectacle-modal__backdrop');
+      const mqMobile = window.matchMedia('(max-width: 1250px)');
+      let isOpen = false;
+      let isClosing = false;
 
-  const closeBtn = modal.querySelector('.spectacle-modal__close');
-  const backdrop = modal.querySelector('.spectacle-modal__backdrop');
-  const mqMobile = window.matchMedia('(max-width: 1250px)');
-
-  let isOpen = false;
-  let isClosing = false;
-
-  function getVideoSrc() {
-    return mqMobile.matches
-      ? trigger.dataset.videoMobile
-      : trigger.dataset.videoDesktop;
-  }
-
-  function prepareVideo() {
-    const src = getVideoSrc();
-
-    if (video.dataset.currentSrc !== src) {
-      video.src = src;
-      video.dataset.currentSrc = src;
-      video.load();
-    }
-
-    video.volume = 0.65;
-    replayBtn.hidden = true;
-    modal.classList.remove('is-ended');
-  }
-
-  async function openModal() {
-    if (isOpen || isClosing) return;
-
-    prepareVideo();
-    video.currentTime = 0;
-
-modal.hidden = false;
-modal.setAttribute('aria-hidden', 'false');
-document.body.classList.add('spectacle-modal-open');
-
-/* force le navigateur à peindre l'état initial avant l'ouverture */
-void modal.offsetWidth;
-
-requestAnimationFrame(() => {
-  modal.classList.add('is-open');
-});
-
-    isOpen = true;
-
-    try {
-      await video.play();
-    } catch (err) {
-      console.warn('Lecture bloquée :', err);
-    }
-  }
-
-  function closeModal() {
-    if (!isOpen || isClosing) return;
-
-    isClosing = true;
-    modal.classList.remove('is-open', 'is-ended');
-
-    setTimeout(() => {
-      video.pause();
-      video.currentTime = 0;
-      replayBtn.hidden = true;
-      modal.hidden = true;
-      modal.setAttribute('aria-hidden', 'true');
-      document.body.classList.remove('spectacle-modal-open');
-      isOpen = false;
-      isClosing = false;
-    }, 420);
-  }
-
-  async function togglePlayback() {
-    if (video.ended) return;
-
-    if (video.paused) {
-      try {
-        await video.play();
-      } catch (err) {
-        console.warn('Reprise bloquée :', err);
+      function getVideoSrc() {
+        return mqMobile.matches ? trigger.dataset.videoMobile : trigger.dataset.videoDesktop;
       }
-    } else {
-      video.pause();
-    }
-  }
 
-  async function replayVideo() {
-    replayBtn.hidden = true;
-    modal.classList.remove('is-ended');
-    video.currentTime = 0;
-
-    try {
-      await video.play();
-    } catch (err) {
-      console.warn('Replay bloqué :', err);
-    }
-  }
-
-  trigger.addEventListener('click', openModal);
-
-  trigger.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      openModal();
-    }
-  });
-
-  closeBtn.addEventListener('click', closeModal);
-  backdrop.addEventListener('click', closeModal);
-  replayBtn.addEventListener('click', replayVideo);
-  video.addEventListener('click', togglePlayback);
-
-  video.addEventListener('ended', () => {
-    modal.classList.add('is-ended');
-    replayBtn.hidden = false;
-  });
-
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && isOpen) {
-      closeModal();
-    }
-  });
-});
-</script>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const explosifCard = document.querySelector('.spectacles-card--explosif');
-  if (!explosifCard) return;
-
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  let startTimer = null;
-  let repeatTimer = null;
-  let hintRunning = false;
-
-  function clearTimers() {
-    if (startTimer) {
-      clearTimeout(startTimer);
-      startTimer = null;
-    }
-    if (repeatTimer) {
-      clearInterval(repeatTimer);
-      repeatTimer = null;
-    }
-  }
-
-  function stopHint() {
-    explosifCard.classList.remove('is-hint-playing');
-    hintRunning = false;
-  }
-
-  function playHint() {
-    if (hintRunning) return;
-    if (document.hidden) return;
-    if (document.body.classList.contains('spectacle-modal-open')) return;
-
-    hintRunning = true;
-    explosifCard.classList.remove('is-hint-playing');
-
-    requestAnimationFrame(() => {
-      explosifCard.classList.add('is-hint-playing');
-    });
-
-    setTimeout(() => {
-      stopHint();
-    }, 1900);
-  }
-
-  function startLoop() {
-    clearTimers();
-
-    startTimer = setTimeout(() => {
-      playHint();
-
-      repeatTimer = setInterval(() => {
-        playHint();
-      }, 3000);
-    }, 1250);
-  }
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting && entry.intersectionRatio >= 0.55) {
-        if (!startTimer && !repeatTimer) {
-          startLoop();
+      function prepareVideo() {
+        const src = getVideoSrc();
+        if (video.dataset.currentSrc !== src) {
+          video.src = src;
+          video.dataset.currentSrc = src;
+          video.load();
         }
-      } else {
+        video.volume = 0.65;
+        replayBtn.hidden = true;
+        modal.classList.remove('is-ended');
+      }
+
+      async function openModal() {
+        if (isOpen || isClosing) return;
+        prepareVideo();
+        video.currentTime = 0;
+        modal.hidden = false;
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('spectacle-modal-open');
+        void modal.offsetWidth;
+        requestAnimationFrame(() => modal.classList.add('is-open'));
+        isOpen = true;
+        try { await video.play(); } catch (err) { console.warn('Lecture bloquée :', err); }
+      }
+
+      function closeModal() {
+        if (!isOpen || isClosing) return;
+        isClosing = true;
+        modal.classList.remove('is-open', 'is-ended');
+        setTimeout(() => {
+          video.pause();
+          video.currentTime = 0;
+          replayBtn.hidden = true;
+          modal.hidden = true;
+          modal.setAttribute('aria-hidden', 'true');
+          document.body.classList.remove('spectacle-modal-open');
+          isOpen = false;
+          isClosing = false;
+        }, 420);
+      }
+
+      async function togglePlayback() {
+        if (video.ended) return;
+        if (video.paused) {
+          try { await video.play(); } catch (err) { console.warn('Reprise bloquée :', err); }
+        } else {
+          video.pause();
+        }
+      }
+
+      async function replayVideo() {
+        replayBtn.hidden = true;
+        modal.classList.remove('is-ended');
+        video.currentTime = 0;
+        try { await video.play(); } catch (err) { console.warn('Replay bloqué :', err); }
+      }
+
+      trigger.addEventListener('click', openModal);
+      trigger.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openModal();
+        }
+      });
+      closeBtn.addEventListener('click', closeModal);
+      backdrop.addEventListener('click', closeModal);
+      replayBtn.addEventListener('click', replayVideo);
+      video.addEventListener('click', togglePlayback);
+      video.addEventListener('ended', () => {
+        modal.classList.add('is-ended');
+        replayBtn.hidden = false;
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && isOpen) closeModal();
+      });
+    });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const explosifCard = document.querySelector('.spectacles-card--explosif');
+      if (!explosifCard) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      let startTimer = null;
+      let repeatTimer = null;
+      let hintRunning = false;
+
+      function clearTimers() {
+        if (startTimer) {
+          clearTimeout(startTimer);
+          startTimer = null;
+        }
+        if (repeatTimer) {
+          clearInterval(repeatTimer);
+          repeatTimer = null;
+        }
+      }
+
+      function stopHint() {
+        explosifCard.classList.remove('is-hint-playing');
+        hintRunning = false;
+      }
+
+      function playHint() {
+        if (hintRunning || document.hidden || document.body.classList.contains('spectacle-modal-open')) return;
+        hintRunning = true;
+        explosifCard.classList.remove('is-hint-playing');
+        requestAnimationFrame(() => explosifCard.classList.add('is-hint-playing'));
+        setTimeout(stopHint, 1900);
+      }
+
+      function startLoop() {
         clearTimers();
-        stopHint();
+        startTimer = setTimeout(() => {
+          playHint();
+          repeatTimer = setInterval(playHint, 3000);
+        }, 1250);
       }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.55) {
+            if (!startTimer && !repeatTimer) startLoop();
+          } else {
+            clearTimers();
+            stopHint();
+          }
+        });
+      }, { threshold: [0, 0.25, 0.55, 0.8] });
+
+      observer.observe(explosifCard);
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          clearTimers();
+          stopHint();
+        }
+      });
+      window.addEventListener('pagehide', clearTimers);
     });
-  }, {
-    threshold: [0, 0.25, 0.55, 0.8]
-  });
-
-  observer.observe(explosifCard);
-
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      clearTimers();
-      stopHint();
-    }
-  });
-
-  window.addEventListener('pagehide', clearTimers);
-});
-</script>
-    <script src="js/main.js" defer></script>
-    <script src="js/animations.js"></script>
-	<script src="js/services.js"></script>
-	
-
+  </script>
+  <script src="js/main.js" defer></script>
+  <script src="js/animations.js"></script>
 </body>
-<div class="spectacle-modal" id="spectacleModal" hidden aria-hidden="true">
-  <div class="spectacle-modal__backdrop"></div>
-
-  <button class="spectacle-modal__close" type="button" aria-label="Fermer la vidéo">
-    <span></span>
-    <span></span>
-  </button>
-
-  <video
-    id="spectacleModalVideo"
-    class="spectacle-modal__video"
-    playsinline
-    preload="metadata"
-  ></video>
-
-  <button class="spectacle-modal__replay" id="spectacleModalReplay" type="button" hidden>
-    Replay
-  </button>
-</div>
 </html>
