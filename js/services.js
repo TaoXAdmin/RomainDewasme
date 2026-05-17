@@ -8,7 +8,35 @@ document.addEventListener('DOMContentLoaded', () => {
     initServiceCardInteractions();
     initCardRevealAnimation();
     addCardRevealStyle();
+    injectPrestationsHubLink();
 });
+
+/**
+ * Ajoute un lien visible vers la page hub prestations depuis la section d'accueil.
+ * L'ancre #prestations reste utilisée pour la navigation interne de l'accueil.
+ */
+function injectPrestationsHubLink() {
+    const ctaBox = document.querySelector('.services__cta-box');
+    if (!ctaBox || ctaBox.querySelector('[data-prestations-hub-link]')) return;
+
+    const bookingLink = ctaBox.querySelector('a[href="contact.html"]');
+    const hubLink = document.createElement('a');
+    hubLink.href = 'prestations.html';
+    hubLink.className = 'btn btn--secondary btn--large';
+    hubLink.dataset.prestationsHubLink = 'true';
+    hubLink.textContent = 'Voir toutes les prestations';
+
+    ctaBox.style.display = 'flex';
+    ctaBox.style.flexWrap = 'wrap';
+    ctaBox.style.justifyContent = 'center';
+    ctaBox.style.gap = '1.2rem';
+
+    if (bookingLink) {
+        ctaBox.insertBefore(hubLink, bookingLink);
+    } else {
+        ctaBox.appendChild(hubLink);
+    }
+}
 
 /**
  * Interactions des cartes de service et de leurs boutons
