@@ -105,6 +105,78 @@
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/responsive.css">
 
+  <style>
+    .voice-answers {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto 6rem;
+      padding: 0 2.4rem;
+      color: var(--color-white2);
+    }
+
+    .voice-answers__intro {
+      max-width: 760px;
+      margin-bottom: 2.4rem;
+    }
+
+    .voice-answers__title {
+      margin: 0 0 1rem;
+      font-family: var(--font-heading);
+      font-size: clamp(3rem, 4vw, 4.8rem);
+      line-height: 1.1;
+      color: var(--color-white2);
+    }
+
+    .voice-answers__text {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 1.58rem;
+      line-height: 1.75;
+    }
+
+    .voice-answers__grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.6rem;
+    }
+
+    .voice-answer {
+      padding: 2.2rem;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: 20px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.075), rgba(255,255,255,0.025));
+    }
+
+    .voice-answer__question {
+      margin: 0 0 1rem;
+      color: var(--color-gold);
+      font-size: 1.42rem;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .voice-answer__answer {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 1.5rem;
+      line-height: 1.72;
+    }
+
+    .voice-answer__answer a {
+      color: var(--color-gold);
+      text-decoration: underline;
+      text-underline-offset: 0.2em;
+    }
+
+    @media (max-width: 900px) {
+      .voice-answers__grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 767px) {
+      .voice-answers { padding: 0 1.8rem; }
+    }
+  </style>
+
   <!-- Favicon -->
   <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
@@ -232,6 +304,27 @@
             <div id="formStatus" class="form-status" role="status" aria-live="polite" aria-atomic="true"></div>
           </form>
         </div>
+      </div>
+    </section>
+
+    <section class="voice-answers" aria-labelledby="contact-voice-title">
+      <div class="voice-answers__intro">
+        <h2 id="contact-voice-title" class="voice-answers__title">Réponses rapides avant de réserver</h2>
+        <p class="voice-answers__text">Des réponses courtes et directes pour préparer une demande de devis claire.</p>
+      </div>
+      <div class="voice-answers__grid">
+        <article class="voice-answer">
+          <h3 class="voice-answer__question">Comment réserver Romain Dewasme ?</h3>
+          <p class="voice-answer__answer">Envoyez la date, le lieu, le type d’événement, le nombre d’invités et le moment souhaité pour la magie via le formulaire, par email ou par téléphone.</p>
+        </article>
+        <article class="voice-answer">
+          <h3 class="voice-answer__question">Dans quelles villes intervient-il ?</h3>
+          <p class="voice-answer__answer">Romain Dewasme intervient notamment à Mouscron, Courtrai, Lille, Villeneuve-d'Ascq, Marcq-en-Barœul, Tournai, en Belgique et dans le Nord de la France.</p>
+        </article>
+        <article class="voice-answer">
+          <h3 class="voice-answer__question">Comment savoir si la date est disponible ?</h3>
+          <p class="voice-answer__answer">La disponibilité se confirme après échange. Le plus simple est d’envoyer la date et le lieu de l’événement pour recevoir une réponse adaptée.</p>
+        </article>
       </div>
     </section>
   </main>
