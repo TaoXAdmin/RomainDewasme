@@ -56,10 +56,12 @@
           "addressCountry": "BE"
         },
         "areaServed": [
-          { "@type": "City", "name": "Tournai" },
           { "@type": "City", "name": "Mouscron" },
           { "@type": "City", "name": "Courtrai" },
           { "@type": "City", "name": "Lille" },
+          { "@type": "City", "name": "Villeneuve-d'Ascq" },
+          { "@type": "City", "name": "Marcq-en-Barœul" },
+          { "@type": "City", "name": "Tournai" },
           { "@type": "Country", "name": "Belgique" },
           { "@type": "AdministrativeArea", "name": "Nord de la France" }
         ],
@@ -79,6 +81,36 @@
         "isPartOf": { "@id": "https://www.romaindewasme.com/#website" },
         "about": { "@id": "https://www.romaindewasme.com/#business" },
         "mainEntity": { "@id": "https://www.romaindewasme.com/#business" }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://www.romaindewasme.com/magicien-tournai.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Quel format de magie choisir pour un événement à Tournai ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Le close-up est un format souple pour un cocktail, un vin d’honneur, une réception, un repas ou une soirée privée à Tournai. Le magicien intervient auprès des groupes d’invités sans imposer une scène ou une coupure dans l’événement."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Romain Dewasme intervient-il à Tournai depuis Mouscron ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Oui. Basé à Mouscron, Romain Dewasme étudie les demandes à Tournai, Mouscron, Courtrai, Lille et dans les environs, selon la date, le lieu et le format de prestation souhaité."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Quand intégrer une animation magique dans une réception à Tournai ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Les moments les plus adaptés sont souvent l’accueil, le cocktail, le vin d’honneur, l’attente entre deux temps forts, le repas ou le début de soirée. L’objectif est de créer du lien sans perturber le programme."
+            }
+          }
+        ]
       },
       {
         "@type": "BreadcrumbList",
@@ -114,18 +146,25 @@
     .local-hero__lead { max-width: 820px; margin: 0 0 2.2rem; font-size: 1.85rem; line-height: 1.8; color: rgba(255,255,255,.82); }
     .local-hero__actions, .local-final__actions, .local-card__actions { display: flex; flex-wrap: wrap; gap: 1.2rem; align-items: center; }
     .local-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.2rem; margin-bottom: 5.5rem; }
-    .local-card, .local-note, .local-final { border: 1px solid rgba(255,255,255,.13); border-radius: 24px; background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.025)); box-shadow: 0 24px 60px rgba(0,0,0,.28); }
+    .local-card, .local-detail, .local-faq, .local-note, .local-final { border: 1px solid rgba(255,255,255,.13); border-radius: 24px; background: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.025)); box-shadow: 0 24px 60px rgba(0,0,0,.28); }
     .local-card { padding: 2.6rem; }
-    .local-card__title, .local-note__title, .local-final__title { margin: 0 0 1.4rem; font-family: var(--font-heading); font-size: 3rem; line-height: 1.12; color: var(--color-white2); }
-    .local-card__text, .local-card__list, .local-note__text, .local-final__text { color: rgba(255,255,255,.78); font-size: 1.56rem; line-height: 1.76; }
-    .local-card__list { margin: 1.8rem 0 2.2rem; padding-left: 1.8rem; }
-    .local-card__list li + li { margin-top: .8rem; }
+    .local-card__title, .local-detail__title, .local-faq__title, .local-note__title, .local-final__title { margin: 0 0 1.4rem; font-family: var(--font-heading); font-size: 3rem; line-height: 1.12; color: var(--color-white2); }
+    .local-card__text, .local-card__list, .local-detail__text, .local-detail__list, .local-faq__text, .local-note__text, .local-final__text { color: rgba(255,255,255,.78); font-size: 1.56rem; line-height: 1.76; }
+    .local-card__list, .local-detail__list { margin: 1.8rem 0 2.2rem; padding-left: 1.8rem; }
+    .local-card__list li + li, .local-detail__list li + li { margin-top: .8rem; }
+    .local-detail { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr); gap: 3rem; align-items: start; margin-bottom: 5.5rem; padding: 3rem; }
+    .local-detail__eyebrow { display: inline-flex; margin-bottom: 1.2rem; color: var(--color-gold); font-size: 1.15rem; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; }
+    .local-detail__box { padding: 2.2rem; border-radius: 18px; background: rgba(0,0,0,.24); border: 1px solid rgba(255,255,255,.1); }
+    .local-detail__box + .local-detail__box { margin-top: 1.4rem; }
+    .local-detail__box-title, .local-faq__question { margin: 0 0 .8rem; color: var(--color-gold); font-family: var(--font-primary); font-size: 1.45rem; font-weight: 800; line-height: 1.35; }
+    .local-faq { max-width: 980px; margin-bottom: 5.5rem; padding: 3rem; }
+    .local-faq__item + .local-faq__item { margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,.1); }
     .local-note { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, 360px); gap: 3rem; align-items: center; margin-bottom: 5.5rem; padding: 3rem; border-left: 3px solid var(--color-gold); }
     .local-note__zones { display: flex; flex-wrap: wrap; gap: .8rem; }
     .local-note__zone { display: inline-flex; padding: .75rem 1.1rem; border: 1px solid rgba(255,255,255,.14); border-radius: 999px; color: rgba(255,255,255,.86); font-size: 1.25rem; letter-spacing: .04em; }
     .local-final { max-width: 900px; padding: 3.4rem; background: radial-gradient(circle at top left, rgba(212,175,55,.18), rgba(255,255,255,.04) 42%, rgba(255,255,255,.02)); }
-    @media (max-width: 980px) { .local-grid, .local-note { grid-template-columns: 1fr; } }
-    @media (max-width: 767px) { .local-page { padding-top: 11rem; } .local-page__container { padding: 0 1.8rem; } .local-hero__lead, .local-card__text, .local-card__list, .local-note__text, .local-final__text { font-size: 1.5rem; } .local-card, .local-note, .local-final { padding: 2.2rem; } }
+    @media (max-width: 980px) { .local-grid, .local-detail, .local-note { grid-template-columns: 1fr; } }
+    @media (max-width: 767px) { .local-page { padding-top: 11rem; } .local-page__container { padding: 0 1.8rem; } .local-hero__lead, .local-card__text, .local-card__list, .local-detail__text, .local-detail__list, .local-faq__text, .local-note__text, .local-final__text { font-size: 1.5rem; } .local-card, .local-detail, .local-faq, .local-note, .local-final { padding: 2.2rem; } }
   </style>
 
   <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -186,13 +225,52 @@
         </article>
       </section>
 
+      <section class="local-detail" aria-labelledby="tournai-context-title">
+        <div>
+          <span class="local-detail__eyebrow">Contexte local</span>
+          <h2 id="tournai-context-title" class="local-detail__title">Pourquoi prévoir une animation magique à Tournai ?</h2>
+          <p class="local-detail__text">À Tournai, la magie close-up convient particulièrement aux réceptions où l’on veut créer une ambiance conviviale sans arrêter le déroulé : mariage, cocktail, anniversaire, repas privé, soirée d’entreprise ou événement professionnel.</p>
+          <p class="local-detail__text">Ce format permet d’intervenir auprès de petits groupes, de s’adapter à la configuration du lieu et de transformer les temps d’attente en moments de surprise. Il est donc utile lorsque les invités arrivent progressivement ou ne se connaissent pas encore tous.</p>
+        </div>
+        <div>
+          <div class="local-detail__box">
+            <h3 class="local-detail__box-title">Formats recommandés</h3>
+            <ul class="local-detail__list">
+              <li>Close-up pendant l’accueil ou le cocktail.</li>
+              <li>Magie de proximité pendant un vin d’honneur ou un repas.</li>
+              <li>Animation modulable pour une soirée privée ou professionnelle.</li>
+            </ul>
+          </div>
+          <div class="local-detail__box">
+            <h3 class="local-detail__box-title">À préciser pour Tournai</h3>
+            <p class="local-detail__text">Indiquez le lieu, le type d’événement, le nombre d’invités, le moment souhaité et l’ambiance recherchée. Ces informations permettent de recommander un format adapté plutôt qu’un déroulé générique.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="local-faq" aria-labelledby="faq-tournai-title">
+        <h2 id="faq-tournai-title" class="local-faq__title">Questions fréquentes pour une prestation à Tournai</h2>
+        <article class="local-faq__item">
+          <h3 class="local-faq__question">Quel format de magie choisir pour un événement à Tournai ?</h3>
+          <p class="local-faq__text">Le close-up est un format souple pour un cocktail, un vin d’honneur, une réception, un repas ou une soirée privée. Le magicien intervient auprès des groupes d’invités sans imposer une scène ou une coupure dans l’événement.</p>
+        </article>
+        <article class="local-faq__item">
+          <h3 class="local-faq__question">Romain Dewasme intervient-il à Tournai depuis Mouscron ?</h3>
+          <p class="local-faq__text">Oui. Basé à Mouscron, Romain Dewasme étudie les demandes à Tournai, Mouscron, Courtrai, Lille et dans les environs, selon la date, le lieu et le format de prestation souhaité.</p>
+        </article>
+        <article class="local-faq__item">
+          <h3 class="local-faq__question">Quand intégrer une animation magique dans une réception ?</h3>
+          <p class="local-faq__text">Les moments les plus adaptés sont souvent l’accueil, le cocktail, le vin d’honneur, l’attente entre deux temps forts, le repas ou le début de soirée. L’objectif est de créer du lien sans perturber le programme.</p>
+        </article>
+      </section>
+
       <section class="local-note" aria-labelledby="zone-tournai-title">
         <div>
           <h2 id="zone-tournai-title" class="local-note__title">Tournai, Mouscron et Belgique</h2>
-          <p class="local-note__text">Les demandes pour Tournai sont étudiées selon la date, le lieu, le nombre d’invités et le format souhaité. Les zones prioritaires incluent Tournai, Mouscron, Courtrai, Lille, la Belgique et le Nord de la France.</p>
+          <p class="local-note__text">Les demandes pour Tournai sont étudiées selon la date, le lieu, le nombre d’invités et le format souhaité. Les zones prioritaires incluent Tournai, Mouscron, Courtrai, Lille, Villeneuve-d'Ascq, Marcq-en-Barœul, la Belgique et le Nord de la France.</p>
         </div>
         <div class="local-note__zones" aria-label="Zones desservies autour de Tournai">
-          <span class="local-note__zone">Tournai</span><span class="local-note__zone">Mouscron</span><span class="local-note__zone">Courtrai</span><span class="local-note__zone">Lille</span><span class="local-note__zone">Belgique</span>
+          <span class="local-note__zone">Tournai</span><span class="local-note__zone">Mouscron</span><span class="local-note__zone">Courtrai</span><span class="local-note__zone">Lille</span><span class="local-note__zone">Villeneuve-d'Ascq</span><span class="local-note__zone">Marcq-en-Barœul</span>
         </div>
       </section>
 
