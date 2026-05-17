@@ -6,13 +6,13 @@
 
   <!-- SEO principal -->
   <title>Magicien à Mouscron pour mariage, entreprise & close-up | Romain Dewasme</title>
-  <meta name="description" content="Romain Dewasme, magicien basé à Mouscron, propose des prestations de magie close-up et mentalisme pour mariages, événements d’entreprise, cocktails, anniversaires et soirées privées à Mouscron et dans les environs.">
+  <meta name="description" content="Romain Dewasme, magicien basé à Mouscron, propose des prestations de magie close-up et mentalisme pour mariages, événements d’entreprise, cocktails, anniversaires et soirées privées à Mouscron, Lille, Courtrai, Tournai et alentours.">
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
   <link rel="canonical" href="https://www.romaindewasme.com/magicien-mouscron.html">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Magicien à Mouscron pour mariage, entreprise & close-up | Romain Dewasme">
-  <meta property="og:description" content="Magie close-up et mentalisme pour mariages, événements d’entreprise, cocktails, anniversaires et soirées privées à Mouscron et dans les environs.">
+  <meta property="og:description" content="Magie close-up et mentalisme pour mariages, événements d’entreprise, cocktails, anniversaires et soirées privées à Mouscron, Lille, Courtrai, Tournai et alentours.">
   <meta property="og:image" content="https://www.romaindewasme.com/assets/images/og-image.jpeg">
   <meta property="og:url" content="https://www.romaindewasme.com/magicien-mouscron.html">
   <meta property="og:type" content="website">
@@ -57,8 +57,11 @@
         },
         "areaServed": [
           { "@type": "City", "name": "Mouscron" },
-          { "@type": "City", "name": "Lille" },
           { "@type": "City", "name": "Courtrai" },
+          { "@type": "City", "name": "Lille" },
+          { "@type": "City", "name": "Villeneuve-d'Ascq" },
+          { "@type": "City", "name": "Marcq-en-Barœul" },
+          { "@type": "City", "name": "Tournai" },
           { "@type": "Country", "name": "Belgique" },
           { "@type": "AdministrativeArea", "name": "Nord de la France" }
         ],
@@ -86,6 +89,36 @@
         "mainEntity": {
           "@id": "https://www.romaindewasme.com/#business"
         }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://www.romaindewasme.com/magicien-mouscron.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Quel format de magie choisir pour un événement à Mouscron ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Le close-up est souvent le format le plus adapté pour un cocktail, un vin d’honneur, un repas ou une soirée privée à Mouscron. Il permet d’aller directement vers les invités et de créer des interactions sans interrompre le déroulé de l’événement."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Romain Dewasme se déplace-t-il autour de Mouscron ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Oui. Basé à Mouscron, Romain Dewasme étudie les demandes à Mouscron et dans les zones proches comme Courtrai, Lille, Tournai, la Belgique et le Nord de la France, selon la date et le format souhaité."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Quelles informations fournir pour une demande de devis à Mouscron ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Il est utile d’indiquer la date, le lieu, le type d’événement, le nombre approximatif d’invités et le moment souhaité pour la prestation : accueil, cocktail, vin d’honneur, repas ou soirée."
+            }
+          }
+        ]
       },
       {
         "@type": "BreadcrumbList",
@@ -194,6 +227,8 @@
     }
 
     .local-card,
+    .local-detail,
+    .local-faq,
     .local-note,
     .local-final {
       border: 1px solid rgba(255, 255, 255, 0.13);
@@ -207,6 +242,8 @@
     }
 
     .local-card__title,
+    .local-detail__title,
+    .local-faq__title,
     .local-note__title,
     .local-final__title {
       margin: 0 0 1.4rem;
@@ -218,6 +255,9 @@
 
     .local-card__text,
     .local-card__list,
+    .local-detail__text,
+    .local-detail__list,
+    .local-faq__text,
     .local-note__text,
     .local-final__text {
       color: rgba(255, 255, 255, 0.78);
@@ -225,13 +265,67 @@
       line-height: 1.76;
     }
 
-    .local-card__list {
+    .local-card__list,
+    .local-detail__list {
       margin: 1.8rem 0 2.2rem;
       padding-left: 1.8rem;
     }
 
-    .local-card__list li + li {
+    .local-card__list li + li,
+    .local-detail__list li + li {
       margin-top: 0.8rem;
+    }
+
+    .local-detail {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+      gap: 3rem;
+      align-items: start;
+      margin-bottom: 5.5rem;
+      padding: 3rem;
+    }
+
+    .local-detail__eyebrow {
+      display: inline-flex;
+      margin-bottom: 1.2rem;
+      color: var(--color-gold);
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .local-detail__box {
+      padding: 2.2rem;
+      border-radius: 18px;
+      background: rgba(0, 0, 0, 0.24);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .local-detail__box + .local-detail__box {
+      margin-top: 1.4rem;
+    }
+
+    .local-detail__box-title,
+    .local-faq__question {
+      margin: 0 0 0.8rem;
+      color: var(--color-gold);
+      font-family: var(--font-primary);
+      font-size: 1.45rem;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .local-faq {
+      max-width: 980px;
+      margin-bottom: 5.5rem;
+      padding: 3rem;
+    }
+
+    .local-faq__item + .local-faq__item {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .local-note {
@@ -268,6 +362,7 @@
 
     @media (max-width: 980px) {
       .local-grid,
+      .local-detail,
       .local-note {
         grid-template-columns: 1fr;
       }
@@ -285,12 +380,17 @@
       .local-hero__lead,
       .local-card__text,
       .local-card__list,
+      .local-detail__text,
+      .local-detail__list,
+      .local-faq__text,
       .local-note__text,
       .local-final__text {
         font-size: 1.5rem;
       }
 
       .local-card,
+      .local-detail,
+      .local-faq,
       .local-note,
       .local-final {
         padding: 2.2rem;
@@ -395,19 +495,65 @@
         </article>
       </section>
 
+      <section class="local-detail" aria-labelledby="mouscron-context-title">
+        <div>
+          <span class="local-detail__eyebrow">Contexte local</span>
+          <h2 id="mouscron-context-title" class="local-detail__title">Pourquoi prévoir une animation magique à Mouscron ?</h2>
+          <p class="local-detail__text">
+            Mouscron est une zone idéale pour organiser une prestation flexible : événements privés, réceptions familiales, cocktails professionnels ou soirées plus intimistes. Le format close-up fonctionne particulièrement bien lorsque les invités arrivent progressivement, circulent entre plusieurs espaces ou ne se connaissent pas encore tous.
+          </p>
+          <p class="local-detail__text">
+            Être basé à Mouscron facilite aussi la préparation des demandes locales : échanges plus simples sur le lieu, adaptation au timing de la réception et possibilité de recommander un format cohérent avec la durée et le nombre d’invités.
+          </p>
+        </div>
+        <div>
+          <div class="local-detail__box">
+            <h3 class="local-detail__box-title">Formats recommandés</h3>
+            <ul class="local-detail__list">
+              <li>30 à 45 minutes pour un petit groupe ou un moment précis.</li>
+              <li>1 à 2 heures pour un cocktail, un vin d’honneur ou une réception.</li>
+              <li>Format modulable pour une soirée d’entreprise ou une fête privée.</li>
+            </ul>
+          </div>
+          <div class="local-detail__box">
+            <h3 class="local-detail__box-title">À prévoir dans la demande</h3>
+            <p class="local-detail__text">
+              Le lieu exact à Mouscron, le nombre d’invités, le moment souhaité et l’ambiance recherchée permettent de proposer une prestation plus juste qu’un simple forfait générique.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="local-faq" aria-labelledby="faq-mouscron-title">
+        <h2 id="faq-mouscron-title" class="local-faq__title">Questions fréquentes pour une prestation à Mouscron</h2>
+        <article class="local-faq__item">
+          <h3 class="local-faq__question">Quel format de magie choisir pour un événement à Mouscron ?</h3>
+          <p class="local-faq__text">Le close-up est souvent le format le plus adapté pour un cocktail, un vin d’honneur, un repas ou une soirée privée. Il permet d’aller directement vers les invités et de créer des interactions sans interrompre le déroulé de l’événement.</p>
+        </article>
+        <article class="local-faq__item">
+          <h3 class="local-faq__question">Romain Dewasme se déplace-t-il autour de Mouscron ?</h3>
+          <p class="local-faq__text">Oui. Les demandes sont étudiées à Mouscron et dans les zones proches comme Courtrai, Lille, Tournai, la Belgique et le Nord de la France, selon la date, le lieu et le format souhaité.</p>
+        </article>
+        <article class="local-faq__item">
+          <h3 class="local-faq__question">Quelles informations fournir pour une demande de devis ?</h3>
+          <p class="local-faq__text">Indiquez la date, le lieu, le type d’événement, le nombre approximatif d’invités et le moment souhaité pour la prestation : accueil, cocktail, vin d’honneur, repas ou soirée.</p>
+        </article>
+      </section>
+
       <section class="local-note" aria-labelledby="zone-mouscron-title">
         <div>
           <h2 id="zone-mouscron-title" class="local-note__title">Mouscron et alentours</h2>
           <p class="local-note__text">
-            Basé à Mouscron, Romain intervient selon les disponibilités et la nature de l’événement. Les demandes peuvent concerner Mouscron, les communes voisines, Lille, Courtrai, la Belgique et le Nord de la France.
+            Basé à Mouscron, Romain intervient selon les disponibilités et la nature de l’événement. Les demandes peuvent concerner Mouscron, Courtrai, Lille, Villeneuve-d'Ascq, Marcq-en-Barœul, Tournai, la Belgique et le Nord de la France.
           </p>
         </div>
         <div class="local-note__zones" aria-label="Zones desservies autour de Mouscron">
           <span class="local-note__zone">Mouscron</span>
-          <span class="local-note__zone">Lille</span>
           <span class="local-note__zone">Courtrai</span>
-          <span class="local-note__zone">Belgique</span>
-          <span class="local-note__zone">Nord de la France</span>
+          <span class="local-note__zone">Lille</span>
+          <span class="local-note__zone">Villeneuve-d'Ascq</span>
+          <span class="local-note__zone">Marcq-en-Barœul</span>
+          <span class="local-note__zone">Tournai</span>
         </div>
       </section>
 
