@@ -262,7 +262,7 @@ function initNavigation() {
     const scrollIndicator = document.querySelector('.hero__scroll-indicator');
     if (scrollIndicator) {
         scrollIndicator.addEventListener('click', () => {
-            const nextSection = document.querySelector('#prestations');
+            const nextSection = document.querySelector('.Spectacles');
             if (nextSection) {
                 const headerHeight = header ? header.offsetHeight : 0;
                 const targetPosition = nextSection.getBoundingClientRect().top + window.scrollY - headerHeight;
