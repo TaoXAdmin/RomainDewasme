@@ -4,11 +4,34 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    routeHomePrestationsSection();
+
     // Initialiser les fonctionnalités
     initServiceCardInteractions();
     initCardRevealAnimation();
     addCardRevealStyle();
 });
+
+/**
+ * Sur l'accueil, la section prestations a été déplacée vers prestations.html.
+ * On retire l'ancien bloc rendu côté client et on transforme les anciens liens d'ancre en liens page.
+ */
+function routeHomePrestationsSection() {
+    const isHome = window.location.pathname === '/'
+        || window.location.pathname.endsWith('/index.html')
+        || Boolean(document.getElementById('accueil'));
+
+    if (!isHome) return;
+
+    document.querySelectorAll('a[href="#prestations"]').forEach(link => {
+        link.setAttribute('href', 'prestations.html');
+    });
+
+    const legacyPrestationsSection = document.querySelector('main > section#prestations');
+    if (legacyPrestationsSection) {
+        legacyPrestationsSection.remove();
+    }
+}
 
 /**
  * Interactions des cartes de service et de leurs boutons
