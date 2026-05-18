@@ -866,3 +866,87 @@
         transform: none;
     }
 }
+
+/* =========================================================
+   FOND PREMIUM PARTAGÉ — PAGES SEO / SERVICES / VILLES
+   Très léger : glow doré diffus + texture basse opacité
+   ========================================================= */
+
+.prestations-page,
+.service-detail,
+.local-page,
+.faq-page {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    color: var(--color-white2);
+    background:
+        radial-gradient(circle at 12% 8%, rgba(212, 175, 55, 0.085), transparent 34rem),
+        radial-gradient(circle at 88% 28%, rgba(255, 255, 255, 0.045), transparent 38rem),
+        radial-gradient(circle at 18% 78%, rgba(212, 175, 55, 0.045), transparent 30rem),
+        linear-gradient(180deg, #030303 0%, #090909 42%, #050505 100%) !important;
+}
+
+.prestations-page > *,
+.service-detail > *,
+.local-page > *,
+.faq-page > * {
+    position: relative;
+    z-index: 1;
+}
+
+.prestations-page::before,
+.service-detail::before,
+.local-page::before,
+.faq-page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image: url("../assets/images/bg.jpg");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.032;
+}
+
+.prestations-page::after,
+.service-detail::after,
+.local-page::after,
+.faq-page::after {
+    content: "";
+    position: absolute;
+    top: 10rem;
+    right: -24rem;
+    width: 56rem;
+    height: 56rem;
+    z-index: 0;
+    pointer-events: none;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.11), rgba(212, 175, 55, 0.035) 42%, transparent 72%);
+    filter: blur(10px);
+}
+
+@media (max-width: 767px) {
+    .prestations-page::after,
+    .service-detail::after,
+    .local-page::after,
+    .faq-page::after {
+        top: 8rem;
+        right: -32rem;
+        opacity: 0.7;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .prestations-page::before,
+    .prestations-page::after,
+    .service-detail::before,
+    .service-detail::after,
+    .local-page::before,
+    .local-page::after,
+    .faq-page::before,
+    .faq-page::after {
+        animation: none;
+    }
+}
