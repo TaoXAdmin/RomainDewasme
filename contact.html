@@ -47,27 +47,38 @@
     .voice-answer__answer { margin: 0; color: rgba(255, 255, 255, 0.82); font-size: 1.5rem; line-height: 1.72; }
     .voice-answer__answer a { color: var(--color-gold); text-decoration: underline; text-underline-offset: 0.2em; }
 
-    #contact.contact { position: relative; isolation: isolate; overflow: hidden; }
-    #contact .contact__form-container { position: relative; isolation: isolate; overflow: hidden; padding: 1px; border-radius: 32px; background: linear-gradient(135deg, rgba(255,255,255,0.28), rgba(212,175,55,0.22) 28%, rgba(255,255,255,0.08) 58%, rgba(212,175,55,0.16)); box-shadow: 0 34px 90px rgba(0,0,0,0.42), 0 0 0 1px rgba(255,255,255,0.055), 0 0 70px rgba(212,175,55,0.08); }
-    #contact .contact__form-container::before { content: ""; position: absolute; inset: -38%; z-index: 0; pointer-events: none; background: radial-gradient(circle at 22% 12%, rgba(255,255,255,0.18), transparent 28%), radial-gradient(circle at 84% 18%, rgba(212,175,55,0.18), transparent 30%), radial-gradient(circle at 50% 100%, rgba(212,175,55,0.13), transparent 34%); filter: blur(28px); opacity: 0.78; }
-    #contact .contact__form-container::after { content: ""; position: absolute; inset: 1px; z-index: 1; pointer-events: none; border-radius: 31px; background: linear-gradient(135deg, rgba(255,255,255,0.16), transparent 28%, transparent 72%, rgba(212,175,55,0.10)); opacity: 0.72; }
-    #contact .contact__form { position: relative; z-index: 2; padding: clamp(2.4rem, 3.8vw, 4.2rem); border-radius: 31px; border: 1px solid rgba(255,255,255,0.12); background: linear-gradient(145deg, rgba(255,255,255,0.105), rgba(255,255,255,0.045) 42%, rgba(8,8,8,0.34)); -webkit-backdrop-filter: blur(26px) saturate(138%); backdrop-filter: blur(26px) saturate(138%); box-shadow: inset 0 1px 0 rgba(255,255,255,0.14), inset 0 -1px 0 rgba(212,175,55,0.05); }
-    #contact .contact__form::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; border-radius: inherit; background-image: url("assets/images/bg.jpg"); background-size: cover; background-position: center; opacity: 0.026; }
-    #contact .form-group { position: relative; z-index: 1; }
-    #contact .form-input, #contact .form-select, #contact .form-textarea { border: 1px solid rgba(255,255,255,0.18); border-bottom-color: rgba(212,175,55,0.34); border-radius: 18px; background: linear-gradient(145deg, rgba(255,255,255,0.085), rgba(255,255,255,0.035)); color: rgba(255,255,255,0.95); box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 12px 30px rgba(0,0,0,0.14); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, transform 0.25s ease; }
-    #contact .form-input:focus, #contact .form-select:focus, #contact .form-textarea:focus { outline: none; border-color: rgba(212,175,55,0.78); background: linear-gradient(145deg, rgba(255,255,255,0.12), rgba(255,255,255,0.048)); box-shadow: inset 0 1px 0 rgba(255,255,255,0.11), 0 0 0 3px rgba(212,175,55,0.12), 0 18px 38px rgba(0,0,0,0.20); transform: translateY(-1px); }
-    #contact .form-textarea { min-height: 15rem; resize: vertical; }
-    #contact .form-label { color: rgba(255,255,255,0.72); text-shadow: 0 2px 10px rgba(0,0,0,0.45); }
-    #contact .select-label { color: rgba(212,175,55,0.82); }
-    #contact .form-select option { background: #0b0b0b; color: #fff; }
-    #contact .form-submit { width: 100%; margin-top: 0.8rem; border-color: rgba(255,255,255,0.42); background: linear-gradient(135deg, rgba(212,175,55,0.20), rgba(255,255,255,0.08)) !important; color: var(--color-white2); box-shadow: 0 16px 36px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.13); }
-    #contact .form-submit::before { background: linear-gradient(90deg, rgba(255,255,255,0.96), rgba(212,175,55,0.90)); }
-    #contact .form-submit:hover { color: #0b0b0b; box-shadow: 0 20px 44px rgba(0,0,0,0.34), 0 0 34px rgba(212,175,55,0.16); }
-    #contact .form-status { margin-top: 1.2rem; color: rgba(255,255,255,0.82); }
+    #contact.contact { position: relative; isolation: isolate; overflow: hidden; background: linear-gradient(180deg, rgba(4,4,4,0.98), rgba(10,10,10,0.94) 52%, rgba(3,3,3,0.98)); }
+    #contact.contact::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(circle at 13% 16%, rgba(212,175,55,0.055), transparent 30rem), radial-gradient(circle at 82% 28%, rgba(255,255,255,0.035), transparent 36rem), radial-gradient(circle at 62% 78%, rgba(212,175,55,0.045), transparent 34rem); }
+    #contact.contact::after { opacity: 0.045 !important; z-index: 1 !important; background-image: url("assets/images_opt/stone.jpg") !important; background-size: cover !important; background-position: center !important; }
+    #contact .section-header, #contact .contact__container { position: relative; z-index: 3; }
 
-    @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { #contact .contact__form { background: linear-gradient(145deg, rgba(28,28,28,0.96), rgba(10,10,10,0.92)); } }
-    @media (max-width: 900px) { .voice-answers__grid { grid-template-columns: 1fr; } }
-    @media (max-width: 767px) { .voice-answers { padding: 0 1.8rem; } #contact .contact__form-container { border-radius: 24px; } #contact .contact__form { padding: 2.2rem; border-radius: 23px; } #contact .form-input, #contact .form-select, #contact .form-textarea { border-radius: 15px; } }
+    #contact .contact__form-container { position: relative; isolation: isolate; overflow: hidden; padding: 1px; border-radius: 30px; background: linear-gradient(135deg, rgba(255,255,255,0.24), rgba(255,255,255,0.055) 38%, rgba(212,175,55,0.18)); box-shadow: 0 32px 84px rgba(0,0,0,0.48), 0 0 0 1px rgba(255,255,255,0.05); }
+    #contact .contact__form-container::before { content: ""; position: absolute; inset: 1px; z-index: 0; pointer-events: none; border-radius: 29px; background: linear-gradient(145deg, rgba(22,22,22,0.78), rgba(7,7,7,0.64) 52%, rgba(20,18,13,0.58)); -webkit-backdrop-filter: blur(22px) saturate(118%); backdrop-filter: blur(22px) saturate(118%); }
+    #contact .contact__form-container::after { content: ""; position: absolute; inset: 1px; z-index: 1; pointer-events: none; border-radius: 29px; background: linear-gradient(120deg, rgba(255,255,255,0.13), transparent 20%, transparent 72%, rgba(212,175,55,0.07)), radial-gradient(circle at 18% 0%, rgba(255,255,255,0.08), transparent 22rem); opacity: 0.82; }
+
+    #contact .contact__form { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.2rem 2rem; padding: clamp(2.6rem, 3.7vw, 4.4rem); border-radius: 29px; background: transparent !important; box-shadow: inset 0 1px 0 rgba(255,255,255,0.09); }
+    #contact .contact__form::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; border-radius: inherit; background-image: url("assets/images/bg.jpg"); background-size: cover; background-position: center; opacity: 0.018; }
+
+    #contact .form-group { position: relative; display: grid; grid-template-rows: auto auto; gap: 0.75rem; margin: 0; }
+    #contact .form-group:nth-child(5) { grid-column: 1 / -1; }
+    #contact .form-input, #contact .form-select, #contact .form-textarea { grid-row: 2; width: 100%; min-height: 5.6rem; padding: 1.35rem 1.45rem; border: 1px solid rgba(255,255,255,0.22); border-radius: 16px; background: rgba(255,255,255,0.045) !important; color: rgba(255,255,255,0.94) !important; font-size: 1.55rem !important; font-weight: 600 !important; letter-spacing: 0.02em; box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 12px 28px rgba(0,0,0,0.16); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); transition: border-color .22s ease, box-shadow .22s ease, background .22s ease, transform .22s ease; }
+    #contact .form-textarea { min-height: 14.8rem; resize: vertical; line-height: 1.55; }
+    #contact .form-input:focus, #contact .form-select:focus, #contact .form-textarea:focus { outline: none; border-color: rgba(255,255,255,0.48); background: rgba(255,255,255,0.07) !important; box-shadow: inset 0 1px 0 rgba(255,255,255,0.09), 0 0 0 3px rgba(212,175,55,0.08), 0 16px 34px rgba(0,0,0,0.22); transform: translateY(-1px); }
+    #contact .form-input::placeholder, #contact .form-textarea::placeholder { color: rgba(255,255,255,0.36); }
+
+    #contact .form-label, #contact .select-label, #contact .form-input:focus ~ .form-label, #contact .form-input:not(:placeholder-shown) ~ .form-label, #contact .form-textarea:focus ~ .form-label, #contact .form-textarea:not(:placeholder-shown) ~ .form-label { position: static !important; grid-row: 1; transform: none !important; display: inline-flex; align-items: center; width: fit-content; margin: 0; padding: 0 !important; background: transparent !important; color: rgba(255,255,255,0.78) !important; font-size: 1.18rem !important; font-weight: 800 !important; line-height: 1.2; letter-spacing: 0.16em; text-transform: uppercase; text-shadow: none !important; }
+    #contact .select-label { color: rgba(212,175,55,0.82) !important; }
+    #contact .form-select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, rgba(255,255,255,.75) 50%), linear-gradient(135deg, rgba(255,255,255,.75) 50%, transparent 50%) !important; background-position: calc(100% - 1.8rem) 50%, calc(100% - 1.35rem) 50% !important; background-size: .45rem .45rem, .45rem .45rem !important; background-repeat: no-repeat !important; cursor: pointer; }
+    #contact .form-select option { background: #101010; color: #fff; }
+
+    #contact .form-submit { grid-column: 1 / -1; width: 100%; min-height: 5.2rem; justify-self: stretch; margin-top: 0.4rem; border: 1px solid rgba(255,255,255,0.34) !important; border-radius: 14px; background: rgba(255,255,255,0.045) !important; color: rgba(255,255,255,0.96) !important; box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 14px 32px rgba(0,0,0,0.22); }
+    #contact .form-submit::before { background: linear-gradient(90deg, rgba(255,255,255,0.96), rgba(232,210,146,0.95)) !important; }
+    #contact .form-submit:hover { color: #080808 !important; border-color: rgba(232,210,146,0.76) !important; box-shadow: 0 18px 40px rgba(0,0,0,0.30), 0 0 28px rgba(212,175,55,0.12); }
+    #contact .form-status { grid-column: 1 / -1; margin-top: 0.4rem; padding: 1rem 1.2rem; color: rgba(255,255,255,0.82); }
+
+    @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { #contact .contact__form-container::before { background: rgba(12,12,12,0.94); } }
+    @media (max-width: 900px) { .voice-answers__grid { grid-template-columns: 1fr; } #contact .contact__form { grid-template-columns: 1fr; } }
+    @media (max-width: 767px) { .voice-answers { padding: 0 1.8rem; } #contact .contact__form-container { border-radius: 24px; } #contact .contact__form, #contact .contact__form-container::before, #contact .contact__form-container::after { border-radius: 23px; } #contact .contact__form { padding: 2.2rem; gap: 1.7rem; } #contact .form-input, #contact .form-select, #contact .form-textarea { min-height: 5.2rem; border-radius: 14px; font-size: 1.45rem !important; } }
   </style>
 
   <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -92,10 +103,7 @@
 
   <main>
     <section id="contact" class="contact">
-      <div class="section-header">
-        <h2 class="section-title">Contact</h2>
-        <p class="section-subtitle">Donnez vie à votre évènement</p>
-      </div>
+      <div class="section-header"><h2 class="section-title">Contact</h2><p class="section-subtitle">Donnez vie à votre évènement</p></div>
       <div class="contact__container">
         <div class="contact__info">
           <div class="contact__info-item"><div class="contact__info-icon"><img src="assets/icons/envelope.svg" alt="Email"></div><div class="contact__info-content"><h3 class="contact__info-title">Email</h3><a class="contact__info-text" href="mailto:romaindewasme@gmail.com" aria-label="Envoyer un email à Romain Dewasme">romaindewasme@gmail.com</a></div></div>
