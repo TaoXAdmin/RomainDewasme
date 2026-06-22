@@ -1,0 +1,76 @@
+name: Add Google Ads tag once
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/add-google-ads-tag-once.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  add-google-ads-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Insert Google Ads tag in every HTML head
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          tag = """  <!-- Google tag (gtag.js) -->
+          <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18262923205">
+          </script>
+          <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'AW-18262923205');
+          </script>
+          """
+
+          changed = []
+          for path in sorted(Path('.').rglob('*.html')):
+              if '.git' in path.parts:
+                  continue
+
+              text = path.read_text(encoding='utf-8')
+              if 'AW-18262923205' in text:
+                  continue
+
+              head_index = text.lower().find('<head>')
+              if head_index == -1:
+                  continue
+
+              insert_pos = head_index + len('<head>')
+              if insert_pos < len(text) and text[insert_pos] == '\n':
+                  updated = text[:insert_pos + 1] + tag + text[insert_pos + 1:]
+              else:
+                  updated = text[:insert_pos] + '\n' + tag + text[insert_pos:]
+
+              path.write_text(updated, encoding='utf-8')
+              changed.append(str(path))
+
+          print('Changed files:')
+          for item in changed:
+              print(item)
+          PY
+
+      - name: Commit and push changes
+        run: |
+          if git diff --quiet; then
+            echo "No HTML changes to commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- '*.html'
+          git commit -m "Add Google Ads tag to HTML heads"
+          git push
