@@ -1,631 +1,288 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex,nofollow">
-    <title>Gestion des spectacles - Romain Dewasme</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/main.css">
-    <style>
-        :root {
-            --admin-bg: #070707;
-            --admin-panel: rgba(18, 18, 18, 0.92);
-            --admin-line: rgba(230, 197, 85, 0.28);
-            --admin-gold: #e6c555;
-            --admin-muted: rgba(255, 255, 255, 0.68);
-            --admin-danger: #ff8a8a;
-            --admin-ok: #9fe3b5;
-        }
-
-        body {
-            min-height: 100vh;
-            margin: 0;
-            color: #fff;
-            background:
-                radial-gradient(circle at top left, rgba(230, 197, 85, 0.16), transparent 32rem),
-                linear-gradient(135deg, #050505 0%, #121212 100%);
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .admin-shell {
-            width: min(1120px, calc(100% - 32px));
-            margin: 0 auto;
-            padding: 48px 0;
-        }
-
-        .admin-header {
-            display: flex;
-            justify-content: space-between;
-            gap: 24px;
-            align-items: flex-start;
-            margin-bottom: 28px;
-        }
-
-        .admin-kicker {
-            color: var(--admin-gold);
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            font-size: 0.78rem;
-            margin-bottom: 8px;
-        }
-
-        h1, h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 600;
-            margin: 0;
-        }
-
-        h1 {
-            font-size: clamp(2.2rem, 5vw, 4.2rem);
-        }
-
-        h2 {
-            font-size: 1.65rem;
-            margin-bottom: 18px;
-        }
-
-        .admin-card {
-            background: var(--admin-panel);
-            border: 1px solid var(--admin-line);
-            border-radius: 22px;
-            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
-            padding: clamp(20px, 4vw, 36px);
-            backdrop-filter: blur(18px);
-        }
-
-        .admin-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        .admin-note {
-            color: var(--admin-muted);
-            line-height: 1.7;
-            margin: 0 0 22px;
-        }
-
-        .token-box {
-            display: grid;
-            grid-template-columns: 1fr auto auto;
-            gap: 12px;
-            align-items: end;
-            margin-bottom: 22px;
-        }
-
-        label {
-            display: block;
-            color: rgba(255, 255, 255, 0.82);
-            font-size: 0.8rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-        }
-
-        input {
-            width: 100%;
-            box-sizing: border-box;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.07);
-            color: #fff;
-            padding: 13px 14px;
-            font: inherit;
-            outline: none;
-        }
-
-        input:focus {
-            border-color: var(--admin-gold);
-            box-shadow: 0 0 0 3px rgba(230, 197, 85, 0.12);
-        }
-
-        .btn-admin {
-            border: 1px solid var(--admin-gold);
-            border-radius: 999px;
-            background: var(--admin-gold);
-            color: #111;
-            cursor: pointer;
-            font-weight: 700;
-            padding: 13px 18px;
-            transition: transform 0.18s ease, opacity 0.18s ease;
-            white-space: nowrap;
-        }
-
-        .btn-admin:hover {
-            transform: translateY(-1px);
-        }
-
-        .btn-admin.secondary {
-            background: transparent;
-            color: var(--admin-gold);
-        }
-
-        .btn-admin.danger {
-            border-color: rgba(255, 138, 138, 0.6);
-            background: transparent;
-            color: var(--admin-danger);
-        }
-
-        .btn-admin:disabled {
-            opacity: 0.48;
-            cursor: wait;
-            transform: none;
-        }
-
-        .status {
-            min-height: 24px;
-            margin: 0 0 20px;
-            color: var(--admin-muted);
-        }
-
-        .status.ok {
-            color: var(--admin-ok);
-        }
-
-        .status.error {
-            color: var(--admin-danger);
-        }
-
-        .rows {
-            display: grid;
-            gap: 14px;
-        }
-
-        .event-row {
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr 1fr 1fr auto;
-            gap: 12px;
-            padding: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 18px;
-            background: rgba(255, 255, 255, 0.045);
-        }
-
-        .actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 22px;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        .small {
-            font-size: 0.88rem;
-            color: var(--admin-muted);
-        }
-
-        .login-card {
-            max-width: 560px;
-            margin: 7vh auto 0;
-        }
-
-        .login-fields {
-            display: grid;
-            gap: 14px;
-        }
-
-        .session-option {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            color: var(--admin-muted);
-            font-size: 0.9rem;
-            margin-top: 10px;
-        }
-
-        .session-option input {
-            width: auto;
-        }
-
-        @media (max-width: 900px) {
-            .admin-header,
-            .token-box,
-            .event-row {
-                grid-template-columns: 1fr;
-                display: grid;
-            }
-
-            .event-row .btn-admin {
-                justify-self: start;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Gestion des spectacles - Romain Dewasme</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #e6c555;
+      --bg: #080808;
+      --panel: #151515;
+      --panel-2: #202020;
+      --line: rgba(230, 197, 85, 0.32);
+      --text: #ffffff;
+      --muted: rgba(255,255,255,.72);
+      --danger: #ff8f8f;
+      --ok: #9fe3b5;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at top, rgba(230,197,85,.16), transparent 32rem), linear-gradient(135deg, #050505, #111);
+      color: var(--text);
+      font-family: Montserrat, sans-serif;
+    }
+    main { width: min(1120px, calc(100% - 28px)); margin: 0 auto; padding: 42px 0 70px; }
+    h1, h2 { font-family: 'Cormorant Garamond', serif; margin: 0; font-weight: 600; }
+    h1 { font-size: clamp(2.5rem, 6vw, 4.8rem); line-height: .95; }
+    h2 { font-size: 1.55rem; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 12px; }
+    p { color: var(--muted); line-height: 1.65; }
+    .card {
+      border: 1px solid var(--line);
+      background: rgba(18,18,18,.94);
+      border-radius: 24px;
+      padding: clamp(20px, 4vw, 36px);
+      box-shadow: 0 24px 90px rgba(0,0,0,.42);
+      margin-bottom: 22px;
+    }
+    .top { display: flex; justify-content: space-between; gap: 18px; align-items: flex-start; margin-bottom: 24px; }
+    .kicker { color: var(--gold); text-transform: uppercase; letter-spacing: .18em; font-size: .78rem; margin: 0 0 8px; }
+    .login { max-width: 560px; margin: 10vh auto 0; }
+    .hidden { display: none !important; }
+    label { display: block; font-size: .74rem; color: rgba(255,255,255,.72); text-transform: uppercase; letter-spacing: .09em; margin-bottom: 7px; }
+    input {
+      width: 100%; border: 1px solid rgba(255,255,255,.16); background: var(--panel-2); color: #fff;
+      border-radius: 13px; padding: 14px 15px; font: inherit; outline: none;
+    }
+    input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(230,197,85,.14); }
+    .btn {
+      border: 1px solid var(--gold); background: var(--gold); color: #121212; border-radius: 999px;
+      padding: 13px 20px; font-weight: 700; cursor: pointer; font: inherit; transition: transform .18s ease, opacity .18s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn.secondary { background: transparent; color: var(--gold); }
+    .btn.danger { border-color: rgba(255,143,143,.7); background: transparent; color: var(--danger); }
+    .btn:disabled { opacity: .52; cursor: wait; transform: none; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 24px 0; }
+    .step { background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.1); border-radius: 18px; padding: 16px; }
+    .step strong { color: var(--gold); display: block; margin-bottom: 6px; }
+    .step span { color: var(--muted); font-size: .92rem; line-height: 1.45; }
+    .token-grid { display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: end; }
+    .status { min-height: 26px; margin: 14px 0 0; color: var(--muted); font-weight: 600; }
+    .status.ok { color: var(--ok); }
+    .status.error { color: var(--danger); }
+    .rows { display: grid; gap: 14px; }
+    .row {
+      display: grid; grid-template-columns: 1.1fr .8fr 1fr 1.1fr auto; gap: 12px;
+      background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.1); border-radius: 18px; padding: 14px;
+    }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
+    .note { font-size: .9rem; color: var(--muted); }
+    .bar { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; justify-content: space-between; }
+    .pill { display: inline-flex; align-items: center; gap: 8px; color: var(--ok); background: rgba(159,227,181,.08); border: 1px solid rgba(159,227,181,.28); padding: 8px 12px; border-radius: 999px; font-size: .88rem; }
+    @media (max-width: 900px) { .top, .token-grid, .row, .steps { grid-template-columns: 1fr; display: grid; } .row .btn { justify-self: start; } }
+  </style>
 </head>
 <body>
-    <main class="admin-shell">
-        <section id="loginPanel" class="admin-card login-card">
-            <p class="admin-kicker">Accès discret</p>
-            <h1>Gestion des spectacles</h1>
-            <p class="admin-note">Cette page fonctionne sur GitHub Pages. Le mot de passe sert uniquement de porte d’entrée discrète ; la vraie autorisation d’écriture est le token GitHub à saisir ensuite.</p>
+<main>
+  <section id="loginPanel" class="card login">
+    <p class="kicker">Accès privé</p>
+    <h1>Gestion des spectacles</h1>
+    <p>Connexion temporaire pour ouvrir l’espace d’administration.</p>
+    <form id="loginForm">
+      <p><label for="user">Identifiant</label><input id="user" autocomplete="username" required></p>
+      <p><label for="pass">Mot de passe</label><input id="pass" type="password" autocomplete="current-password" required></p>
+      <button class="btn" type="submit">Entrer</button>
+      <p id="loginStatus" class="status"></p>
+    </form>
+  </section>
 
-            <form id="loginForm" class="login-fields">
-                <div>
-                    <label for="loginUser">Identifiant</label>
-                    <input id="loginUser" name="loginUser" autocomplete="username" required>
-                </div>
-                <div>
-                    <label for="loginPassword">Mot de passe</label>
-                    <input id="loginPassword" name="loginPassword" type="password" autocomplete="current-password" required>
-                </div>
-                <button class="btn-admin" type="submit">Entrer</button>
-                <p id="loginStatus" class="status"></p>
-            </form>
-        </section>
+  <section id="adminPanel" class="hidden">
+    <div class="top">
+      <div>
+        <p class="kicker">Romain Dewasme</p>
+        <h1>Spectacles</h1>
+        <p>Interface simple pour ajouter, modifier ou supprimer les dates affichées sur la page Actus.</p>
+      </div>
+      <button id="logout" class="btn secondary" type="button">Déconnexion</button>
+    </div>
 
-        <section id="adminPanel" class="admin-grid hidden">
-            <header class="admin-header">
-                <div>
-                    <p class="admin-kicker">Romain Dewasme</p>
-                    <h1>Spectacles</h1>
-                    <p class="admin-note">Ajoute, modifie ou supprime les dates. La page publique lit ensuite le fichier local <code>data/events.json</code>.</p>
-                </div>
-                <button id="logoutButton" class="btn-admin secondary" type="button">Déconnexion</button>
-            </header>
+    <div class="card">
+      <h2>Mode d’emploi</h2>
+      <div class="steps">
+        <div class="step"><strong>1. Token</strong><span>À faire une seule fois sur cet ordinateur. Le token reste dans ce navigateur.</span></div>
+        <div class="step"><strong>2. Dates</strong><span>Modifie les champs titre, date, lieu et billetterie.</span></div>
+        <div class="step"><strong>3. Enregistrer</strong><span>Clique sur “Enregistrer les dates sur le site”. GitHub Pages se mettra à jour automatiquement.</span></div>
+      </div>
+      <div class="token-grid">
+        <p style="margin:0"><label for="token">Token GitHub</label><input id="token" type="password" spellcheck="false" placeholder="github_pat_... ou ghp_..."></p>
+        <button id="saveToken" class="btn secondary" type="button">Enregistrer le token sur cet appareil</button>
+        <button id="forgetToken" class="btn danger" type="button">Effacer le token</button>
+      </div>
+      <p id="tokenState" class="status"></p>
+    </div>
 
-            <div class="admin-card">
-                <h2>Connexion GitHub</h2>
-                <p class="admin-note">Colle un token GitHub personnel limité au dépôt, avec la permission <strong>Contents: Read and write</strong>. Il reste dans ton navigateur et n’est pas ajouté au site.</p>
-                <div class="token-box">
-                    <div>
-                        <label for="tokenInput">Token GitHub</label>
-                        <input id="tokenInput" type="password" spellcheck="false" placeholder="github_pat_... ou ghp_...">
-                        <label class="session-option"><input id="rememberToken" type="checkbox"> Garder le token pour cette session uniquement</label>
-                    </div>
-                    <button id="loadButton" class="btn-admin secondary" type="button">Charger</button>
-                    <button id="saveButton" class="btn-admin" type="button">Publier</button>
-                </div>
-                <p id="status" class="status"></p>
-            </div>
-
-            <div class="admin-card">
-                <h2>Dates à afficher</h2>
-                <div id="rows" class="rows"></div>
-                <div class="actions">
-                    <button id="addRowButton" class="btn-admin secondary" type="button">+ Ajouter une date</button>
-                    <button id="clearRowsButton" class="btn-admin danger" type="button">Tout vider</button>
-                </div>
-                <p class="small">Les lignes avec le même titre seront regroupées sous le même spectacle.</p>
-            </div>
-        </section>
-    </main>
-
-    <template id="rowTemplate">
-        <div class="event-row">
-            <div>
-                <label>Titre</label>
-                <input data-field="title" placeholder="Ex : Vertiges">
-            </div>
-            <div>
-                <label>Date</label>
-                <input data-field="date" placeholder="Ex : 12 octobre 2026">
-            </div>
-            <div>
-                <label>Lieu</label>
-                <input data-field="venue" placeholder="Ex : Théâtre municipal">
-            </div>
-            <div>
-                <label>Billetterie</label>
-                <input data-field="link" placeholder="https://...">
-            </div>
-            <button class="btn-admin danger" type="button" data-action="delete">Supprimer</button>
+    <div class="card">
+      <div class="bar">
+        <div>
+          <h2>Dates à afficher</h2>
+          <p class="note">Chaque ligne correspond à une date. Deux lignes avec le même titre seront regroupées sous le même spectacle.</p>
         </div>
-    </template>
+        <span id="savedPill" class="pill hidden">Token enregistré sur cet appareil</span>
+      </div>
+      <div id="rows" class="rows"></div>
+      <div class="actions">
+        <button id="addRow" class="btn secondary" type="button">+ Ajouter une date</button>
+        <button id="saveSite" class="btn" type="button">Enregistrer les dates sur le site</button>
+        <button id="clearRows" class="btn danger" type="button">Tout vider</button>
+      </div>
+      <p id="status" class="status"></p>
+    </div>
+  </section>
+</main>
 
-    <script>
-        const CONFIG = {
-            owner: 'TaoXAdmin',
-            repo: 'RomainDewasme',
-            branch: 'main',
-            filePath: 'data/events.json',
-            authHash: '482e748f5db0f1cf72298d152bc1b6af993a093abf7df1a5cffaf16342048b65'
-        };
+<template id="rowTpl">
+  <div class="row">
+    <p><label>Titre</label><input data-field="title" placeholder="Ex : TRUC DE OUF"></p>
+    <p><label>Date</label><input data-field="date" placeholder="Ex : 27/11/2026"></p>
+    <p><label>Lieu</label><input data-field="venue" placeholder="Ex : Mouscron"></p>
+    <p><label>Billetterie</label><input data-field="link" placeholder="https://..."></p>
+    <button class="btn danger" type="button" data-delete>Supprimer</button>
+  </div>
+</template>
 
-        const state = {
-            data: { success: true, shows: [] },
-            sha: null,
-            token: ''
-        };
+<script>
+const CFG = {
+  owner: 'TaoXAdmin',
+  repo: 'RomainDewasme',
+  branch: 'main',
+  filePath: 'data/events.json',
+  authHash: '482e748f5db0f1cf72298d152bc1b6af993a093abf7df1a5cffaf16342048b65'
+};
+const TOKEN_KEY = 'rd_events_admin_token';
+const UNLOCK_KEY = 'rd_events_admin_open';
+const state = { data: { success: true, shows: [] }, sha: null };
+const $ = (s) => document.querySelector(s);
 
-        const $ = (selector) => document.querySelector(selector);
-        const rowsEl = $('#rows');
-        const statusEl = $('#status');
-        const loginStatusEl = $('#loginStatus');
+function status(el, msg, type='') { el.textContent = msg || ''; el.className = `status ${type}`.trim(); }
+async function digest(text) {
+  const data = new TextEncoder().encode(text);
+  const hash = await crypto.subtle.digest('SHA-256', data);
+  return [...new Uint8Array(hash)].map(b => b.toString(16).padStart(2, '0')).join('');
+}
+function apiUrl() { return `https://api.github.com/repos/${CFG.owner}/${CFG.repo}/contents/${CFG.filePath}`; }
+function token() { return $('#token').value.trim() || localStorage.getItem(TOKEN_KEY) || ''; }
+function headers() { return { Accept: 'application/vnd.github+json', Authorization: `Bearer ${token()}`, 'X-GitHub-Api-Version': '2022-11-28' }; }
+function decode64(b64) { const bin = atob(String(b64 || '').replace(/\s/g,'')); return new TextDecoder().decode(Uint8Array.from(bin, c => c.charCodeAt(0))); }
+function encode64(text) { const bytes = new TextEncoder().encode(text); let bin = ''; bytes.forEach(b => bin += String.fromCharCode(b)); return btoa(bin); }
+function normData(v) { return v && Array.isArray(v.shows) ? { ...v, success: true } : { success: true, shows: [] }; }
 
-        function setStatus(message, type = '') {
-            statusEl.textContent = message || '';
-            statusEl.className = `status ${type}`.trim();
-        }
+function rowValues(data) {
+  return normData(data).shows.flatMap(show => (show.events || []).map(ev => ({
+    title: show.name || show.title || '',
+    date: ev.displayDate || ev.date || '',
+    venue: ev.venue || ev.lieu || '',
+    link: ev.ticketUrl || ev.url || ev.billetterie || ''
+  })));
+}
+function addRow(v={}) {
+  const node = $('#rowTpl').content.firstElementChild.cloneNode(true);
+  node.querySelector('[data-field="title"]').value = v.title || '';
+  node.querySelector('[data-field="date"]').value = v.date || '';
+  node.querySelector('[data-field="venue"]').value = v.venue || '';
+  node.querySelector('[data-field="link"]').value = v.link || '';
+  node.querySelector('[data-delete]').onclick = () => { node.remove(); if (!$('#rows').children.length) addRow(); };
+  $('#rows').appendChild(node);
+}
+function render(data) {
+  $('#rows').innerHTML = '';
+  const rows = rowValues(data);
+  rows.length ? rows.forEach(addRow) : addRow();
+}
+function collect() {
+  return [...$('#rows').children].map(row => ({
+    title: row.querySelector('[data-field="title"]').value.trim(),
+    date: row.querySelector('[data-field="date"]').value.trim(),
+    venue: row.querySelector('[data-field="venue"]').value.trim(),
+    link: row.querySelector('[data-field="link"]').value.trim()
+  })).filter(r => r.title || r.date || r.venue || r.link);
+}
+function buildData() {
+  const kept = new Map();
+  normData(state.data).shows.forEach(show => {
+    const name = String(show.name || show.title || '').trim().toLowerCase();
+    if (name) kept.set(name, show);
+  });
+  const shows = new Map();
+  collect().forEach(r => {
+    if (!r.title || !r.date || !r.venue) return;
+    const key = r.title.toLowerCase();
+    if (!shows.has(key)) {
+      const old = kept.get(key) || {};
+      const { events, title, ...meta } = old;
+      shows.set(key, { ...meta, name: r.title, events: [] });
+    }
+    shows.get(key).events.push({ displayDate: r.date, venue: r.venue, ticketUrl: r.link });
+  });
+  return { success: true, updatedAt: new Date().toISOString(), shows: [...shows.values()] };
+}
+async function loadPublic() {
+  try {
+    const res = await fetch(`/data/events.json?v=${Date.now()}`, { cache: 'no-store' });
+    if (res.ok) state.data = normData(await res.json());
+  } catch(e) {}
+  render(state.data);
+}
+async function fetchCurrentFromGithub() {
+  const res = await fetch(`${apiUrl()}?ref=${CFG.branch}`, { headers: headers() });
+  const json = await res.json();
+  if (!res.ok) throw new Error(json.message || 'Impossible de lire le fichier GitHub');
+  state.sha = json.sha;
+  state.data = normData(JSON.parse(decode64(json.content)));
+  return state.data;
+}
+async function saveSite() {
+  const t = token();
+  if (!t) { status($('#status'), 'Collez le token GitHub en haut, puis cliquez sur “Enregistrer le token sur cet appareil”.', 'error'); window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+  const next = buildData();
+  if (!next.shows.length && !confirm('Aucune date complète. Enregistrer une liste vide ?')) return;
+  if (!confirm('Enregistrer ces dates sur le site ?')) return;
+  setBusy(true); status($('#status'), 'Enregistrement en cours...');
+  try {
+    await fetchCurrentFromGithub();
+    const res = await fetch(apiUrl(), {
+      method: 'PUT', headers: { ...headers(), 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: 'Mettre à jour les spectacles', content: encode64(JSON.stringify(next, null, 2) + '\n'), sha: state.sha, branch: CFG.branch })
+    });
+    const json = await res.json();
+    if (!res.ok) throw new Error(json.message || 'Impossible d’enregistrer');
+    state.data = next; state.sha = json.content && json.content.sha ? json.content.sha : state.sha;
+    render(state.data);
+    status($('#status'), 'Dates enregistrées. Le site se met à jour automatiquement, attends environ 1 minute puis recharge la page Actus.', 'ok');
+  } catch(e) { status($('#status'), 'Erreur : ' + e.message, 'error'); }
+  finally { setBusy(false); }
+}
+function setBusy(v) { ['#saveSite','#addRow','#clearRows','#saveToken','#forgetToken'].forEach(s => $(s).disabled = v); }
+function refreshTokenUi() {
+  const saved = localStorage.getItem(TOKEN_KEY);
+  $('#savedPill').classList.toggle('hidden', !saved);
+  status($('#tokenState'), saved ? 'Token enregistré sur cet appareil. Vous n’aurez plus à le retaper ici.' : 'Aucun token enregistré sur cet appareil.', saved ? 'ok' : '');
+}
+function openAdmin() { $('#loginPanel').classList.add('hidden'); $('#adminPanel').classList.remove('hidden'); refreshTokenUi(); loadPublic(); }
 
-        function setLoginStatus(message, type = '') {
-            loginStatusEl.textContent = message || '';
-            loginStatusEl.className = `status ${type}`.trim();
-        }
-
-        async function sha256(text) {
-            const bytes = new TextEncoder().encode(text);
-            const digest = await crypto.subtle.digest('SHA-256', bytes);
-            return Array.from(new Uint8Array(digest)).map((byte) => byte.toString(16).padStart(2, '0')).join('');
-        }
-
-        function decodeBase64Utf8(base64) {
-            const clean = base64.replace(/\s/g, '');
-            const binary = atob(clean);
-            const bytes = Uint8Array.from(binary, (char) => char.charCodeAt(0));
-            return new TextDecoder().decode(bytes);
-        }
-
-        function encodeBase64Utf8(text) {
-            const bytes = new TextEncoder().encode(text);
-            let binary = '';
-            bytes.forEach((byte) => {
-                binary += String.fromCharCode(byte);
-            });
-            return btoa(binary);
-        }
-
-        function apiUrl() {
-            return `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/${CONFIG.filePath}`;
-        }
-
-        function headers() {
-            return {
-                Accept: 'application/vnd.github+json',
-                Authorization: `Bearer ${state.token}`,
-                'X-GitHub-Api-Version': '2022-11-28'
-            };
-        }
-
-        function normalizeData(value) {
-            if (Array.isArray(value)) {
-                return { success: true, shows: value };
-            }
-            if (!value || typeof value !== 'object') {
-                return { success: true, shows: [] };
-            }
-            return {
-                ...value,
-                success: value.success !== false,
-                shows: Array.isArray(value.shows) ? value.shows : []
-            };
-        }
-
-        function eventRowsFromData(data) {
-            return normalizeData(data).shows.flatMap((show) => {
-                const title = show.name || show.title || show.titre || '';
-                const events = Array.isArray(show.events) ? show.events : [];
-                return events.map((event) => ({
-                    title,
-                    date: event.displayDate || event.date || '',
-                    venue: event.venue || event.lieu || event.place || '',
-                    link: event.ticketUrl || event.billetterie || event.link || event.url || ''
-                }));
-            });
-        }
-
-        function addRow(values = {}) {
-            const node = $('#rowTemplate').content.firstElementChild.cloneNode(true);
-            node.querySelector('[data-field="title"]').value = values.title || '';
-            node.querySelector('[data-field="date"]').value = values.date || '';
-            node.querySelector('[data-field="venue"]').value = values.venue || '';
-            node.querySelector('[data-field="link"]').value = values.link || '';
-            node.querySelector('[data-action="delete"]').addEventListener('click', () => {
-                node.remove();
-                if (!rowsEl.children.length) addRow();
-            });
-            rowsEl.appendChild(node);
-        }
-
-        function renderRows(data) {
-            rowsEl.innerHTML = '';
-            const rows = eventRowsFromData(data);
-            if (!rows.length) {
-                addRow();
-                return;
-            }
-            rows.forEach(addRow);
-        }
-
-        function collectRows() {
-            return Array.from(rowsEl.children).map((row) => ({
-                title: row.querySelector('[data-field="title"]').value.trim(),
-                date: row.querySelector('[data-field="date"]').value.trim(),
-                venue: row.querySelector('[data-field="venue"]').value.trim(),
-                link: row.querySelector('[data-field="link"]').value.trim()
-            })).filter((row) => row.title || row.date || row.venue || row.link);
-        }
-
-        function buildNextData() {
-            const existingByName = new Map();
-            normalizeData(state.data).shows.forEach((show) => {
-                const name = (show.name || show.title || show.titre || '').trim();
-                if (name) existingByName.set(name.toLowerCase(), show);
-            });
-
-            const showsByName = new Map();
-            collectRows().forEach((row) => {
-                if (!row.title) return;
-                const key = row.title.toLowerCase();
-                if (!showsByName.has(key)) {
-                    const existing = existingByName.get(key) || {};
-                    const { events, title, titre, ...metadata } = existing;
-                    showsByName.set(key, {
-                        ...metadata,
-                        name: row.title,
-                        events: []
-                    });
-                }
-
-                showsByName.get(key).events.push({
-                    displayDate: row.date,
-                    venue: row.venue,
-                    ticketUrl: row.link
-                });
-            });
-
-            return {
-                success: true,
-                updatedAt: new Date().toISOString(),
-                shows: Array.from(showsByName.values()).filter((show) => show.name && show.events.length)
-            };
-        }
-
-        async function loadPublicData() {
-            try {
-                const response = await fetch('../data/events.json', { cache: 'no-store' });
-                if (!response.ok) throw new Error('Fichier public introuvable');
-                state.data = normalizeData(await response.json());
-                renderRows(state.data);
-            } catch (error) {
-                renderRows(state.data);
-            }
-        }
-
-        async function loadFromGithub() {
-            state.token = $('#tokenInput').value.trim();
-            if (!state.token) {
-                setStatus('Colle d’abord ton token GitHub.', 'error');
-                return;
-            }
-
-            setStatus('Chargement depuis GitHub...');
-            toggleButtons(true);
-
-            try {
-                const response = await fetch(`${apiUrl()}?ref=${encodeURIComponent(CONFIG.branch)}`, {
-                    headers: headers()
-                });
-                const payload = await response.json();
-                if (!response.ok) throw new Error(payload.message || 'Impossible de lire le fichier');
-
-                state.sha = payload.sha;
-                state.data = normalizeData(JSON.parse(decodeBase64Utf8(payload.content || 'e30=')));
-                renderRows(state.data);
-
-                if ($('#rememberToken').checked) {
-                    sessionStorage.setItem('eventsAdminToken', state.token);
-                } else {
-                    sessionStorage.removeItem('eventsAdminToken');
-                }
-
-                setStatus('Données chargées. Tu peux modifier les dates.', 'ok');
-            } catch (error) {
-                setStatus(`Erreur : ${error.message}`, 'error');
-            } finally {
-                toggleButtons(false);
-            }
-        }
-
-        async function saveToGithub() {
-            state.token = $('#tokenInput').value.trim();
-            if (!state.token) {
-                setStatus('Colle d’abord ton token GitHub.', 'error');
-                return;
-            }
-
-            const nextData = buildNextData();
-            if (!nextData.shows.length && !confirm('Aucune date renseignée. Publier une liste vide ?')) {
-                return;
-            }
-            if (!confirm('Confirmer la mise à jour de la page Spectacles ?')) {
-                return;
-            }
-
-            setStatus('Publication en cours...');
-            toggleButtons(true);
-
-            try {
-                if (!state.sha) {
-                    await loadFromGithub();
-                    if (!state.sha) throw new Error('Impossible de récupérer la version actuelle du fichier.');
-                }
-
-                const response = await fetch(apiUrl(), {
-                    method: 'PUT',
-                    headers: {
-                        ...headers(),
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        message: 'Mettre à jour les spectacles',
-                        content: encodeBase64Utf8(`${JSON.stringify(nextData, null, 2)}\n`),
-                        sha: state.sha,
-                        branch: CONFIG.branch
-                    })
-                });
-
-                const payload = await response.json();
-                if (!response.ok) throw new Error(payload.message || 'Impossible de publier');
-
-                state.sha = payload.content && payload.content.sha ? payload.content.sha : state.sha;
-                state.data = nextData;
-                if ($('#rememberToken').checked) {
-                    sessionStorage.setItem('eventsAdminToken', state.token);
-                }
-                setStatus('Publié. La page Spectacles va se mettre à jour après le délai normal de GitHub Pages.', 'ok');
-            } catch (error) {
-                setStatus(`Erreur : ${error.message}`, 'error');
-            } finally {
-                toggleButtons(false);
-            }
-        }
-
-        function toggleButtons(disabled) {
-            $('#loadButton').disabled = disabled;
-            $('#saveButton').disabled = disabled;
-            $('#addRowButton').disabled = disabled;
-            $('#clearRowsButton').disabled = disabled;
-        }
-
-        $('#loginForm').addEventListener('submit', async (event) => {
-            event.preventDefault();
-            const user = $('#loginUser').value.trim();
-            const password = $('#loginPassword').value;
-            const digest = await sha256(`${user}:${password}`);
-
-            if (digest !== CONFIG.authHash) {
-                setLoginStatus('Identifiants incorrects.', 'error');
-                return;
-            }
-
-            sessionStorage.setItem('eventsAdminUnlocked', '1');
-            $('#loginPanel').classList.add('hidden');
-            $('#adminPanel').classList.remove('hidden');
-            await loadPublicData();
-        });
-
-        $('#logoutButton').addEventListener('click', () => {
-            sessionStorage.removeItem('eventsAdminUnlocked');
-            sessionStorage.removeItem('eventsAdminToken');
-            window.location.reload();
-        });
-
-        $('#loadButton').addEventListener('click', loadFromGithub);
-        $('#saveButton').addEventListener('click', saveToGithub);
-        $('#addRowButton').addEventListener('click', () => addRow());
-        $('#clearRowsButton').addEventListener('click', () => {
-            if (confirm('Tout vider ?')) {
-                rowsEl.innerHTML = '';
-                addRow();
-            }
-        });
-
-        const savedToken = sessionStorage.getItem('eventsAdminToken');
-        if (savedToken) {
-            $('#tokenInput').value = savedToken;
-            $('#rememberToken').checked = true;
-        }
-
-        if (sessionStorage.getItem('eventsAdminUnlocked') === '1') {
-            $('#loginPanel').classList.add('hidden');
-            $('#adminPanel').classList.remove('hidden');
-            loadPublicData();
-        }
-    </script>
+$('#loginForm').onsubmit = async (ev) => {
+  ev.preventDefault();
+  const ok = await digest($('#user').value.trim() + ':' + $('#pass').value) === CFG.authHash;
+  if (!ok) { status($('#loginStatus'), 'Identifiants incorrects.', 'error'); return; }
+  sessionStorage.setItem(UNLOCK_KEY, '1'); openAdmin();
+};
+$('#logout').onclick = () => { sessionStorage.removeItem(UNLOCK_KEY); location.reload(); };
+$('#saveToken').onclick = () => {
+  const t = $('#token').value.trim();
+  if (!t) { status($('#tokenState'), 'Collez d’abord le token GitHub dans le champ.', 'error'); return; }
+  localStorage.setItem(TOKEN_KEY, t); $('#token').value = ''; refreshTokenUi();
+};
+$('#forgetToken').onclick = () => { localStorage.removeItem(TOKEN_KEY); refreshTokenUi(); };
+$('#addRow').onclick = () => addRow();
+$('#clearRows').onclick = () => { if (confirm('Supprimer toutes les lignes affichées ?')) { $('#rows').innerHTML = ''; addRow(); } };
+$('#saveSite').onclick = saveSite;
+if (sessionStorage.getItem(UNLOCK_KEY) === '1') openAdmin();
+</script>
 </body>
 </html>
