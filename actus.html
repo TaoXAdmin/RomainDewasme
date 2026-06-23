@@ -16,13 +16,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Spectacles | Romain Dewasme</title>
-  <meta name="description" content="Découvrez les spectacles, les dates, les lieux et les liens de billetterie de Romain Dewasme.">
+  <meta name="description" content="Découvrez les prochaines dates de spectacle de Romain Dewasme et réservez vos places en ligne.">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://www.romaindewasme.com/actus.html">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Spectacles | Romain Dewasme">
-  <meta property="og:description" content="Découvrez les spectacles, les dates, les lieux et les liens de billetterie de Romain Dewasme.">
+  <meta property="og:description" content="Découvrez les prochaines dates de spectacle de Romain Dewasme et réservez vos places en ligne.">
   <meta property="og:image" content="https://www.romaindewasme.com/assets/images/og-image.jpeg">
   <meta property="og:url" content="https://www.romaindewasme.com/actus.html">
   <meta property="og:type" content="website">
@@ -68,16 +68,6 @@
   </header>
 
   <main>
-    <!-- HERO PAGE -->
-    <section class="actus-hero">
-      <div class="container">
-        <div class="section-header actus-hero__intro">
-          <h2 class="section-title magic-text">Spectacles</h2>
-          <div class="title-separator"><span></span></div>
-        </div>
-      </div>
-    </section>
-
     <!-- PAGE ACTUS -->
     <section class="actus-page">
       <div class="container">
@@ -88,102 +78,13 @@
         <!-- ETAT VIDE -->
         <div class="actus-empty" id="actusEmpty" hidden>
           <div class="actus-empty__box">
-            <h3 class="actus-empty__title">Aucun spectacle disponible pour le moment</h3>
+            <h3 class="actus-empty__title">Aucune date disponible pour le moment</h3>
           </div>
         </div>
 
       </div>
     </section>
   </main>
-
-  <!-- TEMPLATE SHOW -->
-  <template id="actusShowTemplate">
-    <article class="actus-show">
-      <div class="actus-show__layout">
-
-        <!-- COLONNE GAUCHE : AFFICHE -->
-        <div class="actus-show__left">
-          <article
-            class="spectacles-card actus-show__poster"
-            aria-label=""
-          >
-            <div class="spectacles-card__visual actus-show__poster-visual"></div>
-            <div class="spectacles-card__overlay"></div>
-
-            <div class="spectacles-card__content">
-              <span class="spectacles-card__tag">Spectacle</span>
-
-              <div class="spectacles-card__footer">
-                <h3 class="spectacles-card__title actus-show__title"></h3>
-                <span class="spectacles-card__audience actus-show__audience"></span>
-              </div>
-            </div>
-          </article>
-
-          <!-- TEASER OPTIONNEL -->
-          <div class="actus-show__teaser-wrap" hidden>
-            <button
-              class="spectacles-cta actus-show__teaser-btn"
-              type="button"
-              aria-label="Voir le teaser du spectacle"
-            >
-              <span class="spectacles-cta__text">Voir le teaser</span>
-              <span class="spectacles-cta__icon">→</span>
-            </button>
-          </div>
-
-          <!-- FEATURING -->
-          <div class="actus-show__featuring" hidden>
-            <span class="actus-show__featuring-label">Featuring</span>
-            <p class="actus-show__featuring-text"></p>
-          </div>
-        </div>
-
-        <!-- COLONNE DROITE : DATES -->
-        <div class="actus-show__right">
-          <ul class="actus-show__events" role="list"></ul>
-        </div>
-
-      </div>
-    </article>
-  </template>
-
-  <!-- TEMPLATE EVENT -->
-<template id="actusEventTemplate">
-  <li class="actus-show__event">
-    <a class="actus-show__event-link" href="">
-      <div class="actus-show__event-text">
-        <span class="actus-show__event-date"></span>
-        <span class="actus-show__event-place"></span>
-      </div>
-
-      <span class="actus-show__event-icon" aria-hidden="true">
-        <img src="assets/images/ticket.svg" alt="">
-      </span>
-    </a>
-  </li>
-</template>
-
-  <!-- MODAL TEASER -->
-  <div class="spectacle-modal" id="spectacleModal" hidden aria-hidden="true">
-    <div class="spectacle-modal__backdrop"></div>
-
-    <button class="spectacle-modal__close" type="button" aria-label="Fermer la vidéo">
-      <span></span>
-      <span></span>
-    </button>
-
-    <video
-      id="spectacleModalVideo"
-      class="spectacle-modal__video"
-      playsinline
-      preload="metadata"
-    ></video>
-
-    <button class="spectacle-modal__replay" id="spectacleModalReplay" type="button" hidden>
-      Replay
-    </button>
-  </div>
 
   <!-- FOOTER -->
   <footer class="footer">
