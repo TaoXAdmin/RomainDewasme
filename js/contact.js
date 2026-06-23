@@ -57,6 +57,7 @@ function initContactForm() {
                     email: (formData.get('email') || '').toString().trim(),
                     phone: (formData.get('phone') || '').toString().trim(),
                     eventType: (formData.get('eventType') || '').toString().trim(),
+                    budget: (formData.get('budget') || '').toString().trim(),
                     message: (formData.get('message') || '').toString().trim()
                 };
                 
@@ -223,9 +224,9 @@ function initFormFieldEffects() {
         submitButton.addEventListener('mouseenter', () => {
             if (typeof gsap !== 'undefined') {
                 gsap.to(submitButton, {
-                    scale: 1.05,
+                    scale: 1.02,
                     duration: 0.3,
-                    ease: 'back.out(1.5)'
+                    ease: 'power2.out'
                 });
             }
         });
