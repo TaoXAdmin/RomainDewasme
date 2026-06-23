@@ -9,74 +9,44 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --gold: #e6c555;
-      --bg: #080808;
-      --panel: #151515;
-      --panel-2: #202020;
-      --line: rgba(230, 197, 85, 0.32);
-      --text: #ffffff;
-      --muted: rgba(255,255,255,.72);
-      --danger: #ff8f8f;
-      --ok: #9fe3b5;
-    }
+    :root { --gold:#e6c555; --bg:#080808; --panel:#151515; --field:#232323; --line:rgba(230,197,85,.32); --text:#fff; --muted:rgba(255,255,255,.72); --danger:#ff8f8f; --ok:#9fe3b5; }
     * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background: radial-gradient(circle at top, rgba(230,197,85,.16), transparent 32rem), linear-gradient(135deg, #050505, #111);
-      color: var(--text);
-      font-family: Montserrat, sans-serif;
-    }
-    main { width: min(1120px, calc(100% - 28px)); margin: 0 auto; padding: 42px 0 70px; }
-    h1, h2 { font-family: 'Cormorant Garamond', serif; margin: 0; font-weight: 600; }
-    h1 { font-size: clamp(2.5rem, 6vw, 4.8rem); line-height: .95; }
-    h2 { font-size: 1.55rem; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 12px; }
-    p { color: var(--muted); line-height: 1.65; }
-    .card {
-      border: 1px solid var(--line);
-      background: rgba(18,18,18,.94);
-      border-radius: 24px;
-      padding: clamp(20px, 4vw, 36px);
-      box-shadow: 0 24px 90px rgba(0,0,0,.42);
-      margin-bottom: 22px;
-    }
-    .top { display: flex; justify-content: space-between; gap: 18px; align-items: flex-start; margin-bottom: 24px; }
-    .kicker { color: var(--gold); text-transform: uppercase; letter-spacing: .18em; font-size: .78rem; margin: 0 0 8px; }
-    .login { max-width: 560px; margin: 10vh auto 0; }
-    .hidden { display: none !important; }
-    label { display: block; font-size: .74rem; color: rgba(255,255,255,.72); text-transform: uppercase; letter-spacing: .09em; margin-bottom: 7px; }
-    input {
-      width: 100%; border: 1px solid rgba(255,255,255,.16); background: var(--panel-2); color: #fff;
-      border-radius: 13px; padding: 14px 15px; font: inherit; outline: none;
-    }
-    input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(230,197,85,.14); }
-    .btn {
-      border: 1px solid var(--gold); background: var(--gold); color: #121212; border-radius: 999px;
-      padding: 13px 20px; font-weight: 700; cursor: pointer; font: inherit; transition: transform .18s ease, opacity .18s ease;
-    }
-    .btn:hover { transform: translateY(-1px); }
-    .btn.secondary { background: transparent; color: var(--gold); }
-    .btn.danger { border-color: rgba(255,143,143,.7); background: transparent; color: var(--danger); }
-    .btn:disabled { opacity: .52; cursor: wait; transform: none; }
-    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 24px 0; }
-    .step { background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.1); border-radius: 18px; padding: 16px; }
-    .step strong { color: var(--gold); display: block; margin-bottom: 6px; }
-    .step span { color: var(--muted); font-size: .92rem; line-height: 1.45; }
-    .token-grid { display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: end; }
-    .status { min-height: 26px; margin: 14px 0 0; color: var(--muted); font-weight: 600; }
-    .status.ok { color: var(--ok); }
-    .status.error { color: var(--danger); }
-    .rows { display: grid; gap: 14px; }
-    .row {
-      display: grid; grid-template-columns: 1.1fr .8fr 1fr 1.1fr auto; gap: 12px;
-      background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.1); border-radius: 18px; padding: 14px;
-    }
-    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
-    .note { font-size: .9rem; color: var(--muted); }
-    .bar { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; justify-content: space-between; }
-    .pill { display: inline-flex; align-items: center; gap: 8px; color: var(--ok); background: rgba(159,227,181,.08); border: 1px solid rgba(159,227,181,.28); padding: 8px 12px; border-radius: 999px; font-size: .88rem; }
-    @media (max-width: 900px) { .top, .token-grid, .row, .steps { grid-template-columns: 1fr; display: grid; } .row .btn { justify-self: start; } }
+    body { margin:0; min-height:100vh; background:radial-gradient(circle at top, rgba(230,197,85,.15), transparent 34rem), linear-gradient(135deg,#050505,#111); color:var(--text); font-family:Montserrat,sans-serif; }
+    main { width:min(1120px,calc(100% - 28px)); margin:0 auto; padding:42px 0 70px; }
+    h1,h2 { font-family:'Cormorant Garamond',serif; margin:0; font-weight:600; }
+    h1 { font-size:clamp(2.4rem,6vw,4.8rem); line-height:.95; }
+    h2 { font-size:1.45rem; letter-spacing:.12em; text-transform:uppercase; margin-bottom:12px; }
+    p { color:var(--muted); line-height:1.65; }
+    .card { border:1px solid var(--line); background:rgba(18,18,18,.94); border-radius:24px; padding:clamp(20px,4vw,36px); box-shadow:0 24px 90px rgba(0,0,0,.42); margin-bottom:22px; }
+    .top { display:flex; justify-content:space-between; gap:18px; align-items:flex-start; margin-bottom:24px; }
+    .kicker { color:var(--gold); text-transform:uppercase; letter-spacing:.18em; font-size:.78rem; margin:0 0 8px; }
+    .login { max-width:560px; margin:10vh auto 0; }
+    .hidden { display:none!important; }
+    label { display:block; font-size:.74rem; color:rgba(255,255,255,.72); text-transform:uppercase; letter-spacing:.09em; margin-bottom:7px; }
+    input { width:100%; border:1px solid rgba(255,255,255,.16); background:var(--field); color:#fff; border-radius:13px; padding:14px 15px; font:inherit; outline:none; }
+    input:focus { border-color:var(--gold); box-shadow:0 0 0 3px rgba(230,197,85,.14); }
+    .btn { border:1px solid var(--gold); background:var(--gold); color:#121212; border-radius:999px; padding:13px 20px; font-weight:700; cursor:pointer; font:inherit; transition:transform .18s ease,opacity .18s ease; }
+    .btn:hover { transform:translateY(-1px); }
+    .btn.secondary { background:transparent; color:var(--gold); }
+    .btn.danger { border-color:rgba(255,143,143,.7); background:transparent; color:var(--danger); }
+    .btn:disabled { opacity:.52; cursor:wait; transform:none; }
+    .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:24px 0; }
+    .step { background:rgba(255,255,255,.045); border:1px solid rgba(255,255,255,.1); border-radius:18px; padding:16px; }
+    .step strong { color:var(--gold); display:block; margin-bottom:6px; }
+    .step span { color:var(--muted); font-size:.92rem; line-height:1.45; }
+    .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .grid3 { display:grid; grid-template-columns:1fr 1fr auto; gap:14px; align-items:end; }
+    .status { min-height:26px; margin:14px 0 0; color:var(--muted); font-weight:600; }
+    .status.ok { color:var(--ok); }
+    .status.error { color:var(--danger); }
+    .rows { display:grid; gap:14px; }
+    .row { display:grid; grid-template-columns:1.1fr .8fr 1fr 1.1fr auto; gap:12px; background:rgba(255,255,255,.045); border:1px solid rgba(255,255,255,.1); border-radius:18px; padding:14px; }
+    .actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:22px; }
+    .note { font-size:.9rem; color:var(--muted); }
+    .bar { display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:space-between; }
+    .pill { display:inline-flex; align-items:center; color:var(--ok); background:rgba(159,227,181,.08); border:1px solid rgba(159,227,181,.28); padding:8px 12px; border-radius:999px; font-size:.88rem; }
+    .warn { color:var(--danger); }
+    @media (max-width:900px) { .top,.grid2,.grid3,.row,.steps { grid-template-columns:1fr; display:grid; } .row .btn { justify-self:start; } }
   </style>
 </head>
 <body>
@@ -104,18 +74,30 @@
     </div>
 
     <div class="card">
-      <h2>Mode d’emploi</h2>
+      <h2>Mode d’emploi client</h2>
       <div class="steps">
-        <div class="step"><strong>1. Token</strong><span>À faire une seule fois sur cet ordinateur. Le token reste dans ce navigateur.</span></div>
-        <div class="step"><strong>2. Dates</strong><span>Modifie les champs titre, date, lieu et billetterie.</span></div>
-        <div class="step"><strong>3. Enregistrer</strong><span>Clique sur “Enregistrer les dates sur le site”. GitHub Pages se mettra à jour automatiquement.</span></div>
+        <div class="step"><strong>1. Déverrouiller</strong><span>Entrer le mot de passe de publication. Pas besoin de token GitHub au quotidien.</span></div>
+        <div class="step"><strong>2. Modifier</strong><span>Ajouter, supprimer ou corriger les dates.</span></div>
+        <div class="step"><strong>3. Enregistrer</strong><span>Cliquer sur “Enregistrer les dates sur le site”. GitHub Pages se met à jour automatiquement.</span></div>
       </div>
-      <div class="token-grid">
-        <p style="margin:0"><label for="token">Token GitHub</label><input id="token" type="password" spellcheck="false" placeholder="github_pat_... ou ghp_..."></p>
-        <button id="saveToken" class="btn secondary" type="button">Enregistrer le token sur cet appareil</button>
-        <button id="forgetToken" class="btn danger" type="button">Effacer le token</button>
+      <div class="grid3">
+        <p style="margin:0"><label for="publishPass">Mot de passe de publication</label><input id="publishPass" type="password" autocomplete="current-password" placeholder="Mot de passe de publication"></p>
+        <button id="unlockToken" class="btn secondary" type="button">Déverrouiller l’enregistrement</button>
+        <span id="unlockPill" class="pill hidden">Enregistrement déverrouillé</span>
       </div>
-      <p id="tokenState" class="status"></p>
+      <p id="unlockStatus" class="status"></p>
+    </div>
+
+    <div class="card" id="setupCard">
+      <h2>Configuration du token permanent</h2>
+      <p class="note">À faire seulement pour installer ou remplacer le token GitHub. Le token sera stocké chiffré dans <code>data/admin-config.json</code>. Il ne sera pas visible en clair dans le site.</p>
+      <p class="warn">Le token déjà envoyé dans le chat doit être révoqué et remplacé par un nouveau.</p>
+      <div class="grid2">
+        <p><label for="newToken">Nouveau token GitHub</label><input id="newToken" type="password" spellcheck="false" placeholder="github_pat_... ou ghp_..."></p>
+        <p><label for="newPass">Mot de passe de publication</label><input id="newPass" type="password" placeholder="À conserver pour le client"></p>
+      </div>
+      <button id="installToken" class="btn secondary" type="button">Installer / remplacer le token permanent</button>
+      <p id="setupStatus" class="status"></p>
     </div>
 
     <div class="card">
@@ -124,7 +106,6 @@
           <h2>Dates à afficher</h2>
           <p class="note">Chaque ligne correspond à une date. Deux lignes avec le même titre seront regroupées sous le même spectacle.</p>
         </div>
-        <span id="savedPill" class="pill hidden">Token enregistré sur cet appareil</span>
       </div>
       <div id="rows" class="rows"></div>
       <div class="actions">
@@ -148,141 +129,44 @@
 </template>
 
 <script>
-const CFG = {
-  owner: 'TaoXAdmin',
-  repo: 'RomainDewasme',
-  branch: 'main',
-  filePath: 'data/events.json',
-  authHash: '482e748f5db0f1cf72298d152bc1b6af993a093abf7df1a5cffaf16342048b65'
-};
-const TOKEN_KEY = 'rd_events_admin_token';
+const CFG = { owner:'TaoXAdmin', repo:'RomainDewasme', branch:'main', eventsPath:'data/events.json', configPath:'data/admin-config.json', authHash:'482e748f5db0f1cf72298d152bc1b6af993a093abf7df1a5cffaf16342048b65' };
 const UNLOCK_KEY = 'rd_events_admin_open';
-const state = { data: { success: true, shows: [] }, sha: null };
-const $ = (s) => document.querySelector(s);
-
-function status(el, msg, type='') { el.textContent = msg || ''; el.className = `status ${type}`.trim(); }
-async function digest(text) {
-  const data = new TextEncoder().encode(text);
-  const hash = await crypto.subtle.digest('SHA-256', data);
-  return [...new Uint8Array(hash)].map(b => b.toString(16).padStart(2, '0')).join('');
-}
-function apiUrl() { return `https://api.github.com/repos/${CFG.owner}/${CFG.repo}/contents/${CFG.filePath}`; }
-function token() { return $('#token').value.trim() || localStorage.getItem(TOKEN_KEY) || ''; }
-function headers() { return { Accept: 'application/vnd.github+json', Authorization: `Bearer ${token()}`, 'X-GitHub-Api-Version': '2022-11-28' }; }
-function decode64(b64) { const bin = atob(String(b64 || '').replace(/\s/g,'')); return new TextDecoder().decode(Uint8Array.from(bin, c => c.charCodeAt(0))); }
-function encode64(text) { const bytes = new TextEncoder().encode(text); let bin = ''; bytes.forEach(b => bin += String.fromCharCode(b)); return btoa(bin); }
-function normData(v) { return v && Array.isArray(v.shows) ? { ...v, success: true } : { success: true, shows: [] }; }
-
-function rowValues(data) {
-  return normData(data).shows.flatMap(show => (show.events || []).map(ev => ({
-    title: show.name || show.title || '',
-    date: ev.displayDate || ev.date || '',
-    venue: ev.venue || ev.lieu || '',
-    link: ev.ticketUrl || ev.url || ev.billetterie || ''
-  })));
-}
-function addRow(v={}) {
-  const node = $('#rowTpl').content.firstElementChild.cloneNode(true);
-  node.querySelector('[data-field="title"]').value = v.title || '';
-  node.querySelector('[data-field="date"]').value = v.date || '';
-  node.querySelector('[data-field="venue"]').value = v.venue || '';
-  node.querySelector('[data-field="link"]').value = v.link || '';
-  node.querySelector('[data-delete]').onclick = () => { node.remove(); if (!$('#rows').children.length) addRow(); };
-  $('#rows').appendChild(node);
-}
-function render(data) {
-  $('#rows').innerHTML = '';
-  const rows = rowValues(data);
-  rows.length ? rows.forEach(addRow) : addRow();
-}
-function collect() {
-  return [...$('#rows').children].map(row => ({
-    title: row.querySelector('[data-field="title"]').value.trim(),
-    date: row.querySelector('[data-field="date"]').value.trim(),
-    venue: row.querySelector('[data-field="venue"]').value.trim(),
-    link: row.querySelector('[data-field="link"]').value.trim()
-  })).filter(r => r.title || r.date || r.venue || r.link);
-}
-function buildData() {
-  const kept = new Map();
-  normData(state.data).shows.forEach(show => {
-    const name = String(show.name || show.title || '').trim().toLowerCase();
-    if (name) kept.set(name, show);
-  });
-  const shows = new Map();
-  collect().forEach(r => {
-    if (!r.title || !r.date || !r.venue) return;
-    const key = r.title.toLowerCase();
-    if (!shows.has(key)) {
-      const old = kept.get(key) || {};
-      const { events, title, ...meta } = old;
-      shows.set(key, { ...meta, name: r.title, events: [] });
-    }
-    shows.get(key).events.push({ displayDate: r.date, venue: r.venue, ticketUrl: r.link });
-  });
-  return { success: true, updatedAt: new Date().toISOString(), shows: [...shows.values()] };
-}
-async function loadPublic() {
-  try {
-    const res = await fetch(`/data/events.json?v=${Date.now()}`, { cache: 'no-store' });
-    if (res.ok) state.data = normData(await res.json());
-  } catch(e) {}
-  render(state.data);
-}
-async function fetchCurrentFromGithub() {
-  const res = await fetch(`${apiUrl()}?ref=${CFG.branch}`, { headers: headers() });
-  const json = await res.json();
-  if (!res.ok) throw new Error(json.message || 'Impossible de lire le fichier GitHub');
-  state.sha = json.sha;
-  state.data = normData(JSON.parse(decode64(json.content)));
-  return state.data;
-}
-async function saveSite() {
-  const t = token();
-  if (!t) { status($('#status'), 'Collez le token GitHub en haut, puis cliquez sur “Enregistrer le token sur cet appareil”.', 'error'); window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
-  const next = buildData();
-  if (!next.shows.length && !confirm('Aucune date complète. Enregistrer une liste vide ?')) return;
-  if (!confirm('Enregistrer ces dates sur le site ?')) return;
-  setBusy(true); status($('#status'), 'Enregistrement en cours...');
-  try {
-    await fetchCurrentFromGithub();
-    const res = await fetch(apiUrl(), {
-      method: 'PUT', headers: { ...headers(), 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: 'Mettre à jour les spectacles', content: encode64(JSON.stringify(next, null, 2) + '\n'), sha: state.sha, branch: CFG.branch })
-    });
-    const json = await res.json();
-    if (!res.ok) throw new Error(json.message || 'Impossible d’enregistrer');
-    state.data = next; state.sha = json.content && json.content.sha ? json.content.sha : state.sha;
-    render(state.data);
-    status($('#status'), 'Dates enregistrées. Le site se met à jour automatiquement, attends environ 1 minute puis recharge la page Actus.', 'ok');
-  } catch(e) { status($('#status'), 'Erreur : ' + e.message, 'error'); }
-  finally { setBusy(false); }
-}
-function setBusy(v) { ['#saveSite','#addRow','#clearRows','#saveToken','#forgetToken'].forEach(s => $(s).disabled = v); }
-function refreshTokenUi() {
-  const saved = localStorage.getItem(TOKEN_KEY);
-  $('#savedPill').classList.toggle('hidden', !saved);
-  status($('#tokenState'), saved ? 'Token enregistré sur cet appareil. Vous n’aurez plus à le retaper ici.' : 'Aucun token enregistré sur cet appareil.', saved ? 'ok' : '');
-}
-function openAdmin() { $('#loginPanel').classList.add('hidden'); $('#adminPanel').classList.remove('hidden'); refreshTokenUi(); loadPublic(); }
-
-$('#loginForm').onsubmit = async (ev) => {
-  ev.preventDefault();
-  const ok = await digest($('#user').value.trim() + ':' + $('#pass').value) === CFG.authHash;
-  if (!ok) { status($('#loginStatus'), 'Identifiants incorrects.', 'error'); return; }
-  sessionStorage.setItem(UNLOCK_KEY, '1'); openAdmin();
-};
-$('#logout').onclick = () => { sessionStorage.removeItem(UNLOCK_KEY); location.reload(); };
-$('#saveToken').onclick = () => {
-  const t = $('#token').value.trim();
-  if (!t) { status($('#tokenState'), 'Collez d’abord le token GitHub dans le champ.', 'error'); return; }
-  localStorage.setItem(TOKEN_KEY, t); $('#token').value = ''; refreshTokenUi();
-};
-$('#forgetToken').onclick = () => { localStorage.removeItem(TOKEN_KEY); refreshTokenUi(); };
-$('#addRow').onclick = () => addRow();
-$('#clearRows').onclick = () => { if (confirm('Supprimer toutes les lignes affichées ?')) { $('#rows').innerHTML = ''; addRow(); } };
-$('#saveSite').onclick = saveSite;
-if (sessionStorage.getItem(UNLOCK_KEY) === '1') openAdmin();
+const state = { data:{success:true,shows:[]}, eventsSha:null, config:null, configSha:null, token:null };
+const $ = s => document.querySelector(s);
+const enc = new TextEncoder();
+const dec = new TextDecoder();
+function status(el,msg,type=''){ el.textContent=msg||''; el.className=`status ${type}`.trim(); }
+async function digest(text){ const hash=await crypto.subtle.digest('SHA-256',enc.encode(text)); return [...new Uint8Array(hash)].map(b=>b.toString(16).padStart(2,'0')).join(''); }
+function b64(bytes){ let s=''; new Uint8Array(bytes).forEach(b=>s+=String.fromCharCode(b)); return btoa(s); }
+function unb64(text){ const bin=atob(String(text||'')); return Uint8Array.from(bin,c=>c.charCodeAt(0)); }
+function apiPath(path){ return `https://api.github.com/repos/${CFG.owner}/${CFG.repo}/contents/${path}`; }
+function headers(token){ return { Accept:'application/vnd.github+json', Authorization:`Bearer ${token}`, 'X-GitHub-Api-Version':'2022-11-28' }; }
+function normData(v){ return v&&Array.isArray(v.shows)?{...v,success:true}:{success:true,shows:[]}; }
+async function keyFromPassword(pass,salt,iters){ return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:iters,hash:'SHA-256'}, await crypto.subtle.importKey('raw',enc.encode(pass),'PBKDF2',false,['deriveKey']), {name:'AES-GCM',length:256}, false, ['encrypt','decrypt']); }
+async function encryptToken(token,pass){ const salt=crypto.getRandomValues(new Uint8Array(16)); const iv=crypto.getRandomValues(new Uint8Array(12)); const iterations=250000; const key=await keyFromPassword(pass,salt,iterations); const encrypted=await crypto.subtle.encrypt({name:'AES-GCM',iv},key,enc.encode(token)); return {version:1,encryptedToken:b64(encrypted),salt:b64(salt),iv:b64(iv),iterations,updatedAt:new Date().toISOString()}; }
+async function decryptToken(config,pass){ if(!config||!config.encryptedToken) throw new Error('Aucun token permanent configuré.'); const key=await keyFromPassword(pass,unb64(config.salt),Number(config.iterations||250000)); const plain=await crypto.subtle.decrypt({name:'AES-GCM',iv:unb64(config.iv)},key,unb64(config.encryptedToken)); return dec.decode(plain); }
+function rowValues(data){ return normData(data).shows.flatMap(show=>(show.events||[]).map(ev=>({title:show.name||show.title||'',date:ev.displayDate||ev.date||'',venue:ev.venue||ev.lieu||'',link:ev.ticketUrl||ev.url||ev.billetterie||''}))); }
+function addRow(v={}){ const node=$('#rowTpl').content.firstElementChild.cloneNode(true); node.querySelector('[data-field="title"]').value=v.title||''; node.querySelector('[data-field="date"]').value=v.date||''; node.querySelector('[data-field="venue"]').value=v.venue||''; node.querySelector('[data-field="link"]').value=v.link||''; node.querySelector('[data-delete]').onclick=()=>{node.remove(); if(!$('#rows').children.length)addRow();}; $('#rows').appendChild(node); }
+function render(data){ $('#rows').innerHTML=''; const rows=rowValues(data); rows.length?rows.forEach(addRow):addRow(); }
+function collect(){ return [...$('#rows').children].map(row=>({title:row.querySelector('[data-field="title"]').value.trim(),date:row.querySelector('[data-field="date"]').value.trim(),venue:row.querySelector('[data-field="venue"]').value.trim(),link:row.querySelector('[data-field="link"]').value.trim()})).filter(r=>r.title||r.date||r.venue||r.link); }
+function buildData(){ const kept=new Map(); normData(state.data).shows.forEach(show=>{ const name=String(show.name||show.title||'').trim().toLowerCase(); if(name) kept.set(name,show); }); const shows=new Map(); collect().forEach(r=>{ if(!r.title||!r.date||!r.venue)return; const key=r.title.toLowerCase(); if(!shows.has(key)){ const old=kept.get(key)||{}; const {events,title,...meta}=old; shows.set(key,{...meta,name:r.title,events:[]}); } shows.get(key).events.push({displayDate:r.date,venue:r.venue,ticketUrl:r.link}); }); return {success:true,updatedAt:new Date().toISOString(),shows:[...shows.values()]}; }
+async function loadPublic(){ try{ const res=await fetch(`/data/events.json?v=${Date.now()}`,{cache:'no-store'}); if(res.ok) state.data=normData(await res.json()); }catch(e){} render(state.data); }
+async function loadConfigPublic(){ try{ const res=await fetch(`/data/admin-config.json?v=${Date.now()}`,{cache:'no-store'}); if(res.ok) state.config=await res.json(); }catch(e){} refreshConfigUi(); }
+function refreshConfigUi(){ const configured=Boolean(state.config&&state.config.encryptedToken); status($('#unlockStatus'),configured?'Token permanent configuré. Entrez le mot de passe de publication pour enregistrer les dates.':'Aucun token permanent configuré pour le moment.',configured?'ok':''); }
+async function readGithubFile(path,token){ const res=await fetch(`${apiPath(path)}?ref=${CFG.branch}`,{headers:headers(token)}); const json=await res.json(); if(!res.ok) throw new Error(json.message||`Impossible de lire ${path}`); return json; }
+async function unlock(){ const pass=$('#publishPass').value; if(!pass){ status($('#unlockStatus'),'Entrez le mot de passe de publication.','error'); return; } try{ state.token=await decryptToken(state.config,pass); $('#unlockPill').classList.remove('hidden'); status($('#unlockStatus'),'Enregistrement déverrouillé pour cette session.','ok'); }catch(e){ state.token=null; $('#unlockPill').classList.add('hidden'); status($('#unlockStatus'),'Mot de passe de publication incorrect ou token non configuré.','error'); } }
+async function installPermanentToken(){ const raw=$('#newToken').value.trim(); const pass=$('#newPass').value; if(!raw||!pass){ status($('#setupStatus'),'Collez le nouveau token et choisissez un mot de passe de publication.','error'); return; } if(pass.length<10&&!confirm('Mot de passe court. Continuer quand même ?')) return; setBusy(true); status($('#setupStatus'),'Installation du token permanent chiffré...'); try{ const encrypted=await encryptToken(raw,pass); const current=await readGithubFile(CFG.configPath,raw); const res=await fetch(apiPath(CFG.configPath),{method:'PUT',headers:{...headers(raw),'Content-Type':'application/json'},body:JSON.stringify({message:'Mettre à jour le token admin chiffré',content:b64(enc.encode(JSON.stringify(encrypted,null,2)+'\n')),sha:current.sha,branch:CFG.branch})}); const json=await res.json(); if(!res.ok) throw new Error(json.message||'Impossible d’enregistrer la configuration'); state.config=encrypted; state.configSha=json.content&&json.content.sha?json.content.sha:current.sha; state.token=raw; $('#newToken').value=''; $('#newPass').value=''; $('#publishPass').value=pass; $('#unlockPill').classList.remove('hidden'); status($('#setupStatus'),'Token permanent installé. Le client utilisera seulement le mot de passe de publication.','ok'); refreshConfigUi(); }catch(e){ status($('#setupStatus'),'Erreur : '+e.message,'error'); } finally{ setBusy(false); } }
+async function saveSite(){ if(!state.token){ status($('#status'),'Déverrouillez d’abord l’enregistrement avec le mot de passe de publication.','error'); window.scrollTo({top:0,behavior:'smooth'}); return; } const next=buildData(); if(!next.shows.length&&!confirm('Aucune date complète. Enregistrer une liste vide ?'))return; if(!confirm('Enregistrer ces dates sur le site ?'))return; setBusy(true); status($('#status'),'Enregistrement en cours...'); try{ const current=await readGithubFile(CFG.eventsPath,state.token); const res=await fetch(apiPath(CFG.eventsPath),{method:'PUT',headers:{...headers(state.token),'Content-Type':'application/json'},body:JSON.stringify({message:'Mettre à jour les spectacles',content:b64(enc.encode(JSON.stringify(next,null,2)+'\n')),sha:current.sha,branch:CFG.branch})}); const json=await res.json(); if(!res.ok) throw new Error(json.message||'Impossible d’enregistrer'); state.data=next; state.eventsSha=json.content&&json.content.sha?json.content.sha:current.sha; render(state.data); status($('#status'),'Dates enregistrées. Attendez environ 1 minute puis rechargez la page Actus.','ok'); }catch(e){ status($('#status'),'Erreur : '+e.message,'error'); } finally{ setBusy(false); } }
+function setBusy(v){ ['#saveSite','#addRow','#clearRows','#unlockToken','#installToken'].forEach(s=>$(s).disabled=v); }
+function openAdmin(){ $('#loginPanel').classList.add('hidden'); $('#adminPanel').classList.remove('hidden'); loadConfigPublic(); loadPublic(); }
+$('#loginForm').onsubmit=async ev=>{ ev.preventDefault(); const ok=await digest($('#user').value.trim()+':'+$('#pass').value)===CFG.authHash; if(!ok){status($('#loginStatus'),'Identifiants incorrects.','error');return;} sessionStorage.setItem(UNLOCK_KEY,'1'); openAdmin(); };
+$('#logout').onclick=()=>{ sessionStorage.removeItem(UNLOCK_KEY); location.reload(); };
+$('#unlockToken').onclick=unlock;
+$('#installToken').onclick=installPermanentToken;
+$('#addRow').onclick=()=>addRow();
+$('#clearRows').onclick=()=>{ if(confirm('Supprimer toutes les lignes affichées ?')){ $('#rows').innerHTML=''; addRow(); } };
+$('#saveSite').onclick=saveSite;
+if(sessionStorage.getItem(UNLOCK_KEY)==='1') openAdmin();
 </script>
 </body>
 </html>
