@@ -1,2 +1,7 @@
 <?php
-echo 'Gestion events v2';
+$ok = false;
+if ($ok) {
+    echo 'OK';
+} else {
+    echo 'Gestion events';
+}
