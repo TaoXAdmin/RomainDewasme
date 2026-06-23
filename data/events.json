@@ -1,6 +1,6 @@
 {
   "success": true,
-  "updatedAt": "2026-06-23T16:18:46.044Z",
+  "updatedAt": "2026-06-23T16:31:28.781Z",
   "shows": [
     {
       "name": "TRUC DE OUF",
@@ -14,10 +14,15 @@
           "displayDate": "28/11/2026",
           "venue": "Mouscron",
           "ticketUrl": "https://www.hurlucomedy.com/romaindewasme"
-        },
+        }
+      ]
+    },
+    {
+      "name": "EXPLOSIF",
+      "events": [
         {
-          "displayDate": "29/11/2026",
-          "venue": "Mouscron",
+          "displayDate": "30/09/2026",
+          "venue": "Lille",
           "ticketUrl": "https://www.hurlucomedy.com/romaindewasme"
         }
       ]
