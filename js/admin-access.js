@@ -11,7 +11,7 @@
       window.clearTimeout(resetTimer);
 
       if (clickCount >= 4) {
-        window.location.href = 'gestion-spectacles.php';
+        window.location.href = 'gestion-events.php';
         return;
       }
 
