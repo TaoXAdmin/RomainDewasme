@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "encryptedToken": null,
-  "salt": null,
-  "iv": null,
+  "encryptedToken": "RHt6XESFjsAIyKk02ZKGnC9ETrB3ddOODGN66nh14+CSNN75xLpqWdMrHVkPgGPfZRw/LayD6VhFfXjH07f5w/rLm3uKnKCeu9QuaqNePYxwgdwn8h+FG9UO0Gx+JNrWsZe4irmXrUeeMdeSkg==",
+  "salt": "W/Fwpj49VjQpjH3m2ULl7Q==",
+  "iv": "RvutGoBym4VrdohZ",
   "iterations": 250000,
-  "updatedAt": null
+  "updatedAt": "2026-06-23T16:18:06.492Z"
 }
