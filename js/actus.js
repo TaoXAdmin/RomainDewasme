@@ -176,11 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function formatDateParts(event) {
     if (!event.parsedDate) {
-      return {
-        day: event.displayDate,
-        month: '',
-        year: ''
-      };
+      return { day: event.displayDate, month: '', year: '' };
     }
 
     const month = event.parsedDate.toLocaleDateString('fr-BE', { month: 'short' }).replace('.', '');
@@ -199,9 +195,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const intro = document.createElement('div');
     intro.className = 'actus-schedule__intro';
     intro.innerHTML = `
-      <span class="actus-schedule__eyebrow">Prochaines dates</span>
-      <h2 class="actus-schedule__title">Réservez votre place</h2>
-      <p class="actus-schedule__text">Retrouvez les prochaines représentations de Romain Dewasme, classées automatiquement de la date la plus proche à la plus lointaine.</p>
+      <h2 class="actus-schedule__title">Réserver ma place</h2>
+      <p class="actus-schedule__text">Choisissez votre date et accédez directement à la billetterie.</p>
     `;
     wrapper.appendChild(intro);
 
@@ -242,11 +237,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const fullDate = document.createElement('span');
     fullDate.className = 'actus-date-row__meta-item';
-    fullDate.innerHTML = `<span aria-hidden="true">📅</span> ${escapeHtml(event.displayDate)}`;
+    fullDate.innerHTML = `<span class="actus-date-row__meta-label">Date</span><span>${escapeHtml(event.displayDate)}</span>`;
 
     const venue = document.createElement('span');
     venue.className = 'actus-date-row__meta-item';
-    venue.innerHTML = `<span aria-hidden="true">📍</span> ${escapeHtml(event.venue)}`;
+    venue.innerHTML = `<span class="actus-date-row__meta-label">Lieu</span><span>${escapeHtml(event.venue)}</span>`;
 
     meta.appendChild(fullDate);
     meta.appendChild(venue);
@@ -258,16 +253,14 @@ document.addEventListener('DOMContentLoaded', () => {
       meta.appendChild(audience);
     }
 
+    content.appendChild(title);
+    content.appendChild(meta);
+
     if (event.artists.length) {
       const artists = document.createElement('p');
       artists.className = 'actus-date-row__artists';
       artists.textContent = `Avec ${event.artists.join(', ')}`;
-      content.appendChild(title);
-      content.appendChild(meta);
       content.appendChild(artists);
-    } else {
-      content.appendChild(title);
-      content.appendChild(meta);
     }
 
     const action = document.createElement('div');
@@ -315,9 +308,9 @@ document.addEventListener('DOMContentLoaded', () => {
     style.textContent = `
       .actus-page {
         position: relative;
-        padding: clamp(5rem, 8vw, 9rem) 0 clamp(7rem, 10vw, 12rem);
+        padding: clamp(10rem, 10vw, 14rem) 0 clamp(7rem, 10vw, 12rem);
         background:
-          radial-gradient(circle at top right, rgba(166,124,82,0.18), transparent 38rem),
+          radial-gradient(circle at top right, rgba(166,124,82,0.14), transparent 38rem),
           linear-gradient(180deg, rgba(18,18,18,0.98), rgba(7,7,7,1));
         color: #fff;
         overflow: hidden;
@@ -329,7 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
         inset: 0;
         background-image: url('assets/images_opt/stone.jpg');
         background-size: cover;
-        opacity: 0.08;
+        opacity: 0.07;
         pointer-events: none;
       }
 
@@ -339,69 +332,57 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       .actus-schedule {
-        width: min(118rem, 100%);
+        width: min(116rem, 100%);
         margin: 0 auto;
       }
 
       .actus-schedule__intro {
-        max-width: 74rem;
-        margin: 0 auto clamp(3rem, 5vw, 5rem);
+        max-width: 76rem;
+        margin: 0 auto clamp(3.2rem, 5vw, 5rem);
         text-align: center;
-      }
-
-      .actus-schedule__eyebrow {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1.2rem;
-        color: #d8ba6f;
-        font-size: 1.15rem;
-        font-weight: 800;
-        letter-spacing: 0.28em;
-        text-transform: uppercase;
       }
 
       .actus-schedule__title {
         margin: 0;
         color: #fff;
         font-family: var(--font-primary);
-        font-size: clamp(3.6rem, 7vw, 7.2rem);
+        font-size: clamp(4rem, 7vw, 7.8rem);
         font-weight: 900;
-        letter-spacing: 0.04em;
-        line-height: 0.98;
+        letter-spacing: 0.05em;
+        line-height: 0.96;
         text-transform: uppercase;
         text-shadow: 0 18px 48px rgba(0,0,0,0.45);
       }
 
       .actus-schedule__text {
-        max-width: 68rem;
-        margin: 1.6rem auto 0;
+        max-width: 64rem;
+        margin: 1.8rem auto 0;
         color: rgba(255,255,255,0.72);
-        font-size: clamp(1.5rem, 1.6vw, 1.8rem);
+        font-size: clamp(1.55rem, 1.6vw, 1.85rem);
         line-height: 1.75;
       }
 
       .actus-schedule__list {
         display: grid;
-        gap: 1.5rem;
+        gap: 1.4rem;
       }
 
       .actus-date-row {
         position: relative;
         display: grid;
         grid-template-columns: auto minmax(0, 1fr) auto;
-        gap: clamp(1.6rem, 3vw, 3.2rem);
+        gap: clamp(1.8rem, 3vw, 3.4rem);
         align-items: center;
         width: 100%;
-        padding: clamp(1.8rem, 2.8vw, 3rem);
-        border: 1px solid rgba(255,255,255,0.12);
-        border-radius: 2.4rem;
+        padding: clamp(1.9rem, 2.7vw, 2.8rem);
+        border: 1px solid rgba(255,255,255,0.11);
+        border-radius: 2.2rem;
         background:
-          linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.035)),
-          rgba(12,12,12,0.74);
+          linear-gradient(135deg, rgba(255,255,255,0.085), rgba(255,255,255,0.028)),
+          rgba(13,13,13,0.78);
         box-shadow:
-          0 24px 68px rgba(0,0,0,0.34),
-          inset 0 1px 0 rgba(255,255,255,0.10);
+          0 24px 68px rgba(0,0,0,0.32),
+          inset 0 1px 0 rgba(255,255,255,0.09);
         overflow: hidden;
         isolation: isolate;
         transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
@@ -411,45 +392,33 @@ document.addEventListener('DOMContentLoaded', () => {
         content: '';
         position: absolute;
         inset: 0 auto 0 0;
-        width: 0.4rem;
+        width: 0.36rem;
         background: linear-gradient(180deg, #e6c555, #7a5c28);
-        opacity: 0.9;
-      }
-
-      .actus-date-row::after {
-        content: '';
-        position: absolute;
-        inset: -40% -20% auto auto;
-        width: 24rem;
-        height: 24rem;
-        border-radius: 50%;
-        background: rgba(230,197,85,0.08);
-        filter: blur(4px);
-        z-index: -1;
+        opacity: 0.92;
       }
 
       .actus-date-row:hover {
         transform: translateY(-3px);
-        border-color: rgba(230,197,85,0.32);
+        border-color: rgba(230,197,85,0.28);
         box-shadow:
           0 30px 82px rgba(0,0,0,0.42),
-          inset 0 1px 0 rgba(255,255,255,0.14);
+          inset 0 1px 0 rgba(255,255,255,0.13);
       }
 
       .actus-date-row__date {
-        width: clamp(8.4rem, 9vw, 10.8rem);
-        min-height: clamp(8.4rem, 9vw, 10.8rem);
+        width: clamp(8.2rem, 8.5vw, 10.4rem);
+        min-height: clamp(8.2rem, 8.5vw, 10.4rem);
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        border-radius: 2rem;
+        border-radius: 1.8rem;
         background:
-          linear-gradient(145deg, rgba(230,197,85,0.20), rgba(255,255,255,0.055));
-        border: 1px solid rgba(230,197,85,0.34);
+          linear-gradient(145deg, rgba(230,197,85,0.18), rgba(255,255,255,0.052));
+        border: 1px solid rgba(230,197,85,0.30);
         box-shadow:
-          0 16px 36px rgba(0,0,0,0.28),
-          inset 0 1px 0 rgba(255,255,255,0.18);
+          0 16px 36px rgba(0,0,0,0.26),
+          inset 0 1px 0 rgba(255,255,255,0.16);
         text-align: center;
         flex-shrink: 0;
       }
@@ -462,7 +431,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .actus-date-row__day {
         display: block;
         color: #fff;
-        font-size: clamp(2.7rem, 4vw, 4.4rem);
+        font-size: clamp(2.8rem, 4vw, 4.4rem);
         font-weight: 900;
         letter-spacing: 0.02em;
         line-height: 0.9;
@@ -477,14 +446,14 @@ document.addEventListener('DOMContentLoaded', () => {
       .actus-date-row__year {
         display: block;
         color: #e6c555;
-        font-size: 1.15rem;
+        font-size: 1.1rem;
         font-weight: 900;
         letter-spacing: 0.18em;
         line-height: 1.25;
       }
 
       .actus-date-row__year {
-        color: rgba(255,255,255,0.64);
+        color: rgba(255,255,255,0.62);
         letter-spacing: 0.08em;
         margin-top: 0.25rem;
       }
@@ -494,10 +463,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       .actus-date-row__title {
-        margin: 0 0 1rem;
+        margin: 0 0 1.05rem;
         color: #fff;
         font-family: var(--font-primary);
-        font-size: clamp(2.4rem, 3.2vw, 4.2rem);
+        font-size: clamp(2.3rem, 3vw, 3.9rem);
         font-weight: 900;
         letter-spacing: 0.06em;
         line-height: 1;
@@ -507,22 +476,25 @@ document.addEventListener('DOMContentLoaded', () => {
       .actus-date-row__meta {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.9rem 1.4rem;
+        gap: 0.9rem 1.2rem;
         align-items: center;
-      }
-
-      .actus-date-row__meta-item,
-      .actus-date-row__badge,
-      .actus-date-row__artists {
-        color: rgba(255,255,255,0.74);
-        font-size: clamp(1.35rem, 1.4vw, 1.6rem);
-        font-weight: 600;
       }
 
       .actus-date-row__meta-item {
         display: inline-flex;
-        gap: 0.65rem;
-        align-items: center;
+        gap: 0.7rem;
+        align-items: baseline;
+        color: rgba(255,255,255,0.78);
+        font-size: clamp(1.35rem, 1.4vw, 1.6rem);
+        font-weight: 600;
+      }
+
+      .actus-date-row__meta-label {
+        color: #e6c555;
+        font-size: 1rem;
+        font-weight: 900;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
       }
 
       .actus-date-row__badge {
@@ -531,10 +503,11 @@ document.addEventListener('DOMContentLoaded', () => {
         justify-content: center;
         padding: 0.45rem 1rem;
         border-radius: 999px;
-        border: 1px solid rgba(230,197,85,0.26);
-        background: rgba(230,197,85,0.08);
+        border: 1px solid rgba(230,197,85,0.24);
+        background: rgba(230,197,85,0.075);
         color: #e6c555;
-        font-size: 1.1rem;
+        font-size: 1.05rem;
+        font-weight: 800;
         letter-spacing: 0.14em;
         text-transform: uppercase;
       }
@@ -542,6 +515,8 @@ document.addEventListener('DOMContentLoaded', () => {
       .actus-date-row__artists {
         margin: 1rem 0 0;
         color: rgba(255,255,255,0.58);
+        font-size: 1.35rem;
+        font-weight: 500;
       }
 
       .actus-date-row__action {
@@ -560,11 +535,11 @@ document.addEventListener('DOMContentLoaded', () => {
         border-radius: 999px;
         background: linear-gradient(135deg, #e6c555, #a48851);
         color: #121212;
-        font-size: 1.35rem;
+        font-size: 1.32rem;
         font-weight: 900;
         letter-spacing: 0.08em;
         text-transform: uppercase;
-        box-shadow: 0 16px 36px rgba(0,0,0,0.36);
+        box-shadow: 0 16px 36px rgba(0,0,0,0.34);
         overflow: hidden;
       }
 
@@ -630,6 +605,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       @media (max-width: 760px) {
+        .actus-page {
+          padding-top: 9rem;
+        }
+
         .actus-date-row {
           grid-template-columns: 1fr;
           gap: 1.6rem;
