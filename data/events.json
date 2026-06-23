@@ -1,1 +1,21 @@
-{"success":true,"shows":[]}
+{
+  "success": true,
+  "updatedAt": "2026-06-23T15:30:22.193Z",
+  "shows": [
+    {
+      "name": "TRUC DE OUF",
+      "events": [
+        {
+          "displayDate": "27/11/2026",
+          "venue": "Mouscron",
+          "ticketUrl": "https://www.hurlucomedy.com/romaindewasme"
+        },
+        {
+          "displayDate": "28/11/2026",
+          "venue": "Mouscron",
+          "ticketUrl": "https://www.hurlucomedy.com/romaindewasme"
+        }
+      ]
+    }
+  ]
+}
