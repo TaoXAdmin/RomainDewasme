@@ -1,4 +1,5 @@
-const ACTUS_API_URL = 'https://script.google.com/macros/s/AKfycbyub3b6NUBaQU3VqFUck5pRA0hJoJRU8MORJebEtqxV9OnyWX9OAexOPHlki_V2ENDE/exec'; // À remplacer plus tard par l’URL Apps Script
+const ACTUS_DATA_URL = 'data/events.json';
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const loaderEl = document.getElementById('actusLoader');
@@ -11,35 +12,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initActusPage();
 
-async function initActusPage() {
-  try {
-    const data = await fetchActusData();
-    const shows = normalizeShows(data);
+  async function initActusPage() {
+    try {
+      const data = await fetchActusData();
+      const shows = normalizeShows(data);
 
-    if (!shows.length) {
+      if (!shows.length) {
+        emptyEl.hidden = false;
+      } else {
+        renderShows(shows);
+        initTeaserModal();
+      }
+    } catch (error) {
+      console.error('Erreur chargement spectacles :', error);
       emptyEl.hidden = false;
-    } else {
-      renderShows(shows);
-      initTeaserModal();
-    }
-  } catch (error) {
-    console.error('Erreur chargement actus :', error);
-    emptyEl.hidden = false;
-  } finally {
-    if (loaderEl) {
-      setTimeout(() => {
-        loaderEl.classList.add('hidden');
-      }, 120);
+    } finally {
+      if (loaderEl) {
+        setTimeout(() => {
+          loaderEl.classList.add('hidden');
+        }, 120);
+      }
     }
   }
-}
 
   async function fetchActusData() {
-    if (!ACTUS_API_URL) {
-      return { success: true, shows: [] };
-    }
-
-    const response = await fetch(ACTUS_API_URL, {
+    const separator = ACTUS_DATA_URL.includes('?') ? '&' : '?';
+    const response = await fetch(`${ACTUS_DATA_URL}${separator}v=${Date.now()}`, {
       method: 'GET',
       cache: 'no-store'
     });
@@ -51,52 +49,62 @@ async function initActusPage() {
     return response.json();
   }
 
-function normalizeTicketUrl(url) {
-  const raw = String(url || '').trim();
-  if (!raw) return '';
+  function normalizeTicketUrl(url) {
+    const raw = String(url || '').trim();
+    if (!raw) return '';
 
-  if (/^https?:\/\//i.test(raw)) {
-    return raw;
-  }
-
-  return `https://${raw}`;
-}
-
-function hasRealMediaValue(value) {
-  const raw = String(value || '').trim().toLowerCase();
-
-  if (!raw) return false;
-  if (raw === 'null' || raw === 'undefined' || raw === 'false') return false;
-
-  return true;
-}
-
-  function normalizeShows(data) {
-    if (!data || data.success !== true || !Array.isArray(data.shows)) {
-      return [];
+    if (/^https?:\/\//i.test(raw)) {
+      return raw;
     }
 
-    return data.shows
+    return `https://${raw}`;
+  }
+
+  function hasRealMediaValue(value) {
+    const raw = String(value || '').trim().toLowerCase();
+
+    if (!raw) return false;
+    if (raw === 'null' || raw === 'undefined' || raw === 'false') return false;
+
+    return true;
+  }
+
+  function normalizeShows(data) {
+    const rawShows = Array.isArray(data)
+      ? data
+      : (data && Array.isArray(data.shows) ? data.shows : []);
+
+    return rawShows
       .map((show) => {
         const events = Array.isArray(show.events)
-          ? [...show.events].sort((a, b) => {
-              const da = new Date(a.date || a.displayDate || 0).getTime();
-              const db = new Date(b.date || b.displayDate || 0).getTime();
-              return da - db;
-            })
+          ? [...show.events]
+              .map(normalizeEvent)
+              .filter(Boolean)
           : [];
 
         return {
-          name: String(show.name || '').trim(),
-          poster: String(show.poster || '').trim(),
+          name: String(show.name || show.title || show.titre || '').trim(),
+          poster: String(show.poster || show.affiche || '').trim(),
           audience: String(show.audience || '').trim().toUpperCase(),
           artists: normalizeArtists(show.artists),
           teaserDesktop: String(show.teaserDesktop || '').trim(),
-          teaserMobile: String(show.teaserMobile || '').trim(),	
+          teaserMobile: String(show.teaserMobile || '').trim(),
           events
         };
       })
-      .filter((show) => show.name && show.poster && show.events.length);
+      .filter((show) => show.name && show.events.length);
+  }
+
+  function normalizeEvent(event) {
+    if (!event || typeof event !== 'object') return null;
+
+    const displayDate = String(event.displayDate || event.date || '').trim();
+    const venue = String(event.venue || event.lieu || event.place || '').trim();
+    const ticketUrl = String(event.ticketUrl || event.billetterie || event.ticket || event.url || '').trim();
+
+    if (!displayDate || !venue) return null;
+
+    return { displayDate, venue, ticketUrl };
   }
 
   function normalizeArtists(value) {
@@ -125,129 +133,124 @@ function hasRealMediaValue(value) {
   }
 
   function buildShowNode(show) {
-  const fragment = showTpl.content.cloneNode(true);
+    const fragment = showTpl.content.cloneNode(true);
 
-  const article = fragment.querySelector('.actus-show');
-  const poster = fragment.querySelector('.actus-show__poster');
-  const posterVisual = fragment.querySelector('.actus-show__poster-visual');
-  const title = fragment.querySelector('.actus-show__title');
-  const audience = fragment.querySelector('.actus-show__audience');
-  const featuring = fragment.querySelector('.actus-show__featuring');
-  const featuringText = fragment.querySelector('.actus-show__featuring-text');
-  const teaserWrap = fragment.querySelector('.actus-show__teaser-wrap');
-  const teaserBtn = fragment.querySelector('.actus-show__teaser-btn');
-  const eventsList = fragment.querySelector('.actus-show__events');
+    const article = fragment.querySelector('.actus-show');
+    const poster = fragment.querySelector('.actus-show__poster');
+    const posterVisual = fragment.querySelector('.actus-show__poster-visual');
+    const title = fragment.querySelector('.actus-show__title');
+    const audience = fragment.querySelector('.actus-show__audience');
+    const featuring = fragment.querySelector('.actus-show__featuring');
+    const featuringText = fragment.querySelector('.actus-show__featuring-text');
+    const teaserWrap = fragment.querySelector('.actus-show__teaser-wrap');
+    const teaserBtn = fragment.querySelector('.actus-show__teaser-btn');
+    const eventsList = fragment.querySelector('.actus-show__events');
 
-  posterVisual.style.backgroundImage = `url("${show.poster}")`;
-  poster.setAttribute('aria-label', `Affiche du spectacle ${show.name}`);
-  title.textContent = show.name;
-  audience.textContent = show.audience || 'TOUT PUBLIC';
-
-  if (Array.isArray(show.artists) && show.artists.length) {
-    featuring.hidden = false;
-    featuring.removeAttribute('hidden');
-    featuringText.textContent = show.artists.join(', ');
-  } else {
-    featuring.hidden = true;
-    featuring.setAttribute('hidden', '');
-    featuringText.textContent = '';
-  }
-
-  const desktopTeaser = String(show.teaserDesktop || '').trim();
-  const mobileTeaser = String(show.teaserMobile || '').trim();
-
-  const hasDesktopTeaser =
-    desktopTeaser &&
-    desktopTeaser !== 'null' &&
-    desktopTeaser !== 'undefined' &&
-    desktopTeaser !== 'false';
-
-  const hasMobileTeaser =
-    mobileTeaser &&
-    mobileTeaser !== 'null' &&
-    mobileTeaser !== 'undefined' &&
-    mobileTeaser !== 'false';
-
-  const hasTeaser = Boolean(hasDesktopTeaser || hasMobileTeaser);
-
-  teaserWrap.hidden = true;
-  teaserWrap.setAttribute('hidden', '');
-  teaserWrap.style.display = 'none';
-
-  poster.classList.remove('spectacles-card--interactive');
-
-  delete poster.dataset.videoDesktop;
-  delete poster.dataset.videoMobile;
-  delete poster.dataset.spectacleName;
-  delete teaserBtn.dataset.videoDesktop;
-  delete teaserBtn.dataset.videoMobile;
-  delete teaserBtn.dataset.spectacleName;
-
-  if (hasTeaser) {
-    const finalDesktopTeaser = hasDesktopTeaser ? desktopTeaser : mobileTeaser;
-    const finalMobileTeaser = hasMobileTeaser ? mobileTeaser : desktopTeaser;
-
-    teaserWrap.hidden = false;
-    teaserWrap.removeAttribute('hidden');
-    teaserWrap.style.display = '';
-
-    poster.classList.add('spectacles-card--interactive');
-
-    poster.dataset.videoDesktop = finalDesktopTeaser;
-    poster.dataset.videoMobile = finalMobileTeaser;
-    poster.dataset.spectacleName = show.name;
-
-    teaserBtn.dataset.videoDesktop = finalDesktopTeaser;
-    teaserBtn.dataset.videoMobile = finalMobileTeaser;
-    teaserBtn.dataset.spectacleName = show.name;
-  }
-
-  const eventsFragment = document.createDocumentFragment();
-
-  show.events.forEach((event) => {
-    const eventNode = buildEventNode(event);
-    if (eventNode) {
-      eventsFragment.appendChild(eventNode);
+    if (show.poster) {
+      posterVisual.style.backgroundImage = `url("${show.poster}")`;
+    } else {
+      posterVisual.removeAttribute('style');
+      posterVisual.setAttribute('aria-hidden', 'true');
     }
-  });
 
-  eventsList.appendChild(eventsFragment);
+    poster.setAttribute('aria-label', `Affiche du spectacle ${show.name}`);
+    title.textContent = show.name;
+    audience.textContent = show.audience || 'TOUT PUBLIC';
 
-  return article;
-}
+    if (Array.isArray(show.artists) && show.artists.length) {
+      featuring.hidden = false;
+      featuring.removeAttribute('hidden');
+      featuringText.textContent = show.artists.join(', ');
+    } else {
+      featuring.hidden = true;
+      featuring.setAttribute('hidden', '');
+      featuringText.textContent = '';
+    }
 
-function buildEventNode(event) {
-  const displayDate = String(event.displayDate || '').trim();
-  const venue = String(event.venue || '').trim();
-  const ticketUrl = normalizeTicketUrl(event.ticketUrl);
+    const desktopTeaser = String(show.teaserDesktop || '').trim();
+    const mobileTeaser = String(show.teaserMobile || '').trim();
+    const hasDesktopTeaser = hasRealMediaValue(desktopTeaser);
+    const hasMobileTeaser = hasRealMediaValue(mobileTeaser);
+    const hasTeaser = Boolean(hasDesktopTeaser || hasMobileTeaser);
 
-  if (!displayDate || !venue) return null;
+    teaserWrap.hidden = true;
+    teaserWrap.setAttribute('hidden', '');
+    teaserWrap.style.display = 'none';
+    poster.classList.remove('spectacles-card--interactive');
 
-  const fragment = eventTpl.content.cloneNode(true);
-  const link = fragment.querySelector('.actus-show__event-link');
-  const date = fragment.querySelector('.actus-show__event-date');
-  const place = fragment.querySelector('.actus-show__event-place');
+    delete poster.dataset.videoDesktop;
+    delete poster.dataset.videoMobile;
+    delete poster.dataset.spectacleName;
+    delete teaserBtn.dataset.videoDesktop;
+    delete teaserBtn.dataset.videoMobile;
+    delete teaserBtn.dataset.spectacleName;
 
-  date.textContent = displayDate;
-  place.textContent = venue;
+    if (hasTeaser) {
+      const finalDesktopTeaser = hasDesktopTeaser ? desktopTeaser : mobileTeaser;
+      const finalMobileTeaser = hasMobileTeaser ? mobileTeaser : desktopTeaser;
 
-  if (ticketUrl) {
-    link.href = ticketUrl;
-  } else {
-    const staticCard = document.createElement('div');
-    staticCard.className = 'actus-show__event-link actus-show__event-link--static';
+      teaserWrap.hidden = false;
+      teaserWrap.removeAttribute('hidden');
+      teaserWrap.style.display = '';
+      poster.classList.add('spectacles-card--interactive');
 
-    const dateClone = date.cloneNode(true);
-    const placeClone = place.cloneNode(true);
+      poster.dataset.videoDesktop = finalDesktopTeaser;
+      poster.dataset.videoMobile = finalMobileTeaser;
+      poster.dataset.spectacleName = show.name;
 
-    staticCard.appendChild(dateClone);
-    staticCard.appendChild(placeClone);
+      teaserBtn.dataset.videoDesktop = finalDesktopTeaser;
+      teaserBtn.dataset.videoMobile = finalMobileTeaser;
+      teaserBtn.dataset.spectacleName = show.name;
+    }
 
-    link.replaceWith(staticCard);
+    const eventsFragment = document.createDocumentFragment();
+
+    show.events.forEach((event) => {
+      const eventNode = buildEventNode(event);
+      if (eventNode) {
+        eventsFragment.appendChild(eventNode);
+      }
+    });
+
+    eventsList.appendChild(eventsFragment);
+
+    return article;
   }
 
-  return fragment;
-}
+  function buildEventNode(event) {
+    const displayDate = String(event.displayDate || '').trim();
+    const venue = String(event.venue || '').trim();
+    const ticketUrl = normalizeTicketUrl(event.ticketUrl);
+
+    if (!displayDate || !venue) return null;
+
+    const fragment = eventTpl.content.cloneNode(true);
+    const link = fragment.querySelector('.actus-show__event-link');
+    const date = fragment.querySelector('.actus-show__event-date');
+    const place = fragment.querySelector('.actus-show__event-place');
+
+    date.textContent = displayDate;
+    place.textContent = venue;
+
+    if (ticketUrl) {
+      link.href = ticketUrl;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+    } else {
+      const staticCard = document.createElement('div');
+      staticCard.className = 'actus-show__event-link actus-show__event-link--static';
+
+      const textWrap = document.createElement('div');
+      textWrap.className = 'actus-show__event-text';
+      textWrap.appendChild(date.cloneNode(true));
+      textWrap.appendChild(place.cloneNode(true));
+
+      staticCard.appendChild(textWrap);
+      link.replaceWith(staticCard);
+    }
+
+    return fragment;
+  }
 
   function initTeaserModal() {
     const modal = document.getElementById('spectacleModal');
