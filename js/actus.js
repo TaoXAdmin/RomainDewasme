@@ -1,4 +1,4 @@
-const ACTUS_DATA_URL = 'data/events.json';
+const ACTUS_DATA_URL = '/data/events.json';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -261,139 +261,65 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const closeBtn = modal.querySelector('.spectacle-modal__close');
     const backdrop = modal.querySelector('.spectacle-modal__backdrop');
-    const mqMobile = window.matchMedia('(max-width: 1249px)');
+    const sources = modal.querySelectorAll('source');
+    const clickableItems = document.querySelectorAll('[data-video-desktop], [data-video-mobile]');
+    let lastTrigger = null;
 
-    let isOpen = false;
-    let isClosing = false;
+    clickableItems.forEach((item) => {
+      item.addEventListener('click', () => openModal(item));
+    });
 
-    function getVideoSrc(trigger) {
-      return mqMobile.matches
-        ? trigger.dataset.videoMobile
-        : trigger.dataset.videoDesktop;
-    }
-
-    function prepareVideo(trigger) {
-      const src = getVideoSrc(trigger);
-      if (!src) return false;
-
-      if (video.dataset.currentSrc !== src) {
-        video.src = src;
-        video.dataset.currentSrc = src;
-        video.load();
-      }
-
-      video.volume = 0.65;
-      replayBtn.hidden = true;
-      modal.classList.remove('is-ended');
-      return true;
-    }
-
-    async function openModal(trigger) {
-      if (isOpen || isClosing) return;
-      if (!prepareVideo(trigger)) return;
-
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (backdrop) backdrop.addEventListener('click', closeModal);
+    replayBtn.addEventListener('click', () => {
       video.currentTime = 0;
-      modal.hidden = false;
-      modal.setAttribute('aria-hidden', 'false');
-      document.body.classList.add('spectacle-modal-open');
+      video.play();
+    });
 
-      void modal.offsetWidth;
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !modal.hidden) closeModal();
+    });
 
-      requestAnimationFrame(() => {
-        modal.classList.add('is-open');
+    function openModal(trigger) {
+      const desktopVideo = trigger.dataset.videoDesktop;
+      const mobileVideo = trigger.dataset.videoMobile || desktopVideo;
+      const name = trigger.dataset.spectacleName || 'le spectacle';
+
+      if (!hasRealMediaValue(desktopVideo) && !hasRealMediaValue(mobileVideo)) return;
+
+      lastTrigger = trigger;
+      video.pause();
+      video.removeAttribute('src');
+
+      sources.forEach((source) => {
+        const isMobileSource = source.media && source.media.includes('max-width');
+        source.src = isMobileSource ? mobileVideo : desktopVideo;
       });
 
-      isOpen = true;
+      video.load();
+      video.setAttribute('aria-label', `Teaser du spectacle ${name}`);
 
-      try {
-        await video.play();
-      } catch (err) {
-        console.warn('Lecture bloquée :', err);
+      modal.hidden = false;
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('modal-open');
+
+      const playPromise = video.play();
+      if (playPromise && typeof playPromise.catch === 'function') {
+        playPromise.catch(() => {});
       }
+
+      if (closeBtn) closeBtn.focus();
     }
 
     function closeModal() {
-      if (!isOpen || isClosing) return;
+      video.pause();
+      modal.hidden = true;
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('modal-open');
 
-      isClosing = true;
-      modal.classList.remove('is-open', 'is-ended');
-
-      setTimeout(() => {
-        video.pause();
-        video.currentTime = 0;
-        replayBtn.hidden = true;
-        modal.hidden = true;
-        modal.setAttribute('aria-hidden', 'true');
-        document.body.classList.remove('spectacle-modal-open');
-        isOpen = false;
-        isClosing = false;
-      }, 420);
-    }
-
-    async function replayVideo() {
-      replayBtn.hidden = true;
-      modal.classList.remove('is-ended');
-      video.currentTime = 0;
-
-      try {
-        await video.play();
-      } catch (err) {
-        console.warn('Replay bloqué :', err);
+      if (lastTrigger && typeof lastTrigger.focus === 'function') {
+        lastTrigger.focus();
       }
     }
-
-    async function togglePlayback() {
-      if (video.ended) return;
-
-      if (video.paused) {
-        try {
-          await video.play();
-        } catch (err) {
-          console.warn('Reprise bloquée :', err);
-        }
-      } else {
-        video.pause();
-      }
-    }
-
-    document.addEventListener('click', (event) => {
-      const posterTrigger = event.target.closest('.actus-show__poster.spectacles-card--interactive');
-      const teaserTrigger = event.target.closest('.actus-show__teaser-btn');
-
-      if (posterTrigger) {
-        openModal(posterTrigger);
-        return;
-      }
-
-      if (teaserTrigger) {
-        openModal(teaserTrigger);
-      }
-    });
-
-    document.addEventListener('keydown', (event) => {
-      const trigger = event.target.closest('.actus-show__poster.spectacles-card--interactive');
-      if (!trigger) return;
-
-      if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault();
-        openModal(trigger);
-      }
-    });
-
-    closeBtn.addEventListener('click', closeModal);
-    backdrop.addEventListener('click', closeModal);
-    replayBtn.addEventListener('click', replayVideo);
-    video.addEventListener('click', togglePlayback);
-
-    video.addEventListener('ended', () => {
-      modal.classList.add('is-ended');
-      replayBtn.hidden = false;
-    });
-
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && isOpen) {
-        closeModal();
-      }
-    });
   }
 });
