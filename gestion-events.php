@@ -1,2 +1,2 @@
 <?php
-echo 'Gestion events';
+echo 'Gestion events v2';
