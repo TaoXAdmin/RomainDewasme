@@ -4,5 +4,5 @@ $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 if ($method === 'POST') {
     echo 'POST';
 } else {
-    echo 'Gestion events';
+    echo '<form method="post"><input name="title"><button>OK</button></form>';
 }
