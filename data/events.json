@@ -1,6 +1,6 @@
 {
   "success": true,
-  "updatedAt": "2026-07-06T14:31:58.715Z",
+  "updatedAt": "2026-07-08T13:44:03.424Z",
   "shows": [
     {
       "name": "TRUC DE OUF",
@@ -16,22 +16,22 @@
           "ticketUrl": "https://www.hurlucomedy.com/romaindewasme"
         },
         {
-          "displayDate": "4 octobre",
+          "displayDate": "04/10/2026",
           "venue": "comines - warenton",
           "ticketUrl": "https://lepetitpincesansrire.mapado.com/event/764285-romain-dewasme-truc-de-ouf"
         },
         {
-          "displayDate": "20 décembre",
+          "displayDate": "20/12/2026",
           "venue": "comines - warenton",
           "ticketUrl": "https://lepetitpincesansrire.mapado.com/event/764285-romain-dewasme-truc-de-ouf"
         },
         {
-          "displayDate": "2 septembre",
+          "displayDate": "02/09/2026",
           "venue": "Arras",
           "ticketUrl": "https://www.lepontdesinge.fr"
         },
         {
-          "displayDate": "11 septembre",
+          "displayDate": "11/09/2026",
           "venue": "Spa en Belgique",
           "ticketUrl": "https://shop.utick.net/?module=ACTIVITYSERIEDETAILS&pos=MAGICALLFESTIVAL&s=804E0D4B-B0BE-CB4A-F08C-F4D49400709A"
         }
