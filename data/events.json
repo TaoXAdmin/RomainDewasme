@@ -1,6 +1,6 @@
 {
   "success": true,
-  "updatedAt": "2026-08-26T10:03:41.811Z",
+  "updatedAt": "2026-08-26T10:06:21.374Z",
   "shows": [
     {
       "name": "TRUC DE OUF",
@@ -39,6 +39,11 @@
           "displayDate": "13/11/2026",
           "venue": "Madeleine",
           "ticketUrl": "https://www.cca-lamadeleine.fr/post/truc-de-ouf-vendredi-13-novembre-19h30"
+        },
+        {
+          "displayDate": "17/10/2026",
+          "venue": "Ath",
+          "ticketUrl": "https://www.facebook.com/Le312cabaret/?locale=fr_FR"
         }
       ]
     }
