@@ -1,6 +1,6 @@
 {
   "success": true,
-  "updatedAt": "2026-07-08T13:44:03.424Z",
+  "updatedAt": "2026-08-26T10:03:41.811Z",
   "shows": [
     {
       "name": "TRUC DE OUF",
@@ -34,6 +34,11 @@
           "displayDate": "11/09/2026",
           "venue": "Spa en Belgique",
           "ticketUrl": "https://shop.utick.net/?module=ACTIVITYSERIEDETAILS&pos=MAGICALLFESTIVAL&s=804E0D4B-B0BE-CB4A-F08C-F4D49400709A"
+        },
+        {
+          "displayDate": "13/11/2026",
+          "venue": "Madeleine",
+          "ticketUrl": "https://www.cca-lamadeleine.fr/post/truc-de-ouf-vendredi-13-novembre-19h30"
         }
       ]
     }
