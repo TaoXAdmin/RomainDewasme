@@ -1,6 +1,6 @@
 {
   "success": true,
-  "updatedAt": "2026-08-26T10:06:21.374Z",
+  "updatedAt": "2026-09-30T14:19:06.304Z",
   "shows": [
     {
       "name": "TRUC DE OUF",
@@ -43,7 +43,7 @@
         {
           "displayDate": "17/10/2026",
           "venue": "Ath",
-          "ticketUrl": "https://www.facebook.com/Le312cabaret/?locale=fr_FR"
+          "ticketUrl": "https://le312cabaret.be/spectacle/truc-de-ouf/"
         }
       ]
     }
