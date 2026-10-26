@@ -1,6 +1,6 @@
 {
   "success": true,
-  "updatedAt": "2026-09-30T14:19:06.304Z",
+  "updatedAt": "2026-10-26T15:11:08.651Z",
   "shows": [
     {
       "name": "TRUC DE OUF",
@@ -44,6 +44,11 @@
           "displayDate": "17/10/2026",
           "venue": "Ath",
           "ticketUrl": "https://le312cabaret.be/spectacle/truc-de-ouf/"
+        },
+        {
+          "displayDate": "29/11/2026",
+          "venue": "Mouscron",
+          "ticketUrl": "https://shop.utick.net/?module=ACTIVITYSERIEDETAILS&pos=HURLUCOMEDY&s=54C6F5E4-AF11-EA1D-0456-D1438C7E0167"
         }
       ]
     }
