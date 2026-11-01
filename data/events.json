@@ -1,6 +1,6 @@
 {
   "success": true,
-  "updatedAt": "2026-10-26T15:11:08.651Z",
+  "updatedAt": "2026-11-01T12:02:01.912Z",
   "shows": [
     {
       "name": "TRUC DE OUF",
@@ -49,6 +49,21 @@
           "displayDate": "29/11/2026",
           "venue": "Mouscron",
           "ticketUrl": "https://shop.utick.net/?module=ACTIVITYSERIEDETAILS&pos=HURLUCOMEDY&s=54C6F5E4-AF11-EA1D-0456-D1438C7E0167"
+        }
+      ]
+    },
+    {
+      "name": "EXPLOSIF",
+      "events": [
+        {
+          "displayDate": "06/02/2027",
+          "venue": "Mouscron",
+          "ticketUrl": "https://shop.utick.be/?module=ACTIVITYSERIEDETAILS&pos=CCMOUSCRON&s=78D6FA31-2A56-E3D5-937F-4850EB767590"
+        },
+        {
+          "displayDate": "07/02/2026",
+          "venue": "Mouscron",
+          "ticketUrl": "https://shop.utick.be/?module=ACTIVITYSERIEDETAILS&pos=CCMOUSCRON&s=78D6FA31-2A56-E3D5-937F-4850EB767590"
         }
       ]
     }
