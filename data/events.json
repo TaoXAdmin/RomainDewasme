@@ -1,6 +1,6 @@
 {
   "success": true,
-  "updatedAt": "2026-11-01T12:02:01.912Z",
+  "updatedAt": "2026-11-08T14:01:15.734Z",
   "shows": [
     {
       "name": "TRUC DE OUF",
@@ -49,6 +49,11 @@
           "displayDate": "29/11/2026",
           "venue": "Mouscron",
           "ticketUrl": "https://shop.utick.net/?module=ACTIVITYSERIEDETAILS&pos=HURLUCOMEDY&s=54C6F5E4-AF11-EA1D-0456-D1438C7E0167"
+        },
+        {
+          "displayDate": "11/11/2026",
+          "venue": "Lille",
+          "ticketUrl": "https://billetterie-spotlight.mapado.com/event/818853-romain-dewasme-truc-de-ouf-magie-et-humour?eventDate=3092971"
         }
       ]
     },
